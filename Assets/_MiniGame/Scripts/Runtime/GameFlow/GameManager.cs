@@ -11,14 +11,10 @@ namespace UrbanFox.MiniGame
     public class GameManager : RuntimeManager<GameManager>
     {
         [Serializable]
-        public enum GameState
+        public enum LoadingIconType
         {
-            Loading,
-            SplashScreen,
-            GameplayPausable,
-            GameplayNonPausable,
-            GameOverWaitForReload,
-            Paused
+            Bar,
+            SpinningWheel
         }
 
         public static event Action<GameState> OnGameStateChanged;
@@ -30,23 +26,39 @@ namespace UrbanFox.MiniGame
         private float m_fullscreenBlackIdleTime;
 
         [SerializeField]
-        private float m_loadingBarFadeTime;
+        private float m_loadingIconFadeTime;
 
         [SerializeField, Required]
         private CanvasGroup m_fullscreenBlack;
 
-        [SerializeField, Required]
+        [SerializeField]
+        private LoadingIconType m_loadingIconType;
+
+        [SerializeField, ShowIf(nameof(m_loadingIconType), LoadingIconType.Bar)]
         private Slider m_loadingBar;
 
-        [SerializeField, Required]
+        [SerializeField, ShowIf(nameof(m_loadingIconType), LoadingIconType.Bar)]
         private CanvasGroup m_loadingBarCanvasGroup;
+
+        [SerializeField, ShowIf(nameof(m_loadingIconType), LoadingIconType.SpinningWheel)]
+        private CanvasGroup m_loadingWheelCanvasGroup;
+
+        [SerializeField, ShowIf(nameof(m_loadingIconType), LoadingIconType.SpinningWheel)]
+        private float m_loadingWheelSpinningSpeed;
 
         [Header("Game Start Options")]
 
         [SerializeField, Scene]
         private string m_sceneToLoadOnStart;
 
+        [SerializeField, NonEditable]
         private GameState m_currentGameState;
+
+        public void SwitchGameState(GameState gameState)
+        {
+            m_currentGameState = gameState;
+            OnGameStateChanged?.Invoke(m_currentGameState);
+        }
 
         public void QuitGame()
         {
@@ -64,8 +76,18 @@ namespace UrbanFox.MiniGame
             {
                 m_fullscreenBlack.DOFade(1, m_fullscreenBlackFadeTime);
                 yield return new WaitForSeconds(m_fullscreenBlackIdleTime + m_fullscreenBlackIdleTime / 2);
-                m_loadingBar.value = 0;
-                m_loadingBarCanvasGroup.DOFade(1, m_loadingBarFadeTime);
+                switch (m_loadingIconType)
+                {
+                    case LoadingIconType.Bar:
+                        m_loadingBar.value = 0;
+                        m_loadingBarCanvasGroup.DOFade(1, m_loadingIconFadeTime);
+                        break;
+                    case LoadingIconType.SpinningWheel:
+                        m_loadingWheelCanvasGroup.DOFade(1, m_loadingIconFadeTime);
+                        break;
+                    default:
+                        break;
+                }
                 UnloadScenes(scenes);
                 yield return new WaitForSeconds(m_fullscreenBlackIdleTime / 2);
                 var operations = new List<AsyncOperation>();
@@ -88,8 +110,18 @@ namespace UrbanFox.MiniGame
                     SceneManager.SetActiveScene(SceneManager.GetSceneByName(scenes[0]));
                 }
                 yield return new WaitForSeconds(m_fullscreenBlackIdleTime / 2);
-                m_loadingBarCanvasGroup.DOFade(0, m_loadingBarFadeTime);
-                yield return new WaitForSeconds(m_loadingBarFadeTime + m_fullscreenBlackIdleTime / 2);
+                switch (m_loadingIconType)
+                {
+                    case LoadingIconType.Bar:
+                        m_loadingBarCanvasGroup.DOFade(0, m_loadingIconFadeTime);
+                        break;
+                    case LoadingIconType.SpinningWheel:
+                        m_loadingWheelCanvasGroup.DOFade(0, m_loadingIconFadeTime);
+                        break;
+                    default:
+                        break;
+                }
+                yield return new WaitForSeconds(m_loadingIconFadeTime + m_fullscreenBlackIdleTime / 2);
                 m_fullscreenBlack.DOFade(0, m_fullscreenBlackFadeTime);
             }
         }
@@ -125,7 +157,16 @@ namespace UrbanFox.MiniGame
         {
             m_fullscreenBlack.alpha = 1;
             m_loadingBarCanvasGroup.alpha = 0;
+            m_loadingWheelCanvasGroup.alpha = 0;
             LoadScenesWithLoadingBar(new string[] { m_sceneToLoadOnStart }, true);
+        }
+
+        private void LateUpdate()
+        {
+            if (m_loadingIconType == LoadingIconType.SpinningWheel && m_loadingWheelCanvasGroup)
+            {
+                m_loadingWheelCanvasGroup.transform.Rotate(m_loadingWheelSpinningSpeed * Time.deltaTime * Vector3.back);
+            }
         }
 
         private bool IsSceneLoaded(string sceneName)

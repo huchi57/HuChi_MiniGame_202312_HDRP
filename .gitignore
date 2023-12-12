@@ -74,3 +74,5 @@ crashlytics-build.properties
 ### OTHER IGNORES
 # Package Settings
 /ProjectSettings/Packages/
+ProjectSettings/CommonBurstAotSettings.json
+ProjectSettings/BurstAotSettings_StandaloneWindows.json
