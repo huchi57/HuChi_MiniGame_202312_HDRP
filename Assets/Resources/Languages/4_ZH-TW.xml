@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF - 8" standalone="yes"?>
+<data>
+    <i k="Key" v="ZH-TW"/>
+    <i k="LanguageName" v="繁體中文"/>
+    <i k="UI.Yes" v="是"/>
+    <i k="UI.No" v="否"/>
+    <i k="UI.Confirm" v="確認"/>
+    <i k="UI.Cancel" v="取消"/>
+    <i k="UI.On" v="開啟"/>
+    <i k="UI.Off" v="關閉"/>
+    <i k="UI.Settings" v="設定"/>
+    <i k="UI.Settings.Graphics" v="畫質"/>
+    <i k="UI.Settings.Graphics.Low" v="低"/>
+    <i k="UI.Settings.Graphics.Medium" v="中"/>
+    <i k="UI.Settings.Graphics.High" v="高"/>
+    <i k="UI.Settings.Graphics.Ultra" v="極高"/>
+    <i k="UI.Settings.Movement.InvertX" v="反轉 X 軸"/>
+    <i k="UI.Settings.Movement.InvertY" v="反轉 Y 軸"/>
+    <i k="UI.Settings.Movement.Sensitivity" v="靈敏度"/>
+    <i k="UI.Settings.Language" v="語言"/>
+    <i k="UI.Settings.Language.EN" v="English"/>
+    <i k="UI.Settings.Language.EN.US" v="English (US)"/>
+    <i k="UI.Settings.Language.EN.UK" v="English (UK)"/>
+    <i k="UI.Settings.Language.JP" v="日本語"/>
+    <i k="UI.Settings.Language.ZH.TW" v="繁體中文"/>
+    <i k="UI.Settings.Language.ZH.CN" v="简体中文"/>
+    <i k="UI.Settings.Visuals.Graphics" v="畫面"/>
+    <i k="UI.Settings.Visuals.Subtitles" v="字幕"/>
+    <i k="UI.Settings.Visuals.FullscreenMode" v="全螢幕模式"/>
+    <i k="UI.Settings.Visuals.Resolution" v="解析度"/>
+    <i k="UI.Settings.Visuals.Brightness" v="顯示亮度"/>
+    <i k="UI.Settings.Audio.Volume" v="音量"/>
+    <i k="UI.Settings.Controls" v="控制"/>
+    <i k="UI.Settings.Controls.TiltUp" v="向上"/>
+    <i k="UI.Settings.Controls.TiltDown" v="向下"/>
+    <i k="UI.Settings.Controls.Vibration" v="震動"/>
+    <i k="UI.PressAnyKey" v="按任何鍵"/>
+    <i k="UI.Continue" v="繼續"/>
+    <i k="UI.Resume" v="繼續"/>
+    <i k="UI.QuitGame" v="離開遊戲"/>
+    <i k="UI.QuitGame.Question" v="是否確認離開遊戲？"/>
+    <i k="UI.ReturnToMenu" v="返回主畫面"/>
+    <i k="UI.PauseMenu" v="暫停選單"/>
+    <i k="UI.Loading" v="讀取中"/>
+    <i k="UI.Loading.WithDots" v="讀取中…"/>
+    <i k="UI.RevertToDefault" v="恢復為預設值"/>
+    <i k="UI.GameTitle" v="(GAMETITLE)"/>
+</data>
