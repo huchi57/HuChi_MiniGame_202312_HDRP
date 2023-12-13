@@ -28,6 +28,8 @@ namespace UrbanFox.MiniGame
             {
                 m_resolutionText.text = $"{m_width} x {m_height}";
                 EventSystemManager.Instance.SelectGameObject(gameObject);
+                SettingsManager.Instance.ScreenWidth = m_width;
+                SettingsManager.Instance.ScreenHeight = m_height;
                 Screen.SetResolution(m_width, m_height, Screen.fullScreen);
             }
         }

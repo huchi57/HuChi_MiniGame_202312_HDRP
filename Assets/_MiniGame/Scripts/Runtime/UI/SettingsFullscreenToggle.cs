@@ -15,6 +15,7 @@ namespace UrbanFox.MiniGame
 
         private void Awake()
         {
+            m_toggle.isOn = SettingsManager.Instance.IsFullscreen;
             m_toggle.onValueChanged.AddListener(EnableFullscreen);
             EnableFullscreen(m_toggle.isOn);
         }
@@ -26,6 +27,7 @@ namespace UrbanFox.MiniGame
 
         private void EnableFullscreen(bool value)
         {
+            SettingsManager.Instance.IsFullscreen = value;
             Screen.fullScreen = value;
         }
     }

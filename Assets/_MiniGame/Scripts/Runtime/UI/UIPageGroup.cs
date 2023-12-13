@@ -7,6 +7,9 @@ namespace UrbanFox.MiniGame
 {
     public class UIPageGroup : MonoBehaviour
     {
+        [SerializeField]
+        private bool m_pauseTimeWhenOpened;
+
         [SerializeField, Required]
         private UIPage m_defaultFirstPage;
 
@@ -34,10 +37,16 @@ namespace UrbanFox.MiniGame
 
         private readonly Stack<UIPage> m_pageHistory = new Stack<UIPage>();
 
+        private float m_cacheTimeScale;
         private float m_targetBackgroundAlpha = 0;
 
         public void OpenPageGroup(Action onCompleted = null)
         {
+            if (m_pauseTimeWhenOpened)
+            {
+                m_cacheTimeScale = Time.timeScale;
+                Time.timeScale = 0;
+            }
             gameObject.SetActive(true);
             if (m_pageHistory.TryPeek(out var lastOpenedPage))
             {
@@ -54,6 +63,10 @@ namespace UrbanFox.MiniGame
 
         public void ClosePageGroup(Action onCompleted = null)
         {
+            if (m_pauseTimeWhenOpened)
+            {
+                Time.timeScale = m_cacheTimeScale;
+            }
             m_targetBackgroundAlpha = 0;
             m_background.alpha = 0;
             if (m_pageHistory.TryPeek(out var currentPage))
