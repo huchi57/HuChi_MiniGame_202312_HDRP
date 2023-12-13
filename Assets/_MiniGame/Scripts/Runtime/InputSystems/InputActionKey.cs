@@ -8,6 +8,9 @@ namespace UrbanFox.MiniGame
         public Action OnKeyDown;
         public Action OnKeyUp;
 
+        public bool WasPressedThisFrame => m_action.WasPressedThisFrame();
+        public bool WasReleasedThisFrame => m_action.WasReleasedThisFrame();
+
         private InputAction m_action;
 
         public void BindAction(InputAction action)
@@ -17,11 +20,11 @@ namespace UrbanFox.MiniGame
 
         public void Update()
         {
-            if (m_action.WasPressedThisFrame())
+            if (WasPressedThisFrame)
             {
                 OnKeyDown?.Invoke();
             }
-            if (m_action.WasReleasedThisFrame())
+            if (WasReleasedThisFrame)
             {
                 OnKeyUp?.Invoke();
             }

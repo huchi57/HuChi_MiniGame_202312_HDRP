@@ -29,7 +29,7 @@ namespace UrbanFox
             return component != null;
         }
 
-        public static bool TryGetComponentInChildren<T>(this Transform transform, out T component) where T : Component
+        public static bool TryGetComponentInChildren<T>(this Component transform, out T component) where T : Component
         {
             if (transform == null)
             {
@@ -39,7 +39,7 @@ namespace UrbanFox
             return transform.gameObject.TryGetComponentInChildren(out component);
         }
 
-        public static bool TryGetComponentInChildrenIncludeInactive<T>(this Transform transform, out T component) where T : Component
+        public static bool TryGetComponentInChildrenIncludeInactive<T>(this Component transform, out T component) where T : Component
         {
             if (transform == null)
             {
@@ -49,7 +49,7 @@ namespace UrbanFox
             return transform.gameObject.TryGetComponentInChildrenIncludeInactive(out component);
         }
 
-        public static bool TryGetComponentInParent<T>(this Transform transform, out T component) where T : Component
+        public static bool TryGetComponentInParent<T>(this Component transform, out T component) where T : Component
         {
             if (transform == null)
             {
@@ -59,7 +59,7 @@ namespace UrbanFox
             return transform.gameObject.TryGetComponentInParent(out component);
         }
 
-        public static bool TryGetComponentInParentIncludeInactive<T>(this Transform transform, out T component) where T : Component
+        public static bool TryGetComponentInParentIncludeInactive<T>(this Component transform, out T component) where T : Component
         {
             if (transform == null)
             {
@@ -79,7 +79,7 @@ namespace UrbanFox
             return children.IsNullOrEmpty() ? null : children.Where(child => child != null && child.gameObject != gameObject).ToArray();
         }
 
-        public static T[] GetComponentsInChildrenExcludeSelf<T>(this Transform transform, bool includeInactive = false) where T : Component
+        public static T[] GetComponentsInChildrenExcludeSelf<T>(this Component transform, bool includeInactive = false) where T : Component
         {
             if (transform == null)
             {

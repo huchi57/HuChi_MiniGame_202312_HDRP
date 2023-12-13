@@ -4,11 +4,17 @@ using UnityEngine.EventSystems;
 namespace UrbanFox.MiniGame
 {
     [RequireComponent(typeof(EventSystem))]
-    public class EventSystemAutoSelectCacheWhenLoseFocus : MonoBehaviour
+    public class EventSystemManager : RuntimeManager<EventSystemManager>
     {
         [SerializeField, NonEditable] private EventSystem m_eventSystem;
 
         private GameObject m_cachedGameObject;
+
+        public void SelectGameObject(GameObject newGameObject)
+        {
+            m_cachedGameObject = newGameObject;
+            m_eventSystem.SetSelectedGameObject(newGameObject);
+        }
 
         private void OnValidate()
         {

@@ -32,15 +32,15 @@ namespace UrbanFox.MiniGame
             {
                 onFadeComplete?.Invoke();
             });
-            if (EventSystem.current)
+            if (EventSystemManager.IsInstanceExist)
             {
                 if (m_rememberLastSelectedObjectWhenPageClose && m_lastSelectedObject)
                 {
-                    EventSystem.current.SetSelectedGameObject(m_lastSelectedObject);
+                    EventSystemManager.Instance.SelectGameObject(m_lastSelectedObject);
                 }
                 else if (m_optionalAutoSelectWhenPageOpen)
                 {
-                    EventSystem.current.SetSelectedGameObject(m_optionalAutoSelectWhenPageOpen);
+                    EventSystemManager.Instance.SelectGameObject(m_optionalAutoSelectWhenPageOpen);
                 }
             }
         }
