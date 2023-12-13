@@ -343,7 +343,7 @@ namespace UrbanFox.Editor
             // Actual language keys start from the 1st list
             for (int i = 1; i < languageAndKeyData.Count; i++)
             {
-                var content = new List<string> { "<?xml version=\"1.0\" encoding=\"UTF - 8\" standalone=\"yes\"?>", "<data>" };
+                var content = new List<string> { "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>", "<data>" };
                 var languageData = languageAndKeyData[i];
                 var languageName = languageData[0];
                 for (int j = 0; j < languageData.Count; j++)
