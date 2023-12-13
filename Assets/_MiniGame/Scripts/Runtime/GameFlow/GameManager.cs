@@ -17,7 +17,10 @@ namespace UrbanFox.MiniGame
             SpinningWheel
         }
 
+        public const string PlayerTag = "Player";
+
         public static event Action<GameState> OnGameStateChanged;
+        public static Transform Player { get; private set; }
 
         [SerializeField]
         private float m_fullscreenBlackFadeTime;
@@ -55,6 +58,11 @@ namespace UrbanFox.MiniGame
         private GameState m_currentGameState;
 
         public GameState CurrentGameState => m_currentGameState;
+
+        public static void RegisterPlayer(Transform player)
+        {
+            Player = player;
+        }
 
         public void SwitchGameState(GameState gameState)
         {

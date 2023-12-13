@@ -47,6 +47,29 @@ namespace UrbanFox
             return ColoredButton(label, color, GUI.skin.button, options);
         }
 
+        public static bool ColoredRepeatButton(GUIContent content, Color color, GUIStyle style, params GUILayoutOption[] options)
+        {
+            var cachedBackgroundColor = GUI.backgroundColor;
+            GUI.backgroundColor = color;
+            if (GUILayout.RepeatButton(content, style, options))
+            {
+                GUI.backgroundColor = cachedBackgroundColor;
+                return true;
+            }
+            GUI.backgroundColor = cachedBackgroundColor;
+            return false;
+        }
+
+        public static bool ColoredRepeatButton(string label, Color color, GUIStyle style, params GUILayoutOption[] options)
+        {
+            return ColoredRepeatButton(new GUIContent(label), color, style, options);
+        }
+
+        public static bool ColoredRepeatButton(string label, Color color, params GUILayoutOption[] options)
+        {
+            return ColoredRepeatButton(label, color, GUI.skin.button, options);
+        }
+
         public static void HorizontalLine(int height, Color color, float margin)
         {
             Divider.fixedHeight = height;

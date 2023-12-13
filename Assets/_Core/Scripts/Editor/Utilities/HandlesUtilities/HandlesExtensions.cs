@@ -166,5 +166,26 @@ namespace UrbanFox.Editor
                 Handles.DrawSolidArc(center, normal, from, angle, radius);
             }
         }
+
+        public static void DrawWireSphere(Vector3 center, float radius, Color color)
+        {
+            using (new HandlesScope(color))
+            {
+                Handles.DrawWireDisc(center, Vector3.forward, radius);
+                Handles.DrawWireDisc(center, Vector3.right, radius);
+                Handles.DrawWireDisc(center, Vector3.up, radius);
+            }
+        }
+
+        public static void DrawSolidSphere(Vector3 center, float radius, Color color)
+        {
+            using (new HandlesScope(color))
+            {
+                for (int i = 0; i < 180; i++)
+                {
+                    Handles.DrawSolidDisc(center, Quaternion.Euler(i, 0, 0) * Vector3.forward, radius);
+                }
+            }
+        }
     }
 }
