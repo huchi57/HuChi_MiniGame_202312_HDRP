@@ -51,8 +51,10 @@ namespace UrbanFox.MiniGame
         [SerializeField, Scene]
         private string m_sceneToLoadOnStart;
 
-        [SerializeField, NonEditable]
+        [SerializeField]
         private GameState m_currentGameState;
+
+        public GameState CurrentGameState => m_currentGameState;
 
         public void SwitchGameState(GameState gameState)
         {

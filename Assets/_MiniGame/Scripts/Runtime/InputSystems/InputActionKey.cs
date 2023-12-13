@@ -5,8 +5,8 @@ namespace UrbanFox.MiniGame
 {
     public class InputActionKey
     {
-        public Action OnKeyDown;
-        public Action OnKeyUp;
+        public event Action OnKeyDown;
+        public event Action OnKeyUp;
 
         public bool WasPressedThisFrame => m_action.WasPressedThisFrame();
         public bool WasReleasedThisFrame => m_action.WasReleasedThisFrame();

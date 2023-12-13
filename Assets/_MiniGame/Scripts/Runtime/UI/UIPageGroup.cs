@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -18,6 +19,14 @@ namespace UrbanFox.MiniGame
         [SerializeField]
         private bool m_savePageHistoryWhenGroupClosed = false;
 
+        [Header("Background")]
+
+        [SerializeField, Required]
+        private CanvasGroup m_background;
+
+        [SerializeField]
+        private float m_backgroundFadeSpeed;
+
         [Space]
 
         [SerializeField, Info("Debug only - Set to false in builds.")]
@@ -25,22 +34,28 @@ namespace UrbanFox.MiniGame
 
         private readonly Stack<UIPage> m_pageHistory = new Stack<UIPage>();
 
+        private float m_targetBackgroundAlpha = 0;
+
         public void OpenPageGroup(Action onCompleted = null)
         {
             gameObject.SetActive(true);
             if (m_pageHistory.TryPeek(out var lastOpenedPage))
             {
                 lastOpenedPage.OpenPage(m_pageFadeInTime, onCompleted);
+                m_targetBackgroundAlpha = lastOpenedPage.ShowsBackground ? 1 : 0;
             }
             else
             {
                 m_defaultFirstPage.OpenPage(m_pageFadeInTime, onCompleted);
+                m_targetBackgroundAlpha = m_defaultFirstPage.ShowsBackground ? 1 : 0;
                 m_pageHistory.Push(m_defaultFirstPage);
             }
         }
 
         public void ClosePageGroup(Action onCompleted = null)
         {
+            m_targetBackgroundAlpha = 0;
+            m_background.alpha = 0;
             if (m_pageHistory.TryPeek(out var currentPage))
             {
                 currentPage.ClosePage(m_pageFadeOutTime, () =>
@@ -71,11 +86,13 @@ namespace UrbanFox.MiniGame
                 currentPage.ClosePage(m_pageFadeOutTime, () =>
                 {
                     page.OpenPage(m_pageFadeInTime);
+                    m_targetBackgroundAlpha = page.ShowsBackground ? 1 : 0;
                 });
             }
             else
             {
                 page.OpenPage(m_pageFadeInTime);
+                m_targetBackgroundAlpha = page.ShowsBackground ? 1 : 0;
             }
             m_pageHistory.Push(page);
         }
@@ -89,6 +106,7 @@ namespace UrbanFox.MiniGame
                     if (m_pageHistory.TryPeek(out var previousPage))
                     {
                         previousPage.OpenPage(m_pageFadeInTime);
+                        m_targetBackgroundAlpha = previousPage.ShowsBackground ? 1 : 0;
                     }
                     else
                     {
@@ -108,12 +126,22 @@ namespace UrbanFox.MiniGame
 
         private void OnEnable()
         {
-            InputManager.Back.OnKeyDown += TryGotoPreviousPage;
+            StartCoroutine(DelayDoOnEnable());
+            IEnumerator DelayDoOnEnable()
+            {
+                yield return null;
+                InputManager.Back.OnKeyDown += TryGotoPreviousPage;
+            }
         }
 
         private void OnDisable()
         {
             InputManager.Back.OnKeyDown -= TryGotoPreviousPage;
+        }
+
+        private void LateUpdate()
+        {
+            m_background.alpha = Mathf.Lerp(m_background.alpha, m_targetBackgroundAlpha, m_backgroundFadeSpeed * Time.unscaledDeltaTime);
         }
     }
 }

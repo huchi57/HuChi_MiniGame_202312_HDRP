@@ -17,7 +17,14 @@ namespace UrbanFox.MiniGame
         [SerializeField]
         private bool m_rememberLastSelectedObjectWhenPageClose;
 
+        [Header("Background")]
+
+        [SerializeField]
+        private bool m_showsBackground = true;
+
         private GameObject m_lastSelectedObject;
+
+        public bool ShowsBackground => m_showsBackground;
 
         private void OnValidate()
         {
