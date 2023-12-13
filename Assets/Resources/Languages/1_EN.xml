@@ -31,6 +31,8 @@
     <i k="UI.Settings.Controls.TiltDown" v="Tilt Down"/>
     <i k="UI.Settings.Controls.Vibration" v="Vibration"/>
     <i k="UI.Settings.Controls.GamepadVibration" v="Gamepad Vibration"/>
+    <i k="UI.Settings.Controls.Binding.WaitingForInput" v="Waiting for input..."/>
+    <i k="UI.Settings.Controls.Binding.NewKeyPrefix" v="Input a new key for action:"/>
     <i k="UI.PressAnyKey" v="Press Any Key"/>
     <i k="UI.Continue" v="Continue"/>
     <i k="UI.Resume" v="Resume"/>
@@ -42,4 +44,5 @@
     <i k="UI.Loading.WithDots" v="Loading..."/>
     <i k="UI.RevertToDefault" v="Revert to Default"/>
     <i k="UI.GameTitle" v="(GAMETITLE)"/>
+    <i k="UI.Credits" v="Credits"/>
 </data>
