@@ -69,24 +69,27 @@ namespace UrbanFox.MiniGame
 #endif
         }
 
-        public void LoadScenesWithLoadingBar(string[] scenes, bool shouldTheFirstSceneInTheArrayBeActive)
+        public void LoadScenesWithFullscreenCover(string[] scenes, bool shouldTheFirstSceneInTheArrayBeActive, bool displayLoadingIcon, Action onFadeInFromFullscreenBegins = null)
         {
-            StartCoroutine(DoLoadScenesWithLoadingBar());
-            IEnumerator DoLoadScenesWithLoadingBar()
+            StartCoroutine(DoLoadScenesWithFullscreenCover());
+            IEnumerator DoLoadScenesWithFullscreenCover()
             {
                 m_fullscreenBlack.DOFade(1, m_fullscreenBlackFadeTime);
                 yield return new WaitForSeconds(m_fullscreenBlackIdleTime + m_fullscreenBlackIdleTime / 2);
-                switch (m_loadingIconType)
+                if (displayLoadingIcon)
                 {
-                    case LoadingIconType.Bar:
-                        m_loadingBar.value = 0;
-                        m_loadingBarCanvasGroup.DOFade(1, m_loadingIconFadeTime);
-                        break;
-                    case LoadingIconType.SpinningWheel:
-                        m_loadingWheelCanvasGroup.DOFade(1, m_loadingIconFadeTime);
-                        break;
-                    default:
-                        break;
+                    switch (m_loadingIconType)
+                    {
+                        case LoadingIconType.Bar:
+                            m_loadingBar.value = 0;
+                            m_loadingBarCanvasGroup.DOFade(1, m_loadingIconFadeTime);
+                            break;
+                        case LoadingIconType.SpinningWheel:
+                            m_loadingWheelCanvasGroup.DOFade(1, m_loadingIconFadeTime);
+                            break;
+                        default:
+                            break;
+                    }
                 }
                 UnloadScenes(scenes);
                 yield return new WaitForSeconds(m_fullscreenBlackIdleTime / 2);
@@ -123,6 +126,7 @@ namespace UrbanFox.MiniGame
                 }
                 yield return new WaitForSeconds(m_loadingIconFadeTime + m_fullscreenBlackIdleTime / 2);
                 m_fullscreenBlack.DOFade(0, m_fullscreenBlackFadeTime);
+                onFadeInFromFullscreenBegins?.Invoke();
             }
         }
 
@@ -158,7 +162,9 @@ namespace UrbanFox.MiniGame
             m_fullscreenBlack.alpha = 1;
             m_loadingBarCanvasGroup.alpha = 0;
             m_loadingWheelCanvasGroup.alpha = 0;
-            LoadScenesWithLoadingBar(new string[] { m_sceneToLoadOnStart }, true);
+            LoadScenesWithFullscreenCover(new string[] { m_sceneToLoadOnStart },
+                shouldTheFirstSceneInTheArrayBeActive: true,
+                displayLoadingIcon: true);
         }
 
         private void LateUpdate()

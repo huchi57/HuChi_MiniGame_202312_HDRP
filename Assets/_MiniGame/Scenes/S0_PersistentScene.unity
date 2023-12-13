@@ -6405,7 +6405,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_text: {fileID: 1541173167}
-  m_localizedKey: UI.Settings.Graphics
+  m_localizedKey: UI.Settings.Visuals.Graphics
 --- !u!114 &1541173166
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7828,7 +7828,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_text: {fileID: 2126453899}
-  m_localizedKey: UI.Settings.Graphics
+  m_localizedKey: UI.Settings.Visuals.Graphics
 --- !u!114 &2126453899
 MonoBehaviour:
   m_ObjectHideFlags: 0

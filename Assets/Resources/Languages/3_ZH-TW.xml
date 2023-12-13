@@ -9,16 +9,16 @@
     <i k="UI.On" v="開啟"/>
     <i k="UI.Off" v="關閉"/>
     <i k="UI.Settings" v="設定"/>
-    <i k="UI.Settings.Graphics" v="畫質"/>
-    <i k="UI.Settings.Graphics.Low" v="低"/>
-    <i k="UI.Settings.Graphics.Medium" v="中"/>
-    <i k="UI.Settings.Graphics.High" v="高"/>
-    <i k="UI.Settings.Graphics.Ultra" v="極高"/>
     <i k="UI.Settings.Movement.InvertX" v="反轉 X 軸"/>
     <i k="UI.Settings.Movement.InvertY" v="反轉 Y 軸"/>
     <i k="UI.Settings.Movement.Sensitivity" v="靈敏度"/>
     <i k="UI.Settings.Language" v="語言"/>
     <i k="UI.Settings.Visuals.Graphics" v="畫面"/>
+    <i k="UI.Settings.Visuals.Quality" v="畫質"/>
+    <i k="UI.Settings.Visuals.Quality.Low" v="低"/>
+    <i k="UI.Settings.Visuals.Quality.Medium" v="中"/>
+    <i k="UI.Settings.Visuals.Quality.High" v="高"/>
+    <i k="UI.Settings.Visuals.Quality.Ultra" v="極高"/>
     <i k="UI.Settings.Visuals.Subtitles" v="字幕"/>
     <i k="UI.Settings.Visuals.FullscreenMode" v="全螢幕模式"/>
     <i k="UI.Settings.Visuals.Resolution" v="解析度"/>

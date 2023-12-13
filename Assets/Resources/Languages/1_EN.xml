@@ -9,16 +9,16 @@
     <i k="UI.On" v="On"/>
     <i k="UI.Off" v="Off"/>
     <i k="UI.Settings" v="Settings"/>
-    <i k="UI.Settings.Graphics" v="Graphics"/>
-    <i k="UI.Settings.Graphics.Low" v="Low"/>
-    <i k="UI.Settings.Graphics.Medium" v="Medium"/>
-    <i k="UI.Settings.Graphics.High" v="High"/>
-    <i k="UI.Settings.Graphics.Ultra" v="Ultra"/>
     <i k="UI.Settings.Movement.InvertX" v="Invert X"/>
     <i k="UI.Settings.Movement.InvertY" v="Invert Y"/>
     <i k="UI.Settings.Movement.Sensitivity" v="Sensitivity"/>
     <i k="UI.Settings.Language" v="Language"/>
     <i k="UI.Settings.Visuals.Graphics" v="Graphics"/>
+    <i k="UI.Settings.Visuals.Quality" v="Visual Quality"/>
+    <i k="UI.Settings.Visuals.Quality.Low" v="Low"/>
+    <i k="UI.Settings.Visuals.Quality.Medium" v="Medium"/>
+    <i k="UI.Settings.Visuals.Quality.High" v="High"/>
+    <i k="UI.Settings.Visuals.Quality.Ultra" v="Ultra"/>
     <i k="UI.Settings.Visuals.Subtitles" v="Subtitles"/>
     <i k="UI.Settings.Visuals.FullscreenMode" v="Fullscreen Mode"/>
     <i k="UI.Settings.Visuals.Resolution" v="Resolution"/>
