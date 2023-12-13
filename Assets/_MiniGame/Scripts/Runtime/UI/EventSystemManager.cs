@@ -12,6 +12,10 @@ namespace UrbanFox.MiniGame
 
         public void SelectGameObject(GameObject newGameObject)
         {
+            if (m_eventSystem.alreadySelecting)
+            {
+                return;
+            }
             m_cachedGameObject = newGameObject;
             m_eventSystem.SetSelectedGameObject(newGameObject);
         }

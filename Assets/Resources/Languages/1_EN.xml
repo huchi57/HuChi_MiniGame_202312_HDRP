@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF - 8" standalone="yes"?>
 <data>
-    <i k="Key" v="EN-UK"/>
-    <i k="LanguageName" v="English (UK)"/>
+    <i k="Key" v="EN"/>
+    <i k="LanguageName" v="English"/>
     <i k="UI.Yes" v="Yes"/>
     <i k="UI.No" v="No"/>
     <i k="UI.Confirm" v="Confirm"/>
@@ -18,12 +18,6 @@
     <i k="UI.Settings.Movement.InvertY" v="Invert Y"/>
     <i k="UI.Settings.Movement.Sensitivity" v="Sensitivity"/>
     <i k="UI.Settings.Language" v="Language"/>
-    <i k="UI.Settings.Language.EN" v="English"/>
-    <i k="UI.Settings.Language.EN.US" v="English (US)"/>
-    <i k="UI.Settings.Language.EN.UK" v="English (UK)"/>
-    <i k="UI.Settings.Language.JP" v="日本語"/>
-    <i k="UI.Settings.Language.ZH.TW" v="繁體中文"/>
-    <i k="UI.Settings.Language.ZH.CN" v="简体中文"/>
     <i k="UI.Settings.Visuals.Graphics" v="Graphics"/>
     <i k="UI.Settings.Visuals.Subtitles" v="Subtitles"/>
     <i k="UI.Settings.Visuals.FullscreenMode" v="Fullscreen Mode"/>
@@ -31,9 +25,12 @@
     <i k="UI.Settings.Visuals.Brightness" v="Brightness"/>
     <i k="UI.Settings.Audio.Volume" v="Volume"/>
     <i k="UI.Settings.Controls" v="Controls"/>
+    <i k="UI.Settings.Controls.Keyboard" v="Keyboard"/>
+    <i k="UI.Settings.Controls.Gamepad" v="Gamepad"/>
     <i k="UI.Settings.Controls.TiltUp" v="Tilt Up"/>
     <i k="UI.Settings.Controls.TiltDown" v="Tilt Down"/>
     <i k="UI.Settings.Controls.Vibration" v="Vibration"/>
+    <i k="UI.Settings.Controls.GamepadVibration" v="Gamepad Vibration"/>
     <i k="UI.PressAnyKey" v="Press Any Key"/>
     <i k="UI.Continue" v="Continue"/>
     <i k="UI.Resume" v="Resume"/>

@@ -13,15 +13,13 @@ namespace UrbanFox.MiniGame
         [SerializeField, Required]
         private Slider m_slider;
 
-        [SerializeField]
-        private AnimationCurve m_sliderToActualGamaCurve = AnimationCurve.Linear(-1, -0.1f, 1, 0.1f);
-
         private LiftGammaGain m_runtimeGamma;
 
-        private void Awake()
+        private void Start()
         {
             var runtimeProfile = m_gammaSettingsVolume.profile;
             runtimeProfile.TryGet(out m_runtimeGamma);
+            m_slider.value = SettingsManager.Instance.Brightness;
             m_slider.onValueChanged.AddListener(ChangeGammaFromSliderValue);
             ChangeGammaFromSliderValue(m_slider.value);
         }
@@ -31,9 +29,10 @@ namespace UrbanFox.MiniGame
             m_slider.onValueChanged.RemoveListener(ChangeGammaFromSliderValue);
         }
 
-        private void ChangeGammaFromSliderValue(float value)
+        public void ChangeGammaFromSliderValue(float value)
         {
-            m_runtimeGamma.gamma.value = m_sliderToActualGamaCurve.Evaluate(value) * Vector4.one;
+            m_runtimeGamma.gamma.value = SettingsManager.Instance.SliderToActualGammaCurve.Evaluate(value) * Vector4.one;
+            SettingsManager.Instance.Brightness = value;
         }
     }
 }

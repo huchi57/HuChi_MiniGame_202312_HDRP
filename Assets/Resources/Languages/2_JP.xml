@@ -18,12 +18,6 @@
     <i k="UI.Settings.Movement.InvertY" v="Y 軸反転"/>
     <i k="UI.Settings.Movement.Sensitivity" v="マウス感度"/>
     <i k="UI.Settings.Language" v="言語"/>
-    <i k="UI.Settings.Language.EN" v="English"/>
-    <i k="UI.Settings.Language.EN.US" v="English (US)"/>
-    <i k="UI.Settings.Language.EN.UK" v="English (UK)"/>
-    <i k="UI.Settings.Language.JP" v="日本語"/>
-    <i k="UI.Settings.Language.ZH.TW" v="繁體中文"/>
-    <i k="UI.Settings.Language.ZH.CN" v="简体中文"/>
     <i k="UI.Settings.Visuals.Graphics" v="グラフィック"/>
     <i k="UI.Settings.Visuals.Subtitles" v="字幕"/>
     <i k="UI.Settings.Visuals.FullscreenMode" v="フルスクリーン"/>
@@ -31,9 +25,12 @@
     <i k="UI.Settings.Visuals.Brightness" v="明るさ"/>
     <i k="UI.Settings.Audio.Volume" v="ボリューム"/>
     <i k="UI.Settings.Controls" v="操作"/>
+    <i k="UI.Settings.Controls.Keyboard" v="キーボード"/>
+    <i k="UI.Settings.Controls.Gamepad" v="コントローラー"/>
     <i k="UI.Settings.Controls.TiltUp" v="上に傾ける"/>
     <i k="UI.Settings.Controls.TiltDown" v="下に傾ける"/>
     <i k="UI.Settings.Controls.Vibration" v="振動"/>
+    <i k="UI.Settings.Controls.GamepadVibration" v="コントローラー振動"/>
     <i k="UI.PressAnyKey" v="ボタンを押す"/>
     <i k="UI.Continue" v="続く"/>
     <i k="UI.Resume" v="戻る"/>
