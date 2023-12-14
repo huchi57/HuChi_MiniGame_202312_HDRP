@@ -20,7 +20,25 @@ namespace UrbanFox.MiniGame
         public const string PlayerTag = "Player";
 
         public static event Action<GameState> OnGameStateChanged;
-        public static Transform Player { get; private set; }
+
+        public static Transform Player
+        {
+            get
+            {
+                if (m_player)
+                {
+                    return m_player;
+                }
+                var playerObject = GameObject.FindWithTag(PlayerTag);
+                if (playerObject)
+                {
+                    m_player = playerObject.transform;
+                }
+                return m_player;
+            }
+        }
+
+        private static Transform m_player;
 
         [SerializeField]
         private float m_fullscreenBlackFadeTime;
@@ -61,7 +79,7 @@ namespace UrbanFox.MiniGame
 
         public static void RegisterPlayer(Transform player)
         {
-            Player = player;
+            m_player = player;
         }
 
         public void SwitchGameState(GameState gameState)

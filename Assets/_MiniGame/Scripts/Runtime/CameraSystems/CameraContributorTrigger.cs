@@ -8,7 +8,7 @@ namespace UrbanFox.MiniGame
 
         private void OnTriggerEnter(Collider other)
         {
-            if (CameraBrain.Main)
+            if (CameraBrain.Main && other.CompareTag(GameManager.PlayerTag))
             {
                 CameraBrain.Main.AddContributor(m_cameraContributor);
             }
@@ -16,9 +16,9 @@ namespace UrbanFox.MiniGame
 
         private void OnTriggerExit(Collider other)
         {
-            if (CameraBrain.Main)
+            if (CameraBrain.Main && other.CompareTag(GameManager.PlayerTag))
             {
-                CameraBrain.Main.AddContributor(m_cameraContributor);
+                CameraBrain.Main.RemoveContributor(m_cameraContributor);
             }
         }
     }

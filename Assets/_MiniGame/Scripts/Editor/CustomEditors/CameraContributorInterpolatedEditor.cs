@@ -7,20 +7,23 @@ namespace UrbanFox.MiniGame.Editor
     [CustomEditor(typeof(CameraContributorInterpolated))]
     public class CameraContributorInterpolatedEditor : UnityEditor.Editor
     {
-        private const string k_referencePoint = nameof(CameraContributorInterpolated.PointData.ReferencePoint);
-        private const string k_distanceFromTargetToCamera = nameof(CameraContributorInterpolated.PointData.DistanceFromTargetToCamera);
-        private const string k_positionLerpSpeed = nameof(CameraContributorInterpolated.PointData.PositionLerpSpeed);
-        private const string k_lookAtOffsetDistanceFromTarget = nameof(CameraContributorInterpolated.PointData.LookAtOffsetDistanceFromTarget);
-        private const string k_rotationSlerpSpeed = nameof(CameraContributorInterpolated.PointData.RotationSlerpSpeed);
-        private const string k_FOV = nameof(CameraContributorInterpolated.PointData.FOV);
-        private const string k_FOVLerpSpeed = nameof(CameraContributorInterpolated.PointData.FOVLerpSpeed);
+        private const string k_referencePoint = nameof(CameraContributorPointData.ReferencePoint);
+        private const string k_distanceFromTargetToCamera = nameof(CameraContributorPointData.DistanceFromTargetToCamera);
+        private const string k_positionLerpSpeed = nameof(CameraContributorPointData.PositionLerpSpeed);
+        private const string k_lookAtOffsetDistanceFromTarget = nameof(CameraContributorPointData.LookAtOffsetDistanceFromTarget);
+        private const string k_rotationSlerpSpeed = nameof(CameraContributorPointData.RotationSlerpSpeed);
+        private const string k_FOV = nameof(CameraContributorPointData.FOV);
+        private const string k_FOVLerpSpeed = nameof(CameraContributorPointData.FOVLerpSpeed);
+
+        [SerializeField]
+        private bool m_showPositionData = true;
+
+        [SerializeField]
+        private bool m_foldOut = true;
 
         private CameraContributorInterpolated m_target;
         private SerializedProperty m_referencePoints;
         private SerializedProperty m_referenceSpace;
-
-        private bool m_foldOut = true;
-        private bool m_hidePositionData = true;
 
         private Camera m_previewCamera;
         private int m_currentPreviewIndex;
@@ -35,7 +38,7 @@ namespace UrbanFox.MiniGame.Editor
 
             if (m_foldOut)
             {
-                m_hidePositionData = EditorGUILayout.Toggle("Hide Position Data (Debug Only)", m_hidePositionData);
+                m_showPositionData = EditorGUILayout.Toggle("(Debug) Show Position Data", m_showPositionData);
                 GUILayoutExtensions.HorizontalLine();
                 if (m_referencePoints.arraySize > 0)
                 {
@@ -65,11 +68,11 @@ namespace UrbanFox.MiniGame.Editor
                     var newReferencePoint = m_referencePoints.GetArrayElementAtIndex(0);
                     newReferencePoint.FindPropertyRelative(k_referencePoint).vector3Value = new Vector3(1, 0, 0);
                     newReferencePoint.FindPropertyRelative(k_lookAtOffsetDistanceFromTarget).vector3Value = new Vector3(0.25f, 0, 0);
-                    newReferencePoint.FindPropertyRelative(k_positionLerpSpeed).floatValue = 1;
+                    newReferencePoint.FindPropertyRelative(k_positionLerpSpeed).floatValue = CameraContributorPointData.DefaultPositionLerpSpeed;
                     newReferencePoint.FindPropertyRelative(k_distanceFromTargetToCamera).vector3Value = new Vector3(0, 2, -5);
-                    newReferencePoint.FindPropertyRelative(k_rotationSlerpSpeed).floatValue = 1;
-                    newReferencePoint.FindPropertyRelative(k_FOV).floatValue = 60;
-                    newReferencePoint.FindPropertyRelative(k_FOVLerpSpeed).floatValue = 1;
+                    newReferencePoint.FindPropertyRelative(k_rotationSlerpSpeed).floatValue = CameraContributorPointData.DefaultRotationSlerpSpeed;
+                    newReferencePoint.FindPropertyRelative(k_FOV).floatValue = CameraContributorPointData.DefaultFOV;
+                    newReferencePoint.FindPropertyRelative(k_FOVLerpSpeed).floatValue = CameraContributorPointData.DefaultFOVLerpSpeed; ;
                 }
             }
             GUILayout.EndHorizontal();
@@ -123,7 +126,7 @@ namespace UrbanFox.MiniGame.Editor
                 }
             }
             GUILayout.EndHorizontal();
-            if (!m_hidePositionData)
+            if (m_showPositionData)
             {
                 EditorGUILayout.PropertyField(referencePoint);
                 EditorGUILayout.Space();
@@ -131,7 +134,7 @@ namespace UrbanFox.MiniGame.Editor
 
             GUILayout.Label("Position Effectors", EditorStyles.boldLabel);
             EditorGUI.indentLevel++;
-            if (!m_hidePositionData)
+            if (m_showPositionData)
             {
                 EditorGUILayout.PropertyField(distanceFromTargetToCamera);
             }
@@ -147,7 +150,7 @@ namespace UrbanFox.MiniGame.Editor
             }
             GUILayout.EndHorizontal();
             EditorGUI.indentLevel++;
-            if (!m_hidePositionData)
+            if (m_showPositionData)
             {
                 EditorGUILayout.PropertyField(lookAtOffsetDistanceFromTarget);
             }
