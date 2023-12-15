@@ -19,7 +19,7 @@ namespace UrbanFox.MiniGame
         private float[] m_distanceBetweenCameraAndReferencePoint;
 
         public override void CalculatePointData(Vector3 currentBaseCameraPosition, Vector3 currentPostLookAtOffsetCameraPosition, Quaternion currentCameraRotation, float currentFOV, float deltaTime,
-            out Vector3 targetBaseCameraPosition, out Vector3 targetPostLookAtOffsetCameraPosition, out Quaternion targetCameraRotation, out float targetFOV)
+            out Vector3 targetBaseCameraPosition, out Vector3 targetPostLookAtOffsetCameraPosition, out Quaternion targetCameraRotation, out float targetFOV, out float positionLerpSpeed, out float rotationSlerpSpeed, out float FOVLerpSpeed)
         {
             if (m_referencePoints.IsNullOrEmpty())
             {
@@ -27,6 +27,9 @@ namespace UrbanFox.MiniGame
                 targetPostLookAtOffsetCameraPosition = currentPostLookAtOffsetCameraPosition;
                 targetCameraRotation = currentCameraRotation;
                 targetFOV = currentFOV;
+                positionLerpSpeed = CameraContributorPointData.DefaultPositionLerpSpeed;
+                rotationSlerpSpeed = CameraContributorPointData.DefaultRotationSlerpSpeed;
+                FOVLerpSpeed = CameraContributorPointData.DefaultFOVLerpSpeed;
                 return;
             }
 
@@ -39,10 +42,13 @@ namespace UrbanFox.MiniGame
                 if (distance.IsApproximatelyZero())
                 {
                     // Directly use the closest point's data if distance = 0
-                    targetBaseCameraPosition = Vector3.Lerp(currentBaseCameraPosition, referencePoint + m_referencePoints[i].DistanceFromTargetToCamera, m_referencePoints[i].PositionLerpSpeed * deltaTime);
-                    targetCameraRotation = Quaternion.Slerp(currentCameraRotation, Quaternion.LookRotation(referencePoint + m_referencePoints[i].LookAtOffsetDistanceFromTarget - currentBaseCameraPosition), m_referencePoints[i].RotationSlerpSpeed * deltaTime);
+                    targetBaseCameraPosition = referencePoint + m_referencePoints[i].DistanceFromTargetToCamera;
+                    targetCameraRotation = Quaternion.LookRotation(referencePoint + m_referencePoints[i].LookAtOffsetDistanceFromTarget - currentBaseCameraPosition);
                     targetPostLookAtOffsetCameraPosition = targetBaseCameraPosition + m_referencePoints[i].PositionOffsetAfterLookAt;
-                    targetFOV = Mathf.Lerp(currentFOV, m_referencePoints[i].FOV, m_referencePoints[i].FOVLerpSpeed * deltaTime);
+                    targetFOV = m_referencePoints[i].FOV;
+                    positionLerpSpeed = m_referencePoints[i].PositionLerpSpeed;
+                    rotationSlerpSpeed = m_referencePoints[i].RotationSlerpSpeed;
+                    FOVLerpSpeed = m_referencePoints[i].FOVLerpSpeed;
                     return;
                 }
                 m_distanceBetweenCameraAndReferencePoint[i] = distance;
@@ -76,10 +82,13 @@ namespace UrbanFox.MiniGame
             m_weightedPointData.FOV /= m_commonDenominator;
             m_weightedPointData.FOVLerpSpeed /= m_commonDenominator;
 
-            targetBaseCameraPosition = Vector3.Lerp(currentBaseCameraPosition, referencePoint + m_weightedPointData.DistanceFromTargetToCamera, m_weightedPointData.PositionLerpSpeed * deltaTime);
-            targetCameraRotation = Quaternion.Slerp(currentCameraRotation, Quaternion.LookRotation(referencePoint + m_weightedPointData.LookAtOffsetDistanceFromTarget - currentBaseCameraPosition), m_weightedPointData.RotationSlerpSpeed * deltaTime);
+            targetBaseCameraPosition = referencePoint + m_weightedPointData.DistanceFromTargetToCamera;
+            targetCameraRotation = Quaternion.LookRotation(referencePoint + m_weightedPointData.LookAtOffsetDistanceFromTarget - currentBaseCameraPosition);
             targetPostLookAtOffsetCameraPosition = targetBaseCameraPosition + m_weightedPointData.PositionOffsetAfterLookAt;
-            targetFOV = Mathf.Lerp(currentFOV, m_weightedPointData.FOV, m_weightedPointData.FOVLerpSpeed * deltaTime);
+            targetFOV = m_weightedPointData.FOV;
+            positionLerpSpeed = m_weightedPointData.PositionLerpSpeed;
+            rotationSlerpSpeed = m_weightedPointData.RotationSlerpSpeed;
+            FOVLerpSpeed = m_weightedPointData.FOVLerpSpeed;
         }
 
         private void Awake()

@@ -301,18 +301,26 @@ MonoBehaviour:
   - ReferencePoint: {x: 0, y: 0, z: 0}
     DistanceFromTargetToCamera: {x: 0, y: 0, z: -6}
     PositionOffsetAfterLookAt: {x: 6.82, y: -2.45, z: 0}
-    PositionLerpSpeed: 1
+    PositionLerpSpeed: 0.1
     LookAtOffsetDistanceFromTarget: {x: 0, y: 0, z: 0}
     RotationSlerpSpeed: 1
     FOV: 70
     FOVLerpSpeed: 5
-  - ReferencePoint: {x: 16.047083, y: -3.4432757, z: 0}
+  - ReferencePoint: {x: 12.070586, y: -1.9088256, z: 0}
     DistanceFromTargetToCamera: {x: 0.049999237, y: 0.41300416, z: -5}
     PositionOffsetAfterLookAt: {x: 0.72, y: 0, z: 0}
-    PositionLerpSpeed: 5
-    LookAtOffsetDistanceFromTarget: {x: 0.24049759, y: -0.115144014, z: 0}
+    PositionLerpSpeed: 0.5
+    LookAtOffsetDistanceFromTarget: {x: 0.1976986, y: -0.048803568, z: 0}
     RotationSlerpSpeed: 5
-    FOV: 60
+    FOV: 65
+    FOVLerpSpeed: 5
+  - ReferencePoint: {x: 16.25716, y: -3.766447, z: 0}
+    DistanceFromTargetToCamera: {x: 0.049999237, y: 0.41300416, z: -5}
+    PositionOffsetAfterLookAt: {x: 0.72, y: 0.47, z: 0}
+    PositionLerpSpeed: 5
+    LookAtOffsetDistanceFromTarget: {x: 0.4726677, y: -0.115143776, z: 0}
+    RotationSlerpSpeed: 5
+    FOV: 40
     FOVLerpSpeed: 5
 --- !u!114 &684430239
 MonoBehaviour:

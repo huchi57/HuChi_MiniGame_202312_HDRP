@@ -1,5 +1,6 @@
 using System.Text;
 using UnityEngine;
+using Cinemachine;
 
 namespace UrbanFox.MiniGame
 {
@@ -9,6 +10,9 @@ namespace UrbanFox.MiniGame
 
         [SerializeField] private bool m_enableDebug;
         [SerializeField] private KeyCode m_debugKeyCode = KeyCode.F6;
+
+        [Header("Components")]
+        [SerializeField, Required] private CinemachineVirtualCamera m_cinemachineVirtualCamera;
 
         private void Update()
         {
@@ -32,6 +36,7 @@ namespace UrbanFox.MiniGame
             if (GameManager.IsInstanceExist)
             {
                 content.AppendLine($"Game State: {GameManager.Instance.CurrentGameState}");
+                content.AppendLine($"FOV: {m_cinemachineVirtualCamera.m_Lens.FieldOfView:F2}");
                 // TODO: Add more texts
             }
             return content.ToString();

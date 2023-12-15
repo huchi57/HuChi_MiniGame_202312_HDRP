@@ -5873,6 +5873,7 @@ MonoBehaviour:
   m_dontDestroyOnLoad: 0
   m_enableDebug: 1
   m_debugKeyCode: 287
+  m_cinemachineVirtualCamera: {fileID: 656747173}
 --- !u!114 &1047600366
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8999,9 +9000,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_cinemachineVirtualCamera: {fileID: 656747173}
   m_updateType: 2
-  m_defaultPositionLerpSpeed: 50
-  m_defaultRotationSlerpSpeed: 50
-  m_defaultFOVLerpSpeed: 50
   m_positionDeclerationCurve:
     serializedVersion: 2
     m_Curve:

@@ -26,17 +26,6 @@ namespace UrbanFox.MiniGame
         [SerializeField]
         private UpdateType m_updateType;
 
-        [Header("Default Values")]
-
-        [SerializeField]
-        private float m_defaultPositionLerpSpeed = 5;
-
-        [SerializeField]
-        private float m_defaultRotationSlerpSpeed = 5;
-
-        [SerializeField]
-        private float m_defaultFOVLerpSpeed = 5;
-
         [Header("Deceleration Settings")]
 
         [SerializeField]
@@ -170,12 +159,12 @@ namespace UrbanFox.MiniGame
             }
 
             targetContributor.CalculatePointData(m_baseCameraPosition, m_postLookAtOffsetCameraPosition, transform.rotation, m_cinemachineVirtualCamera.m_Lens.FieldOfView, deltaTime,
-                out var targetBaseCameraPosition, out var targetPostLookAtOffsetCameraPosition, out var targetCameraRotation, out var targetFOV);
+                out var targetBaseCameraPosition, out var targetPostLookAtOffsetCameraPosition, out var targetCameraRotation, out var targetFOV, out var positionLerpSpeed, out var rotationSlerpSpeed, out var FOVLerpSpeed);
             m_baseCameraPosition = targetBaseCameraPosition;
             m_postLookAtOffsetCameraPosition = targetPostLookAtOffsetCameraPosition;
-            transform.SetPositionAndRotation(Vector3.Lerp(transform.position, m_postLookAtOffsetCameraPosition, m_defaultPositionLerpSpeed * deltaTime),
-                Quaternion.Slerp(transform.rotation, targetCameraRotation, m_defaultRotationSlerpSpeed * deltaTime));
-            m_cinemachineVirtualCamera.m_Lens.FieldOfView = Mathf.Lerp(m_cinemachineVirtualCamera.m_Lens.FieldOfView, targetFOV, m_defaultFOVLerpSpeed * deltaTime);
+            transform.SetPositionAndRotation(Vector3.Lerp(transform.position, m_postLookAtOffsetCameraPosition, positionLerpSpeed * deltaTime),
+                Quaternion.Slerp(transform.rotation, targetCameraRotation, rotationSlerpSpeed * deltaTime));
+            m_cinemachineVirtualCamera.m_Lens.FieldOfView = Mathf.Lerp(m_cinemachineVirtualCamera.m_Lens.FieldOfView, targetFOV, FOVLerpSpeed * deltaTime);
         }
 
         private CameraContributorBase GetHighestPriorityContributorFromList(List<CameraContributorBase> list)

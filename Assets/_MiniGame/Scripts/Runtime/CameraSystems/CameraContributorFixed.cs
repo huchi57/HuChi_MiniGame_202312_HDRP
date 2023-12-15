@@ -9,12 +9,15 @@ namespace UrbanFox.MiniGame
         private CameraContributorPointData m_pointData;
 
         public override void CalculatePointData(Vector3 currentBaseCameraPosition, Vector3 currentPostLookAtOffsetCameraPosition, Quaternion currentCameraRotation, float currentFOV, float deltaTime,
-            out Vector3 targetBaseCameraPosition, out Vector3 targetPostLookAtOffsetCameraPosition, out Quaternion targetCameraRotation, out float targetFOV)
+            out Vector3 targetBaseCameraPosition, out Vector3 targetPostLookAtOffsetCameraPosition, out Quaternion targetCameraRotation, out float targetFOV, out float positionLerpSpeed, out float rotationSlerpSpeed, out float FOVLerpSpeed)
         {
-            targetBaseCameraPosition = Vector3.Lerp(currentBaseCameraPosition, m_pointData.ReferencePoint + m_pointData.ReferencePoint + m_pointData.DistanceFromTargetToCamera, m_pointData.PositionLerpSpeed * deltaTime);
-            targetCameraRotation = Quaternion.Slerp(currentCameraRotation, Quaternion.LookRotation(Target.position + m_pointData.LookAtOffsetDistanceFromTarget - currentBaseCameraPosition), m_pointData.RotationSlerpSpeed * deltaTime);
+            targetBaseCameraPosition = m_pointData.ReferencePoint + m_pointData.ReferencePoint + m_pointData.DistanceFromTargetToCamera;
+            targetCameraRotation = Quaternion.LookRotation(Target.position + m_pointData.LookAtOffsetDistanceFromTarget - currentBaseCameraPosition);
             targetPostLookAtOffsetCameraPosition = targetBaseCameraPosition + m_pointData.PositionOffsetAfterLookAt;
-            targetFOV = Mathf.Lerp(currentFOV, m_pointData.FOV, deltaTime * m_pointData.FOVLerpSpeed);
+            targetFOV = m_pointData.FOV;
+            positionLerpSpeed = m_pointData.PositionLerpSpeed;
+            rotationSlerpSpeed = m_pointData.RotationSlerpSpeed;
+            FOVLerpSpeed = m_pointData.FOVLerpSpeed;
         }
 
         private void Update()
