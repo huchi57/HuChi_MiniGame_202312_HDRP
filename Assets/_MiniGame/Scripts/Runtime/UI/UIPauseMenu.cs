@@ -23,7 +23,7 @@ namespace UrbanFox.MiniGame
             {
                 case GameState.Loading:
                     break;
-                case GameState.SplashScreen:
+                case GameState.WaitForInputToStartGame:
                     break;
                 case GameState.GameplayPausable:
                     if (!m_pageGroup.gameObject.activeSelf)

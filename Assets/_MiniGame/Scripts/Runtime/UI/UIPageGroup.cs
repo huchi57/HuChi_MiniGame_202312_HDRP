@@ -44,8 +44,8 @@ namespace UrbanFox.MiniGame
         {
             if (m_pauseTimeWhenOpened)
             {
-                m_cacheTimeScale = Time.timeScale;
-                Time.timeScale = 0;
+                m_cacheTimeScale = TimeManager.TimeScale;
+                TimeManager.TimeScale = 0;
             }
             gameObject.SetActive(true);
             if (m_pageHistory.TryPeek(out var lastOpenedPage))
@@ -65,7 +65,7 @@ namespace UrbanFox.MiniGame
         {
             if (m_pauseTimeWhenOpened)
             {
-                Time.timeScale = m_cacheTimeScale;
+                TimeManager.TimeScale = m_cacheTimeScale;
             }
             m_targetBackgroundAlpha = 0;
             m_background.alpha = 0;

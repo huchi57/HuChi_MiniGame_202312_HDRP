@@ -131,5 +131,83 @@ namespace UrbanFox
             }
             return point.IsPointInConvexPolygon(shapeVertices.ToArray());
         }
+
+        public static float GetDistanceFromPlane(this Vector3 point, Vector3 targetPlaneNormal, Vector3 anyPointOnTargetPlane)
+        {
+            return Mathf.Abs(Vector3.Dot(point - anyPointOnTargetPlane, targetPlaneNormal));
+        }
+
+        public static Vector3 GetClosestPointOnPlane(this Vector3 point, Vector3 targetPlaneNormal, Vector3 anyPointOnTargetPlane)
+        {
+            return anyPointOnTargetPlane - GetDistanceFromPlane(point, targetPlaneNormal, anyPointOnTargetPlane) * targetPlaneNormal.normalized;
+        }
+
+        public static Vector3 ProjectPointOnConvexPolygon(this Vector3 point, params Vector3[] shapeVertices)
+        {
+            if (shapeVertices.IsNullOrEmpty())
+            {
+                return point;
+            }
+
+            // Special case for 1 point.
+            if (shapeVertices.Length == 1)
+            {
+                return shapeVertices[0];
+            }
+
+            // Special case for 2 points (a line).
+            if (shapeVertices.Length == 2)
+            {
+                var lineVector = shapeVertices[1] - shapeVertices[0];
+                var projectedPoint = shapeVertices[0] + Vector3.Project(point - shapeVertices[0], lineVector);
+                var distanceToVertex0 = Vector3.Distance(projectedPoint, shapeVertices[0]);
+                var distanceToVertex1 = Vector3.Distance(projectedPoint, shapeVertices[1]);
+                var lineVectorLength = lineVector.magnitude;
+                if (distanceToVertex0 < lineVectorLength && distanceToVertex1 > lineVectorLength)
+                {
+                    return shapeVertices[0];
+                }
+                if (distanceToVertex0 > lineVectorLength && distanceToVertex1 < lineVectorLength)
+                {
+                    return shapeVertices[1];
+                }
+                return projectedPoint;
+            }
+
+            // Base case (a triangle).
+            if (shapeVertices.Length == 3)
+            {
+                return new Plane(shapeVertices[0], shapeVertices[1], shapeVertices[2]).ClosestPointOnPlane(point);
+            }
+
+            // General case (shapes with 4 or more vertices can be break down into different triangles).
+            var pointsOnPlanes = new List<Vector3>();
+            for (int i = 0; i < shapeVertices.Length - 3; i++)
+            {
+                for (int j = i + 1; j < shapeVertices.Length - 2; j++)
+                {
+                    for (int k = j + 1; k < shapeVertices.Length - 1; k++)
+                    {
+                        for (int l = k + 1; l < shapeVertices.Length; l++)
+                        {
+                            pointsOnPlanes.Add(new Plane(shapeVertices[i], shapeVertices[j], shapeVertices[k]).ClosestPointOnPlane(point));
+                        }
+                    }
+                }
+            }
+
+            var shortestDistanceIndex = 0;
+            var shortestDistance = Vector3.Distance(point, pointsOnPlanes[0]);
+            for (int i = 0; i < pointsOnPlanes.Count; i++)
+            {
+                var distance = Vector3.Distance(point, pointsOnPlanes[i]);
+                if (distance < shortestDistance)
+                {
+                    shortestDistanceIndex = i;
+                    shortestDistance = distance;
+                }
+            }
+            return pointsOnPlanes[shortestDistanceIndex];
+        }
     }
 }

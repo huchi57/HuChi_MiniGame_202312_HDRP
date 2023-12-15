@@ -37,6 +37,7 @@ namespace UrbanFox.MiniGame
             }
         }
 
-        public abstract void CalculatePointData(Vector3 currentCameraPosition, Quaternion currentCameraRotation, float currentFOV, float deltaTime, out Vector3 targetCameraPosition, out Quaternion targetCameraRotation, out float targetFOV);
+        public abstract void CalculatePointData(Vector3 currentBaseCameraPosition, Vector3 currentPostLookAtOffsetCameraPosition, Quaternion currentCameraRotation, float currentFOV, float deltaTime,
+            out Vector3 targetBaseCameraPosition, out Vector3 targetPostLookAtOffsetCameraPosition, out Quaternion targetCameraRotation, out float targetFOV);
     }
 }

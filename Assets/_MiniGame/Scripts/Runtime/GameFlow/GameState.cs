@@ -6,10 +6,11 @@ namespace UrbanFox.MiniGame
     public enum GameState
     {
         Loading,
-        SplashScreen,
+        WaitForInputToStartGame,
         GameplayPausable,
         GameplayNonPausable,
         GameOverWaitForReload,
-        Paused
+        Paused,
+        GameCompletedWaitForInput
     }
 }

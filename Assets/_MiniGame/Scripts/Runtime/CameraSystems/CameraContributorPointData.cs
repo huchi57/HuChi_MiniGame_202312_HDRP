@@ -3,7 +3,6 @@ using UnityEngine;
 
 namespace UrbanFox.MiniGame
 {
-
     [Serializable]
     public struct CameraContributorPointData
     {
@@ -16,6 +15,7 @@ namespace UrbanFox.MiniGame
 
         // [Header("Position Effector")]
         public Vector3 DistanceFromTargetToCamera;
+        public Vector3 PositionOffsetAfterLookAt;
         public float PositionLerpSpeed;
 
         // [Header("Rotation Effector")]

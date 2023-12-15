@@ -9,6 +9,7 @@ namespace UrbanFox.MiniGame.Editor
     {
         private const string k_referencePoint = nameof(CameraContributorPointData.ReferencePoint);
         private const string k_distanceFromTargetToCamera = nameof(CameraContributorPointData.DistanceFromTargetToCamera);
+        private const string k_positionOffsetAfterLookAt = nameof(CameraContributorPointData.PositionOffsetAfterLookAt);
         private const string k_positionLerpSpeed = nameof(CameraContributorPointData.PositionLerpSpeed);
         private const string k_lookAtOffsetDistanceFromTarget = nameof(CameraContributorPointData.LookAtOffsetDistanceFromTarget);
         private const string k_rotationSlerpSpeed = nameof(CameraContributorPointData.RotationSlerpSpeed);
@@ -32,6 +33,7 @@ namespace UrbanFox.MiniGame.Editor
 
             var referencePoint = m_pointData.FindPropertyRelative(k_referencePoint);
             var distanceFromTargetToCamera = m_pointData.FindPropertyRelative(k_distanceFromTargetToCamera);
+            var positionOffsetAfterLookAt = m_pointData.FindPropertyRelative(k_positionOffsetAfterLookAt);
             var positionLerpSpeed = m_pointData.FindPropertyRelative(k_positionLerpSpeed);
             var lookAtOffsetDistanceFromTarget = m_pointData.FindPropertyRelative(k_lookAtOffsetDistanceFromTarget);
             var rotatioinSlerpSpeed = m_pointData.FindPropertyRelative(k_rotationSlerpSpeed);
@@ -75,6 +77,7 @@ namespace UrbanFox.MiniGame.Editor
             {
                 EditorGUILayout.PropertyField(distanceFromTargetToCamera);
             }
+            EditorGUILayout.PropertyField(positionOffsetAfterLookAt, new GUIContent("Position Offset After Look At"));
             EditorGUILayout.PropertyField(positionLerpSpeed, new GUIContent("Lerp Speed"));
             EditorGUI.indentLevel--;
             EditorGUILayout.Space();
@@ -107,12 +110,21 @@ namespace UrbanFox.MiniGame.Editor
             m_pointData = serializedObject.FindProperty(nameof(m_pointData));
         }
 
+        private void OnDisable()
+        {
+            if (m_previewCamera)
+            {
+                DestroyImmediate(m_previewCamera.gameObject);
+            }
+        }
+
         private void OnSceneGUI()
         {
             serializedObject.Update();
 
             var referencePoint = m_pointData.FindPropertyRelative(k_referencePoint);
             var distanceFromTargetToCamera = m_pointData.FindPropertyRelative(k_distanceFromTargetToCamera);
+            var positionOffsetAfterLookAt = m_pointData.FindPropertyRelative(k_positionOffsetAfterLookAt);
             var lookAtOffsetDistanceFromTarget = m_pointData.FindPropertyRelative(k_lookAtOffsetDistanceFromTarget);
             var fov = m_pointData.FindPropertyRelative(k_FOV);
 
@@ -140,7 +152,7 @@ namespace UrbanFox.MiniGame.Editor
             var cameraPosition = referencePoint.vector3Value + distanceFromTargetToCamera.vector3Value;
             var cameraRotation = Quaternion.LookRotation(lookAtOffsetDistanceFromTarget.vector3Value - distanceFromTargetToCamera.vector3Value);
             m_previewCamera.fieldOfView = fov.floatValue;
-            m_previewCamera.transform.SetPositionAndRotation(cameraPosition, cameraRotation);
+            m_previewCamera.transform.SetPositionAndRotation(cameraPosition + positionOffsetAfterLookAt.vector3Value, cameraRotation);
         }
     }
 }

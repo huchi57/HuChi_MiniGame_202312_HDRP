@@ -6,6 +6,22 @@ namespace UrbanFox.MiniGame
     {
         [SerializeField] private CameraContributorBase m_cameraContributor;
 
+        private void OnValidate()
+        {
+            if (!m_cameraContributor)
+            {
+                TryGetComponent(out m_cameraContributor);
+            }
+        }
+
+        private void OnDestroy()
+        {
+            if (CameraBrain.Main)
+            {
+                CameraBrain.Main.RemoveContributor(m_cameraContributor);
+            }
+        }
+
         private void OnTriggerEnter(Collider other)
         {
             if (CameraBrain.Main && other.CompareTag(GameManager.PlayerTag))

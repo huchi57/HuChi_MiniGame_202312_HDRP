@@ -9,6 +9,7 @@ namespace UrbanFox.MiniGame.Editor
     {
         private const string k_referencePoint = nameof(CameraContributorPointData.ReferencePoint);
         private const string k_distanceFromTargetToCamera = nameof(CameraContributorPointData.DistanceFromTargetToCamera);
+        private const string k_positionOffsetAfterLookAt = nameof(CameraContributorPointData.PositionOffsetAfterLookAt);
         private const string k_positionLerpSpeed = nameof(CameraContributorPointData.PositionLerpSpeed);
         private const string k_lookAtOffsetDistanceFromTarget = nameof(CameraContributorPointData.LookAtOffsetDistanceFromTarget);
         private const string k_rotationSlerpSpeed = nameof(CameraContributorPointData.RotationSlerpSpeed);
@@ -69,6 +70,7 @@ namespace UrbanFox.MiniGame.Editor
                     newReferencePoint.FindPropertyRelative(k_referencePoint).vector3Value = new Vector3(1, 0, 0);
                     newReferencePoint.FindPropertyRelative(k_lookAtOffsetDistanceFromTarget).vector3Value = new Vector3(0.25f, 0, 0);
                     newReferencePoint.FindPropertyRelative(k_positionLerpSpeed).floatValue = CameraContributorPointData.DefaultPositionLerpSpeed;
+                    newReferencePoint.FindPropertyRelative(k_positionOffsetAfterLookAt).vector3Value = Vector3.zero;
                     newReferencePoint.FindPropertyRelative(k_distanceFromTargetToCamera).vector3Value = new Vector3(0, 2, -5);
                     newReferencePoint.FindPropertyRelative(k_rotationSlerpSpeed).floatValue = CameraContributorPointData.DefaultRotationSlerpSpeed;
                     newReferencePoint.FindPropertyRelative(k_FOV).floatValue = CameraContributorPointData.DefaultFOV;
@@ -98,6 +100,7 @@ namespace UrbanFox.MiniGame.Editor
         {
             var referencePoint = point.FindPropertyRelative(k_referencePoint);
             var distanceFromTargetToCamera = point.FindPropertyRelative(k_distanceFromTargetToCamera);
+            var positionOffsetAfterLookAt = point.FindPropertyRelative(k_positionOffsetAfterLookAt);
             var positionLerpSpeed = point.FindPropertyRelative(k_positionLerpSpeed);
             var lookAtOffsetDistanceFromTarget = point.FindPropertyRelative(k_lookAtOffsetDistanceFromTarget);
             var rotatioinSlerpSpeed = point.FindPropertyRelative(k_rotationSlerpSpeed);
@@ -111,6 +114,7 @@ namespace UrbanFox.MiniGame.Editor
             if (GUILayoutExtensions.ColoredButton("Preview Here", Color.green, GUILayout.MaxWidth(100)))
             {
                 m_currentPreviewIndex = index;
+                SceneView.RepaintAll();
                 if (!m_previewCamera)
                 {
                     m_previewCamera = new GameObject().AddComponent<Camera>();
@@ -138,6 +142,7 @@ namespace UrbanFox.MiniGame.Editor
             {
                 EditorGUILayout.PropertyField(distanceFromTargetToCamera);
             }
+            EditorGUILayout.PropertyField(positionOffsetAfterLookAt, new GUIContent("Position Offset After Look At"));
             EditorGUILayout.PropertyField(positionLerpSpeed, new GUIContent("Lerp Speed"));
             EditorGUI.indentLevel--;
             EditorGUILayout.Space();
@@ -172,7 +177,7 @@ namespace UrbanFox.MiniGame.Editor
             m_referenceSpace = serializedObject.FindProperty(nameof(m_referenceSpace));
         }
 
-        private void OnDestroy()
+        private void OnDisable()
         {
             if (m_previewCamera)
             {
@@ -238,13 +243,14 @@ namespace UrbanFox.MiniGame.Editor
             var currentPreviewPoint = m_referencePoints.GetArrayElementAtIndex(m_currentPreviewIndex);
             var referencePoint = currentPreviewPoint.FindPropertyRelative(k_referencePoint);
             var distanceFromTargetToCamera = currentPreviewPoint.FindPropertyRelative(k_distanceFromTargetToCamera);
+            var positionOffsetAfterLookAt = currentPreviewPoint.FindPropertyRelative(k_positionOffsetAfterLookAt);
             var lookAtOffsetDistanceFromTarget = currentPreviewPoint.FindPropertyRelative(k_lookAtOffsetDistanceFromTarget);
             var fov = currentPreviewPoint.FindPropertyRelative(k_FOV);
             var offset = (m_referenceSpace.enumValueIndex == (int)Space.World ? Vector3.zero : m_target.transform.position);
             var cameraPosition = offset + referencePoint.vector3Value + distanceFromTargetToCamera.vector3Value;
             var cameraRotation = Quaternion.LookRotation(lookAtOffsetDistanceFromTarget.vector3Value - distanceFromTargetToCamera.vector3Value);
             m_previewCamera.fieldOfView = fov.floatValue;
-            m_previewCamera.transform.SetPositionAndRotation(cameraPosition, cameraRotation);
+            m_previewCamera.transform.SetPositionAndRotation(cameraPosition + positionOffsetAfterLookAt.vector3Value, cameraRotation);
         }
     }
 }

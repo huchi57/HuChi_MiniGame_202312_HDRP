@@ -21,6 +21,27 @@ namespace UrbanFox.MiniGame
 
         public static event Action<GameState> OnGameStateChanged;
 
+        /// <summary>
+        /// The instant the gameplay begins.
+        /// </summary>
+        public static event Action OnGameStartSignaled;
+
+        /// <summary>
+        /// The instant that a game over procedure starts, such as stopping user input.
+        /// </summary>
+        public static event Action OnGameOverSignaled;
+
+        /// <summary>
+        /// The instant that the scenes are reloaded while the screen is still black, ready to fade in to game again.
+        /// </summary>
+        public static event Action OnGameReloadCompleted;
+
+        public static PlayerController PlayerController
+        {
+            get;
+            private set;
+        }
+
         public static Transform Player
         {
             get
@@ -77,6 +98,12 @@ namespace UrbanFox.MiniGame
 
         public GameState CurrentGameState => m_currentGameState;
 
+        public static void RegisterPlayer(PlayerController player)
+        {
+            PlayerController = player;
+            m_player = player.transform;
+        }
+
         public static void RegisterPlayer(Transform player)
         {
             m_player = player;
@@ -97,13 +124,17 @@ namespace UrbanFox.MiniGame
 #endif
         }
 
-        public void LoadScenesWithFullscreenCover(string[] scenes, bool shouldTheFirstSceneInTheArrayBeActive, bool displayLoadingIcon, Action onFadeInFromFullscreenBegins = null)
+        public void LoadScenesWithFullscreenCover(string[] scenes, bool shouldTheFirstSceneInTheArrayBeActive, bool displayLoadingIcon, Action onFadeOutBegins = null, Action onFadeOutEnds = null, Action onLoadCompleted = null, Action onFadeInBegins = null, Action onFadeInEnds = null)
         {
             StartCoroutine(DoLoadScenesWithFullscreenCover());
             IEnumerator DoLoadScenesWithFullscreenCover()
             {
+                SwitchGameState(GameState.Loading);
+                onFadeOutBegins?.Invoke();
                 m_fullscreenBlack.DOFade(1, m_fullscreenBlackFadeTime);
-                yield return new WaitForSeconds(m_fullscreenBlackIdleTime + m_fullscreenBlackIdleTime / 2);
+                yield return new WaitForSeconds(m_fullscreenBlackFadeTime);
+                onFadeOutEnds?.Invoke();
+                yield return new WaitForSeconds(m_fullscreenBlackIdleTime / 2);
                 if (displayLoadingIcon)
                 {
                     switch (m_loadingIconType)
@@ -140,6 +171,7 @@ namespace UrbanFox.MiniGame
                     }
                     SceneManager.SetActiveScene(SceneManager.GetSceneByName(scenes[0]));
                 }
+                onLoadCompleted?.Invoke();
                 yield return new WaitForSeconds(m_fullscreenBlackIdleTime / 2);
                 switch (m_loadingIconType)
                 {
@@ -153,8 +185,11 @@ namespace UrbanFox.MiniGame
                         break;
                 }
                 yield return new WaitForSeconds(m_loadingIconFadeTime + m_fullscreenBlackIdleTime / 2);
-                m_fullscreenBlack.DOFade(0, m_fullscreenBlackFadeTime);
-                onFadeInFromFullscreenBegins?.Invoke();
+                onFadeInBegins?.Invoke();
+                m_fullscreenBlack.DOFade(0, m_fullscreenBlackFadeTime).OnComplete(() =>
+                {
+                    onFadeInEnds?.Invoke();
+                });
             }
         }
 
@@ -185,14 +220,41 @@ namespace UrbanFox.MiniGame
             }
         }
 
+        public void GameOverAndRestartCheckpoint(float waitSecondsBeforeFadeOut)
+        {
+            StartCoroutine(DoGameOverAndRestartCheckpoint(waitSecondsBeforeFadeOut));
+            IEnumerator DoGameOverAndRestartCheckpoint(float waitSecondsBeforeFadeOut)
+            {
+                SwitchGameState(GameState.GameOverWaitForReload);
+                OnGameOverSignaled?.Invoke();
+                yield return new WaitForSeconds(waitSecondsBeforeFadeOut);
+                LoadScenesWithFullscreenCover(scenes: new string[] { m_sceneToLoadOnStart },
+                    shouldTheFirstSceneInTheArrayBeActive: true,
+                    displayLoadingIcon: false,
+                    onLoadCompleted: () =>
+                    {
+                        OnGameReloadCompleted?.Invoke();
+                    },
+                    onFadeInEnds: () =>
+                    {
+                        SwitchGameState(GameState.WaitForInputToStartGame);
+                    }
+                    );
+            }
+        }
+
         private void Start()
         {
             m_fullscreenBlack.alpha = 1;
             m_loadingBarCanvasGroup.alpha = 0;
             m_loadingWheelCanvasGroup.alpha = 0;
-            LoadScenesWithFullscreenCover(new string[] { m_sceneToLoadOnStart },
+            LoadScenesWithFullscreenCover(scenes: new string[] { m_sceneToLoadOnStart },
                 shouldTheFirstSceneInTheArrayBeActive: true,
-                displayLoadingIcon: true);
+                displayLoadingIcon: true,
+                onFadeInEnds: () =>
+                {
+                    SwitchGameState(GameState.WaitForInputToStartGame);
+                });
         }
 
         private void LateUpdate()

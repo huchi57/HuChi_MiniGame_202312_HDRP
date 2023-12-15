@@ -18,16 +18,13 @@ namespace UrbanFox.MiniGame
 
         public static CameraBrain Main { get; private set; }
 
-        private readonly List<CameraContributorBase> m_cameraContributors = new List<CameraContributorBase>();
+        private List<CameraContributorBase> m_cameraContributors = new List<CameraContributorBase>();
 
         [SerializeField, Required]
         private CinemachineVirtualCamera m_cinemachineVirtualCamera;
 
         [SerializeField]
         private UpdateType m_updateType;
-
-        [SerializeField, Info("How fast do point data value changes.")]
-        private float m_pointDataValueChangeRate = 5;
 
         [Header("Default Values")]
 
@@ -36,9 +33,6 @@ namespace UrbanFox.MiniGame
 
         [SerializeField]
         private float m_defaultRotationSlerpSpeed = 5;
-
-        [SerializeField]
-        private float m_defaultFOV = 60;
 
         [SerializeField]
         private float m_defaultFOVLerpSpeed = 5;
@@ -53,6 +47,12 @@ namespace UrbanFox.MiniGame
 
         [SerializeField]
         private AnimationCurve m_FOVDecelerationCurve;
+
+        private Vector3 m_baseCameraPosition;
+        private Vector3 m_postLookAtOffsetCameraPosition;
+
+        private Vector3 m_checkpointCameraPosition;
+        private Quaternion m_checkpointCameraRotation;
 
         private Vector3 m_lastFrameCameraPosition;
         private Vector3 m_cameraDeltaPosition;
@@ -86,14 +86,27 @@ namespace UrbanFox.MiniGame
 
         private void Awake()
         {
+            m_baseCameraPosition = transform.position;
+            m_postLookAtOffsetCameraPosition = transform.position;
+
+            m_checkpointCameraPosition = transform.position;
+            m_checkpointCameraRotation = transform.rotation;
+
             m_lastFrameCameraPosition = transform.position;
             m_lastFrameCameraAngle = transform.eulerAngles;
+
             m_lastFrameFOV = m_cinemachineVirtualCamera.m_Lens.FieldOfView;
             if (Main)
             {
                 FoxyLogger.LogWarning($"A duplicated camera has been found. Only one should be present.");
             }
             Main = this;
+            GameManager.OnGameReloadCompleted += ResetCameraPositionAndRotationToCheckpoint;
+        }
+
+        private void OnDestroy()
+        {
+            GameManager.OnGameReloadCompleted -= ResetCameraPositionAndRotationToCheckpoint;
         }
 
         private void Update()
@@ -118,6 +131,11 @@ namespace UrbanFox.MiniGame
             {
                 UpdateCamera(Time.fixedDeltaTime);
             }
+        }
+
+        private void ResetCameraPositionAndRotationToCheckpoint()
+        {
+            transform.SetPositionAndRotation(m_checkpointCameraPosition, m_checkpointCameraRotation);
         }
 
         private void UpdateCamera(float deltaTime)
@@ -151,8 +169,11 @@ namespace UrbanFox.MiniGame
                 return;
             }
 
-            targetContributor.CalculatePointData(transform.position, transform.rotation, m_cinemachineVirtualCamera.m_Lens.FieldOfView, deltaTime, out var targetCameraPosition, out var targetCameraRotation, out var targetFOV);
-            transform.SetPositionAndRotation(Vector3.Lerp(transform.position, targetCameraPosition, m_defaultPositionLerpSpeed * deltaTime),
+            targetContributor.CalculatePointData(m_baseCameraPosition, m_postLookAtOffsetCameraPosition, transform.rotation, m_cinemachineVirtualCamera.m_Lens.FieldOfView, deltaTime,
+                out var targetBaseCameraPosition, out var targetPostLookAtOffsetCameraPosition, out var targetCameraRotation, out var targetFOV);
+            m_baseCameraPosition = targetBaseCameraPosition;
+            m_postLookAtOffsetCameraPosition = targetPostLookAtOffsetCameraPosition;
+            transform.SetPositionAndRotation(Vector3.Lerp(transform.position, m_postLookAtOffsetCameraPosition, m_defaultPositionLerpSpeed * deltaTime),
                 Quaternion.Slerp(transform.rotation, targetCameraRotation, m_defaultRotationSlerpSpeed * deltaTime));
             m_cinemachineVirtualCamera.m_Lens.FieldOfView = Mathf.Lerp(m_cinemachineVirtualCamera.m_Lens.FieldOfView, targetFOV, m_defaultFOVLerpSpeed * deltaTime);
         }

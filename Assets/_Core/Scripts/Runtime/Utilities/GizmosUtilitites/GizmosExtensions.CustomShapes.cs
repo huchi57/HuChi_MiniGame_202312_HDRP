@@ -69,5 +69,16 @@ namespace UrbanFox
         {
             DrawWireCone(baseCenter, baseRadius, coneDirection, coneHeight, Gizmos.color);
         }
+
+        public static void DrawSolidSphere(Vector3 center, float radius, Color color)
+        {
+            for (int i = 0; i < 90; i++)
+            {
+                using (new GizmosScope(center, Quaternion.Euler(i, 0, 0), Vector3.one))
+                {
+                    DrawWireSphere(Vector3.zero, radius, color);
+                }
+            }
+        }
     }
 }

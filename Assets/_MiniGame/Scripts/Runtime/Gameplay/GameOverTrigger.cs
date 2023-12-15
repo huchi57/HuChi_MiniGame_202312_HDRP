@@ -4,12 +4,8 @@ namespace UrbanFox.MiniGame
 {
     public class GameOverTrigger : MonoBehaviour
     {
-        private void OnTriggerEnter(Collider other)
-        {
-            if (other.CompareTag(GameManager.PlayerTag))
-            {
-                // Game Over
-            }
-        }
+        [SerializeField] private float m_waitTimeBeforeRestartingWhenGameOverTriggered = 2.5f;
+
+        public float WaitTimeBeforeRestartingWhenGameOverTriggered => m_waitTimeBeforeRestartingWhenGameOverTriggered;
     }
 }
