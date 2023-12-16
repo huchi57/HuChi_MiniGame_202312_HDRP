@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<data>
+    <i k="Key" v="FR"/>
+    <i k="LanguageName" v="Français"/>
+    <i k="UI.Yes" v="Oui"/>
+    <i k="UI.No" v="Non"/>
+    <i k="UI.Confirm" v="Confirmer"/>
+    <i k="UI.Cancel" v="Annuler"/>
+    <i k="UI.On" v="Oui"/>
+    <i k="UI.Off" v="Non"/>
+    <i k="UI.Settings" v="Paramètres"/>
+    <i k="UI.Settings.Movement.InvertX" v="Axe X inversé"/>
+    <i k="UI.Settings.Movement.InvertY" v="Axe Y inversé"/>
+    <i k="UI.Settings.Movement.Sensitivity" v="Sensibilité"/>
+    <i k="UI.Settings.Language" v="Langue"/>
+    <i k="UI.Settings.Visuals.Graphics" v="Graphismes"/>
+    <i k="UI.Settings.Visuals.Quality" v="Qualité des graphismes"/>
+    <i k="UI.Settings.Visuals.Quality.Low" v="Faible"/>
+    <i k="UI.Settings.Visuals.Quality.Medium" v="Moyen"/>
+    <i k="UI.Settings.Visuals.Quality.High" v="Élevé"/>
+    <i k="UI.Settings.Visuals.Quality.Ultra" v="Ultra"/>
+    <i k="UI.Settings.Visuals.Subtitles" v="Sous-titres"/>
+    <i k="UI.Settings.Visuals.FullscreenMode" v="Plein écran"/>
+    <i k="UI.Settings.Visuals.Resolution" v="Résolution"/>
+    <i k="UI.Settings.Visuals.Brightness" v="Luminosité"/>
+    <i k="UI.Settings.Audio.Volume" v="Volume"/>
+    <i k="UI.Settings.Controls" v="Commandes"/>
+    <i k="UI.Settings.Controls.Keyboard" v="Clavier"/>
+    <i k="UI.Settings.Controls.Gamepad" v="Manette"/>
+    <i k="UI.Settings.Controls.TiltUp" v="Incliner vers le haut"/>
+    <i k="UI.Settings.Controls.TiltDown" v="Incliner vers le bas"/>
+    <i k="UI.Settings.Controls.Vibration" v="Vibration"/>
+    <i k="UI.Settings.Controls.GamepadVibration" v="Vibration de la manette"/>
+    <i k="UI.Settings.Controls.Binding.WaitingForInput" v="Appuyer sur n&apos;importe quelle touche"/>
+    <i k="UI.Settings.Controls.Binding.NewKeyPrefix" v="Action personnalisée :"/>
+    <i k="UI.PressAnyKey" v="Appuyer sur une touche"/>
+    <i k="UI.Continue" v="Continuer"/>
+    <i k="UI.Resume" v="Retour"/>
+    <i k="UI.QuitGame" v="Quitter le jeu"/>
+    <i k="UI.QuitGame.Question" v="Voulez-vous vraiment quitter le jeu ?"/>
+    <i k="UI.ReturnToMenu" v="Retour au menu"/>
+    <i k="UI.PauseMenu" v="Menu pause"/>
+    <i k="UI.Loading" v="Chargement"/>
+    <i k="UI.Loading.WithDots" v="Chargement..."/>
+    <i k="UI.RevertToDefault" v="Réglages par défaut"/>
+    <i k="UI.GameTitle" v="(GAMETITLE)"/>
+    <i k="UI.Credits" v="Crédits"/>
+</data>

@@ -21,8 +21,11 @@ MonoBehaviour:
     - {fileID: 12800000, guid: c149209e469abed4392251b6a023f32c, type: 3}
   m_languages:
   - FontStyles:
-    - {fileID: 12800000, guid: 73d755b72d354914587d2a6447ff4242, type: 3}
-    - {fileID: 12800000, guid: c149209e469abed4392251b6a023f32c, type: 3}
+    - {fileID: 12800000, guid: 81d3d1b68559fd04882d062a7735302d, type: 3}
+    - {fileID: 12800000, guid: a6551754d67e92f4dbf36b65516601b7, type: 3}
+  - FontStyles:
+    - {fileID: 12800000, guid: 81d3d1b68559fd04882d062a7735302d, type: 3}
+    - {fileID: 12800000, guid: a6551754d67e92f4dbf36b65516601b7, type: 3}
   - FontStyles:
     - {fileID: 12800000, guid: bfcde2dcdcc449644b9202934243d5af, type: 3}
     - {fileID: 12800000, guid: cc09963371ad57c4ba146989072fea77, type: 3}
