@@ -35,6 +35,9 @@ namespace UrbanFox.MiniGame
         [SerializeField, Required]
         private Slider m_gammaSlider;
 
+        [SerializeField, Required]
+        private Toggle m_enableControllerRumble;
+
         [SerializeField]
         private AnimationCurve m_sliderToActualGammaCurve = AnimationCurve.Linear(-1, -0.1f, 1, 0.1f);
 
@@ -170,6 +173,7 @@ namespace UrbanFox.MiniGame
         public void ResetControlSettings()
         {
             EnableControllerRumble = true;
+            m_enableControllerRumble.isOn = EnableControllerRumble;
             InputBindingsOverride = string.Empty;
         }
 

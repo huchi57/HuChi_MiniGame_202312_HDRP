@@ -4,6 +4,8 @@ namespace UrbanFox.MiniGame
 {
     public class ApplicationBuildData : ScriptableObjectSingleton<ApplicationBuildData>
     {
+        public string CustomBuildName;
+
         [Header("Current Build Time")]
         [NonEditable] public string CurrentBuildTime = "N/A";
 
@@ -31,7 +33,7 @@ namespace UrbanFox.MiniGame
 
         public string GetBuildInfoText()
         {
-            return $"Build Iteration v{GetCurrentPlatformBuildIteration()} for {Application.platform} at {CurrentBuildTime}.";
+            return $"Build Iteration v{GetCurrentPlatformBuildIteration()}{(string.IsNullOrEmpty(CustomBuildName) ? "" : "(" + CustomBuildName + ")")} for {Application.platform} at {CurrentBuildTime}.";
         }
 
         public int GetCurrentPlatformBuildIteration()

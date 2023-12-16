@@ -21,6 +21,10 @@ namespace UrbanFox.MiniGame
             {
                 m_text.text = value;
             }
+            if (LanguageAndFontStyleData.Instance.TryGetFontByLanguageAndStyleIndex(targetLanguageIndex, 0, out var font))
+            {
+                m_text.font = font;
+            }
         }
 
         public void Select()
