@@ -16,7 +16,7 @@ namespace UrbanFox.MiniGame.Editor
             switch (report.summary.platform)
             {
                 case BuildTarget.StandaloneOSX:
-                    buildData.OSXBuildIteration++;
+                    buildData.MacBuildIteration++;
                     break;
                 case BuildTarget.StandaloneWindows:
                     buildData.WindowsBuildIteration++;

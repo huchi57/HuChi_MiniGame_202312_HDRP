@@ -11,7 +11,7 @@ namespace UrbanFox.MiniGame
 
         [Header("Build Iterations")]
         [NonEditable] public int WindowsBuildIteration = 0;
-        [NonEditable] public int OSXBuildIteration = 0;
+        [NonEditable] public int MacBuildIteration = 0;
         [NonEditable] public int LinuxBuildIteration = 0;
 
         [NonEditable] public int SwitchBuildIteration = 0;
@@ -41,9 +41,9 @@ namespace UrbanFox.MiniGame
             switch (Application.platform)
             {
                 case RuntimePlatform.OSXEditor:
-                    return OSXBuildIteration;
+                    return MacBuildIteration;
                 case RuntimePlatform.OSXPlayer:
-                    return OSXBuildIteration;
+                    return MacBuildIteration;
                 case RuntimePlatform.WindowsPlayer:
                     return WindowsBuildIteration;
                 case RuntimePlatform.WindowsEditor:

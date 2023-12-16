@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: ApplicationBuildData
   m_EditorClassIdentifier: 
   CustomBuildName: Pre-Alpha
-  CurrentBuildTime: 2023/12/16-14:31:59
-  WindowsBuildIteration: 7
-  OSXBuildIteration: 0
+  CurrentBuildTime: 2023/12/16-19:36:38
+  WindowsBuildIteration: 18
+  MacBuildIteration: 1
   LinuxBuildIteration: 0
   SwitchBuildIteration: 0
   XboxBuildIteration: 0
