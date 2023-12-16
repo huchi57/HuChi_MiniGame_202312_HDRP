@@ -96,6 +96,8 @@ namespace UrbanFox.MiniGame
         [SerializeField]
         private GameState m_currentGameState;
 
+        private GameState m_previousGameState;
+
         public GameState CurrentGameState => m_currentGameState;
 
         public static void RegisterPlayer(PlayerController player)
@@ -111,8 +113,18 @@ namespace UrbanFox.MiniGame
 
         public void SwitchGameState(GameState gameState)
         {
+            m_previousGameState = m_currentGameState;
             m_currentGameState = gameState;
             OnGameStateChanged?.Invoke(m_currentGameState);
+            if (m_currentGameState == GameState.GameplayPausable)
+            {
+                OnGameStartSignaled?.Invoke();
+            }
+        }
+
+        public void SwitchToPreviousGameState()
+        {
+            SwitchGameState(m_previousGameState);
         }
 
         public void QuitGame()
@@ -220,9 +232,12 @@ namespace UrbanFox.MiniGame
             }
         }
 
-        public void GameOverAndRestartCheckpoint(float waitSecondsBeforeFadeOut)
+        public void GameOverAndRestartCheckpoint(float waitSecondsBeforeFadeOut = 2)
         {
-            StartCoroutine(DoGameOverAndRestartCheckpoint(waitSecondsBeforeFadeOut));
+            if (m_currentGameState == GameState.GameplayPausable)
+            {
+                StartCoroutine(DoGameOverAndRestartCheckpoint(waitSecondsBeforeFadeOut));
+            }
             IEnumerator DoGameOverAndRestartCheckpoint(float waitSecondsBeforeFadeOut)
             {
                 SwitchGameState(GameState.GameOverWaitForReload);
@@ -245,6 +260,7 @@ namespace UrbanFox.MiniGame
 
         private void Start()
         {
+            m_previousGameState = m_currentGameState;
             m_fullscreenBlack.alpha = 1;
             m_loadingBarCanvasGroup.alpha = 0;
             m_loadingWheelCanvasGroup.alpha = 0;

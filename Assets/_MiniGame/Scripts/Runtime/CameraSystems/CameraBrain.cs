@@ -18,7 +18,7 @@ namespace UrbanFox.MiniGame
 
         public static CameraBrain Main { get; private set; }
 
-        private List<CameraContributorBase> m_cameraContributors = new List<CameraContributorBase>();
+        private readonly List<CameraContributorBase> m_cameraContributors = new List<CameraContributorBase>();
 
         [SerializeField, Required]
         private CinemachineVirtualCamera m_cinemachineVirtualCamera;
@@ -73,28 +73,36 @@ namespace UrbanFox.MiniGame
             m_cameraContributors.Clear();
         }
 
+        public void SaveCameraCheckpointPosition()
+        {
+            m_checkpointCameraPosition = transform.position;
+            m_checkpointCameraRotation = transform.rotation;
+        }
+
         private void Awake()
         {
             m_baseCameraPosition = transform.position;
             m_postLookAtOffsetCameraPosition = transform.position;
 
-            m_checkpointCameraPosition = transform.position;
-            m_checkpointCameraRotation = transform.rotation;
-
             m_lastFrameCameraPosition = transform.position;
             m_lastFrameCameraAngle = transform.eulerAngles;
 
             m_lastFrameFOV = m_cinemachineVirtualCamera.m_Lens.FieldOfView;
+
+            SaveCameraCheckpointPosition();
+
             if (Main)
             {
                 FoxyLogger.LogWarning($"A duplicated camera has been found. Only one should be present.");
             }
             Main = this;
+            GameManager.OnGameOverSignaled += ClearAllContributors;
             GameManager.OnGameReloadCompleted += ResetCameraPositionAndRotationToCheckpoint;
         }
 
         private void OnDestroy()
         {
+            GameManager.OnGameOverSignaled -= ClearAllContributors;
             GameManager.OnGameReloadCompleted -= ResetCameraPositionAndRotationToCheckpoint;
         }
 

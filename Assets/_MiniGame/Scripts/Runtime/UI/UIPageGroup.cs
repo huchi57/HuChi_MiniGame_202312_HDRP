@@ -7,6 +7,9 @@ namespace UrbanFox.MiniGame
 {
     public class UIPageGroup : MonoBehaviour
     {
+        public event Action OnPageGroupStartsToOpen;
+        public event Action OnPageGroupStartsToClose;
+
         [SerializeField]
         private bool m_pauseTimeWhenOpened;
 
@@ -48,6 +51,7 @@ namespace UrbanFox.MiniGame
                 TimeManager.TimeScale = 0;
             }
             gameObject.SetActive(true);
+            OnPageGroupStartsToOpen?.Invoke();
             if (m_pageHistory.TryPeek(out var lastOpenedPage))
             {
                 lastOpenedPage.OpenPage(m_pageFadeInTime, onCompleted);
@@ -69,6 +73,7 @@ namespace UrbanFox.MiniGame
             }
             m_targetBackgroundAlpha = 0;
             m_background.alpha = 0;
+            OnPageGroupStartsToClose?.Invoke();
             if (m_pageHistory.TryPeek(out var currentPage))
             {
                 currentPage.ClosePage(m_pageFadeOutTime, () =>

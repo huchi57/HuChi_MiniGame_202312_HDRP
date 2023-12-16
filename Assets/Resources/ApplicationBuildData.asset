@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1e30863b03665245ad57bcf23d6b87b, type: 3}
+  m_Name: ApplicationBuildData
+  m_EditorClassIdentifier: 
+  CurrentBuildTime: 2023/12/16-13:37:10
+  WindowsBuildIteration: 5
+  OSXBuildIteration: 0
+  LinuxBuildIteration: 0
+  SwitchBuildIteration: 0
+  XboxBuildIteration: 0
+  PS4BuildIteration: 0
+  PS5BuildIteration: 0
+  LuminBuildIteration: 0
+  StadiaBuildIteration: 0
+  WebGLBuildIteration: 0
+  iOSBuildIteration: 0
+  tvOSBuildIteration: 0
+  AndroidBuildIteration: 0
+  WindowsServerBuildIteration: 0
+  OSXServerBuildIteration: 0
+  LinuxServerBuildIteration: 0
+  LinuxEmbededBuildIteration: 0

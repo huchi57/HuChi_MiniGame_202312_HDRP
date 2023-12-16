@@ -46,6 +46,7 @@ namespace UrbanFox.MiniGame
             transform.SetPositionAndRotation(m_originalPosition, m_originalRotation);
             m_rigidBody.useGravity = false;
             m_rigidBody.velocity = Vector3.zero;
+            m_rigidBody.angularVelocity = Vector3.zero;
         }
 
         public void InitializeAndEjectPlane()
@@ -53,6 +54,7 @@ namespace UrbanFox.MiniGame
             m_targetPitchAngle = CurrentPitchAngle;
             m_moveVelocity = Random.Range(m_minInitialVelocity, m_maxInitialVelocity);
             GameManager.Instance.SwitchGameState(GameState.GameplayPausable);
+            CameraBrain.Main.SaveCameraCheckpointPosition();
         }
 
         private void OnValidate()
@@ -67,20 +69,20 @@ namespace UrbanFox.MiniGame
             m_originalRotation = transform.rotation;
             GameManager.RegisterPlayer(this);
             InputManager.OnAnyKeyPressed += OnAnyKeyPressed;
-            GameManager.OnGameOverSignaled += LoseControlAndWaitForRestart;
+            GameManager.OnGameOverSignaled += EnableUnityBuiltInGravity;
             GameManager.OnGameReloadCompleted += ResetPlanePosition;
         }
 
         private void OnDestroy()
         {
             InputManager.OnAnyKeyPressed -= OnAnyKeyPressed;
-            GameManager.OnGameOverSignaled -= LoseControlAndWaitForRestart;
+            GameManager.OnGameOverSignaled -= EnableUnityBuiltInGravity;
             GameManager.OnGameReloadCompleted -= ResetPlanePosition;
         }
 
         private void OnAnyKeyPressed(UnityEngine.InputSystem.InputControl key)
         {
-            if (GameManager.Instance.CurrentGameState == GameState.WaitForInputToStartGame)
+            if (GameManager.Instance.CurrentGameState == GameState.WaitForInputToStartGame && !key.name.ToLower().Contains("esc") && !key.name.ToLower().Contains("back") && !key.name.ToLower().Contains("f6"))
             {
                 InitializeAndEjectPlane();
             }
@@ -155,7 +157,8 @@ namespace UrbanFox.MiniGame
 
         private void OnCollisionEnter(Collision collision)
         {
-            PlayerLoseControl();
+            EnableUnityBuiltInGravity();
+            GameManager.Instance.GameOverAndRestartCheckpoint();
         }
 
         private void OnTriggerEnter(Collider other)
@@ -166,13 +169,7 @@ namespace UrbanFox.MiniGame
             }
         }
 
-        private void LoseControlAndWaitForRestart()
-        {
-            m_rigidBody.useGravity = true;
-
-        }
-
-        private void PlayerLoseControl()
+        private void EnableUnityBuiltInGravity()
         {
             m_rigidBody.useGravity = true;
         }
