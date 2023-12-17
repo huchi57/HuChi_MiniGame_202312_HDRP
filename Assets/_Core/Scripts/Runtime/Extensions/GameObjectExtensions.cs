@@ -1,5 +1,6 @@
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace UrbanFox
 {
@@ -128,6 +129,19 @@ namespace UrbanFox
                 return;
             }
             gameObject.transform.DeleteAllChildren();
+        }
+
+        public static void MoveObjectToScene(this GameObject gambeObject, Scene scene)
+        {
+            SceneManager.MoveGameObjectToScene(gambeObject, scene);
+        }
+
+        public static void MoveObjectToScene(this Component component, Scene scene)
+        {
+            if (component)
+            {
+                SceneManager.MoveGameObjectToScene(component.gameObject, scene);
+            }
         }
     }
 }
