@@ -32,6 +32,9 @@ namespace UrbanFox.MiniGame
         private float m_percentageOnPatrolCurve;
 
         [SerializeField]
+        private bool m_randomizeStartingPoint = true;
+
+        [SerializeField]
         private bool m_autoMove = true;
 
         [SerializeField, Indent, EnableIf(nameof(m_autoMove), true)]
@@ -83,6 +86,7 @@ namespace UrbanFox.MiniGame
         {
             m_lastFramePosition = transform.position;
             m_patrolPointsWorldSpace = new Vector3[m_patrolPoints.IsNullOrEmpty() ? 0 : m_patrolPoints.Length + 1];
+            m_percentageOnPatrolCurve = m_randomizeStartingPoint ? UnityEngine.Random.Range(0f, 1f) : m_percentageOnPatrolCurve;
         }
 
         private void Start()
