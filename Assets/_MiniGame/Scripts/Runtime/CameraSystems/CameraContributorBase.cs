@@ -37,6 +37,17 @@ namespace UrbanFox.MiniGame
             }
         }
 
+        public void SwitchCameraTypeToFollowPlayer()
+        {
+            m_targetType = TargetType.Player;
+        }
+
+        public void SwitchCameraTypeToCustomLookAt(Transform target)
+        {
+            m_targetType = TargetType.CustomTarget;
+            m_customTarget = target;
+        }
+
         public abstract void CalculatePointData(Vector3 currentBaseCameraPosition, Vector3 currentPostLookAtOffsetCameraPosition, Quaternion currentCameraRotation, float currentFOV, float deltaTime,
             out Vector3 targetBaseCameraPosition, out Vector3 targetPostLookAtOffsetCameraPosition, out Quaternion targetCameraRotation, out float targetFOV, out float positionLerpSpeed, out float rotationSlerpSpeed, out float FOVLerpSpeed);
     }

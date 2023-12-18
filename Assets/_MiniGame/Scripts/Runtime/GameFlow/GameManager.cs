@@ -91,7 +91,7 @@ namespace UrbanFox.MiniGame
         [Header("Game Start Options")]
 
         [SerializeField, Scene]
-        private string m_sceneToLoadOnStart;
+        private string[] m_scenesToLoadOnStart;
 
         [SerializeField]
         private GameState m_currentGameState;
@@ -243,9 +243,13 @@ namespace UrbanFox.MiniGame
                 SwitchGameState(GameState.GameOverWaitForReload);
                 OnGameOverSignaled?.Invoke();
                 yield return new WaitForSeconds(waitSecondsBeforeFadeOut);
-                LoadScenesWithFullscreenCover(scenes: new string[] { m_sceneToLoadOnStart },
+                LoadScenesWithFullscreenCover(scenes: m_scenesToLoadOnStart,
                     shouldTheFirstSceneInTheArrayBeActive: true,
                     displayLoadingIcon: false,
+                    onFadeOutEnds: () =>
+                    {
+                        UnloadAllButPersistentScene();
+                    },
                     onLoadCompleted: () =>
                     {
                         OnGameReloadCompleted?.Invoke();
@@ -258,13 +262,41 @@ namespace UrbanFox.MiniGame
             }
         }
 
+        public void UnloadScenes(string[] scenes)
+        {
+            if (scenes.IsNullOrEmpty())
+            {
+                return;
+            }
+            foreach (var scene in scenes)
+            {
+                if (IsSceneLoaded(scene))
+                {
+                    SceneManager.UnloadSceneAsync(scene);
+                }
+            }
+        }
+
+        private void UnloadAllButPersistentScene()
+        {
+            for (int i = 0; i < SceneManager.sceneCount; i++)
+            {
+                var scene = SceneManager.GetSceneAt(i);
+                if (scene.isLoaded && scene.buildIndex != 0)
+                {
+                    SceneManager.UnloadSceneAsync(scene);
+                }
+            }
+        }
+
         private void Start()
         {
             m_previousGameState = m_currentGameState;
             m_fullscreenBlack.alpha = 1;
             m_loadingBarCanvasGroup.alpha = 0;
             m_loadingWheelCanvasGroup.alpha = 0;
-            LoadScenesWithFullscreenCover(scenes: new string[] { m_sceneToLoadOnStart },
+            UnloadAllButPersistentScene();
+            LoadScenesWithFullscreenCover(scenes: m_scenesToLoadOnStart,
                 shouldTheFirstSceneInTheArrayBeActive: true,
                 displayLoadingIcon: true,
                 onFadeInEnds: () =>
@@ -289,17 +321,6 @@ namespace UrbanFox.MiniGame
                 return false;
             }
             return scene.isLoaded;
-        }
-
-        private void UnloadScenes(string[] scenes)
-        {
-            foreach (var scene in scenes)
-            {
-                if (IsSceneLoaded(scene))
-                {
-                    SceneManager.UnloadSceneAsync(scene);
-                }
-            }
         }
 
         private bool AreOperationsCompleted(List<AsyncOperation> operations)

@@ -42,6 +42,11 @@ namespace UrbanFox
             }
         }
 
+        public static void DrawSolidSphere(Vector3 center, float radius, Color color)
+        {
+            DrawSphere(center, radius, color);
+        }
+
         public static void DrawWireCube(Vector3 center, Quaternion rotation, Vector3 size, Color color)
         {
             using (new GizmosScope(center, rotation, size, color))

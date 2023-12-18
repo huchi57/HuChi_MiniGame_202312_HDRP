@@ -39,6 +39,9 @@ namespace UrbanFox.MiniGame
         private float m_acceleration;
         private float m_moveVelocity;
 
+        private bool m_isBlownAwayByWind;
+        private Vector3 m_externalWindSpeed;
+
         private float CurrentPitchAngle => m_rigidBody.rotation.eulerAngles.z.AnglePositiveOrNegative180();
 
         public void ResetPlanePosition()
@@ -47,6 +50,7 @@ namespace UrbanFox.MiniGame
             m_rigidBody.useGravity = false;
             m_rigidBody.velocity = Vector3.zero;
             m_rigidBody.angularVelocity = Vector3.zero;
+            m_isBlownAwayByWind = false;
         }
 
         public void InitializeAndEjectPlane()
@@ -55,6 +59,19 @@ namespace UrbanFox.MiniGame
             m_moveVelocity = Random.Range(m_minInitialVelocity, m_maxInitialVelocity);
             GameManager.Instance.SwitchGameState(GameState.GameplayPausable);
             CameraBrain.Main.SaveCameraCheckpointPosition();
+        }
+
+        public void TriggerGameOver()
+        {
+            EnableUnityBuiltInGravity();
+            GameManager.Instance.GameOverAndRestartCheckpoint();
+        }
+
+        public void TriggerGameOverByEnteringWindTrigger(Vector3 windSpeed)
+        {
+            m_isBlownAwayByWind = true;
+            m_externalWindSpeed = windSpeed;
+            TriggerGameOver();
         }
 
         private void OnValidate()
@@ -136,6 +153,11 @@ namespace UrbanFox.MiniGame
 
         private void FixedUpdate()
         {
+            if (m_isBlownAwayByWind)
+            {
+                m_rigidBody.velocity += Time.fixedDeltaTime * m_externalWindSpeed;
+            }
+
             if (GameManager.Instance.CurrentGameState != GameState.GameplayPausable)
             {
                 return;
@@ -157,8 +179,7 @@ namespace UrbanFox.MiniGame
 
         private void OnCollisionEnter(Collision collision)
         {
-            EnableUnityBuiltInGravity();
-            GameManager.Instance.GameOverAndRestartCheckpoint();
+            TriggerGameOver();
         }
 
         private void OnTriggerEnter(Collider other)
