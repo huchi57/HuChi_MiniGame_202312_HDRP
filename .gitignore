@@ -72,6 +72,9 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 
 ### OTHER IGNORES
+# Mac
+.DS_Store
+
 # Package Settings
 /ProjectSettings/Packages/
 ProjectSettings/CommonBurstAotSettings.json
