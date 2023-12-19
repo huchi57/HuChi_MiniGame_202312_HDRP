@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using DG.Tweening;
 
@@ -5,6 +6,9 @@ namespace UrbanFox.MiniGame
 {
     public class UIController : MonoBehaviour
     {
+        public event Action OnPauseMenuOpening;
+        public event Action OnPauseMenuClosing;
+
         [SerializeField, Required]
         private CanvasGroup m_titleSplashScreen;
 
@@ -64,11 +68,13 @@ namespace UrbanFox.MiniGame
 
         private void OnPauseMenuStartsToOpen()
         {
+            OnPauseMenuOpening?.Invoke();
             GameManager.Instance.SwitchGameState(GameState.Paused);
         }
 
         private void OnPauseMenuStartsToClose()
         {
+            OnPauseMenuClosing?.Invoke();
             GameManager.Instance.SwitchToPreviousGameState();
         }
     }
