@@ -13229,6 +13229,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_dontDestroyOnLoad: 0
   m_UIController: {fileID: 877470286}
+  m_defaultVolumeFadeInSeconds: 1
+  m_defaultVolumeFadeOutSeconds: 0.7
 --- !u!1 &1692069002
 GameObject:
   m_ObjectHideFlags: 0

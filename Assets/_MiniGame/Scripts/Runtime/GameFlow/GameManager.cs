@@ -32,6 +32,11 @@ namespace UrbanFox.MiniGame
         public static event Action OnGameOverSignaled;
 
         /// <summary>
+        /// The instant that the scenes is reloading when the screen gets black.
+        /// </summary>
+        public static event Action OnGameFullyFadeOutAndReloadStarted;
+
+        /// <summary>
         /// The instant that the scenes are reloaded while the screen is still black, ready to fade in to game again.
         /// </summary>
         public static event Action OnGameReloadCompleted;
@@ -249,6 +254,7 @@ namespace UrbanFox.MiniGame
                     onFadeOutEnds: () =>
                     {
                         UnloadAllButPersistentScene();
+                        OnGameFullyFadeOutAndReloadStarted?.Invoke();
                     },
                     onLoadCompleted: () =>
                     {

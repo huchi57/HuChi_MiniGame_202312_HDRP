@@ -168,7 +168,7 @@ namespace UrbanFox.MiniGame
         public void ResetAudioSettings()
         {
             Volume = 1;
-            AudioManager.Instance.SetMasterVolume(Volume);
+            AudioManager.Instance.SetUserSettingsMasterVolume(Volume);
         }
 
         public void ResetControlSettings()
@@ -215,7 +215,7 @@ namespace UrbanFox.MiniGame
             }
             Localization.SetLanguage(LanguageIndex);
             Screen.SetResolution(ScreenWidth, ScreenHeight, IsFullscreen);
-            AudioManager.Instance.SetMasterVolume(Volume);
+            AudioManager.Instance.SetUserSettingsMasterVolume(Volume);
         }
 
         private void Update()
