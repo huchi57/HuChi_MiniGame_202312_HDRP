@@ -32,7 +32,7 @@ namespace UrbanFox.MiniGame
         private void OnSliderValueChanged(float value)
         {
             SettingsManager.Instance.Volume = value / 10;
-            AudioManager.Instance.SetReverbVolume(value);
+            AudioManager.Instance.SetMasterVolume(value);
         }
     }
 }

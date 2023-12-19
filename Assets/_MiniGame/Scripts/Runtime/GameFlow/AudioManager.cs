@@ -5,26 +5,26 @@ namespace UrbanFox.MiniGame
 {
     public class AudioManager : RuntimeManager<AudioManager>
     {
-        private const string k_reverbBusName = "bus:/Reverb";
+        private const string k_masterBusName = "bus:/";
 
-        private FMOD.Studio.Bus m_reverbBus;
-        private float m_volume;
+        private FMOD.Studio.Bus m_masterBus;
+        private float m_masterVolume;
 
-        public void SetReverbVolume(float value)
+        public void SetMasterVolume(float value)
         {
-            m_volume = value;
+            m_masterVolume = value;
         }
 
         private void Start()
         {
-            m_reverbBus = RuntimeManager.GetBus(k_reverbBusName);
-            m_volume = SettingsManager.Instance.Volume;
+            m_masterBus = RuntimeManager.GetBus(k_masterBusName);
+            m_masterVolume = SettingsManager.Instance.Volume;
         }
 
         private void Update()
         {
-            m_volume = Mathf.Clamp(SettingsManager.Instance.Volume, 0, 1);
-            m_reverbBus.setVolume(m_volume);
+            m_masterVolume = Mathf.Clamp(SettingsManager.Instance.Volume, 0, 1);
+            m_masterBus.setVolume(m_masterVolume);
         }
     }
 }
