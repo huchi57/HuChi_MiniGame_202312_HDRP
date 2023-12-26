@@ -186,7 +186,6 @@ namespace UrbanFox.MiniGame
 
         private void OnCollisionEnter(Collision collision)
         {
-            FoxyLogger.Log($"Collide: {collision.gameObject.name}", collision.gameObject);
             TriggerGameOver(isInstantDeath: collision.gameObject.GetComponent<TrainObject>());
         }
 
@@ -194,7 +193,6 @@ namespace UrbanFox.MiniGame
         {
             if (other.TryGetComponent<GameOverTrigger>(out var trigger))
             {
-                FoxyLogger.Log($"Collide: {other.gameObject.name}", other.gameObject);
                 GameManager.Instance.GameOverAndRestartCheckpoint_FadeOut(trigger.WaitTimeBeforeRestartingWhenGameOverTriggered);
             }
         }
