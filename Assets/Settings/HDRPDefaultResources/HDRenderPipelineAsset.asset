@@ -37,7 +37,7 @@ MonoBehaviour:
     supportWaterDeformation: 1
     deformationAtlasSize: 512
     maximumDeformerCount: 64
-    supportWaterFoam: 0
+    supportWaterFoam: 1
     foamAtlasSize: 512
     waterCPUSimulation: 0
     supportComputeThickness: 0
