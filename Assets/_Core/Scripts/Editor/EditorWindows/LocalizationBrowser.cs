@@ -7,7 +7,7 @@ using UnityEngine;
 using UnityEditor;
 using UnityEngine.Networking;
 
-// For Unity 2022
+// Use these for Unity 2022 (otherwise it will not work)
 using Unity.Plastic.Newtonsoft.Json.Linq;
 using Unity.Plastic.Newtonsoft.Json;
 
