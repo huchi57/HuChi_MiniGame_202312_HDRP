@@ -61,10 +61,17 @@ namespace UrbanFox.MiniGame
             CameraBrain.Main.SaveCameraCheckpointPosition();
         }
 
-        public void TriggerGameOver()
+        public void TriggerGameOver(bool isInstantDeath = false)
         {
             EnableUnityBuiltInGravity();
-            GameManager.Instance.GameOverAndRestartCheckpoint();
+            if (isInstantDeath)
+            {
+                GameManager.Instance.GameOverAndRestartCheckpoint_Instant();
+            }
+            else
+            {
+                GameManager.Instance.GameOverAndRestartCheckpoint_FadeOut();
+            }
         }
 
         public void TriggerGameOverByEnteringWindTrigger(Vector3 windSpeed)
@@ -179,14 +186,16 @@ namespace UrbanFox.MiniGame
 
         private void OnCollisionEnter(Collision collision)
         {
-            TriggerGameOver();
+            FoxyLogger.Log($"Collide: {collision.gameObject.name}", collision.gameObject);
+            TriggerGameOver(isInstantDeath: collision.gameObject.GetComponent<TrainObject>());
         }
 
         private void OnTriggerEnter(Collider other)
         {
             if (other.TryGetComponent<GameOverTrigger>(out var trigger))
             {
-                GameManager.Instance.GameOverAndRestartCheckpoint(trigger.WaitTimeBeforeRestartingWhenGameOverTriggered);
+                FoxyLogger.Log($"Collide: {other.gameObject.name}", other.gameObject);
+                GameManager.Instance.GameOverAndRestartCheckpoint_FadeOut(trigger.WaitTimeBeforeRestartingWhenGameOverTriggered);
             }
         }
 

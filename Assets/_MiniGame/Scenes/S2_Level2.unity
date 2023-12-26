@@ -583,7 +583,7 @@ Transform:
   - {fileID: 1922534719}
   - {fileID: 1516292596}
   m_Father: {fileID: 0}
-  m_RootOrder: 25
+  m_RootOrder: 24
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &65418370
 GameObject:
@@ -620,7 +620,7 @@ Transform:
   - {fileID: 1871173707}
   - {fileID: 2138202728}
   m_Father: {fileID: 0}
-  m_RootOrder: 29
+  m_RootOrder: 28
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &80568852
 GameObject:
@@ -729,7 +729,7 @@ GameObject:
   m_Component:
   - component: {fileID: 82305728}
   m_Layer: 0
-  m_Name: ForkLift_PatrolPoint_5
+  m_Name: ForkLift (1)_PatrolPoint_5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1051,7 +1051,7 @@ GameObject:
   m_Component:
   - component: {fileID: 122843969}
   m_Layer: 0
-  m_Name: ForkLift_PatrolPoint_8
+  m_Name: ForkLift (1)_PatrolPoint_8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1279,7 +1279,7 @@ PrefabInstance:
     - target: {fileID: 4663391841982089684, guid: 4e17e25cdb70a7648865efbf00c881d9,
         type: 3}
       propertyPath: m_RootOrder
-      value: 15
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 4663391841982089684, guid: 4e17e25cdb70a7648865efbf00c881d9,
         type: 3}
@@ -1544,7 +1544,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &164220699
 GameObject:
@@ -1678,7 +1678,7 @@ Transform:
   - {fileID: 244099462}
   - {fileID: 845350450}
   m_Father: {fileID: 0}
-  m_RootOrder: 30
+  m_RootOrder: 29
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &244099461
 GameObject:
@@ -2419,7 +2419,7 @@ GameObject:
   m_Component:
   - component: {fileID: 280713489}
   m_Layer: 0
-  m_Name: ForkLift_PatrolPoint_4
+  m_Name: ForkLift (1)_PatrolPoint_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2537,69 +2537,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 282957495}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &295239333
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 295239336}
-  - component: {fileID: 295239335}
-  - component: {fileID: 295239334}
-  m_Layer: 0
-  m_Name: PP_Fog
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &295239334
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 295239333}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_IsGlobal: 0
-  priority: 2
-  blendDistance: 20
-  weight: 1
-  sharedProfile: {fileID: 11400000, guid: cb31d338eabf4dc42b03da47607e4a5c, type: 2}
---- !u!65 &295239335
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 295239333}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!4 &295239336
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 295239333}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 83, y: -23.52, z: 3.4628875}
-  m_LocalScale: {x: 46.792576, y: 24.899412, z: 38.854763}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 9
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &335121289
 GameObject:
   m_ObjectHideFlags: 0
@@ -3404,7 +3341,7 @@ Transform:
   - {fileID: 1201195685}
   - {fileID: 1003034815}
   m_Father: {fileID: 0}
-  m_RootOrder: 32
+  m_RootOrder: 31
   m_LocalEulerAnglesHint: {x: 0, y: -150, z: 0}
 --- !u!114 &428569372
 MonoBehaviour:
@@ -3455,7 +3392,7 @@ GameObject:
   m_Component:
   - component: {fileID: 467021573}
   m_Layer: 0
-  m_Name: ForkLift_PatrolPoint_9
+  m_Name: ForkLift (1)_PatrolPoint_9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4079,7 +4016,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &524031075
 MonoBehaviour:
@@ -4374,7 +4311,7 @@ PrefabInstance:
     - target: {fileID: 4663391841982089684, guid: 4e17e25cdb70a7648865efbf00c881d9,
         type: 3}
       propertyPath: m_RootOrder
-      value: 13
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 4663391841982089684, guid: 4e17e25cdb70a7648865efbf00c881d9,
         type: 3}
@@ -4812,7 +4749,7 @@ GameObject:
   m_Component:
   - component: {fileID: 641325232}
   m_Layer: 0
-  m_Name: ForkLift_PatrolPoint_0
+  m_Name: ForkLift (1)_PatrolPoint_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5004,7 +4941,7 @@ Transform:
   - {fileID: 896013375}
   - {fileID: 1022113401}
   m_Father: {fileID: 0}
-  m_RootOrder: 33
+  m_RootOrder: 32
   m_LocalEulerAnglesHint: {x: 0, y: -213.083, z: 0}
 --- !u!43 &707953831
 Mesh:
@@ -5180,7 +5117,7 @@ GameObject:
   m_Component:
   - component: {fileID: 716564230}
   m_Layer: 0
-  m_Name: ForkLift_PatrolPoint_10
+  m_Name: ForkLift (1)_PatrolPoint_10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5308,7 +5245,7 @@ GameObject:
   m_Component:
   - component: {fileID: 728437216}
   m_Layer: 0
-  m_Name: ForkLift_PatrolPoint_7
+  m_Name: ForkLift (1)_PatrolPoint_7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5750,7 +5687,7 @@ GameObject:
   m_Component:
   - component: {fileID: 778258041}
   m_Layer: 0
-  m_Name: ForkLift_PatrolPoint_6
+  m_Name: ForkLift (1)_PatrolPoint_6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5909,7 +5846,7 @@ Transform:
   - {fileID: 716564230}
   - {fileID: 1672079235}
   m_Father: {fileID: 0}
-  m_RootOrder: 31
+  m_RootOrder: 30
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &840442267
 GameObject:
@@ -6252,7 +6189,7 @@ Transform:
   m_Children:
   - {fileID: 1679729880}
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &871448477
 GameObject:
@@ -7523,7 +7460,7 @@ PrefabInstance:
     - target: {fileID: 4663391841982089684, guid: 4e17e25cdb70a7648865efbf00c881d9,
         type: 3}
       propertyPath: m_RootOrder
-      value: 14
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 4663391841982089684, guid: 4e17e25cdb70a7648865efbf00c881d9,
         type: 3}
@@ -7812,7 +7749,7 @@ Transform:
   - {fileID: 935875898}
   - {fileID: 877992764}
   m_Father: {fileID: 0}
-  m_RootOrder: 23
+  m_RootOrder: 22
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1003034814
 GameObject:
@@ -9655,7 +9592,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!1 &1312615573
 GameObject:
@@ -9692,7 +9629,7 @@ Transform:
   - {fileID: 640899831}
   - {fileID: 1224825857}
   m_Father: {fileID: 0}
-  m_RootOrder: 21
+  m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1314570095
 GameObject:
@@ -10385,7 +10322,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 19
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1409507887
 GameObject:
@@ -10497,7 +10434,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1409507893
 MonoBehaviour:
@@ -10539,7 +10476,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1472830907}
   m_Layer: 0
-  m_Name: ForkLift_PatrolPoint_2
+  m_Name: ForkLift (1)_PatrolPoint_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10692,7 +10629,7 @@ Transform:
   - {fileID: 1604590719}
   - {fileID: 1888040034}
   m_Father: {fileID: 0}
-  m_RootOrder: 28
+  m_RootOrder: 27
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1516292595
 GameObject:
@@ -10797,7 +10734,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh192654
+  m_Name: pb_Mesh38864
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -11446,7 +11383,7 @@ Transform:
   - {fileID: 2134516277}
   - {fileID: 579904475}
   m_Father: {fileID: 0}
-  m_RootOrder: 22
+  m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1672079234
 GameObject:
@@ -11458,7 +11395,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1672079235}
   m_Layer: 0
-  m_Name: ForkLift_PatrolPoint_11
+  m_Name: ForkLift (1)_PatrolPoint_11
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11489,7 +11426,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1672300338}
   m_Layer: 0
-  m_Name: ForkLift_PatrolPoint_3
+  m_Name: ForkLift (1)_PatrolPoint_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11998,7 +11935,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: -90}
 --- !u!1 &1714206286
 GameObject:
@@ -12446,7 +12383,7 @@ Transform:
   - {fileID: 955791996}
   - {fileID: 1754477125}
   m_Father: {fileID: 0}
-  m_RootOrder: 26
+  m_RootOrder: 25
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1797078395
 GameObject:
@@ -12555,7 +12492,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1811972071}
   m_Layer: 0
-  m_Name: ForkLift_PatrolPoint_1
+  m_Name: ForkLift (1)_PatrolPoint_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13551,7 +13488,7 @@ Transform:
   - {fileID: 1376608388}
   - {fileID: 1980107354}
   m_Father: {fileID: 0}
-  m_RootOrder: 27
+  m_RootOrder: 26
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1963111749
 GameObject:
@@ -13588,7 +13525,7 @@ Transform:
   - {fileID: 840442268}
   - {fileID: 335121290}
   m_Father: {fileID: 0}
-  m_RootOrder: 24
+  m_RootOrder: 23
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1980107353
 GameObject:
@@ -14322,7 +14259,7 @@ Transform:
   m_Children:
   - {fileID: 2024693012}
   m_Father: {fileID: 0}
-  m_RootOrder: 20
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2141239467
 MonoBehaviour:

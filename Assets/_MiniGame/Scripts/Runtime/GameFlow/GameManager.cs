@@ -141,15 +141,15 @@ namespace UrbanFox.MiniGame
 #endif
         }
 
-        public void LoadScenesWithFullscreenCover(string[] scenes, bool shouldTheFirstSceneInTheArrayBeActive, bool displayLoadingIcon, Action onFadeOutBegins = null, Action onFadeOutEnds = null, Action onLoadCompleted = null, Action onFadeInBegins = null, Action onFadeInEnds = null)
+        public void LoadScenesWithFullscreenCover(string[] scenes, bool shouldTheFirstSceneInTheArrayBeActive, bool displayLoadingIcon, float fadeTime, Action onFadeOutBegins = null, Action onFadeOutEnds = null, Action onLoadCompleted = null, Action onFadeInBegins = null, Action onFadeInEnds = null)
         {
             StartCoroutine(DoLoadScenesWithFullscreenCover());
             IEnumerator DoLoadScenesWithFullscreenCover()
             {
                 SwitchGameState(GameState.Loading);
                 onFadeOutBegins?.Invoke();
-                m_fullscreenBlack.DOFade(1, m_fullscreenBlackFadeTime);
-                yield return new WaitForSeconds(m_fullscreenBlackFadeTime);
+                m_fullscreenBlack.DOFade(1, fadeTime);
+                yield return new WaitForSeconds(fadeTime);
                 onFadeOutEnds?.Invoke();
                 yield return new WaitForSeconds(m_fullscreenBlackIdleTime / 2);
                 if (displayLoadingIcon)
@@ -210,6 +210,11 @@ namespace UrbanFox.MiniGame
             }
         }
 
+        public void LoadScenesWithFullscreenCover(string[] scenes, bool shouldTheFirstSceneInTheArrayBeActive, bool displayLoadingIcon, Action onFadeOutBegins = null, Action onFadeOutEnds = null, Action onLoadCompleted = null, Action onFadeInBegins = null, Action onFadeInEnds = null)
+        {
+            LoadScenesWithFullscreenCover(scenes, shouldTheFirstSceneInTheArrayBeActive, displayLoadingIcon, m_fullscreenBlackFadeTime, onFadeOutBegins, onFadeOutEnds, onLoadCompleted, onFadeInBegins, onFadeInEnds);
+        }
+
         public void LoadScenesInBackground(string[] scenes, bool shouldTheFirstSceneInTheArrayBeActive)
         {
             StartCoroutine(DoLoadScenesInBackground());
@@ -237,13 +242,13 @@ namespace UrbanFox.MiniGame
             }
         }
 
-        public void GameOverAndRestartCheckpoint(float waitSecondsBeforeFadeOut = 2)
+        public void GameOverAndRestartCheckpoint_FadeOut(float waitSecondsBeforeFadeOut = 2)
         {
             if (m_currentGameState == GameState.GameplayPausable)
             {
-                StartCoroutine(DoGameOverAndRestartCheckpoint(waitSecondsBeforeFadeOut));
+                StartCoroutine(DoGameOverAndRestartCheckpoint_FadeOut(waitSecondsBeforeFadeOut));
             }
-            IEnumerator DoGameOverAndRestartCheckpoint(float waitSecondsBeforeFadeOut)
+            IEnumerator DoGameOverAndRestartCheckpoint_FadeOut(float waitSecondsBeforeFadeOut)
             {
                 SwitchGameState(GameState.GameOverWaitForReload);
                 OnGameOverSignaled?.Invoke();
@@ -251,6 +256,33 @@ namespace UrbanFox.MiniGame
                 LoadScenesWithFullscreenCover(scenes: m_scenesToLoadOnStart,
                     shouldTheFirstSceneInTheArrayBeActive: true,
                     displayLoadingIcon: false,
+                    onFadeOutEnds: () =>
+                    {
+                        UnloadAllButPersistentScene();
+                        OnGameFullyFadeOutAndReloadStarted?.Invoke();
+                    },
+                    onLoadCompleted: () =>
+                    {
+                        OnGameReloadCompleted?.Invoke();
+                    },
+                    onFadeInEnds: () =>
+                    {
+                        SwitchGameState(GameState.WaitForInputToStartGame);
+                    }
+                    );
+            }
+        }
+
+        public void GameOverAndRestartCheckpoint_Instant()
+        {
+            if (m_currentGameState == GameState.GameplayPausable)
+            {
+                SwitchGameState(GameState.GameOverWaitForReload);
+                OnGameOverSignaled?.Invoke();
+                LoadScenesWithFullscreenCover(scenes: m_scenesToLoadOnStart,
+                    shouldTheFirstSceneInTheArrayBeActive: true,
+                    displayLoadingIcon: false,
+                    fadeTime: 0.1f,
                     onFadeOutEnds: () =>
                     {
                         UnloadAllButPersistentScene();
