@@ -24,7 +24,7 @@ namespace UrbanFox.MiniGame
 
         private void OnTriggerEnter(Collider other)
         {
-            if (CameraBrain.Main && other.CompareTag(GameManager.PlayerTag))
+            if (CameraBrain.Main && other.CompareTag(GameManager.PlayerTag) && GameManager.Instance.CurrentGameState != GameState.GameOverWaitForReload)
             {
                 CameraBrain.Main.AddContributor(m_cameraContributor);
             }

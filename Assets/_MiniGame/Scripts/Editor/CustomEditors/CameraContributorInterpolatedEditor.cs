@@ -209,12 +209,12 @@ namespace UrbanFox.MiniGame.Editor
             }
 
             referencePoint.vector3Value = Handles.PositionHandle(referencePoint.vector3Value, Quaternion.identity);
-            HandlesExtensions.DrawSolidSphere(referencePoint.vector3Value, 0.08f, Color.white);
+            HandlesExtensions.DrawWireSphere(referencePoint.vector3Value, 0.08f, Color.white);
 
             lookAtOffsetDistanceFromTarget.vector3Value += referencePoint.vector3Value;
-            lookAtOffsetDistanceFromTarget.vector3Value = Handles.PositionHandle(lookAtOffsetDistanceFromTarget.vector3Value, Quaternion.identity);
+            //lookAtOffsetDistanceFromTarget.vector3Value = Handles.PositionHandle(lookAtOffsetDistanceFromTarget.vector3Value, Quaternion.identity);
             HandlesExtensions.DrawLine(referencePoint.vector3Value, lookAtOffsetDistanceFromTarget.vector3Value, Color.white);
-            HandlesExtensions.DrawSolidSphere(lookAtOffsetDistanceFromTarget.vector3Value, 0.05f, Color.yellow);
+            HandlesExtensions.DrawWireSphere(lookAtOffsetDistanceFromTarget.vector3Value, 0.05f, Color.yellow);
             lookAtOffsetDistanceFromTarget.vector3Value -= referencePoint.vector3Value;
 
             distanceFromTargetToCamera.vector3Value += referencePoint.vector3Value;

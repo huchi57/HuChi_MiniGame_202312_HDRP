@@ -18,8 +18,11 @@ namespace UrbanFox.MiniGame
         [NonEditable] public int XboxBuildIteration = 0;
         [NonEditable] public int PS4BuildIteration = 0;
         [NonEditable] public int PS5BuildIteration = 0;
+
+#if !UNITY_2023_1_OR_NEWER
         [NonEditable] public int LuminBuildIteration = 0;
         [NonEditable] public int StadiaBuildIteration = 0;
+#endif
 
         [NonEditable] public int WebGLBuildIteration = 0;
         [NonEditable] public int iOSBuildIteration = 0;
@@ -66,10 +69,12 @@ namespace UrbanFox.MiniGame
                     return tvOSBuildIteration;
                 case RuntimePlatform.Switch:
                     return SwitchBuildIteration;
+#if !UNITY_2023_1_OR_NEWER
                 case RuntimePlatform.Lumin:
                     return LuminBuildIteration;
                 case RuntimePlatform.Stadia:
                     return StadiaBuildIteration;
+#endif
                 case RuntimePlatform.GameCoreXboxSeries:
                     return XboxBuildIteration;
                 case RuntimePlatform.GameCoreXboxOne:

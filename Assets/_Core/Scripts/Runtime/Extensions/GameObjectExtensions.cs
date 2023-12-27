@@ -138,7 +138,7 @@ namespace UrbanFox
 
         public static void MoveObjectToScene(this Component component, Scene scene)
         {
-            if (component)
+            if (component && scene != null && scene.isLoaded)
             {
                 SceneManager.MoveGameObjectToScene(component.gameObject, scene);
             }

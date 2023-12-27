@@ -244,7 +244,7 @@ namespace UrbanFox.MiniGame
 
         public void GameOverAndRestartCheckpoint_FadeOut(float waitSecondsBeforeFadeOut = 2)
         {
-            if (m_currentGameState == GameState.GameplayPausable)
+            if (m_currentGameState == GameState.GameplayPausable || m_currentGameState == GameState.GameCompletedWaitForInput)
             {
                 StartCoroutine(DoGameOverAndRestartCheckpoint_FadeOut(waitSecondsBeforeFadeOut));
             }

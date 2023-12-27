@@ -12,17 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1e30863b03665245ad57bcf23d6b87b, type: 3}
   m_Name: ApplicationBuildData
   m_EditorClassIdentifier: 
-  CustomBuildName: Pre-Alpha
-  CurrentBuildTime: 2023/12/26-19:12:51
-  WindowsBuildIteration: 23
+  CustomBuildName: Alpha
+  CurrentBuildTime: 2023/12/27-16:45:45
+  WindowsBuildIteration: 25
   MacBuildIteration: 4
   LinuxBuildIteration: 0
   SwitchBuildIteration: 0
   XboxBuildIteration: 0
   PS4BuildIteration: 0
   PS5BuildIteration: 0
-  LuminBuildIteration: 0
-  StadiaBuildIteration: 0
   WebGLBuildIteration: 0
   iOSBuildIteration: 0
   tvOSBuildIteration: 0

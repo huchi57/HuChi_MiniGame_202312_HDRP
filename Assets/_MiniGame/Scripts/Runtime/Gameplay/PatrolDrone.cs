@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace UrbanFox.MiniGame
 {
+    [RequireComponent(typeof(Rigidbody))]
     public class PatrolDrone : MonoBehaviour
     {
         [Serializable]
@@ -11,8 +12,12 @@ namespace UrbanFox.MiniGame
             Patrol,
             Chase,
             GiveUp,
-            CaughtPlayer
+            CaughtPlayer,
+            DysfunctionAndFall
         }
+
+        [SerializeField, NonEditable]
+        private Rigidbody m_rigidBody;
 
         [SerializeField, NonEditable]
         private State m_currentState = State.Patrol;
@@ -72,6 +77,14 @@ namespace UrbanFox.MiniGame
         private Transform m_currentChasingTarget;
         private float m_currentChasingSpeed;
 
+        public void StartChasingPlayer()
+        {
+            if (GameManager.Player)
+            {
+                StartChasingTarget(GameManager.Player);
+            }
+        }
+
         public void StartChasingTarget(Transform target)
         {
             m_currentChasingTarget = target;
@@ -119,6 +132,8 @@ namespace UrbanFox.MiniGame
                     break;
                 case State.CaughtPlayer:
                     break;
+                case State.DysfunctionAndFall:
+                    break;
                 default:
                     break;
             }
@@ -126,6 +141,19 @@ namespace UrbanFox.MiniGame
             {
                 var targetRotation = Quaternion.LookRotation(m_deltaPosition.IsApproximately(Vector3.zero) ? transform.forward : m_deltaPosition);
                 transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, m_rotationSlerpSpeed * Time.deltaTime);
+            }
+        }
+
+        private void OnCollisionEnter(Collision other)
+        {
+            if (other.gameObject.GetComponent<PlayerController>())
+            {
+                m_currentState = State.CaughtPlayer;
+            }
+            else
+            {
+                m_currentState = State.DysfunctionAndFall;
+                m_rigidBody.useGravity = true;
             }
         }
 
@@ -178,6 +206,7 @@ namespace UrbanFox.MiniGame
 #if UNITY_EDITOR
         private void OnValidate()
         {
+            m_rigidBody = GetComponent<Rigidbody>();
             if (Application.isPlaying || !m_patrolPointsParentObject)
             {
                 return;

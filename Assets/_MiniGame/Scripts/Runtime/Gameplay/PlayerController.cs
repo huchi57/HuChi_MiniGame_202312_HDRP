@@ -44,6 +44,11 @@ namespace UrbanFox.MiniGame
 
         private float CurrentPitchAngle => m_rigidBody.rotation.eulerAngles.z.AnglePositiveOrNegative180();
 
+        public void LockToPitchAngle(float pitchAngle)
+        {
+            m_targetPitchAngle = pitchAngle;
+        }
+
         public void ResetPlanePosition()
         {
             transform.SetPositionAndRotation(m_originalPosition, m_originalRotation);
@@ -168,6 +173,9 @@ namespace UrbanFox.MiniGame
             if (GameManager.Instance.CurrentGameState != GameState.GameplayPausable)
             {
                 return;
+                //if (GameManager.Instance.CurrentGameState != GameState.GameCompletedWaitForInput)
+                //{
+                //}
             }
 
             m_targetPitchAngle += m_pitchInput * Time.fixedDeltaTime;
@@ -186,7 +194,10 @@ namespace UrbanFox.MiniGame
 
         private void OnCollisionEnter(Collision collision)
         {
-            TriggerGameOver(isInstantDeath: collision.gameObject.GetComponent<TrainObject>());
+            if (GameManager.Instance.CurrentGameState != GameState.GameCompletedWaitForInput)
+            {
+                TriggerGameOver(isInstantDeath: collision.gameObject.GetComponent<TrainObject>());
+            }
         }
 
         private void OnTriggerEnter(Collider other)

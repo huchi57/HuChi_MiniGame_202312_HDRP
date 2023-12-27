@@ -33,7 +33,7 @@ MonoBehaviour:
     renderingLayerMaskBuffer: 0
     supportWater: 1
     waterSimulationResolution: 128
-    supportWaterExclusion: 0
+    supportWaterExclusion: 1
     supportWaterDeformation: 1
     deformationAtlasSize: 512
     maximumDeformerCount: 64

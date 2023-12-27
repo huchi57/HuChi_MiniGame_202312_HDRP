@@ -48,12 +48,14 @@ namespace UrbanFox.MiniGame.Editor
                 case BuildTarget.Switch:
                     buildData.SwitchBuildIteration++;
                     break;
+#if !UNITY_2023_1_OR_NEWER
                 case BuildTarget.Lumin:
                     buildData.LuminBuildIteration++;
                     break;
                 case BuildTarget.Stadia:
                     buildData.StadiaBuildIteration++;
                     break;
+#endif
                 case BuildTarget.GameCoreXboxOne:
                     buildData.XboxBuildIteration++;
                     break;
