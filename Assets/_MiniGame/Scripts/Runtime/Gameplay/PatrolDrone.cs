@@ -154,6 +154,7 @@ namespace UrbanFox.MiniGame
             {
                 m_currentState = State.DysfunctionAndFall;
                 m_rigidBody.useGravity = true;
+                m_droneLight.TurnOffLights();
             }
         }
 

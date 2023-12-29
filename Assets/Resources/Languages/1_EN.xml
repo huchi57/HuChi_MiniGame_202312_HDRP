@@ -45,4 +45,6 @@
     <i k="UI.RevertToDefault" v="Revert to Default"/>
     <i k="UI.GameTitle" v="(GAMETITLE)"/>
     <i k="UI.Credits" v="Credits"/>
+    <i k="QA.Questionnaire" v="Questionnaire"/>
+    <i k="QA.ReportBug" v="Report Bug"/>
 </data>

@@ -45,4 +45,6 @@
     <i k="UI.RevertToDefault" v="恢復為預設值"/>
     <i k="UI.GameTitle" v="(GAMETITLE)"/>
     <i k="UI.Credits" v="開發人員"/>
+    <i k="QA.Questionnaire" v="填寫問卷"/>
+    <i k="QA.ReportBug" v="回報問題"/>
 </data>

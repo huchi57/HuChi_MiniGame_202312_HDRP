@@ -1,6 +1,3 @@
-using DG.Tweening;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace UrbanFox.MiniGame
@@ -51,6 +48,11 @@ namespace UrbanFox.MiniGame
             m_trackingTarget = target;
             m_isTracking = true;
             m_light.enabled = true;
+        }
+
+        public void TurnOffLights()
+        {
+            m_light.enabled = false;
         }
 
         private void OnValidate()

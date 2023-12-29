@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1e30863b03665245ad57bcf23d6b87b, type: 3}
   m_Name: ApplicationBuildData
   m_EditorClassIdentifier: 
-  CustomBuildName: Alpha
-  CurrentBuildTime: 2023/12/27-16:45:45
-  WindowsBuildIteration: 25
+  CustomBuildName: Alpha01
+  CurrentBuildTime: 2023/12/30-05:05:45
+  WindowsBuildIteration: 27
   MacBuildIteration: 4
   LinuxBuildIteration: 0
   SwitchBuildIteration: 0

@@ -45,4 +45,6 @@
     <i k="UI.RevertToDefault" v="デフォルトに戻す"/>
     <i k="UI.GameTitle" v="(GAMETITLE)"/>
     <i k="UI.Credits" v="クレジット"/>
+    <i k="QA.Questionnaire" v="アンケートを記入"/>
+    <i k="QA.ReportBug" v="バグを報告"/>
 </data>

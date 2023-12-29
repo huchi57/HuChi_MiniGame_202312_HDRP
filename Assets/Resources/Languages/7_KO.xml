@@ -45,4 +45,6 @@
     <i k="UI.RevertToDefault" v="기본값으로 되돌리기"/>
     <i k="UI.GameTitle" v="(GAMETITLE)"/>
     <i k="UI.Credits" v="제작진"/>
+    <i k="QA.Questionnaire" v="설문지"/>
+    <i k="QA.ReportBug" v="버그 신고하기"/>
 </data>
