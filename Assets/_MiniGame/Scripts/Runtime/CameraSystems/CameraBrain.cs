@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
@@ -97,13 +96,13 @@ namespace UrbanFox.MiniGame
             }
             Main = this;
             GameManager.OnGameOverSignaled += ClearAllContributors;
-            GameManager.OnGameReloadCompleted += ResetCameraPositionAndRotationToCheckpoint;
+            GameManager.OnGameFullyFadeOutAndReloadStarted += ResetCameraPositionAndRotationToCheckpoint;
         }
 
         private void OnDestroy()
         {
             GameManager.OnGameOverSignaled -= ClearAllContributors;
-            GameManager.OnGameReloadCompleted -= ResetCameraPositionAndRotationToCheckpoint;
+            GameManager.OnGameFullyFadeOutAndReloadStarted -= ResetCameraPositionAndRotationToCheckpoint;
         }
 
         private void Update()

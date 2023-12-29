@@ -390,8 +390,8 @@ Transform:
   m_GameObject: {fileID: 15293308}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 326.81, y: -93.9137, z: 0}
-  m_LocalScale: {x: 25.011326, y: 32.146873, z: 20.400673}
+  m_LocalPosition: {x: 326.81, y: -83.1129, z: 0}
+  m_LocalScale: {x: 25.011326, y: 53.749573, z: 20.400673}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -9833,8 +9833,8 @@ Transform:
   m_GameObject: {fileID: 939898776}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 308.601, y: -113.8, z: 3.4628875}
-  m_LocalScale: {x: 175.72374, y: 104.66184, z: 172.51515}
+  m_LocalPosition: {x: 306.1473, y: -113.8, z: 3.4628875}
+  m_LocalScale: {x: 180.6221, y: 104.66184, z: 172.51515}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 217650438}
@@ -13444,12 +13444,12 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: f946ade01851ba84e913a052d43e361a,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 219.98
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f946ade01851ba84e913a052d43e361a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -58
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f946ade01851ba84e913a052d43e361a,
         type: 3}
@@ -15195,7 +15195,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a220152f61d8545468f632ba201397b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_rigidBody: {fileID: 1502381128}
+  m_rigidbody: {fileID: 1502381128}
   m_minInitialVelocity: 1.5
   m_maxInitialVelocity: 2
   m_maxPitchUpAngle: 20
@@ -15204,16 +15204,16 @@ MonoBehaviour:
   m_pitchInputMultiplier: 50
   m_maxInputPitchUpSecond: 1
   m_pitchUpAngleThresholdForCooldownTimerStart: 10
-  m_pitchDownAngleThresholdBeforeCooldownEnds: 30
+  m_pitchDownAngleThresholdBeforeCooldownEnds: 20
   m_pitchNaturalDropSpeed: 15
   m_pitchToAccelCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: -80
-      value: 1.1674287
-      inSlope: -0.016742874
-      outSlope: -0.016742874
+      value: 1.16
+      inSlope: -0.015999997
+      outSlope: -0.015999997
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
@@ -15221,20 +15221,20 @@ MonoBehaviour:
     - serializedVersion: 3
       time: -70
       value: 1
-      inSlope: -0.015514294
-      outSlope: -0.015514294
-      tangentMode: 34
+      inSlope: -0.01665097
+      outSlope: -0.01665097
+      tangentMode: 0
       weightedMode: 0
       inWeight: 0.33333334
-      outWeight: 0.33333334
+      outWeight: 0.10505415
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: -0.03214286
-      outSlope: -0.03214286
-      tangentMode: 34
+      inSlope: -0.021741834
+      outSlope: -0.021741834
+      tangentMode: 0
       weightedMode: 0
-      inWeight: 0.33333334
+      inWeight: 0.12929724
       outWeight: 0.33333334
     - serializedVersion: 3
       time: 20

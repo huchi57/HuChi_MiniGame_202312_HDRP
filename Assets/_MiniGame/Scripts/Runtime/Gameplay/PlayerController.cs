@@ -7,7 +7,7 @@ namespace UrbanFox.MiniGame
     [RequireComponent(typeof(Rigidbody))]
     public class PlayerController : MonoBehaviour
     {
-        [SerializeField, NonEditable] private Rigidbody m_rigidBody;
+        [SerializeField, NonEditable] private Rigidbody m_rigidbody;
 
         [SerializeField] private float m_minInitialVelocity;
         [SerializeField] private float m_maxInitialVelocity;
@@ -42,7 +42,12 @@ namespace UrbanFox.MiniGame
         private bool m_isBlownAwayByWind;
         private Vector3 m_externalWindSpeed;
 
-        private float CurrentPitchAngle => m_rigidBody.rotation.eulerAngles.z.AnglePositiveOrNegative180();
+        private float CurrentPitchAngle => m_rigidbody.rotation.eulerAngles.z.AnglePositiveOrNegative180();
+
+        public void UpdateRespawnPoint(Vector3 point)
+        {
+            m_originalPosition = point;
+        }
 
         public void LockToPitchAngle(float pitchAngle)
         {
@@ -52,9 +57,9 @@ namespace UrbanFox.MiniGame
         public void ResetPlanePosition()
         {
             transform.SetPositionAndRotation(m_originalPosition, m_originalRotation);
-            m_rigidBody.useGravity = false;
-            m_rigidBody.velocity = Vector3.zero;
-            m_rigidBody.angularVelocity = Vector3.zero;
+            m_rigidbody.useGravity = false;
+            m_rigidbody.velocity = Vector3.zero;
+            m_rigidbody.angularVelocity = Vector3.zero;
             m_isBlownAwayByWind = false;
         }
 
@@ -88,8 +93,8 @@ namespace UrbanFox.MiniGame
 
         private void OnValidate()
         {
-            m_rigidBody = GetComponent<Rigidbody>();
-            m_rigidBody.useGravity = false;
+            m_rigidbody = GetComponent<Rigidbody>();
+            m_rigidbody.useGravity = false;
         }
 
         private void Awake()
@@ -155,7 +160,7 @@ namespace UrbanFox.MiniGame
             else
             {
                 m_pitchInput = Mathf.Min(m_pitchInput, 0);
-                if (CurrentPitchAngle < -m_pitchDownAngleThresholdBeforeCooldownEnds)
+                if ((CurrentPitchAngle < -m_pitchDownAngleThresholdBeforeCooldownEnds) || (CurrentPitchAngle < 0 && move.y < 0))
                 {
                     m_isInPitchUpCooldown = false;
                     m_inputPitchUpTimer = 0;
@@ -167,15 +172,12 @@ namespace UrbanFox.MiniGame
         {
             if (m_isBlownAwayByWind)
             {
-                m_rigidBody.velocity += Time.fixedDeltaTime * m_externalWindSpeed;
+                m_rigidbody.velocity += Time.fixedDeltaTime * m_externalWindSpeed;
             }
 
             if (GameManager.Instance.CurrentGameState != GameState.GameplayPausable)
             {
                 return;
-                //if (GameManager.Instance.CurrentGameState != GameState.GameCompletedWaitForInput)
-                //{
-                //}
             }
 
             m_targetPitchAngle += m_pitchInput * Time.fixedDeltaTime;
@@ -184,12 +186,12 @@ namespace UrbanFox.MiniGame
                 m_targetPitchAngle -= m_pitchNaturalDropSpeed * Time.fixedDeltaTime;
             }
             m_targetPitchAngle = Mathf.Clamp(m_targetPitchAngle, -m_maxPitchDownAngle, m_maxPitchUpAngle);
-            m_rigidBody.rotation = Quaternion.Slerp(m_rigidBody.rotation, Quaternion.Euler(new Vector3(0, 0, m_targetPitchAngle)), m_pitchAngleSlerpSpeed * Time.deltaTime);
+            m_rigidbody.rotation = Quaternion.Slerp(m_rigidbody.rotation, Quaternion.Euler(new Vector3(0, 0, m_targetPitchAngle)), m_pitchAngleSlerpSpeed * Time.deltaTime);
 
             m_acceleration = m_pitchToAccelCurve.Evaluate(CurrentPitchAngle);
             m_moveVelocity += m_acceleration * Time.fixedDeltaTime;
             m_moveVelocity = Mathf.Lerp(m_moveVelocity, Mathf.Clamp(m_moveVelocity, m_minMoveVelocity, m_maxMoveVelocity), m_velocityLerpRate * Time.fixedDeltaTime);
-            m_rigidBody.velocity = m_moveVelocity * transform.right;
+            m_rigidbody.velocity = m_moveVelocity * transform.right;
         }
 
         private void OnCollisionEnter(Collision collision)
@@ -210,7 +212,7 @@ namespace UrbanFox.MiniGame
 
         private void EnableUnityBuiltInGravity()
         {
-            m_rigidBody.useGravity = true;
+            m_rigidbody.useGravity = true;
         }
 
 #if UNITY_EDITOR

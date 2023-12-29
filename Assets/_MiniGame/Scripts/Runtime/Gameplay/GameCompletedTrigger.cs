@@ -75,7 +75,18 @@ namespace UrbanFox.MiniGame
 
         private void OnAnykeyPressed(UnityEngine.InputSystem.InputControl obj)
         {
-            GameManager.Instance.GameOverAndRestartCheckpoint_FadeOut(1);
+            if (GameManager.PlayerController)
+            {
+                GameManager.PlayerController.UpdateRespawnPoint(Vector3.zero);
+            }
+            GameManager.Instance.GameOverAndRestartCheckpoint_FadeOut(1, () =>
+            {
+                if (CameraBrain.Main)
+                {
+                    CameraBrain.Main.transform.SetPositionAndRotation(Vector3.zero, Quaternion.identity);
+                    CameraBrain.Main.SaveCameraCheckpointPosition();
+                }
+            });
             InputManager.OnAnyKeyPressed -= OnAnykeyPressed;
         }
     }

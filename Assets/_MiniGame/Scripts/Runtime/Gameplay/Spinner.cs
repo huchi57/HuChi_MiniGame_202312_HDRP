@@ -80,7 +80,7 @@ namespace UrbanFox.MiniGame
             m_currentSpinningSpeed = Mathf.Lerp(m_currentSpinningSpeed, m_targetSpinningSpeed, m_acceleration * Time.deltaTime);
             transform.localEulerAngles += m_currentSpinningSpeed * Time.deltaTime * m_spinningAxis;
 
-            if (m_enableBlurMimicing)
+            if (m_enableBlurMimicing && TimeManager.TimeScale > 0.001f)
             {
                 for (int i = 0; i < m_duplicateInstances.Length; i++)
                 {

@@ -242,7 +242,7 @@ namespace UrbanFox.MiniGame
             }
         }
 
-        public void GameOverAndRestartCheckpoint_FadeOut(float waitSecondsBeforeFadeOut = 2)
+        public void GameOverAndRestartCheckpoint_FadeOut(float waitSecondsBeforeFadeOut = 2, Action onFadeOutEnds = null)
         {
             if (m_currentGameState == GameState.GameplayPausable || m_currentGameState == GameState.GameCompletedWaitForInput)
             {
@@ -260,6 +260,7 @@ namespace UrbanFox.MiniGame
                     {
                         UnloadAllButPersistentScene();
                         OnGameFullyFadeOutAndReloadStarted?.Invoke();
+                        onFadeOutEnds?.Invoke();
                     },
                     onLoadCompleted: () =>
                     {
