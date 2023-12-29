@@ -13444,12 +13444,12 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: f946ade01851ba84e913a052d43e361a,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 219.98
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f946ade01851ba84e913a052d43e361a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -58
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f946ade01851ba84e913a052d43e361a,
         type: 3}
@@ -18853,7 +18853,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  m_defaultLanguageIndexList: 0a0000000e000000160000002900000028000000
+  m_defaultLanguageIndexList: 0a0000000e0000000f00000016000000290000002800000017000000
   m_currentSettings:
     LanguageIndex: 0
     ScreenWidth: 0

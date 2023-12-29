@@ -27,6 +27,9 @@ MonoBehaviour:
     - {fileID: 12800000, guid: 81d3d1b68559fd04882d062a7735302d, type: 3}
     - {fileID: 12800000, guid: a6551754d67e92f4dbf36b65516601b7, type: 3}
   - FontStyles:
+    - {fileID: 12800000, guid: 81d3d1b68559fd04882d062a7735302d, type: 3}
+    - {fileID: 12800000, guid: a6551754d67e92f4dbf36b65516601b7, type: 3}
+  - FontStyles:
     - {fileID: 12800000, guid: bfcde2dcdcc449644b9202934243d5af, type: 3}
     - {fileID: 12800000, guid: cc09963371ad57c4ba146989072fea77, type: 3}
   - FontStyles:
@@ -35,3 +38,6 @@ MonoBehaviour:
   - FontStyles:
     - {fileID: 12800000, guid: 97bf1bfb1314ef842af4175d37ebaa20, type: 3}
     - {fileID: 12800000, guid: 7148f07c89bb63b41a8efa1e1e9ec060, type: 3}
+  - FontStyles:
+    - {fileID: 12800000, guid: caf3eef830ff33d4281e2cfc4bde6575, type: 3}
+    - {fileID: 12800000, guid: a97550800c3a18247995656059de8056, type: 3}

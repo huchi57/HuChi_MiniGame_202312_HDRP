@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<data>
+    <i k="Key" v="KO"/>
+    <i k="LanguageName" v="한국어"/>
+    <i k="UI.Yes" v="예"/>
+    <i k="UI.No" v="아니요"/>
+    <i k="UI.Confirm" v="확인"/>
+    <i k="UI.Cancel" v="취소"/>
+    <i k="UI.On" v="켜기"/>
+    <i k="UI.Off" v="끄기"/>
+    <i k="UI.Settings" v="설정"/>
+    <i k="UI.Settings.Movement.InvertX" v="X 축 반전"/>
+    <i k="UI.Settings.Movement.InvertY" v="Y 축 반전"/>
+    <i k="UI.Settings.Movement.Sensitivity" v="감도"/>
+    <i k="UI.Settings.Language" v="언어"/>
+    <i k="UI.Settings.Visuals.Graphics" v="그래픽"/>
+    <i k="UI.Settings.Visuals.Quality" v="시각 품질"/>
+    <i k="UI.Settings.Visuals.Quality.Low" v="낮음"/>
+    <i k="UI.Settings.Visuals.Quality.Medium" v="중간"/>
+    <i k="UI.Settings.Visuals.Quality.High" v="높음"/>
+    <i k="UI.Settings.Visuals.Quality.Ultra" v="최고"/>
+    <i k="UI.Settings.Visuals.Subtitles" v="자막"/>
+    <i k="UI.Settings.Visuals.FullscreenMode" v="전체 화면 모드"/>
+    <i k="UI.Settings.Visuals.Resolution" v="해상도"/>
+    <i k="UI.Settings.Visuals.Brightness" v="밝기"/>
+    <i k="UI.Settings.Audio.Volume" v="볼륨"/>
+    <i k="UI.Settings.Controls" v="조작"/>
+    <i k="UI.Settings.Controls.Keyboard" v="키보드"/>
+    <i k="UI.Settings.Controls.Gamepad" v="게임패드"/>
+    <i k="UI.Settings.Controls.TiltUp" v="위로 기울이기"/>
+    <i k="UI.Settings.Controls.TiltDown" v="아래로 기울이기"/>
+    <i k="UI.Settings.Controls.Vibration" v="진동"/>
+    <i k="UI.Settings.Controls.GamepadVibration" v="게임패드 진동"/>
+    <i k="UI.Settings.Controls.Binding.WaitingForInput" v="입력 대기 중..."/>
+    <i k="UI.Settings.Controls.Binding.NewKeyPrefix" v="동작에 대한 새로운 키 입력:"/>
+    <i k="UI.PressAnyKey" v="아무 키나 누르세요"/>
+    <i k="UI.Continue" v="계속하기"/>
+    <i k="UI.Resume" v="이어하기"/>
+    <i k="UI.QuitGame" v="게임 종료"/>
+    <i k="UI.QuitGame.Question" v="정말로 종료할까요?"/>
+    <i k="UI.ReturnToMenu" v="메인 메뉴로 돌아가기"/>
+    <i k="UI.PauseMenu" v="일시 정지 메뉴"/>
+    <i k="UI.Loading" v="불러오는 중..."/>
+    <i k="UI.Loading.WithDots" v="불러오는 중"/>
+    <i k="UI.RevertToDefault" v="기본값으로 되돌리기"/>
+    <i k="UI.GameTitle" v="(GAMETITLE)"/>
+    <i k="UI.Credits" v="제작진"/>
+</data>
