@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -114,6 +115,20 @@ namespace UrbanFox
                 return null;
             }
             return graphic.SetColor(graphic.color.SetValue(value));
+        }
+
+        public static Color GetAverageColor(this ICollection<Color> colors)
+        {
+            if (colors.IsNullOrEmpty())
+            {
+                return Color.clear;
+            }
+            var colorSums = new Vector4();
+            foreach (var color in colors)
+            {
+                colorSums += new Vector4(color.r, color.g, color.b, color.a);
+            }
+            return colorSums / colors.Count;
         }
     }
 }
