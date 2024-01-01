@@ -210,7 +210,7 @@ namespace UrbanFox.MiniGame
                 ResetAllSettings();
                 if (m_verboseLogging)
                 {
-                    FoxyLogger.Log($"File {SettingsFilePath} does not exist. Initializing new settings file...");
+                    FoxyLogger.Log($"File {SettingsFilePath} does not exist. Initializing new file...");
                 }
             }
             Localization.SetLanguage(LanguageIndex);

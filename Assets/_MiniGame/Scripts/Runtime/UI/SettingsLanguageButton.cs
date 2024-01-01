@@ -5,12 +5,15 @@ using UnityEngine.UI;
 namespace UrbanFox.MiniGame
 {
     [RequireComponent(typeof(Text))]
-    public class SettingsLanguageButton : MonoBehaviour, IPointerEnterHandler, ISelectHandler
+    public class SettingsLanguageButton : MonoBehaviour, IPointerEnterHandler, ISelectHandler, ISubmitHandler
     {
         private const string k_languageNameKey = "LanguageName";
 
         [SerializeField, NonEditable]
         private Text m_text;
+
+        [SerializeField, Required]
+        private UIPageGroup m_pageGroup;
 
         private int m_targetLanguageIndex;
 
@@ -42,6 +45,11 @@ namespace UrbanFox.MiniGame
         public void OnSelect(BaseEventData eventData)
         {
             Select();
+        }
+
+        public void OnSubmit(BaseEventData eventData)
+        {
+            m_pageGroup.TryGotoPreviousPage();
         }
 
         private void OnValidate()
