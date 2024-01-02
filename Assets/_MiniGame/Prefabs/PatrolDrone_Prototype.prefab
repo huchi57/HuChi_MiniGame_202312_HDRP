@@ -676,6 +676,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  m_preventZFightingOffset: {x: 0, y: 0, z: 0}
 --- !u!1 &4663391841433308780
 GameObject:
   m_ObjectHideFlags: 0
@@ -1646,6 +1647,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  m_preventZFightingOffset: {x: 0, y: 0, z: 0}
 --- !u!1 &6357283906889080791
 GameObject:
   m_ObjectHideFlags: 0
@@ -2300,6 +2302,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  m_preventZFightingOffset: {x: 0, y: 0, z: 0}
 --- !u!1 &7419266267567687169
 GameObject:
   m_ObjectHideFlags: 0
@@ -2719,3 +2722,4 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  m_preventZFightingOffset: {x: 0, y: 0, z: 0}

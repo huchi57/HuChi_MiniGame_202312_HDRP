@@ -13,17 +13,18 @@ namespace UrbanFox.MiniGame
             HideRenderer,
             HideGraphic,
             Destroy,
-            SetInactive
+            SetInactive,
+            ShadowsOnly
         }
-
-        [SerializeField, NonEditable, ShowIf(nameof(m_onStart), Type.HideRenderer)]
-        private Renderer m_renderer;
-
-        [SerializeField, NonEditable, ShowIf(nameof(m_onStart), Type.HideGraphic)]
-        private Graphic m_graphic;
 
         [SerializeField]
         private Type m_onStart;
+
+        [SerializeField, NonEditable, HideInInspector]
+        private Renderer m_renderer;
+
+        [SerializeField, NonEditable, HideInInspector]
+        private Graphic m_graphic;
 
         private void OnValidate()
         {
@@ -54,6 +55,12 @@ namespace UrbanFox.MiniGame
                     break;
                 case Type.SetInactive:
                     gameObject.SetActive(false);
+                    break;
+                case Type.ShadowsOnly:
+                    if(m_renderer)
+                    {
+                        m_renderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.ShadowsOnly;
+                    }
                     break;
                 default:
                     break;

@@ -29,6 +29,9 @@ namespace UrbanFox.MiniGame
         [SerializeField, ShowIf(nameof(m_enableBlurMimicing), true)]
         private AnimationCurve m_blurTransparency0To1Falloff;
 
+        [SerializeField]
+        private Vector3 m_preventZFightingOffset;
+
         private float m_currentSpinningSpeed;
 
         private Transform[] m_duplicateInstances;
@@ -59,14 +62,14 @@ namespace UrbanFox.MiniGame
                 m_duplicateInstances = new Transform[m_numberOfBlurCopies];
                 for (int i = 0; i < m_duplicateInstances.Length; i++)
                 {
-                    var materialAlpha = m_blurTransparency0To1Falloff.Evaluate(i / (float)m_numberOfBlurCopies);
+                    var materialAlpha = m_blurTransparency0To1Falloff.Evaluate((i + 1) / (float)m_numberOfBlurCopies);
                     var materialInstance = Instantiate(m_renderer.material);
                     materialInstance.color = new Color(materialInstance.color.r, materialInstance.color.g, materialInstance.color.b, materialAlpha);
 
                     var newInstance = new GameObject();
                     newInstance.transform.SetParent(transform);
                     newInstance.transform.localScale = Vector3.one;
-                    newInstance.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
+                    newInstance.transform.SetLocalPositionAndRotation((i + 1) * m_preventZFightingOffset, Quaternion.identity);
                     newInstance.AddComponent<MeshFilter>().mesh = m_mesh.mesh;
                     newInstance.AddComponent<MeshRenderer>().material = materialInstance;
                     m_duplicateInstances[i] = newInstance.transform;
