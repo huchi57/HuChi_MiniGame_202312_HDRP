@@ -21,7 +21,7 @@ namespace UrbanFox
             }
             if (m_instance == null)
             {
-                m_instance = FindObjectOfType<T>();
+                m_instance = FindFirstObjectByType<T>();
                 if (m_instance == null)
                 {
                     m_instance = new GameObject($"[{typeof(T).Name}]").AddComponent<T>();

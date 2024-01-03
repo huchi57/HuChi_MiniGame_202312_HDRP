@@ -29,10 +29,8 @@ namespace UrbanFox
         [SerializeField, HideInInspector]
         private bool _playingInEditMode = false;
 
-#if UNITY_EDITOR
         [SerializeField, HideInInspector]
         private AnimationCurve _intensityCurve = new AnimationCurve();
-#endif
 
         private Light _light = default;
         private string _cachedPattern = default;

@@ -139,8 +139,11 @@ namespace UrbanFox.MiniGame
             }
             if (m_enableRotationSlerp)
             {
-                var targetRotation = Quaternion.LookRotation(m_deltaPosition.IsApproximately(Vector3.zero) ? transform.forward : m_deltaPosition);
-                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, m_rotationSlerpSpeed * Time.deltaTime);
+                if (m_deltaPosition.sqrMagnitude > 0.01f || (transform.forward.sqrMagnitude > 0.01f && transform.forward != Vector3.up))
+                {
+                    var targetRotation = Quaternion.LookRotation(m_deltaPosition == Vector3.zero ? transform.forward : m_deltaPosition);
+                    transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, m_rotationSlerpSpeed * Time.deltaTime);
+                }
             }
         }
 

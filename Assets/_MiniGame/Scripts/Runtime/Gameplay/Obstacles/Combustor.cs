@@ -41,6 +41,11 @@ namespace UrbanFox.MiniGame
         private Vector3 m_closedPosition;
         private TweenerCore<Vector3, Vector3, VectorOptions> m_tween;
 
+        public void CombustOnce()
+        {
+            StartCoroutine(DoCombustOnce());
+        }
+
         public void StartCombusting()
         {
             m_isCombusting = true;
@@ -68,15 +73,7 @@ namespace UrbanFox.MiniGame
 
             while (true)
             {
-                m_tween = transform.DOMove(m_closedPosition, m_impactDuracion);
-                yield return new WaitForSeconds(m_impactDuracion);
-                if (m_cinemachineImpulseSource)
-                {
-                    m_cinemachineImpulseSource.GenerateImpulse();
-                }
-                yield return new WaitForSeconds(m_combustorClosedHoldDuration);
-                m_tween = transform.DOMove(m_openedPosition, m_retractDuration);
-                yield return new WaitForSeconds(m_retractDuration);
+                yield return DoCombustOnce();
                 yield return new WaitForSeconds(m_combustorOpenedHoldDuration);
             }
         }
@@ -87,6 +84,19 @@ namespace UrbanFox.MiniGame
             {
                 m_tween.Kill();
             }
+        }
+
+        private IEnumerator DoCombustOnce()
+        {
+            m_tween = transform.DOMove(m_closedPosition, m_impactDuracion);
+            yield return new WaitForSeconds(m_impactDuracion);
+            if (m_cinemachineImpulseSource)
+            {
+                m_cinemachineImpulseSource.GenerateImpulse();
+            }
+            yield return new WaitForSeconds(m_combustorClosedHoldDuration);
+            m_tween = transform.DOMove(m_openedPosition, m_retractDuration);
+            yield return new WaitForSeconds(m_retractDuration);
         }
 
         private void OnDrawGizmosSelected()
