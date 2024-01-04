@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using Cinemachine;
+using FMODUnity;
 using DG.Tweening;
 using DG.Tweening.Core;
 using DG.Tweening.Plugins.Options;
@@ -35,6 +36,16 @@ namespace UrbanFox.MiniGame
 
         [SerializeField]
         private CinemachineImpulseSource m_cinemachineImpulseSource;
+
+        [Header("Audio")]
+        [SerializeField]
+        private StudioEventEmitter m_impactSound;
+
+        [SerializeField]
+        private StudioEventEmitter m_retractSound;
+
+        [SerializeField]
+        private StudioEventEmitter m_extendSound;
 
         private bool m_isCombusting;
         private Vector3 m_openedPosition;
@@ -89,13 +100,25 @@ namespace UrbanFox.MiniGame
         private IEnumerator DoCombustOnce()
         {
             m_tween = transform.DOMove(m_closedPosition, m_impactDuracion);
+            if (m_retractSound)
+            {
+                m_retractSound.Play();
+            }
             yield return new WaitForSeconds(m_impactDuracion);
+            if (m_impactSound)
+            {
+                m_impactSound.Play();
+            }
             if (m_cinemachineImpulseSource)
             {
                 m_cinemachineImpulseSource.GenerateImpulse();
             }
             yield return new WaitForSeconds(m_combustorClosedHoldDuration);
             m_tween = transform.DOMove(m_openedPosition, m_retractDuration);
+            if (m_extendSound)
+            {
+                m_extendSound.Play();
+            }
             yield return new WaitForSeconds(m_retractDuration);
         }
 

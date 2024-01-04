@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.00.00">
+	<object class="AudioFile" id="{931e1c98-15cf-4e50-9822-a9021544e975}">
+		<property name="assetPath">
+			<value>DroneHitObstacle/Impact Metal Hit Reverb 07 - Trimmed.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>7.7266666666666666</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{46e2668f-388b-4cd4-bd5e-ed8a72c6a118}</destination>
+		</relationship>
+	</object>
+</objects>

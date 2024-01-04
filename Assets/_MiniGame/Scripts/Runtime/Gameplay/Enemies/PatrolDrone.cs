@@ -1,5 +1,9 @@
 using System;
 using UnityEngine;
+using UnityEngine.Events;
+using FMOD.Studio;
+using FMODUnity;
+using Cinemachine;
 
 namespace UrbanFox.MiniGame
 {
@@ -65,6 +69,38 @@ namespace UrbanFox.MiniGame
         [SerializeField]
         private DroneLight m_droneLight;
 
+        [Header("Audio")]
+        [SerializeField]
+        private StudioEventEmitter m_flyingSound;
+
+        [SerializeField]
+        private EventReference m_crashedSound;
+
+        [SerializeField]
+        private EventReference m_hitPlayerSound;
+
+        [SerializeField]
+        private bool m_playChasePlayerSound = false;
+
+        [SerializeField, EnableIf(nameof(m_playChasePlayerSound), true)]
+        private string m_distanceToPlayerParameterName;
+
+        [SerializeField, EnableIf(nameof(m_playChasePlayerSound), true)]
+        private StudioEventEmitter m_chasePlayerSound;
+
+        [Header("Custom Events")]
+        [SerializeField]
+        private UnityEvent m_onCollideWithNonPlayerObstacles;
+
+        [SerializeField]
+        private UnityEvent m_onCollideWithPlayer;
+
+        [SerializeField]
+        private bool m_isEventOneShot = true;
+
+        [SerializeField]
+        private CinemachineImpulseSource m_cinemachineImpulse;
+
         [Header("Debug")]
         [SerializeField]
         private bool m_drawGizmos;
@@ -76,6 +112,8 @@ namespace UrbanFox.MiniGame
 
         private Transform m_currentChasingTarget;
         private float m_currentChasingSpeed;
+        private bool m_eventFired;
+        private bool m_crashedSoundPlayed;
 
         public void StartChasingPlayer()
         {
@@ -92,6 +130,10 @@ namespace UrbanFox.MiniGame
             if (m_droneLight)
             {
                 m_droneLight.StartTracking(target);
+            }
+            if (m_playChasePlayerSound && m_chasePlayerSound)
+            {
+                m_chasePlayerSound.Play();
             }
         }
 
@@ -115,6 +157,18 @@ namespace UrbanFox.MiniGame
                         point.SetParent(detachedParent);
                     }
                 }
+            }
+            if (m_flyingSound)
+            {
+                m_flyingSound.Play();
+            }
+        }
+
+        private void OnDestroy()
+        {
+            if (m_chasePlayerSound && m_chasePlayerSound.IsPlaying())
+            {
+                m_chasePlayerSound.Stop();
             }
         }
 
@@ -149,9 +203,28 @@ namespace UrbanFox.MiniGame
 
         private void OnCollisionEnter(Collision other)
         {
+            if (m_chasePlayerSound && m_chasePlayerSound.IsPlaying())
+            {
+                m_chasePlayerSound.Stop();
+            }
+            if (m_flyingSound)
+            {
+                m_flyingSound.Stop();
+            }
+            if (!m_crashedSoundPlayed && !other.gameObject.CompareTag(GameManager.PlayerTag))
+            {
+                m_crashedSound.PlayOneShot(transform.position);
+                m_crashedSoundPlayed = true;
+                if (m_cinemachineImpulse)
+                {
+                    m_cinemachineImpulse.GenerateImpulse();
+                }
+            }
             if (other.gameObject.GetComponent<PlayerController>())
             {
+                m_onCollideWithPlayer?.Invoke();
                 m_currentState = State.CaughtPlayer;
+                m_hitPlayerSound.PlayOneShot();
             }
             else
             {
@@ -160,6 +233,11 @@ namespace UrbanFox.MiniGame
                 if (m_droneLight)
                 {
                     m_droneLight.TurnOffLights();
+                }
+                if (!m_isEventOneShot || !m_eventFired)
+                {
+                    m_eventFired = true;
+                    m_onCollideWithNonPlayerObstacles?.Invoke();
                 }
             }
         }
@@ -207,6 +285,14 @@ namespace UrbanFox.MiniGame
                 m_currentChasingSpeed = Mathf.Lerp(m_currentChasingSpeed, m_targetChaseSpeed, m_chaseSpeedAcceleration * Time.deltaTime);
                 var targetPosition = transform.position + m_currentChasingSpeed * Time.deltaTime * (m_currentChasingTarget.position - transform.position).normalized;
                 transform.position = targetPosition;
+                if (m_chasePlayerSound && m_chasePlayerSound.IsPlaying())
+                {
+                    m_chasePlayerSound.SetParameter(m_distanceToPlayerParameterName, Vector3.Distance(m_currentChasingTarget.position, transform.position));
+                }
+                if (GameManager.Instance.CurrentGameState == GameState.GameOverWaitForReload)
+                {
+                    m_currentState = State.GiveUp;
+                }
             }
         }
 

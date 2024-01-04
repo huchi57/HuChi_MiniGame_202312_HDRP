@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -34,7 +35,7 @@ namespace UrbanFox.MiniGame
             }
             catch
             {
-                if (!s_missingEvents.ContainsKey(eventRefAttribute.Guid))
+                if (!eventRefAttribute.Guid.IsNull && !s_missingEvents.ContainsKey(eventRefAttribute.Guid))
                 {
 #if UNITY_EDITOR
                     s_missingEvents.TryAdd(eventRefAttribute.Guid, eventRefAttribute.Path);
@@ -46,6 +47,11 @@ namespace UrbanFox.MiniGame
                 }
                 return false;
             }
+        }
+
+        public static void PlayOneShot(this EventReference eventReference)
+        {
+            eventReference.PlayOneShot(default);
         }
 
         public static void PlayOneShot(this EventReference eventReference, Vector3 worldPosition)
@@ -67,6 +73,52 @@ namespace UrbanFox.MiniGame
         public static void PlayOneShotAttached(this EventReference eventReference, Component component)
         {
             eventReference.PlayOneShotAttached(component.gameObject);
+        }
+
+        public static EventInstance Play(this EventReference eventReference)
+        {
+            return eventReference.Play(default);
+        }
+
+        public static EventInstance Play(this EventReference eventReference, Vector3 worldPosition)
+        {
+            try
+            {
+                var instance = RuntimeManager.CreateInstance(eventReference);
+                instance.set3DAttributes(worldPosition.To3DAttributes());
+                instance.start();
+                return instance;
+            }
+            catch
+            {
+                IsEventExist(eventReference);
+                throw;
+            }
+        }
+
+        public static EventInstance PlayWithMinMaxDistanceOverride(this EventReference eventReference, Vector3 worldPosition, float minDistance, float maxDistance)
+        {
+            var instance = eventReference.Play(worldPosition);
+            instance.SetMinMaxDistanceOverride(minDistance, maxDistance);
+            return instance;
+        }
+
+        public static void SetMinMaxDistanceOverride(this EventInstance eventInstance, float minDistance, float maxDistance)
+        {
+            eventInstance.setProperty(EVENT_PROPERTY.MINIMUM_DISTANCE, minDistance);
+            eventInstance.setProperty(EVENT_PROPERTY.MAXIMUM_DISTANCE, maxDistance);
+        }
+
+        public static void StopByFadeOut(this EventInstance eventInstance)
+        {
+            eventInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+            eventInstance.release();
+        }
+
+        public static void StopImmediately(this EventInstance eventInstance)
+        {
+            eventInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+            eventInstance.release();
         }
 
         public static bool TryGetEventDurationInMilliseconds(this EventReference eventReference, out int milliseconds)
@@ -126,16 +178,6 @@ namespace UrbanFox.MiniGame
             }
             volume = 0;
             return true;
-        }
-
-        public static void StopByFadeOut(this EventInstance eventInstance)
-        {
-            eventInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
-        }
-
-        public static void StopImmediately(this EventInstance eventInstance)
-        {
-            eventInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
         }
     }
 }

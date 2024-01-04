@@ -30,12 +30,12 @@ namespace UrbanFox.MiniGame
 
         private float m_internalGameVolume = 1;
 
-        public void FadeInMasterBus(float fadeTime)
+        public void FadeInGameBus(float fadeTime)
         {
             DOTween.To(() => m_internalGameVolume, x => m_internalGameVolume = x, 1, fadeTime).SetEase(m_easeIn);
         }
 
-        public void FadeOutMasterBus(float fadeTime)
+        public void FadeOutGameBus(float fadeTime)
         {
             DOTween.To(() => m_internalGameVolume, x => m_internalGameVolume = x, 0, fadeTime).SetEase(m_easeOut);
         }
@@ -77,12 +77,12 @@ namespace UrbanFox.MiniGame
 
         private void FadeOutGameAudio()
         {
-            FadeOutMasterBus(m_defaultVolumeFadeOutSeconds);
+            FadeOutGameBus(m_defaultVolumeFadeOutSeconds);
         }
 
         private void FadeInGameAudio()
         {
-            FadeInMasterBus(m_defaultVolumeFadeInSeconds);
+            FadeInGameBus(m_defaultVolumeFadeInSeconds);
         }
     }
 }

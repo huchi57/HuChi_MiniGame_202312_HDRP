@@ -1949,7 +1949,7 @@ GameObject:
   m_Component:
   - component: {fileID: 217650438}
   m_Layer: 0
-  m_Name: PP_Level_3
+  m_Name: Level03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7189,7 +7189,7 @@ GameObject:
   m_Component:
   - component: {fileID: 660729174}
   m_Layer: 0
-  m_Name: PP_Level_2
+  m_Name: Level02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11127,7 +11127,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1046072144}
   m_Layer: 0
-  m_Name: PP_LevelEffects
+  m_Name: LevelEffects
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11236,7 +11236,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_dontDestroyOnLoad: 0
   m_fullscreenBlackFadeTime: 2
-  m_fullscreenBlackIdleTime: 1.75
+  m_fullscreenBlackIdleTime: 2.25
   m_loadingIconFadeTime: 0.5
   m_fullscreenBlack: {fileID: 205306605}
   m_loadingIconType: 1
@@ -12033,7 +12033,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1138514678}
   m_Layer: 0
-  m_Name: PP_Level_1
+  m_Name: Level01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17326,10 +17326,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_dontDestroyOnLoad: 0
   m_UIController: {fileID: 877470286}
-  m_easeIn: 4
-  m_defaultVolumeFadeInSeconds: 1.5
-  m_easeOut: 4
-  m_defaultVolumeFadeOutSeconds: 1.5
+  m_easeIn: 8
+  m_defaultVolumeFadeInSeconds: 3
+  m_easeOut: 3
+  m_defaultVolumeFadeOutSeconds: 1
 --- !u!1 &1668348090
 GameObject:
   m_ObjectHideFlags: 0
