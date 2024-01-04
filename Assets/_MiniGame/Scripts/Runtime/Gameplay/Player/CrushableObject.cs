@@ -33,20 +33,16 @@ namespace UrbanFox.MiniGame
 
         private void Start()
         {
-            GameManager.OnGameFullyFadeOutAndReloadStarted += RestoreOriginalObject;
+            GameManager.OnEachLoadingOperationStarts += RestoreOriginalObject;
         }
 
         private void OnDestroy()
         {
-            GameManager.OnGameFullyFadeOutAndReloadStarted -= RestoreOriginalObject;
+            GameManager.OnEachLoadingOperationStarts -= RestoreOriginalObject;
         }
 
         private void OnCollisionEnter(Collision collision)
         {
-            //if (collision.gameObject.GetComponentInParent<Combustor>() || collision.gameObject.GetComponentInChildren<Combustor>())
-            //{
-            //    CrushObject();
-            //}
             if (collision.gameObject.CompareTag(m_crushZoneTag))
             {
                 CrushObject();
@@ -55,10 +51,6 @@ namespace UrbanFox.MiniGame
 
         private void OnTriggerEnter(Collider other)
         {
-            //if (other.GetComponentInParent<Combustor>() || other.GetComponentInChildren<Combustor>())
-            //{
-            //    CrushObject();
-            //}
             if (other.CompareTag(m_crushZoneTag))
             {
                 CrushObject();

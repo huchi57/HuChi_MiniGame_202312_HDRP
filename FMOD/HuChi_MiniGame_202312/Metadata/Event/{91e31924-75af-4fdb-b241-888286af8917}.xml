@@ -2,13 +2,13 @@
 <objects serializationModel="Studio.02.00.00">
 	<object class="Event" id="{91e31924-75af-4fdb-b241-888286af8917}">
 		<property name="name">
-			<value>RoomTone_01</value>
+			<value>S1_AMB_LevelAmbience</value>
 		</property>
 		<property name="outputFormat">
 			<value>1</value>
 		</property>
 		<relationship name="folder">
-			<destination>{7c32f69d-5419-431e-b69a-bf4332d8929f}</destination>
+			<destination>{10a3d818-75c3-4f00-b7fc-c8db6d1e9c49}</destination>
 		</relationship>
 		<relationship name="mixer">
 			<destination>{fdc48efc-6fba-4bb1-a1db-ed94e79f880c}</destination>
@@ -53,7 +53,7 @@
 			<destination>{ff33c5ce-8ce9-40ff-830d-ba0d1126613e}</destination>
 		</relationship>
 		<relationship name="output">
-			<destination>{0ad5d539-a435-4845-bd2f-059ca65b8c9a}</destination>
+			<destination>{81e2fdbd-cb9f-4cfe-80d3-d3d512039251}</destination>
 		</relationship>
 	</object>
 	<object class="EventAutomatableProperties" id="{c52bbc45-0c46-4e00-b274-24509d9a2328}" />
@@ -98,6 +98,9 @@
 		<property name="timelockedOffset">
 			<value>1</value>
 		</property>
+		<relationship name="modulators">
+			<destination>{25f12516-e302-44f8-9073-6d385014b3f4}</destination>
+		</relationship>
 		<relationship name="fadeInCurve">
 			<destination>{eb5a1457-f9e1-44f2-9b12-d20d87153750}</destination>
 		</relationship>
@@ -140,6 +143,14 @@
 	</object>
 	<object class="MixerBusPanner" id="{04496d4f-6f45-4620-8bca-7b6d7645d95f}" />
 	<object class="MixerBusFader" id="{b446ed0a-02fd-4ea2-a505-13b0de1f1a52}" />
+	<object class="RandomizerModulator" id="{25f12516-e302-44f8-9073-6d385014b3f4}">
+		<property name="nameOfPropertyBeingModulated">
+			<value>startOffset</value>
+		</property>
+		<property name="amount">
+			<value>50</value>
+		</property>
+	</object>
 	<object class="FadeCurve" id="{eb5a1457-f9e1-44f2-9b12-d20d87153750}">
 		<relationship name="startPoint">
 			<destination>{722d9b6c-2714-4e85-afd6-667e45ac5be4}</destination>

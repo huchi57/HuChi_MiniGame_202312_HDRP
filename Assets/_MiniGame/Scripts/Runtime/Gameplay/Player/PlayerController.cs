@@ -103,15 +103,17 @@ namespace UrbanFox.MiniGame
             m_originalRotation = transform.rotation;
             GameManager.RegisterPlayer(this);
             InputManager.OnAnyKeyPressed += OnAnyKeyPressed;
-            GameManager.OnGameOverSignaled += EnableUnityBuiltInGravity;
-            GameManager.OnGameReloadCompleted += ResetPlanePosition;
+            GameManager.OnEachGameOverSignaled += EnableUnityBuiltInGravity;
+            GameManager.OnEachLoadingOperationStarts += ResetPlanePosition;
+            GameManager.OnEachFadeInCompleted += ChangeGameStateToWaitForPlayerStart;
         }
 
         private void OnDestroy()
         {
             InputManager.OnAnyKeyPressed -= OnAnyKeyPressed;
-            GameManager.OnGameOverSignaled -= EnableUnityBuiltInGravity;
-            GameManager.OnGameReloadCompleted -= ResetPlanePosition;
+            GameManager.OnEachGameOverSignaled -= EnableUnityBuiltInGravity;
+            GameManager.OnEachLoadingOperationStarts -= ResetPlanePosition;
+            GameManager.OnEachFadeInCompleted -= ChangeGameStateToWaitForPlayerStart;
         }
 
         private void OnAnyKeyPressed(UnityEngine.InputSystem.InputControl key)
@@ -120,6 +122,11 @@ namespace UrbanFox.MiniGame
             {
                 InitializeAndEjectPlane();
             }
+        }
+
+        private void ChangeGameStateToWaitForPlayerStart()
+        {
+            GameManager.Instance.SwitchGameState(GameState.WaitForInputToStartGame);
         }
 
         private void OnEnable()

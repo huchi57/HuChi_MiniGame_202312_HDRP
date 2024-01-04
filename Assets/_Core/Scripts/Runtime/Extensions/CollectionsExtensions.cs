@@ -37,5 +37,25 @@ namespace UrbanFox
             // Random.Range is max inclusive, so do not minus one
             return list[Random.Range(0, list.Count)];
         }
+
+        public static bool Contains<T>(this IList<T> list, T item)
+        {
+            if (item == null)
+            {
+                return true;
+            }
+            if (list.IsNullOrEmpty())
+            {
+                return false;
+            }
+            foreach (var listItem in list)
+            {
+                if (item.Equals(listItem))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
     }
 }

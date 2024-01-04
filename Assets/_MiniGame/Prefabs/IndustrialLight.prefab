@@ -3228,7 +3228,6 @@ MonoBehaviour:
   _normalBrightness: 750
   _patternDuration: 8
   _lerp: 1
-  _playingInEditMode: 0
   _intensityCurve:
     serializedVersion: 2
     m_Curve:
@@ -3406,3 +3405,4 @@ MonoBehaviour:
     m_PreInfinity: 1
     m_PostInfinity: 1
     m_RotationOrder: 4
+  _playingInEditMode: 0

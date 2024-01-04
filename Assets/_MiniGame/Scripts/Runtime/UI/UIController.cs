@@ -20,7 +20,7 @@ namespace UrbanFox.MiniGame
 
         private void Awake()
         {
-            GameManager.OnGameStartSignaled += OnGameStart;
+            GameManager.OnEachGameStarts += OnGameStart;
             InputManager.Escape.OnKeyDown += OnEscapePressed;
             m_pauseMenuPageGroup.OnPageGroupStartsToOpen += OnPauseMenuStartsToOpen;
             m_pauseMenuPageGroup.OnPageGroupStartsToClose += OnPauseMenuStartsToClose;
@@ -28,7 +28,7 @@ namespace UrbanFox.MiniGame
 
         private void OnDestroy()
         {
-            GameManager.OnGameStartSignaled -= OnGameStart;
+            GameManager.OnEachGameStarts -= OnGameStart;
             InputManager.Escape.OnKeyDown -= OnEscapePressed;
             m_pauseMenuPageGroup.OnPageGroupStartsToOpen -= OnPauseMenuStartsToOpen;
             m_pauseMenuPageGroup.OnPageGroupStartsToClose -= OnPauseMenuStartsToClose;

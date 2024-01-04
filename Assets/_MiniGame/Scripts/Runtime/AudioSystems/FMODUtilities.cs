@@ -1,5 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using FMOD;
 using FMOD.Studio;
@@ -9,13 +9,19 @@ namespace UrbanFox.MiniGame
 {
     public static class FMODUtilities
     {
-        private static readonly List<string> s_missingEventPaths = new List<string>();
+        private static readonly Dictionary<GUID, string> s_missingEvents = new Dictionary<GUID, string>();
 
-        public static void PrintMissingEventPaths()
+        public static void PrintMissingEventGUIDsOrPaths()
         {
-            if (!s_missingEventPaths.IsNullOrEmpty())
+            if (!s_missingEvents.IsNullOrEmpty())
             {
-                FoxyLogger.LogError($"{s_missingEventPaths.Count} missing audio event paths found:\n - {string.Join("\n - ", s_missingEventPaths)}");
+                string missingEventList;
+#if UNITY_EDITOR
+                missingEventList = string.Join("\n - ", s_missingEvents.Values.ToList());
+#else
+                missingEventList = string.Join("\n - ", s_missingEvents.Keys.ToList());
+#endif
+                FoxyLogger.LogError($"{s_missingEvents.Count} missing audio event paths found:\n - {missingEventList}");
             }
         }
 
@@ -28,10 +34,15 @@ namespace UrbanFox.MiniGame
             }
             catch
             {
-                if (!s_missingEventPaths.Contains(eventRefAttribute.Path))
+                if (!s_missingEvents.ContainsKey(eventRefAttribute.Guid))
                 {
-                    s_missingEventPaths.Add(eventRefAttribute.Path);
+#if UNITY_EDITOR
+                    s_missingEvents.TryAdd(eventRefAttribute.Guid, eventRefAttribute.Path);
                     FoxyLogger.LogError($"Cannot find an event with path {eventRefAttribute.Path}");
+#else
+                    s_missingEvents.TryAdd(eventRefAttribute.Guid, string.Empty);
+                    FoxyLogger.LogError($"Cannot find an event with path {eventRefAttribute.Guid}");
+#endif
                 }
                 return false;
             }

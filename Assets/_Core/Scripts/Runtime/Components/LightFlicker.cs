@@ -25,12 +25,13 @@ namespace UrbanFox
         [SerializeField]
         private bool _lerp = true;
 
-        // Serialized for custom editor
-        [SerializeField, HideInInspector]
-        private bool _playingInEditMode = false;
-
-        [SerializeField, HideInInspector]
+        [SerializeField]
         private AnimationCurve _intensityCurve = new AnimationCurve();
+
+#if UNITY_EDITOR
+        [SerializeField]
+        private bool _playingInEditMode = false;
+#endif
 
         private Light _light = default;
         private string _cachedPattern = default;

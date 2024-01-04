@@ -79,12 +79,15 @@ namespace UrbanFox.MiniGame
             {
                 GameManager.PlayerController.UpdateRespawnPoint(Vector3.zero);
             }
-            GameManager.Instance.GameOverAndRestartCheckpoint_FadeOut(1, () =>
+            GameManager.Instance.GameOverAndRestartCheckpoint_FadeOut(1, new SceneLoadOperationCallbacks()
             {
-                if (CameraBrain.Main)
+                OnFadeOutCompletedAndIdleStarts = () =>
                 {
-                    CameraBrain.Main.transform.SetPositionAndRotation(Vector3.zero, Quaternion.identity);
-                    CameraBrain.Main.SaveCameraCheckpointPosition();
+                    if (CameraBrain.Main)
+                    {
+                        CameraBrain.Main.transform.SetPositionAndRotation(Vector3.zero, Quaternion.identity);
+                        CameraBrain.Main.SaveCameraCheckpointPosition();
+                    }
                 }
             });
             InputManager.OnAnyKeyPressed -= OnAnykeyPressed;
