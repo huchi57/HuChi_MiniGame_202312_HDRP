@@ -5,6 +5,9 @@ namespace UrbanFox.MiniGame
     public class CheckpointUpdateTrigger : MonoBehaviour
     {
         [SerializeField]
+        private CheckpointIndicator m_checkpointIndicator;
+
+        [SerializeField]
         private bool m_overrideSpawnPoint;
 
         [SerializeField, ShowIf(nameof(m_overrideSpawnPoint), true)]
@@ -18,6 +21,10 @@ namespace UrbanFox.MiniGame
                 if (CameraBrain.Main)
                 {
                     CameraBrain.Main.SaveCameraCheckpointPosition();
+                }
+                if (m_checkpointIndicator)
+                {
+                    m_checkpointIndicator.TurnOnLight();
                 }
             }
         }
