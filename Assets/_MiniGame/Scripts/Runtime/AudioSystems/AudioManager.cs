@@ -65,6 +65,7 @@ namespace UrbanFox.MiniGame
             m_UIController.OnPauseMenuClosing -= OnPauseMenuClosing;
             GameManager.OnGameFullyFadeOutAndReloadStarted -= OnGameFullyFadeOutAndReloadStarted;
             GameManager.OnGameReloadCompleted -= OnGameReloadCompleted;
+            FMODUtilities.PrintMissingEventPaths();
         }
 
         private void Update()
