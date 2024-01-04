@@ -98,6 +98,11 @@ ProjectSettings/BurstAotSettings_StandaloneWindows.json
 # Log files can be ignored.
 fmod_editor.log
 
+# FMOD Mac library bundle contents
+/[Aa]ssets/Plugins/FMOD/platforms/mac/lib/fmodstudio.bundle/Contents/Info.plist
+/[Aa]ssets/Plugins/FMOD/platforms/mac/lib/fmodstudioL.bundle/Contents/Info.plist
+/[Aa]ssets/Plugins/FMOD/platforms/mac/lib/resonanceaudio.bundle/Contents/Info.plist
+
 # Other files
 .cache
 *.unitypackage.meta
