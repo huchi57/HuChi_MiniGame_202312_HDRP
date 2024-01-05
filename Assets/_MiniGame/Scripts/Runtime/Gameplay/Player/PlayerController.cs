@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -49,9 +50,19 @@ namespace UrbanFox.MiniGame
             m_originalPosition = point;
         }
 
-        public void LockToPitchAngle(float pitchAngle)
+        public void LockToPitchAngleForDuration(float pitchAngle, float duration, float lerpSpeed)
         {
-            m_targetPitchAngle = pitchAngle;
+            StartCoroutine(DoLockToPitchAngle());
+            IEnumerator DoLockToPitchAngle()
+            {
+                float timer = 0;
+                while (timer < duration)
+                {
+                    m_targetPitchAngle = Mathf.Lerp(m_targetPitchAngle, pitchAngle, lerpSpeed * Time.deltaTime);
+                    yield return null;
+                    timer += Time.deltaTime;
+                }
+            }
         }
 
         public void ResetPlanePosition()

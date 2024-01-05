@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.00.00">
+	<object class="ParameterPreset" id="{5c287289-e4d8-4372-89cc-eb56e04de85e}">
+		<property name="name">
+			<value>DiegeticSoundIntensity</value>
+		</property>
+		<relationship name="folder">
+			<destination>{b1c67e69-9491-4b8c-88c1-dfa3dc1c7cfc}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{ba6a436c-2a29-4077-a889-1ee29ee5ab35}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{ba6a436c-2a29-4077-a889-1ee29ee5ab35}">
+		<property name="initialValue">
+			<value>1</value>
+		</property>
+	</object>
+</objects>

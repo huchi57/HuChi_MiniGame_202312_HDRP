@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.00.00">
 	<object class="MixerGroup" id="{b44eb48d-1cad-4e8d-9dab-35a430f2dc6b}">
 		<property name="name">
-			<value>DiageticSounds</value>
+			<value>Game</value>
 		</property>
 		<relationship name="effectChain">
 			<destination>{81bec53c-60b7-43d7-ac02-ffa875c06467}</destination>
@@ -11,7 +11,7 @@
 			<destination>{86b22ab3-5940-49ad-b4b7-c69e3752e08b}</destination>
 		</relationship>
 		<relationship name="output">
-			<destination>{0ad5d539-a435-4845-bd2f-059ca65b8c9a}</destination>
+			<destination>{984bfaf6-5f0d-4db5-8bfb-ba7bc44d43b5}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusEffectChain" id="{81bec53c-60b7-43d7-ac02-ffa875c06467}">

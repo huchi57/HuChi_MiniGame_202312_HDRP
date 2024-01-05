@@ -43,9 +43,9 @@ namespace UrbanFox.MiniGame
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.gameObject.TryGetComponent<PlayerController>(out var player))
+            if (other.gameObject.TryGetComponent<PlayerController>(out var player) && GameManager.Instance.CurrentGameState == GameState.GameplayPausable)
             {
-                player.LockToPitchAngle(0);
+                player.LockToPitchAngleForDuration(pitchAngle: 0, duration: 5, lerpSpeed: 3);
                 StartCoroutine(PlayCredits());
             }
         }

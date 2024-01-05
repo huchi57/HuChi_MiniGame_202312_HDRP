@@ -4,6 +4,7 @@ using UnityEngine.Events;
 using FMOD.Studio;
 using FMODUnity;
 using Cinemachine;
+using UnityEngine.VFX;
 
 namespace UrbanFox.MiniGame
 {
@@ -101,6 +102,9 @@ namespace UrbanFox.MiniGame
         [SerializeField]
         private CinemachineImpulseSource m_cinemachineImpulse;
 
+        [SerializeField]
+        private VisualEffect m_sparkles;
+
         [Header("Debug")]
         [SerializeField]
         private bool m_drawGizmos;
@@ -142,6 +146,10 @@ namespace UrbanFox.MiniGame
             m_lastFramePosition = transform.position;
             m_patrolPointsWorldSpace = new Vector3[m_patrolPoints.IsNullOrEmpty() ? 0 : m_patrolPoints.Length + 1];
             m_percentageOnPatrolCurve = m_randomizeStartingPoint ? UnityEngine.Random.Range(0f, 1f) : m_percentageOnPatrolCurve;
+            if (m_sparkles)
+            {
+                m_sparkles.Stop();
+            }
         }
 
         private void Start()
@@ -218,6 +226,10 @@ namespace UrbanFox.MiniGame
                 if (m_cinemachineImpulse)
                 {
                     m_cinemachineImpulse.GenerateImpulse();
+                }
+                if (m_sparkles)
+                {
+                    m_sparkles.Play();
                 }
             }
             if (other.gameObject.GetComponent<PlayerController>())

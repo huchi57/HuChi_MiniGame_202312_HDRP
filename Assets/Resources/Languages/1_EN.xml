@@ -47,4 +47,51 @@
     <i k="UI.Credits" v="Credits"/>
     <i k="QA.Questionnaire" v="Questionnaire"/>
     <i k="QA.ReportBug" v="Report Bug"/>
+    <i k="Credits.Credits" v="Credits"/>
+    <i k="Credits.CreatedBy" v="Created by"/>
+    <i k="Credits.ProducedBy" v="Produced by"/>
+    <i k="Credits.GameDesign" v="Game Desgin"/>
+    <i k="Credits.Story" v="Story"/>
+    <i k="Credits.Script" v="Script"/>
+    <i k="Credits.Trailer" v="Trailer"/>
+    <i k="Credits.LevelDesign" v="Level Design"/>
+    <i k="Credits.Art" v="Art"/>
+    <i k="Credits.Art.LeadArt" v="Lead Art"/>
+    <i k="Credits.Art.ConceptArt" v="Concept Art"/>
+    <i k="Credits.Art.2DArt" v="2D Art"/>
+    <i k="Credits.Art.3DArt" v="3D Art"/>
+    <i k="Credits.Art.EnvironmentArt" v="Environment Art"/>
+    <i k="Credits.Art.CharacterArt" v="Character Art"/>
+    <i k="Credits.Art.Animation" v="Animation"/>
+    <i k="Credits.Art.PostEffects" v="Post Effects"/>
+    <i k="Credits.Art.TechnicalArt" v="Technical Art"/>
+    <i k="Credits.Programming" v="Programming"/>
+    <i k="Credits.Programming.LeadProgramming" v="Lead Programming"/>
+    <i k="Credits.Audio" v="Audio"/>
+    <i k="Credits.Audio.AudioDirecting" v="Audio Directing"/>
+    <i k="Credits.Audio.SoundDesign" v="Sound Design"/>
+    <i k="Credits.Audio.AudioProgramming" v="Audio Programming"/>
+    <i k="Credits.Audio.Music" v="Music"/>
+    <i k="Credits.Audio.Composing" v="Composing"/>
+    <i k="Credits.Testers" v="Testers"/>
+    <i k="Credits.Testers.InternalTesters" v="Internal Testers"/>
+    <i k="Credits.Testers.ExternalTesters" v="External Testers"/>
+    <i k="Credits.ExternalResources" v="External Resources"/>
+    <i k="Credits.ExternalResources.Fonts" v="Fonts"/>
+    <i k="Credits.ExternalResources.Textures" v="Textures"/>
+    <i k="Credits.ExternalResources.Models" v="Models"/>
+    <i k="Credits.ExternalResources.SoundEffects" v="Sound Effects"/>
+    <i k="Credits.ExternalResources.Music" v="Music"/>
+    <i k="Credits.ExternalResources.Audio" v="Audio"/>
+    <i k="Credits.Localization" v="Localization"/>
+    <i k="Credits.Localization.English" v="English"/>
+    <i k="Credits.Localizatioin.French" v="French"/>
+    <i k="Credits.Localization.German" v="German"/>
+    <i k="Credits.Localization.Japanese" v="Japanese"/>
+    <i k="Credits.Localization.ZH-TW" v="Mandarin (Traditional characters)"/>
+    <i k="Credits.Localization.ZH-CN" v="Mandarin (Simplified characters)"/>
+    <i k="Credits.Localization.Korean" v="Korean"/>
+    <i k="Credits.SpecialThanks" v="Special Thanks"/>
+    <i k="Credits.Disclaimer" v="This game is currently a demo. Its development started from December 12, 2023."/>
+    <i k="Credits.ThankYouForPlaying" v="Thank you for playing."/>
 </data>

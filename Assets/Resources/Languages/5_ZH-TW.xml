@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <data>
     <i k="Key" v="ZH-TW"/>
-    <i k="LanguageName" v="繁體中文"/>
+    <i k="LanguageName" v="繁體字"/>
     <i k="UI.Yes" v="是"/>
     <i k="UI.No" v="否"/>
     <i k="UI.Confirm" v="確認"/>
@@ -47,4 +47,51 @@
     <i k="UI.Credits" v="開發人員"/>
     <i k="QA.Questionnaire" v="填寫問卷"/>
     <i k="QA.ReportBug" v="回報問題"/>
+    <i k="Credits.Credits" v="開發人員"/>
+    <i k="Credits.CreatedBy" v="遊戲製作"/>
+    <i k="Credits.ProducedBy" v="製作人"/>
+    <i k="Credits.GameDesign" v="遊戲設計"/>
+    <i k="Credits.Story" v="故事"/>
+    <i k="Credits.Script" v="劇本"/>
+    <i k="Credits.Trailer" v="預告"/>
+    <i k="Credits.LevelDesign" v="關卡設計"/>
+    <i k="Credits.Art" v="美術"/>
+    <i k="Credits.Art.LeadArt" v="主美術"/>
+    <i k="Credits.Art.ConceptArt" v="概念美術"/>
+    <i k="Credits.Art.2DArt" v="2D 美術"/>
+    <i k="Credits.Art.3DArt" v="3D 美術"/>
+    <i k="Credits.Art.EnvironmentArt" v="環境美術"/>
+    <i k="Credits.Art.CharacterArt" v="角色美術"/>
+    <i k="Credits.Art.Animation" v="動畫"/>
+    <i k="Credits.Art.PostEffects" v="特效"/>
+    <i k="Credits.Art.TechnicalArt" v="技術美術"/>
+    <i k="Credits.Programming" v="程式"/>
+    <i k="Credits.Programming.LeadProgramming" v="主程式"/>
+    <i k="Credits.Audio" v="聲音"/>
+    <i k="Credits.Audio.AudioDirecting" v="音效總監"/>
+    <i k="Credits.Audio.SoundDesign" v="音效設計"/>
+    <i k="Credits.Audio.AudioProgramming" v="音效程式"/>
+    <i k="Credits.Audio.Music" v="音樂"/>
+    <i k="Credits.Audio.Composing" v="作曲"/>
+    <i k="Credits.Testers" v="測試"/>
+    <i k="Credits.Testers.InternalTesters" v="內部測試"/>
+    <i k="Credits.Testers.ExternalTesters" v="白紙測試"/>
+    <i k="Credits.ExternalResources" v="外部資源"/>
+    <i k="Credits.ExternalResources.Fonts" v="字體"/>
+    <i k="Credits.ExternalResources.Textures" v="材質"/>
+    <i k="Credits.ExternalResources.Models" v="模型"/>
+    <i k="Credits.ExternalResources.SoundEffects" v="音效"/>
+    <i k="Credits.ExternalResources.Music" v="音樂"/>
+    <i k="Credits.ExternalResources.Audio" v="聲音"/>
+    <i k="Credits.Localization" v="翻譯"/>
+    <i k="Credits.Localization.English" v="英文"/>
+    <i k="Credits.Localizatioin.French" v="法文"/>
+    <i k="Credits.Localization.German" v="德文"/>
+    <i k="Credits.Localization.Japanese" v="日文"/>
+    <i k="Credits.Localization.ZH-TW" v="繁體字"/>
+    <i k="Credits.Localization.ZH-CN" v="簡體字"/>
+    <i k="Credits.Localization.Korean" v="韓文"/>
+    <i k="Credits.SpecialThanks" v="特別感謝"/>
+    <i k="Credits.Disclaimer" v="本作品目前為 demo 版本。本作品於 2023 年 12 月 12 日開始開發。"/>
+    <i k="Credits.ThankYouForPlaying" v="感謝您的遊玩。"/>
 </data>

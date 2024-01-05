@@ -47,4 +47,51 @@
     <i k="UI.Credits" v="クレジット"/>
     <i k="QA.Questionnaire" v="アンケートを記入"/>
     <i k="QA.ReportBug" v="バグを報告"/>
+    <i k="Credits.Credits" v="クレジット"/>
+    <i k="Credits.CreatedBy" v="ゲームクリエイター"/>
+    <i k="Credits.ProducedBy" v="プロデューサー"/>
+    <i k="Credits.GameDesign" v="ゲームデザイナー"/>
+    <i k="Credits.Story" v="ストーリー"/>
+    <i k="Credits.Script" v="スクリプト"/>
+    <i k="Credits.Trailer" v="予告"/>
+    <i k="Credits.LevelDesign" v="レベルデザイナー"/>
+    <i k="Credits.Art" v="ゲームアート"/>
+    <i k="Credits.Art.LeadArt" v="リードアーティスト"/>
+    <i k="Credits.Art.ConceptArt" v="コンセプトアーティスト"/>
+    <i k="Credits.Art.2DArt" v="2Dアーティスト"/>
+    <i k="Credits.Art.3DArt" v="3Dアーティスト"/>
+    <i k="Credits.Art.EnvironmentArt" v="エンバイロメントアーティスト"/>
+    <i k="Credits.Art.CharacterArt" v="キャラクターアーティスト"/>
+    <i k="Credits.Art.Animation" v="アニメーター"/>
+    <i k="Credits.Art.PostEffects" v="ポストエフェクト"/>
+    <i k="Credits.Art.TechnicalArt" v="テクニカルアーティスト"/>
+    <i k="Credits.Programming" v="プログラミング"/>
+    <i k="Credits.Programming.LeadProgramming" v="リードプログラマー"/>
+    <i k="Credits.Audio" v="オーディオ"/>
+    <i k="Credits.Audio.AudioDirecting" v="オーディオディレクター"/>
+    <i k="Credits.Audio.SoundDesign" v="サウンドデザイナー"/>
+    <i k="Credits.Audio.AudioProgramming" v="オーディオプログラマー"/>
+    <i k="Credits.Audio.Music" v="音楽"/>
+    <i k="Credits.Audio.Composing" v="作曲"/>
+    <i k="Credits.Testers" v="テスタ―"/>
+    <i k="Credits.Testers.InternalTesters" v="内部テスター"/>
+    <i k="Credits.Testers.ExternalTesters" v="エクスターナルテスター"/>
+    <i k="Credits.ExternalResources" v="外部資源"/>
+    <i k="Credits.ExternalResources.Fonts" v="フォント"/>
+    <i k="Credits.ExternalResources.Textures" v="テクスチャ"/>
+    <i k="Credits.ExternalResources.Models" v="モデル"/>
+    <i k="Credits.ExternalResources.SoundEffects" v="オーディオ"/>
+    <i k="Credits.ExternalResources.Music" v="音楽"/>
+    <i k="Credits.ExternalResources.Audio" v="オーディオ"/>
+    <i k="Credits.Localization" v="多言語対応"/>
+    <i k="Credits.Localization.English" v="英語"/>
+    <i k="Credits.Localizatioin.French" v="フランス語"/>
+    <i k="Credits.Localization.German" v="ドイツ語"/>
+    <i k="Credits.Localization.Japanese" v="日本語"/>
+    <i k="Credits.Localization.ZH-TW" v="繁体字"/>
+    <i k="Credits.Localization.ZH-CN" v="簡体字"/>
+    <i k="Credits.Localization.Korean" v="韓国語"/>
+    <i k="Credits.SpecialThanks" v="Special Thanks"/>
+    <i k="Credits.Disclaimer" v="このゲームは現在デモ版です。開発は2023年12月12日から始まりました。"/>
+    <i k="Credits.ThankYouForPlaying" v="本作品をプレイしていただきありがとうございます。"/>
 </data>

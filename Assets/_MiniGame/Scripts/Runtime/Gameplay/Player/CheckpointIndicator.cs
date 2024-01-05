@@ -1,27 +1,35 @@
+using System.Collections;
 using UnityEngine;
+using DG.Tweening;
 
 namespace UrbanFox.MiniGame
 {
     public class CheckpointIndicator : MonoBehaviour
     {
         [SerializeField]
-        private LightSynchedEmissionMaterial m_lightMaterial;
-
-        [SerializeField, NonEditable]
         private Light m_light;
+
+        [SerializeField]
+        private float m_lightFadeTime = 1;
+
+        [SerializeField]
+        private float m_delayTurnOnTime = 0;
 
         private Color m_cacheLightColor;
 
         public void TurnOnLight()
         {
-            m_light.color = m_cacheLightColor;
-        }
-
-        private void OnValidate()
-        {
-            if (m_lightMaterial)
+            StartCoroutine(DoTurnOnLight());
+            IEnumerator DoTurnOnLight()
             {
-                m_light = m_lightMaterial.GetComponent<Light>();
+                yield return new WaitForSeconds(m_delayTurnOnTime);
+                m_light.DOColor(m_cacheLightColor * 0.8f, m_lightFadeTime * 0.7f).OnComplete(() =>
+                {
+                    m_light.DOColor(m_cacheLightColor * 0.7f, m_lightFadeTime * 0.2f).OnComplete(() =>
+                    {
+                        m_light.DOColor(m_cacheLightColor, m_lightFadeTime * 0.1f);
+                    });
+                });
             }
         }
 

@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: ApplicationBuildData
   m_EditorClassIdentifier: 
   CustomBuildName: Alpha02_S1S2LayoutAlmostComplete
-  CurrentBuildTime: 2024/01/04-11:21:43
-  WindowsBuildIteration: 30
+  CurrentBuildTime: 2024/01/05-09:50:03
+  WindowsBuildIteration: 31
   MacBuildIteration: 6
   LinuxBuildIteration: 0
   SwitchBuildIteration: 0

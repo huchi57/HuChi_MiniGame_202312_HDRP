@@ -47,6 +47,8 @@ namespace UrbanFox.MiniGame
                 content.AppendLine($"{ApplicationBuildData.Instance.GetBuildInfoText()}");
                 content.AppendLine($"Game State: {GameManager.Instance.CurrentGameState}");
                 content.AppendLine($"FOV: {m_cinemachineVirtualCamera.m_Lens.FieldOfView:F2}");
+                content.AppendLine($"Master Volume: {AudioManager.Instance.MasterBusVolume:F2}");
+                content.AppendLine($"Game Volume: {AudioManager.Instance.GameBusVolume:F2}");
 
                 // TODO: Add more texts
             }

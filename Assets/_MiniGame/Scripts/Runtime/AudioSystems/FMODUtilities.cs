@@ -30,19 +30,24 @@ namespace UrbanFox.MiniGame
         {
             try
             {
+                if (eventRefAttribute.Guid.IsNull)
+                {
+                    FoxyLogger.LogWarning($"An empty FMOD event has been found. Check callstack to check if any blank audio is in the project.");
+                    return false;
+                }
                 RuntimeManager.GetEventDescription(eventRefAttribute);
                 return true;
             }
             catch
             {
-                if (!eventRefAttribute.Guid.IsNull && !s_missingEvents.ContainsKey(eventRefAttribute.Guid))
+                if (!s_missingEvents.ContainsKey(eventRefAttribute.Guid))
                 {
 #if UNITY_EDITOR
                     s_missingEvents.TryAdd(eventRefAttribute.Guid, eventRefAttribute.Path);
                     FoxyLogger.LogError($"Cannot find an event with path {eventRefAttribute.Path}");
 #else
                     s_missingEvents.TryAdd(eventRefAttribute.Guid, string.Empty);
-                    FoxyLogger.LogError($"Cannot find an event with path {eventRefAttribute.Guid}");
+                    FoxyLogger.LogError($"Cannot find an event with GUID {eventRefAttribute.Guid}");
 #endif
                 }
                 return false;
