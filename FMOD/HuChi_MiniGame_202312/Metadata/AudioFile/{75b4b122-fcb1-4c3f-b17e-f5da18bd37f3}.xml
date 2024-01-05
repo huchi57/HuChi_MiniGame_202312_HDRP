@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.00.00">
+	<object class="AudioFile" id="{75b4b122-fcb1-4c3f-b17e-f5da18bd37f3}">
+		<property name="assetPath">
+			<value>SciFi/Machine FX 02.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>6.0666666666666664</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{46e2668f-388b-4cd4-bd5e-ed8a72c6a118}</destination>
+		</relationship>
+	</object>
+</objects>

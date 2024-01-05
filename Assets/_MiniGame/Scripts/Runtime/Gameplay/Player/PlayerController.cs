@@ -45,6 +45,12 @@ namespace UrbanFox.MiniGame
 
         private float CurrentPitchAngle => m_rigidbody.rotation.eulerAngles.z.AnglePositiveOrNegative180();
 
+        public bool IsAlive
+        {
+            get;
+            private set;
+        }
+
         public void UpdateRespawnPoint(Vector3 point)
         {
             m_originalPosition = point;
@@ -72,6 +78,7 @@ namespace UrbanFox.MiniGame
             m_rigidbody.velocity = Vector3.zero;
             m_rigidbody.angularVelocity = Vector3.zero;
             m_isBlownAwayByWind = false;
+            IsAlive = true;
         }
 
         public void InitializeAndEjectPlane()
@@ -80,10 +87,12 @@ namespace UrbanFox.MiniGame
             m_moveVelocity = Random.Range(m_minInitialVelocity, m_maxInitialVelocity);
             GameManager.Instance.SwitchGameState(GameState.GameplayPausable);
             CameraBrain.Main.SaveCameraCheckpointPosition();
+            IsAlive = true;
         }
 
         public void TriggerGameOver(bool isInstantDeath = false)
         {
+            IsAlive = false;
             EnableUnityBuiltInGravity();
             if (isInstantDeath)
             {
@@ -117,6 +126,7 @@ namespace UrbanFox.MiniGame
             GameManager.OnEachGameOverSignaled += EnableUnityBuiltInGravity;
             GameManager.OnEachLoadingOperationStarts += ResetPlanePosition;
             GameManager.OnEachFadeInCompleted += ChangeGameStateToWaitForPlayerStart;
+            IsAlive = true;
         }
 
         private void OnDestroy()
@@ -137,6 +147,7 @@ namespace UrbanFox.MiniGame
 
         private void ChangeGameStateToWaitForPlayerStart()
         {
+            IsAlive = true;
             GameManager.Instance.SwitchGameState(GameState.WaitForInputToStartGame);
         }
 
@@ -216,6 +227,7 @@ namespace UrbanFox.MiniGame
         {
             if (GameManager.Instance.CurrentGameState != GameState.GameCompletedWaitForInput)
             {
+                IsAlive = false;
                 TriggerGameOver(isInstantDeath: collision.gameObject.GetComponent<InstantGameOverOnCollision>());
             }
         }
@@ -224,6 +236,7 @@ namespace UrbanFox.MiniGame
         {
             if (other.TryGetComponent<GameOverTrigger>(out var trigger))
             {
+                IsAlive = false;
                 GameManager.Instance.GameOverAndRestartCheckpoint_FadeOut(trigger.WaitTimeBeforeRestartingWhenGameOverTriggered);
             }
         }

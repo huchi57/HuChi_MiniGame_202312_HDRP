@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.00.00">
+	<object class="EncodableAsset" id="{2ef92784-313d-4feb-b2ff-819d89646eb2}">
+		<property name="assetPath">
+			<value>Tunnel/</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{46e2668f-388b-4cd4-bd5e-ed8a72c6a118}</destination>
+		</relationship>
+	</object>
+</objects>

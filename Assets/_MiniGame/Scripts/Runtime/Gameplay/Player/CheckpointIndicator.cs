@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using DG.Tweening;
+using FMODUnity;
 
 namespace UrbanFox.MiniGame
 {
@@ -15,10 +16,17 @@ namespace UrbanFox.MiniGame
         [SerializeField]
         private float m_delayTurnOnTime = 0;
 
+        [SerializeField]
+        private EventReference m_lightOnSound;
+
         private Color m_cacheLightColor;
 
-        public void TurnOnLight()
+        public void TurnOnLight(bool playSound = true)
         {
+            if (playSound)
+            {
+                m_lightOnSound.PlayOneShot(m_light ? m_light.transform.position : transform.position);
+            }
             StartCoroutine(DoTurnOnLight());
             IEnumerator DoTurnOnLight()
             {
@@ -40,7 +48,7 @@ namespace UrbanFox.MiniGame
                 m_cacheLightColor = m_light.color;
                 if (Vector3.Distance(GameManager.Player.position, transform.position) < 10f)
                 {
-                    TurnOnLight();
+                    TurnOnLight(playSound: false);
                 }
                 else
                 {

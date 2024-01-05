@@ -24,7 +24,7 @@ namespace UrbanFox.MiniGame
                 }
                 if (m_checkpointIndicator)
                 {
-                    m_checkpointIndicator.TurnOnLight();
+                    m_checkpointIndicator.TurnOnLight(playSound: true);
                 }
             }
         }

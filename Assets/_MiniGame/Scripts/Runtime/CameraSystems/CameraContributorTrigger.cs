@@ -24,15 +24,18 @@ namespace UrbanFox.MiniGame
 
         private void OnTriggerEnter(Collider other)
         {
-            if (CameraBrain.Main && other.CompareTag(GameManager.PlayerTag) && GameManager.Instance.CurrentGameState != GameState.GameOverWaitForReload)
+            if (CameraBrain.Main)
             {
-                CameraBrain.Main.AddContributor(m_cameraContributor);
+                if (other.TryGetComponent<PlayerController>(out var player) && player.IsAlive)
+                {
+                    CameraBrain.Main.AddContributor(m_cameraContributor);
+                }
             }
         }
 
         private void OnTriggerExit(Collider other)
         {
-            if (CameraBrain.Main && other.CompareTag(GameManager.PlayerTag))
+            if (CameraBrain.Main && other.GetComponent<PlayerController>())
             {
                 CameraBrain.Main.RemoveContributor(m_cameraContributor);
             }

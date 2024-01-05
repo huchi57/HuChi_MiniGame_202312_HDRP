@@ -144,9 +144,6 @@
 		<property name="nameOfPropertyBeingModulated">
 			<value>startOffset</value>
 		</property>
-		<property name="amount">
-			<value>50</value>
-		</property>
 	</object>
 	<object class="MixerBusEffectChain" id="{4400ee8a-b042-4700-959f-b67a2149ea97}">
 		<relationship name="effects">

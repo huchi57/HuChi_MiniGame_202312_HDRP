@@ -219,7 +219,7 @@ namespace UrbanFox.Editor
             }
             else
             {
-                FoxyLogger.LogError($"Download failed. Error message: {_webRequest.error}");
+                FoxyLogger.LogError($"Download failed from {_sourceSpreadsheetURLJsonFormat.Replace(_IDToken, _sourceSpreadsheetID)}. Error message: {_webRequest.error}");
             }
 
             EditorApplication.update -= DownloadDataInProgress;
