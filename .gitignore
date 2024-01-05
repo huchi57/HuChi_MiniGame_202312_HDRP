@@ -105,4 +105,5 @@ fmod_editor.log
 
 # Other files
 .cache
+.unsaved
 *.unitypackage.meta
