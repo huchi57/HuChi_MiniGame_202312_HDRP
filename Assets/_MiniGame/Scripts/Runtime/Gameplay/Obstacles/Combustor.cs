@@ -5,6 +5,7 @@ using FMODUnity;
 using DG.Tweening;
 using DG.Tweening.Core;
 using DG.Tweening.Plugins.Options;
+using UnityEngine.VFX;
 
 namespace UrbanFox.MiniGame
 {
@@ -36,6 +37,9 @@ namespace UrbanFox.MiniGame
 
         [SerializeField]
         private CinemachineImpulseSource m_cinemachineImpulseSource;
+
+        [SerializeField]
+        private VisualEffect m_impactEffect;
 
         [Header("Audio")]
         [SerializeField]
@@ -72,6 +76,11 @@ namespace UrbanFox.MiniGame
 
         private IEnumerator Start()
         {
+            if (m_impactEffect)
+            {
+                m_impactEffect.Stop();
+            }
+
             m_openedPosition = transform.position;
             m_closedPosition = transform.position + m_closedPositionRelativePosition;
 
@@ -112,6 +121,11 @@ namespace UrbanFox.MiniGame
             if (m_cinemachineImpulseSource)
             {
                 m_cinemachineImpulseSource.GenerateImpulse();
+            }
+            if (m_impactEffect)
+            {
+                m_impactEffect.Stop();
+                m_impactEffect.Play();
             }
             yield return new WaitForSeconds(m_combustorClosedHoldDuration);
             m_tween = transform.DOMove(m_openedPosition, m_retractDuration);

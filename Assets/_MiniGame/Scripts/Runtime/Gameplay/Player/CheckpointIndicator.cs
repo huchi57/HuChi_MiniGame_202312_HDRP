@@ -23,14 +23,14 @@ namespace UrbanFox.MiniGame
 
         public void TurnOnLight(bool playSound = true)
         {
-            if (playSound)
-            {
-                m_lightOnSound.PlayOneShot(m_light ? m_light.transform.position : transform.position);
-            }
             StartCoroutine(DoTurnOnLight());
             IEnumerator DoTurnOnLight()
             {
                 yield return new WaitForSeconds(m_delayTurnOnTime);
+                if (playSound)
+                {
+                    m_lightOnSound.PlayOneShot(m_light ? m_light.transform.position : transform.position);
+                }
                 m_light.DOColor(m_cacheLightColor * 0.8f, m_lightFadeTime * 0.7f).OnComplete(() =>
                 {
                     m_light.DOColor(m_cacheLightColor * 0.7f, m_lightFadeTime * 0.2f).OnComplete(() =>
