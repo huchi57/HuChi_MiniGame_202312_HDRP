@@ -71,9 +71,6 @@ namespace UrbanFox.MiniGame
         [SerializeField]
         private float m_loadingIconFadeTime;
 
-        [SerializeField, Required]
-        private CanvasGroup m_fullscreenBlack;
-
         [SerializeField]
         private LoadingIconType m_loadingIconType;
 
@@ -155,7 +152,10 @@ namespace UrbanFox.MiniGame
                 // Fade out starts
                 OnEachFadeOutStarts?.Invoke();
                 callbacks?.OnFadeOutStarts?.Invoke();
-                m_fullscreenBlack.DOFade(1, fadeTime);
+                if (UIManager.IsInstanceExist)
+                {
+                    UIManager.Instance.FadeOutToBlack(fadeTime);
+                }
                 yield return new WaitForSeconds(fadeTime);
 
                 // Fade out completed - start idle time
@@ -231,11 +231,19 @@ namespace UrbanFox.MiniGame
                 // Fade in begins
                 OnEachFadeInStarts?.Invoke();
                 callbacks?.OnFadeInStarts?.Invoke();
-                m_fullscreenBlack.DOFade(0, m_fullscreenBlackFadeTime).OnComplete(() =>
+                if (UIManager.IsInstanceExist)
+                {
+                    UIManager.Instance.FadeInFromBlack(m_fullscreenBlackIdleTime, () =>
+                    {
+                        OnEachFadeInCompleted?.Invoke();
+                        callbacks?.OnFadeInCompleted?.Invoke();
+                    });
+                }
+                else
                 {
                     OnEachFadeInCompleted?.Invoke();
                     callbacks?.OnFadeInCompleted?.Invoke();
-                });
+                }
             }
         }
 
@@ -331,7 +339,6 @@ namespace UrbanFox.MiniGame
         private void Start()
         {
             m_previousGameState = m_currentGameState;
-            m_fullscreenBlack.alpha = 1;
             m_loadingBarCanvasGroup.alpha = 0;
             m_loadingWheelCanvasGroup.alpha = 0;
             UnloadAllButPersistentScene();

@@ -2649,7 +2649,7 @@ GameObject:
   - component: {fileID: 205306606}
   - component: {fileID: 205306605}
   m_Layer: 5
-  m_Name: Image_FullScreenBlack
+  m_Name: Image_FullscreenBlack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12551,7 +12551,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 888965b8dad9b544397e46ddcec1d434, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_dontDestroyOnLoad: 0
   m_titleSplashScreen: {fileID: 213401494}
+  m_fullscreenBlack: {fileID: 205306605}
   m_titleSplashScreenFadeTime: 1
   m_pauseMenuPageGroup: {fileID: 1324161213}
 --- !u!1 &882068992
@@ -14825,7 +14827,6 @@ MonoBehaviour:
   m_fullscreenBlackFadeTime: 2
   m_fullscreenBlackIdleTime: 2.25
   m_loadingIconFadeTime: 0.5
-  m_fullscreenBlack: {fileID: 205306605}
   m_loadingIconType: 1
   m_loadingBar: {fileID: 1219205983}
   m_loadingBarCanvasGroup: {fileID: 1219205982}
@@ -23821,7 +23822,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_dontDestroyOnLoad: 0
-  m_UIController: {fileID: 877470286}
   m_slightDelayBeforeFadeIn: 1
   m_easeIn: 8
   m_defaultVolumeFadeInSeconds: 3

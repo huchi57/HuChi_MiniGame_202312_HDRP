@@ -4,13 +4,16 @@ using DG.Tweening;
 
 namespace UrbanFox.MiniGame
 {
-    public class UIController : MonoBehaviour
+    public class UIManager : RuntimeManager<UIManager>
     {
-        public event Action OnPauseMenuOpening;
-        public event Action OnPauseMenuClosing;
+        public static event Action OnPauseMenuOpening;
+        public static event Action OnPauseMenuClosing;
 
         [SerializeField, Required]
         private CanvasGroup m_titleSplashScreen;
+
+        [SerializeField, Required]
+        private CanvasGroup m_fullscreenBlack;
 
         [SerializeField]
         private float m_titleSplashScreenFadeTime = 1;
@@ -18,12 +21,48 @@ namespace UrbanFox.MiniGame
         [SerializeField, Required]
         private UIPageGroup m_pauseMenuPageGroup;
 
-        private void Awake()
+        public void FadeOutToBlack(float fadeDuration, Action onCompleted = null)
+        {
+            m_fullscreenBlack.gameObject.SetActive(true);
+            if (fadeDuration < 0)
+            {
+                m_fullscreenBlack.alpha = 1;
+                onCompleted?.Invoke();
+            }
+            else
+            {
+                m_fullscreenBlack.DOFade(1, fadeDuration).OnComplete(() =>
+                {
+                    onCompleted?.Invoke();
+                });
+            }
+        }
+
+        public void FadeInFromBlack(float fadeDuration, Action onCompleted = null)
+        {
+            if (fadeDuration < 0)
+            {
+                m_fullscreenBlack.alpha = 0;
+                m_fullscreenBlack.gameObject.SetActive(false);
+                onCompleted?.Invoke();
+            }
+            else
+            {
+                m_fullscreenBlack.DOFade(0, fadeDuration).OnComplete(() =>
+                {
+                    m_fullscreenBlack.gameObject.SetActive(false);
+                    onCompleted?.Invoke();
+                });
+            }
+        }
+
+        private void Start()
         {
             GameManager.OnEachGameStarts += OnGameStart;
             InputManager.Escape.OnKeyDown += OnEscapePressed;
             m_pauseMenuPageGroup.OnPageGroupStartsToOpen += OnPauseMenuStartsToOpen;
             m_pauseMenuPageGroup.OnPageGroupStartsToClose += OnPauseMenuStartsToClose;
+            m_fullscreenBlack.alpha = 1;
         }
 
         private void OnDestroy()

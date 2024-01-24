@@ -12,9 +12,6 @@ namespace UrbanFox.MiniGame
         private const string k_gameBusName = "bus:/Master/Game";
         private const string k_reverbBusName = "bus:/Reverb";
 
-        [SerializeField, Required]
-        private UIController m_UIController;
-
         [SerializeField]
         private float m_slightDelayBeforeFadeIn;
 
@@ -78,16 +75,16 @@ namespace UrbanFox.MiniGame
             m_masterBus = RuntimeManager.GetBus(k_masterBusName);
             m_gameBus = RuntimeManager.GetBus(k_gameBusName);
             m_reverbBus = RuntimeManager.GetBus(k_reverbBusName);
-            m_UIController.OnPauseMenuOpening += OnPauseMenuOpening;
-            m_UIController.OnPauseMenuClosing += OnPauseMenuClosing;
+            UIManager.OnPauseMenuOpening += OnPauseMenuOpening;
+            UIManager.OnPauseMenuClosing += OnPauseMenuClosing;
             GameManager.OnEachFadeOutCompletedAndIdleStarts += FadeOutGameAudio;
             GameManager.OnEachLoadingOperationCompletedAndIdleStarts += FadeInGameAudio;
         }
 
         private void OnDestroy()
         {
-            m_UIController.OnPauseMenuOpening -= OnPauseMenuOpening;
-            m_UIController.OnPauseMenuClosing -= OnPauseMenuClosing;
+            UIManager.OnPauseMenuOpening -= OnPauseMenuOpening;
+            UIManager.OnPauseMenuClosing -= OnPauseMenuClosing;
             GameManager.OnEachFadeOutCompletedAndIdleStarts -= FadeOutGameAudio;
             GameManager.OnEachLoadingOperationCompletedAndIdleStarts -= FadeInGameAudio;
             FMODUtilities.PrintMissingEventGUIDsOrPaths();
