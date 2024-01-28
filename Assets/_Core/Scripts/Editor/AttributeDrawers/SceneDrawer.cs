@@ -33,10 +33,11 @@ namespace UrbanFox.Editor
 
         private string[] GetSceneNames()
         { 
-            var names = new string[EditorBuildSettings.scenes.Length];
-            for (int i = 0; i < names.Length; i++)
+            var names = new string[EditorBuildSettings.scenes.Length + 1];
+            names[0] = "(none)";
+            for (int i = 0; i < EditorBuildSettings.scenes.Length; i++)
             {
-                names[i] = Path.GetFileNameWithoutExtension(EditorBuildSettings.scenes[i].path);
+                names[i + 1] = Path.GetFileNameWithoutExtension(EditorBuildSettings.scenes[i].path);
             }
             return names;
         }
@@ -44,7 +45,7 @@ namespace UrbanFox.Editor
         private string GetSceneNameByIndex(int index)
         {
             var sceneNames = GetSceneNames();
-            return index.IsInRange(sceneNames) ? sceneNames[index] : string.Empty;
+            return index == 0 ? string.Empty : index.IsInRange(sceneNames) ? sceneNames[index] : string.Empty;
         }
 
         private int GetSceneIndexByName(string sceneName)
