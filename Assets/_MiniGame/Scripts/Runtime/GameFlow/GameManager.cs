@@ -3,20 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
-using DG.Tweening;
 
 namespace UrbanFox.MiniGame
 {
     public class GameManager : RuntimeManager<GameManager>
     {
-        [Serializable]
-        public enum LoadingIconType
-        {
-            Bar,
-            SpinningWheel
-        }
-
         public const string PlayerTag = "Player";
 
         public static event Action<GameState> OnGameStateChanged;
@@ -61,6 +52,7 @@ namespace UrbanFox.MiniGame
         }
 
         private static Transform m_player;
+        private readonly List<string> m_dirtyScenes = new List<string>();
 
         [SerializeField]
         private float m_fullscreenBlackFadeTime;
@@ -68,26 +60,17 @@ namespace UrbanFox.MiniGame
         [SerializeField]
         private float m_fullscreenBlackIdleTime;
 
-        [SerializeField]
-        private float m_loadingIconFadeTime;
-
-        [SerializeField]
-        private LoadingIconType m_loadingIconType;
-
-        [SerializeField, ShowIf(nameof(m_loadingIconType), LoadingIconType.Bar)]
-        private Slider m_loadingBar;
-
-        [SerializeField, ShowIf(nameof(m_loadingIconType), LoadingIconType.Bar)]
-        private CanvasGroup m_loadingBarCanvasGroup;
-
-        [SerializeField, ShowIf(nameof(m_loadingIconType), LoadingIconType.SpinningWheel)]
-        private CanvasGroup m_loadingWheelCanvasGroup;
-
-        [SerializeField, ShowIf(nameof(m_loadingIconType), LoadingIconType.SpinningWheel)]
-        private float m_loadingWheelSpinningSpeed;
-
         [Header("Scene Options")]
+        [SerializeField]
+        private float m_defaultWaitTimeBeforeFadeOut;
 
+        [SerializeField]
+        private float m_defaultFadeTime;
+
+        [SerializeField]
+        private float m_deltaTimeBetweenSceneOperations;
+
+        [Header("Scene Initialization Options")]
         [SerializeField, Scene]
         private string[] m_scenesToLoadOnStart;
 
@@ -137,113 +120,146 @@ namespace UrbanFox.MiniGame
 #endif
         }
 
-        public void LoadScenesWithFullScreenCover(string[] scenesToLoad, bool shouldTheFirstSceneInTheArrayBeActive, bool displayLoadingIcon, SceneLoadOperationCallbacks? callbacks = null)
+        public void AddDirtyScenes(params string[] scenes)
         {
-            LoadScenesWithFullScreenCover(scenesToLoad, shouldTheFirstSceneInTheArrayBeActive, displayLoadingIcon, m_fullscreenBlackFadeTime, callbacks);
+            if (!scenes.IsNullOrEmpty())
+            {
+                foreach (var scene in scenes)
+                {
+                    if (!m_dirtyScenes.Contains(scene))
+                    {
+                        m_dirtyScenes.Add(scene);
+                    }
+                }
+            }
         }
 
-        public void LoadScenesWithFullScreenCover(string[] scenesToLoad, bool shouldTheFirstSceneInTheArrayBeActive, bool displayLoadingIcon, float fadeTime, SceneLoadOperationCallbacks? callbacks = null)
+        public void RemoveDirtyScenes(params string[] scenes)
         {
-            StartCoroutine(DoLoadScenesWithFullScreenCover());
-            IEnumerator DoLoadScenesWithFullScreenCover()
+            if (!scenes.IsNullOrEmpty())
+            {
+                foreach (var scene in scenes)
+                {
+                    if (m_dirtyScenes.Contains(scene))
+                    {
+                        m_dirtyScenes.Remove(scene);
+                    }
+                }
+            }
+        }
+
+        public void RestartCheckpoint_Fade_Default(SceneLoadOperationCallbacks? callbacks = null)
+        {
+            RestartCheckpoint_Fade(m_defaultWaitTimeBeforeFadeOut, m_defaultFadeTime, m_defaultFadeTime, callbacks);
+        }
+
+
+        public void RestartCheckpoint_Fade(float waitTimeBeforeFadeOutBegins, SceneLoadOperationCallbacks? callbacks = null)
+        {
+            RestartCheckpoint_Fade(waitTimeBeforeFadeOutBegins, m_defaultFadeTime, m_defaultFadeTime, callbacks);
+        }
+
+        public void RestartCheckpoint_Fade(float waitTimeBeforeFadeOutBegins, float fadeOutDuration, float fadeInDuration, SceneLoadOperationCallbacks? callbacks = null)
+        {
+            if (m_currentGameState == GameState.GameplayPausable)
+            {
+                UnloadAndLoadScenesFullScreen(m_dirtyScenes, m_dirtyScenes, true, waitTimeBeforeFadeOutBegins, fadeOutDuration, fadeInDuration, callbacks);
+            }
+        }
+
+        public void RestartCheckpoint_Instant_Default(SceneLoadOperationCallbacks? callbacks = null)
+        {
+            RestartCheckpoint_Instant(m_defaultFadeTime, callbacks);
+        }
+
+        public void RestartCheckpoint_Instant(float fadeInDuration, SceneLoadOperationCallbacks? callbacks = null)
+        {
+            if (m_currentGameState == GameState.GameplayPausable)
+            {
+                UnloadAndLoadScenesFullScreen(m_dirtyScenes, m_dirtyScenes, true, 0, 0.1f, fadeInDuration, callbacks);
+            }
+        }
+
+        public void UnloadAndLoadScenesFullScreen(IList<string> scenesToUnload, IList<string> scenesToLoad, bool isFirstSceneActive = true, SceneLoadOperationCallbacks? callbacks = null)
+        {
+            UnloadAndLoadScenesFullScreen(scenesToUnload, scenesToLoad, isFirstSceneActive, m_defaultWaitTimeBeforeFadeOut, m_defaultFadeTime, m_defaultFadeTime, callbacks);
+        }
+
+        public void UnloadAndLoadScenesFullScreen(IList<string> scenesToUnload, IList<string> scenesToLoad, bool isFirstSceneActive, float waitTimeBeforeFadeOutBegins, float fadeOutDuration, float fadeInDuration, SceneLoadOperationCallbacks? callbacks = null)
+        {
+            StartCoroutine(DoUnloadAndLoadScenesFullScreen());
+            IEnumerator DoUnloadAndLoadScenesFullScreen()
             {
                 SwitchGameState(GameState.Loading);
 
-                // Fade out starts
-                OnEachFadeOutStarts?.Invoke();
+                // Wait time before fade out
+                OnEachGameOverSignaled?.Invoke();
+                yield return new WaitForSeconds(waitTimeBeforeFadeOutBegins);
+
+                // Fade out begins
                 callbacks?.OnFadeOutStarts?.Invoke();
-                if (UIManager.IsInstanceExist)
-                {
-                    UIManager.Instance.FadeOutToBlack(fadeTime);
-                }
-                yield return new WaitForSeconds(fadeTime);
+                OnEachFadeOutStarts?.Invoke();
+                UIManager.Instance.FadeOutToBlack(fadeOutDuration);
+                yield return new WaitForSeconds(fadeOutDuration);
 
-                // Fade out completed - start idle time
-                OnEachFadeOutCompletedAndIdleStarts?.Invoke();
+                // Fade out ends
                 callbacks?.OnFadeOutCompletedAndIdleStarts?.Invoke();
-                yield return new WaitForSeconds(m_fullscreenBlackIdleTime / 2);
-                if (displayLoadingIcon)
-                {
-                    switch (m_loadingIconType)
-                    {
-                        case LoadingIconType.Bar:
-                            m_loadingBar.value = 0;
-                            m_loadingBarCanvasGroup.DOFade(1, m_loadingIconFadeTime);
-                            yield return new WaitForSeconds(m_loadingIconFadeTime);
-                            break;
-                        case LoadingIconType.SpinningWheel:
-                            m_loadingWheelCanvasGroup.DOFade(1, m_loadingIconFadeTime);
-                            yield return new WaitForSeconds(m_loadingIconFadeTime);
-                            break;
-                        default:
-                            break;
-                    }
-                }
+                OnEachFadeOutCompletedAndIdleStarts?.Invoke();
+                yield return new WaitForSeconds(m_deltaTimeBetweenSceneOperations);
 
-                // Idle completed - start loading scenes
-                OnEachLoadingOperationStarts?.Invoke();
+                // Reload begins
                 callbacks?.OnLoadingOperationStarts?.Invoke();
-                UnloadAllButPersistentScene();
-                UnloadScenes(scenesToLoad);
-                yield return new WaitForSeconds(m_fullscreenBlackIdleTime / 2);
+                OnEachLoadingOperationStarts?.Invoke();
+
+                // Unload scenes
                 var operations = new List<AsyncOperation>();
-                foreach (var scene in scenesToLoad)
+                if (!scenesToUnload.IsNullOrEmpty())
                 {
-                    operations.Add(SceneManager.LoadSceneAsync(scene, LoadSceneMode.Additive));
-                }
-                while (AreOperationsCompleted(operations))
-                {
-                    m_loadingBar.value = GetOperationsProgress(operations);
-                    yield return null;
-                }
-                m_loadingBar.value = 1;
-                if (shouldTheFirstSceneInTheArrayBeActive)
-                {
-                    while (!IsSceneLoaded(scenesToLoad[0]))
+                    foreach (var scene in scenesToUnload)
+                    {
+                        operations.Add(SceneManager.UnloadSceneAsync(scene));
+                    }
+                    while (!AreOperationsCompleted(operations))
                     {
                         yield return null;
                     }
-                    SceneManager.SetActiveScene(SceneManager.GetSceneByName(scenesToLoad[0]));
                 }
 
-                // Loading completed - start idle time
-                OnEachLoadingOperationCompletedAndIdleStarts?.Invoke();
-                callbacks?.OnLoadingOperationCompletedAndIdleStarts?.Invoke();
-                yield return new WaitForSeconds(m_fullscreenBlackIdleTime / 2);
-                if (displayLoadingIcon)
+                // Load scenes
+                operations.Clear();
+                if (!scenesToLoad.IsNullOrEmpty())
                 {
-                    switch (m_loadingIconType)
+                    foreach (var scene in scenesToLoad)
                     {
-                        case LoadingIconType.Bar:
-                            m_loadingBarCanvasGroup.DOFade(0, m_loadingIconFadeTime);
-                            yield return new WaitForSeconds(m_loadingIconFadeTime);
-                            break;
-                        case LoadingIconType.SpinningWheel:
-                            m_loadingWheelCanvasGroup.DOFade(0, m_loadingIconFadeTime);
-                            yield return new WaitForSeconds(m_loadingIconFadeTime);
-                            break;
-                        default:
-                            break;
+                        operations.Add(SceneManager.LoadSceneAsync(scene, LoadSceneMode.Additive));
+                    }
+                    while (!AreOperationsCompleted(operations))
+                    {
+                        yield return null;
+                    }
+
+                    // Optional: Set first scene as active
+                    if (isFirstSceneActive && !scenesToLoad[0].IsNullOrEmpty())
+                    {
+                        yield return null;
+                        SceneManager.SetActiveScene(SceneManager.GetSceneByName(scenesToLoad[0]));
                     }
                 }
-                yield return new WaitForSeconds(m_fullscreenBlackIdleTime / 2);
+
+                // Reload ends
+                callbacks?.OnLoadingOperationCompletedAndIdleStarts?.Invoke();
+                OnEachLoadingOperationCompletedAndIdleStarts?.Invoke();
+                yield return new WaitForSeconds(m_deltaTimeBetweenSceneOperations);
 
                 // Fade in begins
-                OnEachFadeInStarts?.Invoke();
                 callbacks?.OnFadeInStarts?.Invoke();
-                if (UIManager.IsInstanceExist)
-                {
-                    UIManager.Instance.FadeInFromBlack(m_fullscreenBlackIdleTime, () =>
-                    {
-                        OnEachFadeInCompleted?.Invoke();
-                        callbacks?.OnFadeInCompleted?.Invoke();
-                    });
-                }
-                else
-                {
-                    OnEachFadeInCompleted?.Invoke();
-                    callbacks?.OnFadeInCompleted?.Invoke();
-                }
+                OnEachFadeInStarts?.Invoke();
+                UIManager.Instance.FadeInFromBlack(fadeInDuration);
+                yield return new WaitForSeconds(fadeInDuration);
+
+                // Fade in ends
+                callbacks?.OnFadeInCompleted?.Invoke();
+                OnEachFadeInCompleted?.Invoke();
             }
         }
 
@@ -252,61 +268,32 @@ namespace UrbanFox.MiniGame
             StartCoroutine(DoLoadScenesInBackground());
             IEnumerator DoLoadScenesInBackground()
             {
-                UnloadScenes(scenes);
-                var operations = new List<AsyncOperation>();
-                foreach (var scene in scenes)
+                if (!scenes.IsNullOrEmpty())
                 {
-                    operations.Add(SceneManager.LoadSceneAsync(scene, LoadSceneMode.Additive));
-                }
-                while (AreOperationsCompleted(operations))
-                {
-                    yield return null;
-                }
-                yield return null;
-                if (shouldTheFirstSceneInTheArrayBeActive)
-                {
-                    while (!IsSceneLoaded(scenes[0]))
+                    UnloadScenes(scenes);
+                    var operations = new List<AsyncOperation>();
+                    foreach (var scene in scenes)
+                    {
+                        operations.Add(SceneManager.LoadSceneAsync(scene, LoadSceneMode.Additive));
+                    }
+                    while (!AreOperationsCompleted(operations))
                     {
                         yield return null;
                     }
-                    SceneManager.SetActiveScene(SceneManager.GetSceneByName(scenes[0]));
+                    yield return null;
+                    if (shouldTheFirstSceneInTheArrayBeActive)
+                    {
+                        while (!IsSceneLoaded(scenes[0]))
+                        {
+                            yield return null;
+                        }
+                        SceneManager.SetActiveScene(SceneManager.GetSceneByName(scenes[0]));
+                    }
                 }
             }
         }
 
-        public void GameOverAndRestartCheckpoint_FadeOut(float waitSecondsBeforeFadeOut = 2, SceneLoadOperationCallbacks? callbacks = null)
-        {
-            if (m_currentGameState == GameState.GameplayPausable || m_currentGameState == GameState.GameCompletedWaitForInput)
-            {
-                StartCoroutine(DoGameOverAndRestartCheckpoint_FadeOut(waitSecondsBeforeFadeOut));
-            }
-            IEnumerator DoGameOverAndRestartCheckpoint_FadeOut(float waitSecondsBeforeFadeOut)
-            {
-                SwitchGameState(GameState.GameOverWaitForReload);
-                OnEachGameOverSignaled?.Invoke();
-                yield return new WaitForSeconds(waitSecondsBeforeFadeOut);
-                LoadScenesWithFullScreenCover(scenesToLoad: m_scenesToLoadOnStart,
-                    shouldTheFirstSceneInTheArrayBeActive: true,
-                    displayLoadingIcon: false,
-                    callbacks: callbacks);
-            }
-        }
-
-        public void GameOverAndRestartCheckpoint_Instant(SceneLoadOperationCallbacks? callbacks = null)
-        {
-            if (m_currentGameState == GameState.GameplayPausable)
-            {
-                SwitchGameState(GameState.GameOverWaitForReload);
-                OnEachGameOverSignaled?.Invoke();
-                LoadScenesWithFullScreenCover(scenesToLoad: m_scenesToLoadOnStart,
-                    shouldTheFirstSceneInTheArrayBeActive: true,
-                    displayLoadingIcon: false,
-                    fadeTime: 0.1f,
-                    callbacks);
-            }
-        }
-
-        public void UnloadScenes(string[] scenes)
+        public void UnloadScenes(params string[] scenes)
         {
             if (scenes.IsNullOrEmpty())
             {
@@ -321,7 +308,7 @@ namespace UrbanFox.MiniGame
             }
         }
 
-        private void UnloadAllButPersistentScene()
+        public void UnloadAllButPersistentScene()
         {
             for (int i = 0; i < SceneManager.sceneCount; i++)
             {
@@ -339,27 +326,14 @@ namespace UrbanFox.MiniGame
         private void Start()
         {
             m_previousGameState = m_currentGameState;
-            m_loadingBarCanvasGroup.alpha = 0;
-            m_loadingWheelCanvasGroup.alpha = 0;
             UnloadAllButPersistentScene();
-            LoadScenesWithFullScreenCover(scenesToLoad: m_scenesToLoadOnStart,
-                shouldTheFirstSceneInTheArrayBeActive: true,
-                displayLoadingIcon: true,
-                new SceneLoadOperationCallbacks()
-                {
-                    OnFadeInCompleted = () =>
-                    {
-                        SwitchGameState(GameState.WaitForInputToStartGame);
-                    }
-                });
-        }
-
-        private void LateUpdate()
-        {
-            if (m_loadingIconType == LoadingIconType.SpinningWheel && m_loadingWheelCanvasGroup)
+            UnloadAndLoadScenesFullScreen(null, m_scenesToLoadOnStart, true, 0, 0, m_defaultFadeTime, new SceneLoadOperationCallbacks()
             {
-                m_loadingWheelCanvasGroup.transform.Rotate(m_loadingWheelSpinningSpeed * Time.deltaTime * Vector3.back);
-            }
+                OnFadeInCompleted = () =>
+                {
+                    SwitchGameState(GameState.WaitForInputToStartGame);
+                }
+            });
         }
 
         private bool IsSceneLoaded(string sceneName)

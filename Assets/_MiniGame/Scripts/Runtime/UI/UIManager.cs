@@ -1,11 +1,20 @@
 using System;
+using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 using DG.Tweening;
 
 namespace UrbanFox.MiniGame
 {
     public class UIManager : RuntimeManager<UIManager>
     {
+        [Serializable]
+        public enum LoadingIconType
+        {
+            Bar,
+            SpinningWheel
+        }
+
         public static event Action OnPauseMenuOpening;
         public static event Action OnPauseMenuClosing;
 
@@ -20,6 +29,25 @@ namespace UrbanFox.MiniGame
 
         [SerializeField, Required]
         private UIPageGroup m_pauseMenuPageGroup;
+
+        [Header("Loading Icons")]
+        [SerializeField]
+        private float m_loadingIconFadeTime;
+
+        [SerializeField]
+        private LoadingIconType m_loadingIconType;
+
+        [SerializeField, Required, ShowIf(nameof(m_loadingIconType), LoadingIconType.Bar)]
+        private Slider m_loadingBar;
+
+        [SerializeField, Required, ShowIf(nameof(m_loadingIconType), LoadingIconType.Bar)]
+        private CanvasGroup m_loadingBarCanvasGroup;
+
+        [SerializeField, Required, ShowIf(nameof(m_loadingIconType), LoadingIconType.SpinningWheel)]
+        private CanvasGroup m_loadingWheelCanvasGroup;
+
+        [SerializeField, ShowIf(nameof(m_loadingIconType), LoadingIconType.SpinningWheel)]
+        private float m_loadingWheelSpinningSpeed;
 
         public void FadeOutToBlack(float fadeDuration, Action onCompleted = null)
         {
@@ -56,6 +84,62 @@ namespace UrbanFox.MiniGame
             }
         }
 
+        public void FadeInLoadingIcon()
+        {
+            StartCoroutine(DoFadeInLoadingIcon());
+            IEnumerator DoFadeInLoadingIcon()
+            {
+                switch (m_loadingIconType)
+                {
+                    case LoadingIconType.Bar:
+                        m_loadingBar.value = 0;
+                        m_loadingBarCanvasGroup.DOFade(1, m_loadingIconFadeTime);
+                        yield return new WaitForSeconds(m_loadingIconFadeTime);
+                        break;
+                    case LoadingIconType.SpinningWheel:
+                        m_loadingWheelCanvasGroup.DOFade(1, m_loadingIconFadeTime);
+                        yield return new WaitForSeconds(m_loadingIconFadeTime);
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
+
+        public void FadeOutLoadingIcon()
+        {
+            StartCoroutine(DoFadeOutLoadingIcon());
+            IEnumerator DoFadeOutLoadingIcon()
+            {
+                switch (m_loadingIconType)
+                {
+                    case LoadingIconType.Bar:
+                        m_loadingBarCanvasGroup.DOFade(0, m_loadingIconFadeTime);
+                        yield return new WaitForSeconds(m_loadingIconFadeTime);
+                        break;
+                    case LoadingIconType.SpinningWheel:
+                        m_loadingWheelCanvasGroup.DOFade(0, m_loadingIconFadeTime);
+                        yield return new WaitForSeconds(m_loadingIconFadeTime);
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
+
+        public void SetLoadingBarSliderValue(float value)
+        {
+            m_loadingBar.value = value;
+        }
+
+        public void QuitGame()
+        {
+            if (GameManager.IsInstanceExist)
+            {
+                GameManager.Instance.QuitGame();
+            }
+        }
+
         private void Start()
         {
             GameManager.OnEachGameStarts += OnGameStart;
@@ -63,6 +147,14 @@ namespace UrbanFox.MiniGame
             m_pauseMenuPageGroup.OnPageGroupStartsToOpen += OnPauseMenuStartsToOpen;
             m_pauseMenuPageGroup.OnPageGroupStartsToClose += OnPauseMenuStartsToClose;
             m_fullscreenBlack.alpha = 1;
+            if (m_loadingBarCanvasGroup)
+            {
+                m_loadingBarCanvasGroup.alpha = 0;
+            }
+            if (m_loadingWheelCanvasGroup)
+            {
+                m_loadingWheelCanvasGroup.alpha = 0;
+            }
         }
 
         private void OnDestroy()
@@ -71,6 +163,14 @@ namespace UrbanFox.MiniGame
             InputManager.Escape.OnKeyDown -= OnEscapePressed;
             m_pauseMenuPageGroup.OnPageGroupStartsToOpen -= OnPauseMenuStartsToOpen;
             m_pauseMenuPageGroup.OnPageGroupStartsToClose -= OnPauseMenuStartsToClose;
+        }
+
+        private void LateUpdate()
+        {
+            if (m_loadingIconType == LoadingIconType.SpinningWheel && m_loadingWheelCanvasGroup)
+            {
+                m_loadingWheelCanvasGroup.transform.Rotate(m_loadingWheelSpinningSpeed * Time.deltaTime * Vector3.back);
+            }
         }
 
         private void OnGameStart()

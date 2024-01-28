@@ -51,6 +51,8 @@ namespace UrbanFox.MiniGame
         private float m_lastFrameFOV;
         private float m_cameraDeltaFOV;
 
+        public CinemachineVirtualCamera VirtualCamera => m_cinemachineVirtualCamera;
+
         public void AddContributor(CameraContributorBase contributor)
         {
             if (contributor && !m_cameraContributors.Contains(contributor))

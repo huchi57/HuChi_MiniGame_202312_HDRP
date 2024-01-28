@@ -79,7 +79,8 @@ namespace UrbanFox.MiniGame
             {
                 GameManager.PlayerController.UpdateRespawnPoint(Vector3.zero);
             }
-            GameManager.Instance.GameOverAndRestartCheckpoint_FadeOut(1, new SceneLoadOperationCallbacks()
+
+            GameManager.Instance.RestartCheckpoint_Fade(2, new SceneLoadOperationCallbacks()
             {
                 OnFadeOutCompletedAndIdleStarts = () =>
                 {

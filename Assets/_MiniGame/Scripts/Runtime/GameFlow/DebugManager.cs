@@ -1,14 +1,12 @@
 using System.Text;
 using UnityEngine;
 using UnityEngine.UI;
-using Cinemachine;
 
 namespace UrbanFox.MiniGame
 {
     public class DebugManager : RuntimeManager<DebugManager>
     {
         [Header("Components")]
-        [SerializeField, Required] private CinemachineVirtualCamera m_cinemachineVirtualCamera;
         [SerializeField, Required] private Text m_debugText;
         [SerializeField] private GameObject m_debugGraph;
 
@@ -33,6 +31,10 @@ namespace UrbanFox.MiniGame
                     m_debugGraph.SetActive(m_enableDebug);
                 }
             }
+        }
+
+        private void LateUpdate()
+        {
             if (m_debugGraph.activeSelf)
             {
                 m_debugText.text = GetDebugContent();
@@ -46,7 +48,7 @@ namespace UrbanFox.MiniGame
             {
                 content.AppendLine($"{ApplicationBuildData.Instance.GetBuildInfoText()}");
                 content.AppendLine($"Game State: {GameManager.Instance.CurrentGameState}");
-                content.AppendLine($"FOV: {m_cinemachineVirtualCamera.m_Lens.FieldOfView:F2}");
+                content.AppendLine($"FOV: {CameraBrain.Main.VirtualCamera.m_Lens.FieldOfView:F2}");
                 content.AppendLine($"Master Volume: {AudioManager.Instance.MasterBusVolume:F2}");
                 content.AppendLine($"Game Volume: {AudioManager.Instance.GameBusVolume:F2}");
 

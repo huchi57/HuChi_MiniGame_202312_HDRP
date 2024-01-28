@@ -6,19 +6,28 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/_MiniGame/Scenes/_MasterScene.unity
+    guid: 2482eb2dfa5f73f478e2cc32050cdc3b
+  - enabled: 1
+    path: Assets/_MiniGame/Scenes/_SplashScreens.unity
+    guid: cc6d1cd6a13a3a74580e196421beceba
+  - enabled: 1
+    path: Assets/_MiniGame/Scenes/_SceneReferences_MainGame.unity
+    guid: 3fe2879dc61ed684da47e9e28ccdbee5
+  - enabled: 1
     path: Assets/_MiniGame/Scenes/S0_PersistentScene.unity
     guid: 13eb0d33697b76b48bc62c60823ab5d3
+  - enabled: 1
+    path: Assets/_MiniGame/Scenes/S0_FullGameArt.unity
+    guid: 12589660453e0ea4ea514b7ce8e53a3d
+  - enabled: 0
+    path: Assets/_MiniGame/Scenes/S0_FullGameBlockOut.unity
+    guid: c968b9afc4f2bbd4496e7ccea51fc889
   - enabled: 0
     path: Assets/_MiniGame/Scenes/S1_Level1.unity
     guid: c52409858d4476543a9987018d868ab3
   - enabled: 0
     path: Assets/_MiniGame/Scenes/S2_Level2.unity
     guid: 874ed10687f271a4f99f5fdcd26e4432
-  - enabled: 0
-    path: Assets/_MiniGame/Scenes/S0_FullGameBlockOut.unity
-    guid: c968b9afc4f2bbd4496e7ccea51fc889
-  - enabled: 1
-    path: Assets/_MiniGame/Scenes/S0_FullGameArt.unity
-    guid: 12589660453e0ea4ea514b7ce8e53a3d
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0

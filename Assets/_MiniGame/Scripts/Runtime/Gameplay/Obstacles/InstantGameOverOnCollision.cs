@@ -9,7 +9,7 @@ namespace UrbanFox.MiniGame
         {
             if (other.GetComponent<PlayerController>())
             {
-                GameManager.Instance.GameOverAndRestartCheckpoint_Instant();
+                GameManager.Instance.RestartCheckpoint_Instant_Default();
             }
         }
 
@@ -17,7 +17,7 @@ namespace UrbanFox.MiniGame
         {
             if (collision.transform.GetComponent<PlayerController>())
             {
-                GameManager.Instance.GameOverAndRestartCheckpoint_Instant();
+                GameManager.Instance.RestartCheckpoint_Instant_Default();
             }
         }
     }

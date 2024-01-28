@@ -96,11 +96,11 @@ namespace UrbanFox.MiniGame
             EnableUnityBuiltInGravity();
             if (isInstantDeath)
             {
-                GameManager.Instance.GameOverAndRestartCheckpoint_Instant();
+                GameManager.Instance.RestartCheckpoint_Instant_Default();
             }
             else
             {
-                GameManager.Instance.GameOverAndRestartCheckpoint_FadeOut();
+                GameManager.Instance.RestartCheckpoint_Fade_Default();
             }
         }
 
@@ -237,7 +237,7 @@ namespace UrbanFox.MiniGame
             if (other.TryGetComponent<GameOverTrigger>(out var trigger))
             {
                 IsAlive = false;
-                GameManager.Instance.GameOverAndRestartCheckpoint_FadeOut(trigger.WaitTimeBeforeRestartingWhenGameOverTriggered);
+                GameManager.Instance.RestartCheckpoint_Fade(trigger.WaitTimeBeforeRestartingWhenGameOverTriggered);
             }
         }
 
