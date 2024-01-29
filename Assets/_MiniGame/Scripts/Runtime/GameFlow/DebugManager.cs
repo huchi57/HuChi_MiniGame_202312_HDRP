@@ -1,5 +1,6 @@
 using System.Text;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace UrbanFox.MiniGame
@@ -7,11 +8,15 @@ namespace UrbanFox.MiniGame
     public class DebugManager : RuntimeManager<DebugManager>
     {
         [Header("Components")]
-        [SerializeField, Required] private Text m_debugText;
-        [SerializeField] private GameObject m_debugGraph;
+        [SerializeField, Required]
+        private Text m_debugText;
+
+        [SerializeField]
+        private GameObject m_debugGraph;
 
         [Header("Display Options")]
-        [SerializeField] private bool m_enableDebug;
+        [SerializeField]
+        private bool m_enableDebug;
 
         private void Start()
         {
@@ -53,6 +58,13 @@ namespace UrbanFox.MiniGame
                 content.AppendLine($"Game Volume: {AudioManager.Instance.GameBusVolume:F2}");
 
                 // TODO: Add more texts
+                content.AppendLine($"Loaded Scenes ({SceneManager.sceneCount}):");
+                var activeScene = SceneManager.GetActiveScene();
+                for (int i = 0; i < SceneManager.sceneCount; i++)
+                {
+                    var scene = SceneManager.GetSceneAt(i);
+                    content.AppendLine($"  {scene.name}".Color(scene == activeScene ? Color.green : Color.white));
+                }
             }
             return content.ToString();
         }

@@ -132,6 +132,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: _SteamManager
       objectReference: {fileID: 0}
+    - target: {fileID: 2850741175791351733, guid: 35794a19cea1ac341a0f9f9fd0d712b8,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5943106288875651586, guid: 35794a19cea1ac341a0f9f9fd0d712b8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -451,6 +456,11 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1682703514}
+    - target: {fileID: 8755775578616887306, guid: d4bdc66c5087394459524225e19a8a1b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -477,7 +487,7 @@ PrefabInstance:
     - target: {fileID: 6014411115745738944, guid: c13a59f4e9db3e34f82b616ceab0e73c,
         type: 3}
       propertyPath: 'm_scenesToLoadOnStart.Array.data[0]'
-      value: _SplashScreens
+      value: _SceneReferences_MainGame
       objectReference: {fileID: 0}
     - target: {fileID: 7772778825102252920, guid: c13a59f4e9db3e34f82b616ceab0e73c,
         type: 3}

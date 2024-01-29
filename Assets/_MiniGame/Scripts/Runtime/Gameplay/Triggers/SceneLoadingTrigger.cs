@@ -29,5 +29,13 @@ namespace UrbanFox.MiniGame
                 GameManager.Instance.UnloadScenes(m_immutableScenes);
             }
         }
+
+        private void OnValidate()
+        {
+            if (TryGetComponent<Collider>(out var collider))
+            {
+                collider.isTrigger = true;
+            }
+        }
     }
 }

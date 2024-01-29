@@ -580,7 +580,7 @@ MonoBehaviour:
   m_fullscreenBlackIdleTime: 2.25
   m_defaultWaitTimeBeforeFadeOut: 2
   m_defaultFadeTime: 2
-  m_deltaTimeBetweenSceneOperations: 0.5
+  m_deltaTimeBetweenSceneOperations: 1.5
   m_scenesToLoadOnStart: []
   m_persistentScenes:
   - S0_PersistentScene

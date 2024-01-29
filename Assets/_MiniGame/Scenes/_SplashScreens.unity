@@ -325,7 +325,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_pages:
   - CanvasGroup: {fileID: 1680313013}
-    Duration: 3
+    Duration: 2
   m_idleDurationBetweenPages: 1
   m_sceneToLoadWhenSplashScreenEnds: S0_FullGameArt
 --- !u!1 &1680313012
