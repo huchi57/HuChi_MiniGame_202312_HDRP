@@ -289,6 +289,14 @@ namespace UnityEngine.InputSystem.Samples.RebindUI
                 .OnComplete(
                     operation =>
                     {
+                        if (IsBindingDuplicate(action, bindingIndex, allCompositeParts))
+                        {
+                            action.RemoveBindingOverride(bindingIndex);
+                            CleanUp();
+                            PerformInteractiveRebind(action, bindingIndex, allCompositeParts);
+                            return;
+                        }
+
                         action?.Enable();
                         if (m_RebindOverlay)
                         {
@@ -335,6 +343,49 @@ namespace UnityEngine.InputSystem.Samples.RebindUI
             m_RebindStartEvent?.Invoke(this, m_RebindOperation);
 
             m_RebindOperation.Start();
+        }
+
+        // Source: https://www.youtube.com/watch?v=qXbjyzBlduY
+        private bool IsBindingDuplicate(InputAction action, int bindingIndex, bool allCompositeParts)
+        {
+            //InputBinding newBinding = action.bindings[bindingIndex];
+            //int currentIndex = -1;
+
+            //foreach (InputBinding binding in action.actionMap.bindings)
+            //{
+            //    currentIndex++;
+            //    if (binding.action == newBinding.action)
+            //    {
+            //        if (binding.isPartOfComposite && currentIndex != bindingIndex)
+            //        {
+            //            if (binding.effectivePath == newBinding.effectivePath)
+            //            {
+            //                Debug.Log("Duplicate binding found in composite: " + newBinding.effectivePath);
+            //                return true;
+            //            }
+            //        }
+            //        else
+            //        {
+            //            continue;
+            //        }
+            //    }
+            //    if (binding.effectivePath == newBinding.effectivePath)
+            //    {
+            //        Debug.Log("Duplicate binding found: " + newBinding.effectivePath);
+            //        return true;
+            //    }
+            //}
+            //if (allCompositeParts)
+            //{
+            //    for (int i = 1; i < bindingIndex; i++)
+            //    {
+            //        if (action.bindings[i].effectivePath == newBinding.overridePath)
+            //        {
+            //            return true;
+            //        }
+            //    }
+            //}
+            return false;
         }
 
         protected void OnEnable()

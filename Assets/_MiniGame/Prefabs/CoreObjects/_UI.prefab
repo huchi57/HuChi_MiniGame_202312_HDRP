@@ -22371,7 +22371,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6165055929852148947
 RectTransform:
   m_ObjectHideFlags: 0
@@ -24291,7 +24291,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2750644450151002312
 RectTransform:
   m_ObjectHideFlags: 0
@@ -24422,7 +24422,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_text: {fileID: 219230382129925191}
-  m_localizedKey: UI.Settings.Controls.Controller
+  m_localizedKey: UI.Settings.Controls.Keyboard
 --- !u!114 &3959407248217122295
 MonoBehaviour:
   m_ObjectHideFlags: 0
