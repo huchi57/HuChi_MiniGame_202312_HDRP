@@ -262,20 +262,30 @@ namespace UnityEngine.InputSystem.Samples.RebindUI
                 m_RebindOperation = null;
             }
 
+            action?.Disable();
+
             // Configure the rebind.
             m_RebindOperation = action.PerformInteractiveRebinding(bindingIndex)
                 .OnCancel(
                     operation =>
                     {
+                        action?.Enable();
                         m_RebindStopEvent?.Invoke(this, operation);
-                        m_RebindOverlay?.SetActive(false);
+                        if (m_RebindOverlay)
+                        {
+                            m_RebindOverlay.SetActive(false);
+                        }
                         UpdateBindingDisplay();
                         CleanUp();
                     })
                 .OnComplete(
                     operation =>
                     {
-                        m_RebindOverlay?.SetActive(false);
+                        action?.Enable();
+                        if (m_RebindOverlay)
+                        {
+                            m_RebindOverlay.SetActive(false);
+                        }
                         m_RebindStopEvent?.Invoke(this, operation);
                         UpdateBindingDisplay();
                         CleanUp();
@@ -296,7 +306,10 @@ namespace UnityEngine.InputSystem.Samples.RebindUI
                 partName = $"Binding '{action.bindings[bindingIndex].name}'. ";
 
             // Bring up rebind overlay, if we have one.
-            m_RebindOverlay?.SetActive(true);
+            if (m_RebindOverlay)
+            {
+                m_RebindOverlay.SetActive(true);
+            }
             if (m_RebindText != null)
             {
                 var text = !string.IsNullOrEmpty(m_RebindOperation.expectedControlType)
@@ -323,6 +336,7 @@ namespace UnityEngine.InputSystem.Samples.RebindUI
             s_RebindActionUIs.Add(this);
             if (s_RebindActionUIs.Count == 1)
                 InputSystem.onActionChange += OnActionChange;
+            UpdateBindingDisplay();
         }
 
         protected void OnDisable()

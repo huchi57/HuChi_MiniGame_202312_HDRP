@@ -22,6 +22,8 @@ namespace UrbanFox.MiniGame
 
         private InputAction m_moveAction;
 
+        public InputActionAsset InputActions => m_inputActions;
+
         private void Start()
         {
             if (m_hideCursorOnStart)
@@ -33,6 +35,10 @@ namespace UrbanFox.MiniGame
             {
                 OnAnyKeyPressed?.Invoke(control);
             });
+            if (!SettingsManager.Instance.InputBindingsOverride.IsNullOrEmpty())
+            {
+                m_inputActions.LoadBindingOverridesFromJson(SettingsManager.Instance.InputBindingsOverride);
+            }
             m_moveAction = m_inputActions.FindAction(nameof(Move));
             Escape.BindAction(m_inputActions.FindAction(nameof(Escape)));
             Back.BindAction(m_inputActions.FindAction(nameof(Back)));
