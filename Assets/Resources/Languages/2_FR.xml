@@ -27,10 +27,12 @@
     <i k="UI.Settings.Controls" v="Commandes"/>
     <i k="UI.Settings.Controls.Keyboard" v="Clavier"/>
     <i k="UI.Settings.Controls.Gamepad" v="Manette"/>
+    <i k="UI.Settings.Controls.Controller" v="Manette"/>
     <i k="UI.Settings.Controls.TiltUp" v="Incliner vers le haut"/>
     <i k="UI.Settings.Controls.TiltDown" v="Incliner vers le bas"/>
     <i k="UI.Settings.Controls.Vibration" v="Vibration"/>
     <i k="UI.Settings.Controls.GamepadVibration" v="Vibration de la manette"/>
+    <i k="UI.Settings.Controls.ControllerVibration" v="Vibration de la manette"/>
     <i k="UI.Settings.Controls.Binding.WaitingForInput" v="Appuyer sur n&apos;importe quelle touche"/>
     <i k="UI.Settings.Controls.Binding.NewKeyPrefix" v="Action personnalisée :"/>
     <i k="UI.PressAnyKey" v="Appuyer sur une touche"/>
@@ -43,7 +45,7 @@
     <i k="UI.Loading" v="Chargement"/>
     <i k="UI.Loading.WithDots" v="Chargement..."/>
     <i k="UI.RevertToDefault" v="Réglages par défaut"/>
-    <i k="UI.GameTitle" v="(GAMETITLE)"/>
+    <i k="UI.GameTitle" v="DRIFTED"/>
     <i k="UI.Credits" v="Crédits"/>
     <i k="QA.Questionnaire" v="Questionnaire"/>
     <i k="QA.ReportBug" v="Signaler un bug"/>

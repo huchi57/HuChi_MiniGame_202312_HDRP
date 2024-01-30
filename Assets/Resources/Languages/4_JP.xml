@@ -27,10 +27,12 @@
     <i k="UI.Settings.Controls" v="操作"/>
     <i k="UI.Settings.Controls.Keyboard" v="キーボード"/>
     <i k="UI.Settings.Controls.Gamepad" v="コントローラー"/>
+    <i k="UI.Settings.Controls.Controller" v="コントローラー"/>
     <i k="UI.Settings.Controls.TiltUp" v="上に傾ける"/>
     <i k="UI.Settings.Controls.TiltDown" v="下に傾ける"/>
     <i k="UI.Settings.Controls.Vibration" v="振動"/>
     <i k="UI.Settings.Controls.GamepadVibration" v="コントローラー振動"/>
+    <i k="UI.Settings.Controls.ControllerVibration" v="コントローラー振動"/>
     <i k="UI.Settings.Controls.Binding.WaitingForInput" v="入力を待っています…"/>
     <i k="UI.Settings.Controls.Binding.NewKeyPrefix" v="押されたキーはアクションにバインド："/>
     <i k="UI.PressAnyKey" v="ボタンを押す"/>
@@ -43,7 +45,7 @@
     <i k="UI.Loading" v="ロード中"/>
     <i k="UI.Loading.WithDots" v="ロード中…"/>
     <i k="UI.RevertToDefault" v="デフォルトに戻す"/>
-    <i k="UI.GameTitle" v="(GAMETITLE)"/>
+    <i k="UI.GameTitle" v="DRIFTED"/>
     <i k="UI.Credits" v="クレジット"/>
     <i k="QA.Questionnaire" v="アンケートを記入"/>
     <i k="QA.ReportBug" v="バグを報告"/>

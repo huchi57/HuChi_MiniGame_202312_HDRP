@@ -27,10 +27,12 @@
     <i k="UI.Settings.Controls" v="控制"/>
     <i k="UI.Settings.Controls.Keyboard" v="鍵盤"/>
     <i k="UI.Settings.Controls.Gamepad" v="控制器"/>
+    <i k="UI.Settings.Controls.Controller" v="控制器"/>
     <i k="UI.Settings.Controls.TiltUp" v="向上"/>
     <i k="UI.Settings.Controls.TiltDown" v="向下"/>
     <i k="UI.Settings.Controls.Vibration" v="震動"/>
     <i k="UI.Settings.Controls.GamepadVibration" v="控制器震動"/>
+    <i k="UI.Settings.Controls.ControllerVibration" v="控制器震動"/>
     <i k="UI.Settings.Controls.Binding.WaitingForInput" v="正在等待輸入…"/>
     <i k="UI.Settings.Controls.Binding.NewKeyPrefix" v="按下的按鍵將綁定："/>
     <i k="UI.PressAnyKey" v="按任何鍵"/>
@@ -43,7 +45,7 @@
     <i k="UI.Loading" v="讀取中"/>
     <i k="UI.Loading.WithDots" v="讀取中…"/>
     <i k="UI.RevertToDefault" v="恢復為預設值"/>
-    <i k="UI.GameTitle" v="(GAMETITLE)"/>
+    <i k="UI.GameTitle" v="DRIFTED"/>
     <i k="UI.Credits" v="開發人員"/>
     <i k="QA.Questionnaire" v="填寫問卷"/>
     <i k="QA.ReportBug" v="回報問題"/>
