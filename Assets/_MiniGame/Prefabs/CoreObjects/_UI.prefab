@@ -389,7 +389,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 7
     m_MaxSize: 72
-    m_Alignment: 3
+    m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -1832,6 +1832,7 @@ GameObject:
   - component: {fileID: 1786582743167188838}
   - component: {fileID: 8251412004525915623}
   - component: {fileID: 5809413924544254933}
+  - component: {fileID: 7694244067166165531}
   m_Layer: 5
   m_Name: Button_PhysicalKey (Secondary)
   m_TagString: Untagged
@@ -1954,6 +1955,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 7694244067166165531}
+        m_TargetAssemblyTypeName: UrbanFox.MiniGame.UIRebindButton, UrbanFox.MiniGame
+        m_MethodName: UpdateUI
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &5809413924544254933
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1972,7 +1985,7 @@ MonoBehaviour:
   m_ActionLabel: {fileID: 0}
   m_BindingText: {fileID: 3648767076436111453}
   m_RebindOverlay: {fileID: 3634750490217779003}
-  m_RebindText: {fileID: 8808078379390991011}
+  m_RebindText: {fileID: 0}
   m_UpdateBindingUIEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -1994,6 +2007,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &7694244067166165531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 951462927180729056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c1b873506b406e4fa76aad1ef0908ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_actionText: {fileID: 6881246440220363885}
+  m_rebindScreenActionText: {fileID: 7390855303794835502}
 --- !u!1 &958199682872151415
 GameObject:
   m_ObjectHideFlags: 0
@@ -3303,6 +3330,7 @@ GameObject:
   - component: {fileID: 4446877789300894628}
   - component: {fileID: 4687914029681805110}
   - component: {fileID: 7072693570345058623}
+  - component: {fileID: 1930152996295741276}
   m_Layer: 5
   m_Name: Button_PhysicalKey
   m_TagString: Untagged
@@ -3425,6 +3453,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1930152996295741276}
+        m_TargetAssemblyTypeName: UrbanFox.MiniGame.UIRebindButton, UrbanFox.MiniGame
+        m_MethodName: UpdateUI
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &7072693570345058623
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3443,7 +3483,7 @@ MonoBehaviour:
   m_ActionLabel: {fileID: 0}
   m_BindingText: {fileID: 7479178610411094313}
   m_RebindOverlay: {fileID: 3634750490217779003}
-  m_RebindText: {fileID: 8808078379390991011}
+  m_RebindText: {fileID: 0}
   m_UpdateBindingUIEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -3465,6 +3505,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1930152996295741276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1654225740149117034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c1b873506b406e4fa76aad1ef0908ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_actionText: {fileID: 3958919357127937410}
+  m_rebindScreenActionText: {fileID: 7390855303794835502}
 --- !u!1 &1689336614527407572
 GameObject:
   m_ObjectHideFlags: 0
@@ -3826,6 +3880,7 @@ GameObject:
   - component: {fileID: 1529216775711707875}
   - component: {fileID: 7787459924201186278}
   - component: {fileID: 5117588176139537180}
+  - component: {fileID: 5111751119773818419}
   m_Layer: 5
   m_Name: Button_PhysicalKey (Secondary)
   m_TagString: Untagged
@@ -3948,6 +4003,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 5111751119773818419}
+        m_TargetAssemblyTypeName: UrbanFox.MiniGame.UIRebindButton, UrbanFox.MiniGame
+        m_MethodName: UpdateUI
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &5117588176139537180
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3966,7 +4033,7 @@ MonoBehaviour:
   m_ActionLabel: {fileID: 0}
   m_BindingText: {fileID: 7420855780195056895}
   m_RebindOverlay: {fileID: 3634750490217779003}
-  m_RebindText: {fileID: 8808078379390991011}
+  m_RebindText: {fileID: 0}
   m_UpdateBindingUIEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -3988,6 +4055,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &5111751119773818419
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1811134068033973635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c1b873506b406e4fa76aad1ef0908ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_actionText: {fileID: 3958919357127937410}
+  m_rebindScreenActionText: {fileID: 7390855303794835502}
 --- !u!1 &1832493108298799547
 GameObject:
   m_ObjectHideFlags: 0
@@ -17524,6 +17605,7 @@ GameObject:
   - component: {fileID: 7910804196369422723}
   - component: {fileID: 6748491495191146829}
   - component: {fileID: 3416947392951952163}
+  - component: {fileID: 4211994515709484367}
   m_Layer: 5
   m_Name: Button_PhysicalKey
   m_TagString: Untagged
@@ -17646,6 +17728,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 4211994515709484367}
+        m_TargetAssemblyTypeName: UrbanFox.MiniGame.UIRebindButton, UrbanFox.MiniGame
+        m_MethodName: UpdateUI
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &3416947392951952163
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17664,7 +17758,7 @@ MonoBehaviour:
   m_ActionLabel: {fileID: 0}
   m_BindingText: {fileID: 8484100099710058399}
   m_RebindOverlay: {fileID: 3634750490217779003}
-  m_RebindText: {fileID: 8808078379390991011}
+  m_RebindText: {fileID: 0}
   m_UpdateBindingUIEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -17686,6 +17780,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &4211994515709484367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6832609552384670632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c1b873506b406e4fa76aad1ef0908ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_actionText: {fileID: 6881246440220363885}
+  m_rebindScreenActionText: {fileID: 7390855303794835502}
 --- !u!1 &6857926125498526086
 GameObject:
   m_ObjectHideFlags: 0

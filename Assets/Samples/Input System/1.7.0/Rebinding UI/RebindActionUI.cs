@@ -266,6 +266,14 @@ namespace UnityEngine.InputSystem.Samples.RebindUI
 
             // Configure the rebind.
             m_RebindOperation = action.PerformInteractiveRebinding(bindingIndex)
+                .WithCancelingThrough("<Keyboard>/escape")
+                .WithCancelingThrough("<Gamepad>/select")
+                .WithCancelingThrough("<Gamepad>/start")
+                // FIXME: Adding the below line makes "Any Key" a key bind when esc is pressed
+                // .WithControlsExcluding("<Keyboard>/escape")
+                .WithControlsExcluding("<Gamepad>/*")
+                .WithControlsExcluding("<Pointer>/*")
+                .WithControlsExcluding("<Mouse>/*")
                 .OnCancel(
                     operation =>
                     {
