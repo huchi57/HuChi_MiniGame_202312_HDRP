@@ -49,6 +49,7 @@
     <i k="UI.Credits" v="Credits"/>
     <i k="QA.Questionnaire" v="Questionnaire"/>
     <i k="QA.ReportBug" v="Report Bug"/>
+    <i k="QA.WishlistOnSteam" v="Wishlist on Steam"/>
     <i k="Credits.Credits" v="Credits"/>
     <i k="Credits.CreatedBy" v="Created by"/>
     <i k="Credits.ProducedBy" v="Produced by"/>
@@ -94,6 +95,10 @@
     <i k="Credits.Localization.ZH-CN" v="Mandarin (Simplified characters)"/>
     <i k="Credits.Localization.Korean" v="Korean"/>
     <i k="Credits.SpecialThanks" v="Special Thanks"/>
-    <i k="Credits.Disclaimer" v="This game is currently a demo. Its development started from December 12, 2023."/>
+    <i k="Credits.Disclaimer" v="This game is currently a demo. Its development started from November 2023."/>
+    <i k="Credits.DemoDisclaimer" v="This game is currently a demo."/>
+    <i k="Credits.DemoDisclaimer.Bug" v="This is a work in progress, and it does not represent the quality of the final game."/>
     <i k="Credits.ThankYouForPlaying" v="Thank you for playing."/>
+    <i k="Credits.ThankYouForPlaying.Demo" v="Thank you for playing the demo."/>
+    <i k="Credits.HeadphoneSuggested" v="Use headphones for the best experience."/>
 </data>

@@ -49,6 +49,7 @@
     <i k="UI.Credits" v="開發人員"/>
     <i k="QA.Questionnaire" v="填寫問卷"/>
     <i k="QA.ReportBug" v="回報問題"/>
+    <i k="QA.WishlistOnSteam" v="在 Steam 加入願望清單"/>
     <i k="Credits.Credits" v="開發人員"/>
     <i k="Credits.CreatedBy" v="遊戲製作"/>
     <i k="Credits.ProducedBy" v="製作人"/>
@@ -94,6 +95,10 @@
     <i k="Credits.Localization.ZH-CN" v="簡體字"/>
     <i k="Credits.Localization.Korean" v="韓文"/>
     <i k="Credits.SpecialThanks" v="特別感謝"/>
-    <i k="Credits.Disclaimer" v="本遊戲目前為 demo 版本。本作品於 2023 年 12 月 12 日開始開發。"/>
+    <i k="Credits.Disclaimer" v="本遊戲目前為 DEMO 版本。本作品於 2023 年 11 月開始開發。"/>
+    <i k="Credits.DemoDisclaimer" v="本遊戲目前為 DEMO 版本。"/>
+    <i k="Credits.DemoDisclaimer.Bug" v="遊戲尚在開發中，如遊玩過程中出現錯誤請見諒。"/>
     <i k="Credits.ThankYouForPlaying" v="感謝您的遊玩。"/>
+    <i k="Credits.ThankYouForPlaying.Demo" v="感謝您遊玩本 DEMO 作品。"/>
+    <i k="Credits.HeadphoneSuggested" v="推薦使用耳機以達到最佳體驗。"/>
 </data>

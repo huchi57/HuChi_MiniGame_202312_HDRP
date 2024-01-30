@@ -161,7 +161,7 @@ namespace UrbanFox.MiniGame
 
         public void RestartCheckpoint_Fade(float waitTimeBeforeFadeOutBegins, float fadeOutDuration, float fadeInDuration, SceneLoadOperationCallbacks? callbacks = null)
         {
-            if (m_currentGameState == GameState.GameplayPausable)
+            if (m_currentGameState == GameState.GameplayPausable || m_currentGameState == GameState.GameCompletedWaitForInput)
             {
                 UnloadAndLoadScenesFullScreen(m_dirtyScenes, m_dirtyScenes, true, waitTimeBeforeFadeOutBegins, fadeOutDuration, fadeInDuration, callbacks);
             }
@@ -217,7 +217,11 @@ namespace UrbanFox.MiniGame
                 {
                     foreach (var scene in scenesToUnload)
                     {
-                        operations.Add(SceneManager.UnloadSceneAsync(scene));
+                        var targetScene = SceneManager.GetSceneByName(scene);
+                        if (targetScene != null && targetScene.isLoaded)
+                        {
+                            operations.Add(SceneManager.UnloadSceneAsync(scene));
+                        }
                     }
                     while (!AreOperationsCompleted(operations))
                     {
@@ -231,7 +235,11 @@ namespace UrbanFox.MiniGame
                 {
                     foreach (var scene in scenesToLoad)
                     {
-                        operations.Add(SceneManager.LoadSceneAsync(scene, LoadSceneMode.Additive));
+                        var targetScene = SceneManager.GetSceneByName(scene);
+                        if (targetScene == null || !targetScene.isLoaded)
+                        {
+                            operations.Add(SceneManager.LoadSceneAsync(scene, LoadSceneMode.Additive));
+                        }
                     }
                     while (!AreOperationsCompleted(operations))
                     {
@@ -274,7 +282,11 @@ namespace UrbanFox.MiniGame
                     var operations = new List<AsyncOperation>();
                     foreach (var scene in scenes)
                     {
-                        operations.Add(SceneManager.LoadSceneAsync(scene, LoadSceneMode.Additive));
+                        var targetScene = SceneManager.GetSceneByName(scene);
+                        if (targetScene == null || !targetScene.isLoaded)
+                        {
+                            operations.Add(SceneManager.LoadSceneAsync(scene, LoadSceneMode.Additive));
+                        }
                     }
                     while (!AreOperationsCompleted(operations))
                     {

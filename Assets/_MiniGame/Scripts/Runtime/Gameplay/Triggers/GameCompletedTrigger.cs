@@ -70,6 +70,7 @@ namespace UrbanFox.MiniGame
                 }
             }
             GameManager.Instance.SwitchGameState(GameState.GameCompletedWaitForInput);
+            UIManager.Instance.EnableSplashScreen(true);
             InputManager.OnAnyKeyPressed += OnAnykeyPressed;
         }
 

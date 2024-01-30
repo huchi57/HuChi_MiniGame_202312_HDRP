@@ -49,6 +49,7 @@
     <i k="UI.Credits" v="クレジット"/>
     <i k="QA.Questionnaire" v="アンケートを記入"/>
     <i k="QA.ReportBug" v="バグを報告"/>
+    <i k="QA.WishlistOnSteam" v="Steam ウィッシュリスト"/>
     <i k="Credits.Credits" v="クレジット"/>
     <i k="Credits.CreatedBy" v="ゲームクリエイター"/>
     <i k="Credits.ProducedBy" v="プロデューサー"/>
@@ -94,6 +95,10 @@
     <i k="Credits.Localization.ZH-CN" v="簡体字"/>
     <i k="Credits.Localization.Korean" v="韓国語"/>
     <i k="Credits.SpecialThanks" v="Special Thanks"/>
-    <i k="Credits.Disclaimer" v="このゲームは現在デモ版です。開発は2023年12月12日から始まりました。"/>
+    <i k="Credits.Disclaimer" v="このゲームは現在 DEMO 版です。開発は2023年11月から始まりました。"/>
+    <i k="Credits.DemoDisclaimer" v="このゲームは現在 DEMO 版です。"/>
+    <i k="Credits.DemoDisclaimer.Bug" v="ゲームはまだ開発中ですので、エラーが発生することがあります。"/>
     <i k="Credits.ThankYouForPlaying" v="本作品をプレイしていただきありがとうございます。"/>
+    <i k="Credits.ThankYouForPlaying.Demo" v="DEMO をプレイしていただきありがとうございます。"/>
+    <i k="Credits.HeadphoneSuggested" v="このゲームはヘッドホン推奨です。"/>
 </data>

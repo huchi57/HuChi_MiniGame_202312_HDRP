@@ -34,7 +34,7 @@ namespace UrbanFox.MiniGame
         {
             if (m_questionnaireURL.Contains(m_gameBuildKey) && ApplicationBuildData.Instance)
             {
-                Application.OpenURL(m_questionnaireURL.Replace(m_gameBuildKey, ApplicationBuildData.Instance.GetBuildInfoText()));
+                Application.OpenURL(string.IsNullOrEmpty(m_gameBuildKey) ? m_questionnaireURL : m_questionnaireURL.Replace(m_gameBuildKey, ApplicationBuildData.Instance.GetBuildInfoText()));
             }
         }
     }

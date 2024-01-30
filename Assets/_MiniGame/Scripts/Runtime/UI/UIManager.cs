@@ -49,6 +49,13 @@ namespace UrbanFox.MiniGame
         [SerializeField, ShowIf(nameof(m_loadingIconType), LoadingIconType.SpinningWheel)]
         private float m_loadingWheelSpinningSpeed;
 
+        private bool m_enableSplashScreen;
+
+        public void EnableSplashScreen(bool value)
+        {
+            m_enableSplashScreen = value;
+        }
+
         public void FadeOutToBlack(float fadeDuration, Action onCompleted = null)
         {
             m_fullscreenBlack.gameObject.SetActive(true);
@@ -143,6 +150,7 @@ namespace UrbanFox.MiniGame
         private void Start()
         {
             GameManager.OnEachGameStarts += OnGameStart;
+            GameManager.OnEachFadeOutCompletedAndIdleStarts += ResetSplashScreenState;
             InputManager.Escape.OnKeyDown += OnEscapePressed;
             m_pauseMenuPageGroup.OnPageGroupStartsToOpen += OnPauseMenuStartsToOpen;
             m_pauseMenuPageGroup.OnPageGroupStartsToClose += OnPauseMenuStartsToClose;
@@ -160,6 +168,7 @@ namespace UrbanFox.MiniGame
         private void OnDestroy()
         {
             GameManager.OnEachGameStarts -= OnGameStart;
+            GameManager.OnEachFadeOutCompletedAndIdleStarts -= ResetSplashScreenState;
             InputManager.Escape.OnKeyDown -= OnEscapePressed;
             m_pauseMenuPageGroup.OnPageGroupStartsToOpen -= OnPauseMenuStartsToOpen;
             m_pauseMenuPageGroup.OnPageGroupStartsToClose -= OnPauseMenuStartsToClose;
@@ -178,7 +187,17 @@ namespace UrbanFox.MiniGame
             m_titleSplashScreen.DOFade(0, m_titleSplashScreenFadeTime).OnComplete(() =>
             {
                 m_titleSplashScreen.gameObject.SetActive(false);
+                m_enableSplashScreen = false;
             });
+        }
+
+        private void ResetSplashScreenState()
+        {
+            if (m_enableSplashScreen)
+            {
+                m_titleSplashScreen.gameObject.SetActive(true);
+                m_titleSplashScreen.DOFade(1, 1).SetUpdate(true);
+            }
         }
 
         private void OnEscapePressed()

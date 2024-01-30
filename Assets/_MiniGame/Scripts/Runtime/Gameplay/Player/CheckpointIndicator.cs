@@ -19,6 +19,7 @@ namespace UrbanFox.MiniGame
         [SerializeField]
         private EventReference m_lightOnSound;
 
+        private bool m_isTurningOn;
         private Color m_cacheLightColor;
 
         public void TurnOnLight(bool playSound = true)
@@ -27,7 +28,7 @@ namespace UrbanFox.MiniGame
             IEnumerator DoTurnOnLight()
             {
                 yield return new WaitForSeconds(m_delayTurnOnTime);
-                if (playSound)
+                if (playSound && !m_isTurningOn)
                 {
                     m_lightOnSound.PlayOneShot(m_light ? m_light.transform.position : transform.position);
                 }
@@ -38,6 +39,7 @@ namespace UrbanFox.MiniGame
                         m_light.DOColor(m_cacheLightColor, m_lightFadeTime * 0.1f);
                     });
                 });
+                m_isTurningOn = true;
             }
         }
 

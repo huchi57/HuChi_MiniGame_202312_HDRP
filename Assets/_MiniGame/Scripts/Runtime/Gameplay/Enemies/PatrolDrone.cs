@@ -5,6 +5,7 @@ using FMOD.Studio;
 using FMODUnity;
 using Cinemachine;
 using UnityEngine.VFX;
+using System.Collections;
 
 namespace UrbanFox.MiniGame
 {
@@ -152,12 +153,13 @@ namespace UrbanFox.MiniGame
             }
         }
 
-        private void Start()
+        private IEnumerator Start()
         {
+            yield return null;
             if (!m_patrolPoints.IsNullOrEmpty())
             {
                 var detachedParent = new GameObject($"{name}_PatrolPoints").transform;
-                detachedParent.MoveObjectToScene(gameObject.scene);
+                detachedParent.gameObject.MoveObjectToScene(gameObject.scene);
                 foreach (var point in m_patrolPoints)
                 {
                     if (point)

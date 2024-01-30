@@ -163,6 +163,15 @@ namespace UrbanFox.MiniGame
             // TODO: Remove callback to reset player when restart
         }
 
+        private void LateUpdate()
+        {
+            // FIXME: Workaround for joystick controls only.
+            if (GameManager.IsInstanceExist && GameManager.Instance.CurrentGameState == GameState.WaitForInputToStartGame && InputManager.Move.sqrMagnitude > 0.5f)
+            {
+                InitializeAndEjectPlane();
+            }
+        }
+
         private void OnMove(Vector2 move)
         {
             if (GameManager.Instance.CurrentGameState != GameState.GameplayPausable)
