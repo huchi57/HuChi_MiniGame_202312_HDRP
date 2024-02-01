@@ -5,10 +5,13 @@ using UnityEngine.UI;
 namespace UrbanFox.MiniGame
 {
     [RequireComponent(typeof(Button))]
-    public class SettingsResolutionButton : MonoBehaviour, IPointerEnterHandler, ISelectHandler
+    public class SettingsResolutionButton : MonoBehaviour, IPointerEnterHandler, ISelectHandler, ISubmitHandler
     {
         [SerializeField, NonEditable]
         private Button m_button;
+
+        [SerializeField, Required]
+        private UIPageGroup m_pageGroup;
 
         private Text m_resolutionText;
         private int m_width;
@@ -42,6 +45,11 @@ namespace UrbanFox.MiniGame
         public void OnSelect(BaseEventData eventData)
         {
             Select();
+        }
+
+        public void OnSubmit(BaseEventData eventData)
+        {
+            m_pageGroup.TryGotoPreviousPage();
         }
 
         private void OnValidate()

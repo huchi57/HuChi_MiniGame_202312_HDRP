@@ -42,7 +42,14 @@ namespace UrbanFox.MiniGame
                     if (page.CanvasGroup)
                     {
                         page.CanvasGroup.DOFade(1, 1);
-                        yield return new WaitForSeconds(page.Duration + 1);
+                        for (float t = 0; t < page.Duration + 1; t += Time.unscaledDeltaTime)
+                        {
+                            if (Input.anyKeyDown)
+                            {
+                                break;
+                            }
+                            yield return null;
+                        }
                         page.CanvasGroup.DOFade(0, 1);
                         yield return new WaitForSeconds(1);
                     }
