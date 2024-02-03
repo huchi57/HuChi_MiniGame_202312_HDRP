@@ -3,6 +3,7 @@ using UnityEngine;
 using FMOD.Studio;
 using FMODUnity;
 using DG.Tweening;
+using System;
 
 namespace UrbanFox.MiniGame
 {
@@ -55,19 +56,25 @@ namespace UrbanFox.MiniGame
             }
         }
 
-        public void FadeInGameBus(float fadeTime)
+        public void FadeInGameBus(float fadeTime, Action onCompleted = null)
         {
             StartCoroutine(DoFadeInGameBus());
             IEnumerator DoFadeInGameBus()
             {
                 yield return new WaitForSeconds(m_slightDelayBeforeFadeIn);
-                DOTween.To(() => m_diegeticSoundsVolume, x => m_diegeticSoundsVolume = x, 1, fadeTime).SetEase(m_easeIn);
+                DOTween.To(() => m_diegeticSoundsVolume, x => m_diegeticSoundsVolume = x, 1, fadeTime).SetEase(m_easeIn).OnComplete(() =>
+                {
+                    onCompleted?.Invoke();
+                });
             }
         }
 
-        public void FadeOutGameBus(float fadeTime)
+        public void FadeOutGameBus(float fadeTime, Action onCompleted = null)
         {
-            DOTween.To(() => m_diegeticSoundsVolume, x => m_diegeticSoundsVolume = x, 0, fadeTime).SetEase(m_easeOut);
+            DOTween.To(() => m_diegeticSoundsVolume, x => m_diegeticSoundsVolume = x, 0, fadeTime).SetEase(m_easeOut).OnComplete(() =>
+            {
+                onCompleted?.Invoke();
+            });
         }
 
         private void Start()
