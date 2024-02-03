@@ -6,25 +6,25 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/_MiniGame/Scenes/_MasterScene.unity
+    path: Assets/_PlaneGame/Scenes/_MasterScene.unity
     guid: 2482eb2dfa5f73f478e2cc32050cdc3b
   - enabled: 1
-    path: Assets/_MiniGame/Scenes/_SplashScreens.unity
+    path: Assets/_PlaneGame/Scenes/_SplashScreens.unity
     guid: cc6d1cd6a13a3a74580e196421beceba
   - enabled: 1
-    path: Assets/_MiniGame/Scenes/_SceneReferences_MainGame.unity
+    path: Assets/_PlaneGame/Scenes/_SceneReferences_MainGame.unity
     guid: 3fe2879dc61ed684da47e9e28ccdbee5
   - enabled: 1
-    path: Assets/_MiniGame/Scenes/S1_PrisonCell_01_GameStart_Gameplay.unity
+    path: Assets/_PlaneGame/Scenes/S1_PrisonCell_01_GameStart_Gameplay.unity
     guid: 4f620d5297a83ca4b8af14249eab66be
   - enabled: 1
-    path: Assets/_MiniGame/Scenes/S1_PrisonCell_01_GameStart_Background.unity
+    path: Assets/_PlaneGame/Scenes/S1_PrisonCell_01_GameStart_Background.unity
     guid: 84c0057582500b5449b570149d469840
   - enabled: 1
-    path: Assets/_MiniGame/Scenes/S2_Factory_Gameplay.unity
+    path: Assets/_PlaneGame/Scenes/S2_Factory_Gameplay.unity
     guid: 1a529078ec26eaa4daacff31371ee8d7
   - enabled: 1
-    path: Assets/_MiniGame/Scenes/S3_Ocean_Gameplay.unity
+    path: Assets/_PlaneGame/Scenes/S3_Ocean_Gameplay.unity
     guid: 7d045a76b5754fa4eb863d9b94215d9d
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
