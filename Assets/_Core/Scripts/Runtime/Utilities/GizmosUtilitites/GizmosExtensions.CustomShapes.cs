@@ -4,6 +4,42 @@ namespace UrbanFox
 {
     public static partial class GizmosExtensions
     {
+        public static void DrawBounds(Bounds bounds, Color color)
+        {
+            // Bottom
+            var p1 = new Vector3(bounds.min.x, bounds.min.y, bounds.min.z);
+            var p2 = new Vector3(bounds.max.x, bounds.min.y, bounds.min.z);
+            var p3 = new Vector3(bounds.max.x, bounds.min.y, bounds.max.z);
+            var p4 = new Vector3(bounds.min.x, bounds.min.y, bounds.max.z);
+
+            // Top
+            var p5 = new Vector3(bounds.min.x, bounds.max.y, bounds.min.z);
+            var p6 = new Vector3(bounds.max.x, bounds.max.y, bounds.min.z);
+            var p7 = new Vector3(bounds.max.x, bounds.max.y, bounds.max.z);
+            var p8 = new Vector3(bounds.min.x, bounds.max.y, bounds.max.z);
+
+            using (new GizmosScope(color))
+            {
+                Gizmos.DrawLine(p1, p2);
+                Gizmos.DrawLine(p2, p3);
+                Gizmos.DrawLine(p3, p4);
+                Gizmos.DrawLine(p4, p1);
+                Gizmos.DrawLine(p5, p6);
+                Gizmos.DrawLine(p6, p7);
+                Gizmos.DrawLine(p7, p8);
+                Gizmos.DrawLine(p8, p5);
+                Gizmos.DrawLine(p1, p5);
+                Gizmos.DrawLine(p2, p6);
+                Gizmos.DrawLine(p3, p7);
+                Gizmos.DrawLine(p4, p8);
+            }
+        }
+
+        public static void DrawBounds(Bounds bounds)
+        {
+            DrawBounds(bounds, Gizmos.color);
+        }
+
         public static void DrawWireDisc(Vector3 center, Vector3 normal, float radius, Color color)
         {
             var forwardDirection = normal.GetPerpendicularVector();
