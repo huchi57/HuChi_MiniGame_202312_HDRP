@@ -540,7 +540,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3407881251670460795}
-  - component: {fileID: 6014411115745738944}
+  - component: {fileID: 3697536233647715793}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -563,7 +563,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 7772778825102252920}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6014411115745738944
+--- !u!114 &3697536233647715793
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -572,20 +572,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 6632604501635530008}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f6389147d94ce014d93cdf545eaad836, type: 3}
+  m_Script: {fileID: 11500000, guid: 63bc4e56413ed3a43907d98476e464a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_dontDestroyOnLoad: 0
-  m_fullscreenBlackFadeTime: 2
-  m_fullscreenBlackIdleTime: 2.25
-  m_defaultWaitTimeBeforeFadeOut: 2
-  m_defaultFadeTime: 2
-  m_deltaTimeBetweenSceneOperations: 1.5
-  m_scenesToLoadOnStart: []
+  m_initialScenes:
+  - _SplashScreens
   m_persistentScenes:
-  - S0_PersistentScene
   - _MasterScene
-  m_currentGameState: 0
+  - _SceneReferences_MainGame
+  m_defaultWaitTimeBeforeFadeOut: 2
+  m_defaultWaitTimeBeforeFadeIn: 1.5
+  m_defaultAudioFadeOutTime: 2.5
+  m_defaultScreenFadeOutTime: 2
+  m_defaultAudioFadeInTime: 1
+  m_defaultScreenFadeInTime: 2
 --- !u!1 &7406744972623736169
 GameObject:
   m_ObjectHideFlags: 0
@@ -686,7 +687,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 11496292, guid: 0abab5bb77339e4428787a870eb31bd3, type: 3}
       propertyPath: m_keepAlive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 11496292, guid: 0abab5bb77339e4428787a870eb31bd3, type: 3}
       propertyPath: m_background

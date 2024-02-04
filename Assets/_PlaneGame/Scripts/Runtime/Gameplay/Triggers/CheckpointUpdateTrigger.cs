@@ -15,7 +15,7 @@ namespace UrbanFox.MiniGame
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.TryGetComponent<PlayerController>(out var player) && GameManager.Instance.CurrentGameState == GameState.GameplayPausable)
+            if (other.TryGetComponent<PlayerController>(out var player) && GameStateManager.CurrentGameState == GameState.GameplayPausable)
             {
                 player.UpdateRespawnPoint(m_overrideSpawnPoint && m_spawnPointOverride ? m_spawnPointOverride.position : transform.position);
                 if (CameraBrain.Main)

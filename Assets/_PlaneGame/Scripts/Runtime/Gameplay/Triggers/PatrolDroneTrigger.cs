@@ -8,7 +8,7 @@ namespace UrbanFox.MiniGame
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.CompareTag(GameManager.PlayerTag) && m_playerChaser)
+            if (other.CompareTag(NewGameManager.PlayerTag) && m_playerChaser)
             {
                 m_playerChaser.StartChasingTarget(other.transform);
             }

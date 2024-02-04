@@ -12,21 +12,21 @@ namespace UrbanFox.MiniGame
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.CompareTag(GameManager.PlayerTag))
+            if (other.CompareTag(NewGameManager.PlayerTag))
             {
-                GameManager.Instance.AddDirtyScenes(m_dirtyScenes);
-                GameManager.Instance.LoadScenesInBackground(m_dirtyScenes, true);
-                GameManager.Instance.LoadScenesInBackground(m_immutableScenes, false);
+                NewGameManager.Instance.AddDirtyScenes(m_dirtyScenes);
+                FoxySceneManager.LoadScenes(m_dirtyScenes);
+                FoxySceneManager.LoadScenes(m_immutableScenes);
             }
         }
 
         private void OnTriggerExit(Collider other)
         {
-            if (other.CompareTag(GameManager.PlayerTag))
+            if (other.CompareTag(NewGameManager.PlayerTag))
             {
-                GameManager.Instance.RemoveDirtyScenes(m_dirtyScenes);
-                GameManager.Instance.UnloadScenes(m_dirtyScenes);
-                GameManager.Instance.UnloadScenes(m_immutableScenes);
+                NewGameManager.Instance.RemoveDirtyScenes(m_dirtyScenes);
+                FoxySceneManager.UnloadScenes(m_dirtyScenes);
+                FoxySceneManager.UnloadScenes(m_immutableScenes);
             }
         }
 

@@ -84,16 +84,12 @@ namespace UrbanFox.MiniGame
             m_reverbBus = RuntimeManager.GetBus(k_reverbBusName);
             UIManager.OnPauseMenuOpening += OnPauseMenuOpening;
             UIManager.OnPauseMenuClosing += OnPauseMenuClosing;
-            GameManager.OnEachFadeOutCompletedAndIdleStarts += FadeOutGameAudio;
-            GameManager.OnEachLoadingOperationCompletedAndIdleStarts += FadeInGameAudio;
         }
 
         private void OnDestroy()
         {
             UIManager.OnPauseMenuOpening -= OnPauseMenuOpening;
             UIManager.OnPauseMenuClosing -= OnPauseMenuClosing;
-            GameManager.OnEachFadeOutCompletedAndIdleStarts -= FadeOutGameAudio;
-            GameManager.OnEachLoadingOperationCompletedAndIdleStarts -= FadeInGameAudio;
             FMODUtilities.PrintMissingEventGUIDsOrPaths();
         }
 

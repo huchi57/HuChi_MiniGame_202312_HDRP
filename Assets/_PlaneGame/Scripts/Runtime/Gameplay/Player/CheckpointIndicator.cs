@@ -48,7 +48,7 @@ namespace UrbanFox.MiniGame
             if (m_light)
             {
                 m_cacheLightColor = m_light.color;
-                if (Vector3.Distance(GameManager.Player.position, transform.position) < 10f)
+                if (Vector3.Distance(GameStateManager.PlayerTransform.position, transform.position) < 10f)
                 {
                     TurnOnLight(playSound: false);
                 }

@@ -566,13 +566,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6014411115745738944, guid: c13a59f4e9db3e34f82b616ceab0e73c,
         type: 3}
+      propertyPath: 'm_persistentScenes.Array.data[0]'
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6014411115745738944, guid: c13a59f4e9db3e34f82b616ceab0e73c,
+        type: 3}
       propertyPath: m_scenesToLoadOnStart.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6014411115745738944, guid: c13a59f4e9db3e34f82b616ceab0e73c,
         type: 3}
       propertyPath: 'm_scenesToLoadOnStart.Array.data[0]'
-      value: _SplashScreens
+      value: _SceneReferences_MainGame
       objectReference: {fileID: 0}
     - target: {fileID: 7772778825102252920, guid: c13a59f4e9db3e34f82b616ceab0e73c,
         type: 3}

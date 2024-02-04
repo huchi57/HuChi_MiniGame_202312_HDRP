@@ -66,13 +66,13 @@ namespace UrbanFox.MiniGame
 
         private void Start()
         {
-            GameManager.OnEachFadeOutCompletedAndIdleStarts += ResetSequenceState;
+            NewGameManager.OnFadeOutCompleted += ResetSequenceState;
             ResetSequenceState();
         }
 
         private void OnDestroy()
         {
-            GameManager.OnEachFadeOutCompletedAndIdleStarts -= ResetSequenceState;
+            NewGameManager.OnFadeOutCompleted -= ResetSequenceState;
         }
 
         private void ResetSequenceState()

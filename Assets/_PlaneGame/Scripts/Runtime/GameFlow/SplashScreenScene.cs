@@ -25,9 +25,11 @@ namespace UrbanFox.MiniGame
         [SerializeField, Scene]
         private string m_sceneToLoadWhenSplashScreenEnds;
 
+        private bool m_forceGameLoadingState;
+
         private IEnumerator Start()
         {
-            GameManager.Instance.SwitchGameState(GameState.Loading);
+            m_forceGameLoadingState = true;
             if (!m_pages.IsNullOrEmpty())
             {
                 foreach (var page in m_pages)
@@ -56,7 +58,26 @@ namespace UrbanFox.MiniGame
                     yield return new WaitForSeconds(m_idleDurationBetweenPages);
                 }
             }
-            GameManager.Instance.UnloadAndLoadScenesFullScreen(new string[] { gameObject.scene.name }, new string[] { m_sceneToLoadWhenSplashScreenEnds }, true, 0.1f, 0.1f, 2);
+            AudioManager.Instance.FadeOutGameBus(1);
+            UIManager.Instance.FadeOutToBlack(1, () =>
+            {
+                m_forceGameLoadingState = false;
+                FoxySceneManager.UnloadScene(gameObject.scene.name, () =>
+                {
+                    FoxySceneManager.LoadScene(m_sceneToLoadWhenSplashScreenEnds, () =>
+                    {
+                        NewGameManager.Instance.RestartCheckpoint(0, 0.1f, 0.1f, 2, 1, 2);
+                    });
+                });
+            });
+        }
+
+        private void Update()
+        {
+            if (m_forceGameLoadingState)
+            {
+                GameStateManager.SwitchGameState(GameState.Loading);
+            }
         }
     }
 }

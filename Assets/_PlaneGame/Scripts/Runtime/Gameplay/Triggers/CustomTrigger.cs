@@ -10,7 +10,7 @@ namespace UrbanFox.MiniGame
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.CompareTag(GameManager.PlayerTag))
+            if (other.CompareTag(NewGameManager.PlayerTag))
             {
                 m_onTriggerEnter?.Invoke();
             }
@@ -18,7 +18,7 @@ namespace UrbanFox.MiniGame
 
         private void OnTriggerExit(Collider other)
         {
-            if (other.CompareTag(GameManager.PlayerTag))
+            if (other.CompareTag(NewGameManager.PlayerTag))
             {
                 m_onTriggerExit?.Invoke();
             }

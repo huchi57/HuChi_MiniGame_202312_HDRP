@@ -97,14 +97,14 @@ namespace UrbanFox.MiniGame
                 FoxyLogger.LogWarning($"A duplicated camera has been found. Only one should be present.");
             }
             Main = this;
-            GameManager.OnEachGameOverSignaled += ClearAllContributors;
-            GameManager.OnEachLoadingOperationStarts += ResetCameraPositionAndRotationToCheckpoint;
+            NewGameManager.OnRestartCheckpointTriggered += ClearAllContributors;
+            NewGameManager.OnReloadedScenesReady += ResetCameraPositionAndRotationToCheckpoint;
         }
 
         private void OnDestroy()
         {
-            GameManager.OnEachGameOverSignaled -= ClearAllContributors;
-            GameManager.OnEachLoadingOperationStarts -= ResetCameraPositionAndRotationToCheckpoint;
+            NewGameManager.OnRestartCheckpointTriggered -= ClearAllContributors;
+            NewGameManager.OnReloadedScenesReady -= ResetCameraPositionAndRotationToCheckpoint;
         }
 
         private void Update()

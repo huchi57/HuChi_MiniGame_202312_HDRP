@@ -141,16 +141,17 @@ namespace UrbanFox.MiniGame
 
         public void QuitGame()
         {
-            if (GameManager.IsInstanceExist)
-            {
-                GameManager.Instance.QuitGame();
-            }
+#if UNITY_EDITOR
+            UnityEditor.EditorApplication.ExitPlaymode();
+#else
+            Application.Quit();
+#endif
         }
 
         private void Start()
         {
-            GameManager.OnEachGameStarts += OnGameStart;
-            GameManager.OnEachFadeOutCompletedAndIdleStarts += ResetSplashScreenState;
+            GameStateManager.OnGameStateChanged += OnGameStateChanged;
+            NewGameManager.OnFadeOutCompleted += ResetSplashScreenState;
             InputManager.Escape.OnKeyDown += OnEscapePressed;
             m_pauseMenuPageGroup.OnPageGroupStartsToOpen += OnPauseMenuStartsToOpen;
             m_pauseMenuPageGroup.OnPageGroupStartsToClose += OnPauseMenuStartsToClose;
@@ -167,8 +168,8 @@ namespace UrbanFox.MiniGame
 
         private void OnDestroy()
         {
-            GameManager.OnEachGameStarts -= OnGameStart;
-            GameManager.OnEachFadeOutCompletedAndIdleStarts -= ResetSplashScreenState;
+            GameStateManager.OnGameStateChanged -= OnGameStateChanged;
+            NewGameManager.OnFadeOutCompleted -= ResetSplashScreenState;
             InputManager.Escape.OnKeyDown -= OnEscapePressed;
             m_pauseMenuPageGroup.OnPageGroupStartsToOpen -= OnPauseMenuStartsToOpen;
             m_pauseMenuPageGroup.OnPageGroupStartsToClose -= OnPauseMenuStartsToClose;
@@ -182,13 +183,16 @@ namespace UrbanFox.MiniGame
             }
         }
 
-        private void OnGameStart()
+        private void OnGameStateChanged(GameState state)
         {
-            m_titleSplashScreen.DOFade(0, m_titleSplashScreenFadeTime).OnComplete(() =>
+            if (state == GameState.GameplayPausable)
             {
-                m_titleSplashScreen.gameObject.SetActive(false);
-                m_enableSplashScreen = false;
-            });
+                m_titleSplashScreen.DOFade(0, m_titleSplashScreenFadeTime).OnComplete(() =>
+                {
+                    m_titleSplashScreen.gameObject.SetActive(false);
+                    m_enableSplashScreen = false;
+                });
+            }
         }
 
         private void ResetSplashScreenState()
@@ -202,7 +206,7 @@ namespace UrbanFox.MiniGame
 
         private void OnEscapePressed()
         {
-            switch (GameManager.Instance.CurrentGameState)
+            switch (GameStateManager.CurrentGameState)
             {
                 case GameState.Loading:
                     break;
@@ -227,13 +231,13 @@ namespace UrbanFox.MiniGame
         private void OnPauseMenuStartsToOpen()
         {
             OnPauseMenuOpening?.Invoke();
-            GameManager.Instance.SwitchGameState(GameState.Paused);
+            GameStateManager.SwitchGameState(GameState.Paused);
         }
 
         private void OnPauseMenuStartsToClose()
         {
             OnPauseMenuClosing?.Invoke();
-            GameManager.Instance.SwitchToPreviousGameState();
+            GameStateManager.SwitchToPreviousGameState();
         }
     }
 }

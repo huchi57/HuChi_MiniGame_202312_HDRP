@@ -85,7 +85,7 @@ namespace UrbanFox.MiniGame
         {
             m_targetPitchAngle = CurrentPitchAngle;
             m_moveVelocity = Random.Range(m_minInitialVelocity, m_maxInitialVelocity);
-            GameManager.Instance.SwitchGameState(GameState.GameplayPausable);
+            GameStateManager.SwitchGameState(GameState.GameplayPausable);
             CameraBrain.Main.SaveCameraCheckpointPosition();
             IsAlive = true;
         }
@@ -96,11 +96,11 @@ namespace UrbanFox.MiniGame
             EnableUnityBuiltInGravity();
             if (isInstantDeath)
             {
-                GameManager.Instance.RestartCheckpoint_Instant_Default();
+                NewGameManager.Instance.RestartCheckpoint_Instant();
             }
             else
             {
-                GameManager.Instance.RestartCheckpoint_Fade_Default();
+                NewGameManager.Instance.RestartCheckpoint_DefaultFade();
             }
         }
 
@@ -121,25 +121,25 @@ namespace UrbanFox.MiniGame
         {
             m_originalPosition = transform.position;
             m_originalRotation = transform.rotation;
-            GameManager.RegisterPlayer(this);
+            GameStateManager.RegisterPlayer(this);
             InputManager.OnAnyKeyPressed += OnAnyKeyPressed;
-            GameManager.OnEachGameOverSignaled += EnableUnityBuiltInGravity;
-            GameManager.OnEachLoadingOperationStarts += ResetPlanePosition;
-            GameManager.OnEachFadeInCompleted += ChangeGameStateToWaitForPlayerStart;
+            NewGameManager.OnRestartCheckpointTriggered += EnableUnityBuiltInGravity;
+            NewGameManager.OnReloadedScenesReady += ResetPlanePosition;
+            NewGameManager.OnFadeInCompleted += ChangeGameStateToWaitForPlayerStart;
             IsAlive = true;
         }
 
         private void OnDestroy()
         {
             InputManager.OnAnyKeyPressed -= OnAnyKeyPressed;
-            GameManager.OnEachGameOverSignaled -= EnableUnityBuiltInGravity;
-            GameManager.OnEachLoadingOperationStarts -= ResetPlanePosition;
-            GameManager.OnEachFadeInCompleted -= ChangeGameStateToWaitForPlayerStart;
+            NewGameManager.OnRestartCheckpointTriggered -= EnableUnityBuiltInGravity;
+            NewGameManager.OnReloadedScenesReady -= ResetPlanePosition;
+            NewGameManager.OnFadeInCompleted -= ChangeGameStateToWaitForPlayerStart;
         }
 
         private void OnAnyKeyPressed(UnityEngine.InputSystem.InputControl key)
         {
-            if (GameManager.Instance.CurrentGameState == GameState.WaitForInputToStartGame && !key.name.ToLower().Contains("esc") && !key.name.ToLower().Contains("back") && !key.name.ToLower().Contains("f6"))
+            if (GameStateManager.CurrentGameState == GameState.WaitForInputToStartGame && !key.name.ToLower().Contains("esc") && !key.name.ToLower().Contains("back") && !key.name.ToLower().Contains("f6"))
             {
                 InitializeAndEjectPlane();
             }
@@ -148,7 +148,7 @@ namespace UrbanFox.MiniGame
         private void ChangeGameStateToWaitForPlayerStart()
         {
             IsAlive = true;
-            GameManager.Instance.SwitchGameState(GameState.WaitForInputToStartGame);
+            GameStateManager.SwitchGameState(GameState.WaitForInputToStartGame);
         }
 
         private void OnEnable()
@@ -166,7 +166,7 @@ namespace UrbanFox.MiniGame
         private void LateUpdate()
         {
             // FIXME: Workaround for joystick controls only.
-            if (GameManager.IsInstanceExist && GameManager.Instance.CurrentGameState == GameState.WaitForInputToStartGame && InputManager.Move.sqrMagnitude > 0.5f)
+            if (GameStateManager.CurrentGameState == GameState.WaitForInputToStartGame && InputManager.Move.sqrMagnitude > 0.5f)
             {
                 InitializeAndEjectPlane();
             }
@@ -174,7 +174,7 @@ namespace UrbanFox.MiniGame
 
         private void OnMove(Vector2 move)
         {
-            if (GameManager.Instance.CurrentGameState != GameState.GameplayPausable)
+            if (GameStateManager.CurrentGameState != GameState.GameplayPausable)
             {
                 return;
             }
@@ -213,7 +213,7 @@ namespace UrbanFox.MiniGame
                 m_rigidbody.velocity += Time.fixedDeltaTime * m_externalWindSpeed;
             }
 
-            if (GameManager.Instance.CurrentGameState != GameState.GameplayPausable)
+            if (GameStateManager.CurrentGameState != GameState.GameplayPausable)
             {
                 return;
             }
@@ -234,7 +234,7 @@ namespace UrbanFox.MiniGame
 
         private void OnCollisionEnter(Collision collision)
         {
-            if (GameManager.Instance.CurrentGameState != GameState.GameCompletedWaitForInput)
+            if (GameStateManager.CurrentGameState != GameState.GameCompletedWaitForInput)
             {
                 IsAlive = false;
                 TriggerGameOver(isInstantDeath: collision.gameObject.GetComponent<InstantGameOverOnCollision>());
@@ -246,7 +246,7 @@ namespace UrbanFox.MiniGame
             if (other.TryGetComponent<GameOverTrigger>(out var trigger))
             {
                 IsAlive = false;
-                GameManager.Instance.RestartCheckpoint_Fade(trigger.WaitTimeBeforeRestartingWhenGameOverTriggered);
+                NewGameManager.Instance.RestartCheckpoint_DefaultFade(trigger.WaitTimeBeforeRestartingWhenGameOverTriggered);
             }
         }
 
