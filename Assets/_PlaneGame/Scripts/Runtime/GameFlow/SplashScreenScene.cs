@@ -27,7 +27,7 @@ namespace UrbanFox.MiniGame
 
         private IEnumerator Start()
         {
-            GameManager.Instance.SwitchGameState(GameState.Loading);
+            GameInstance.SwitchGameState(GameState.Loading);
             if (!m_pages.IsNullOrEmpty())
             {
                 foreach (var page in m_pages)

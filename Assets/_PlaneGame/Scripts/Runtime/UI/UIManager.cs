@@ -202,7 +202,7 @@ namespace UrbanFox.MiniGame
 
         private void OnEscapePressed()
         {
-            switch (GameManager.Instance.CurrentGameState)
+            switch (GameInstance.CurrentGameState)
             {
                 case GameState.Loading:
                     break;
@@ -227,13 +227,13 @@ namespace UrbanFox.MiniGame
         private void OnPauseMenuStartsToOpen()
         {
             OnPauseMenuOpening?.Invoke();
-            GameManager.Instance.SwitchGameState(GameState.Paused);
+            GameInstance.SwitchGameState(GameState.Paused);
         }
 
         private void OnPauseMenuStartsToClose()
         {
             OnPauseMenuClosing?.Invoke();
-            GameManager.Instance.SwitchToPreviousGameState();
+            GameInstance.SwitchToPreviousGameState();
         }
     }
 }

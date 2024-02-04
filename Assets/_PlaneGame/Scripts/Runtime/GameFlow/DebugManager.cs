@@ -52,7 +52,7 @@ namespace UrbanFox.MiniGame
             if (GameManager.IsInstanceExist && ApplicationBuildData.Instance)
             {
                 content.AppendLine($"{ApplicationBuildData.Instance.GetBuildInfoText()}");
-                content.AppendLine($"Game State: {GameManager.Instance.CurrentGameState}");
+                content.AppendLine($"Game State: {GameInstance.CurrentGameState}");
                 content.AppendLine($"FOV: {CameraBrain.Main.VirtualCamera.m_Lens.FieldOfView:F2}");
                 content.AppendLine($"Master Volume: {AudioManager.Instance.MasterBusVolume:F2}");
                 content.AppendLine($"Game Volume: {AudioManager.Instance.GameBusVolume:F2}");

@@ -122,9 +122,9 @@ namespace UrbanFox.MiniGame
 
         public void StartChasingPlayer()
         {
-            if (GameManager.Player)
+            if (GameInstance.PlayerTransform)
             {
-                StartChasingTarget(GameManager.Player);
+                StartChasingTarget(GameInstance.PlayerTransform);
             }
         }
 
@@ -221,7 +221,7 @@ namespace UrbanFox.MiniGame
             {
                 m_flyingSound.Stop();
             }
-            if (!m_crashedSoundPlayed && !other.gameObject.CompareTag(GameManager.PlayerTag))
+            if (!m_crashedSoundPlayed && !other.gameObject.CompareTag(GameInstance.PlayerTag))
             {
                 m_crashedSound.PlayOneShot(transform.position);
                 m_crashedSoundPlayed = true;
@@ -303,7 +303,7 @@ namespace UrbanFox.MiniGame
                 {
                     m_chasePlayerSound.SetParameter(m_distanceToPlayerParameterName, Vector3.Distance(m_currentChasingTarget.position, transform.position));
                 }
-                if (GameManager.Instance.CurrentGameState == GameState.GameOverWaitForReload)
+                if (GameInstance.CurrentGameState == GameState.GameOverWaitForReload)
                 {
                     m_currentState = State.GiveUp;
                 }

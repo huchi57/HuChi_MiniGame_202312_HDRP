@@ -43,7 +43,7 @@ namespace UrbanFox.MiniGame
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.gameObject.TryGetComponent<PlayerController>(out var player) && GameManager.Instance.CurrentGameState == GameState.GameplayPausable)
+            if (other.gameObject.TryGetComponent<PlayerController>(out var player) && GameInstance.CurrentGameState == GameState.GameplayPausable)
             {
                 player.LockToPitchAngleForDuration(pitchAngle: 0, duration: 5, lerpSpeed: 3);
                 StartCoroutine(PlayCredits());
@@ -53,7 +53,7 @@ namespace UrbanFox.MiniGame
         private IEnumerator PlayCredits()
         {
             yield return new WaitForSeconds(m_waitForSeconds);
-            GameManager.Instance.SwitchGameState(GameState.Loading);
+            GameInstance.SwitchGameState(GameState.Loading);
             if (!m_creditsSlides.IsNullOrEmpty())
             {
                 foreach (var slide in m_creditsSlides)
@@ -69,16 +69,16 @@ namespace UrbanFox.MiniGame
                     yield return new WaitForSeconds(slide.FadeTime + slide.IntervalUntillNextSlide);
                 }
             }
-            GameManager.Instance.SwitchGameState(GameState.GameCompletedWaitForInput);
+            GameInstance.SwitchGameState(GameState.GameCompletedWaitForInput);
             UIManager.Instance.EnableSplashScreen(true);
             InputManager.OnAnyKeyPressed += OnAnykeyPressed;
         }
 
         private void OnAnykeyPressed(UnityEngine.InputSystem.InputControl obj)
         {
-            if (GameManager.PlayerController)
+            if (GameInstance.PlayerController)
             {
-                GameManager.PlayerController.UpdateRespawnPoint(Vector3.zero);
+                GameInstance.PlayerController.UpdateRespawnPoint(Vector3.zero);
             }
 
             GameManager.Instance.RestartCheckpoint_Fade(2, new SceneLoadOperationCallbacks()

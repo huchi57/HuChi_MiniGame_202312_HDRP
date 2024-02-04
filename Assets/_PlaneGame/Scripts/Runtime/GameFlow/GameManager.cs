@@ -8,10 +8,6 @@ namespace UrbanFox.MiniGame
 {
     public class GameManager : RuntimeManager<GameManager>
     {
-        public const string PlayerTag = "Player";
-
-        public static event Action<GameState> OnGameStateChanged;
-
         public static event Action OnEachGameStarts;
 
         public static event Action OnEachGameOverSignaled;
@@ -34,24 +30,6 @@ namespace UrbanFox.MiniGame
             private set;
         }
 
-        public static Transform Player
-        {
-            get
-            {
-                if (m_player)
-                {
-                    return m_player;
-                }
-                var playerObject = GameObject.FindWithTag(PlayerTag);
-                if (playerObject)
-                {
-                    m_player = playerObject.transform;
-                }
-                return m_player;
-            }
-        }
-
-        private static Transform m_player;
         private readonly List<string> m_dirtyScenes = new List<string>();
 
         [SerializeField]
@@ -76,40 +54,6 @@ namespace UrbanFox.MiniGame
 
         [SerializeField, Scene]
         private string[] m_persistentScenes;
-
-        [SerializeField, NonEditable]
-        private GameState m_currentGameState;
-
-        private GameState m_previousGameState;
-
-        public GameState CurrentGameState => m_currentGameState;
-
-        public static void RegisterPlayer(PlayerController player)
-        {
-            PlayerController = player;
-            m_player = player.transform;
-        }
-
-        public static void RegisterPlayer(Transform player)
-        {
-            m_player = player;
-        }
-
-        public void SwitchGameState(GameState gameState)
-        {
-            m_previousGameState = m_currentGameState;
-            m_currentGameState = gameState;
-            OnGameStateChanged?.Invoke(m_currentGameState);
-            if (m_currentGameState == GameState.GameplayPausable)
-            {
-                OnEachGameStarts?.Invoke();
-            }
-        }
-
-        public void SwitchToPreviousGameState()
-        {
-            SwitchGameState(m_previousGameState);
-        }
 
         public void QuitGame()
         {
@@ -161,7 +105,7 @@ namespace UrbanFox.MiniGame
 
         public void RestartCheckpoint_Fade(float waitTimeBeforeFadeOutBegins, float fadeOutDuration, float fadeInDuration, SceneLoadOperationCallbacks? callbacks = null)
         {
-            if (m_currentGameState == GameState.GameplayPausable || m_currentGameState == GameState.GameCompletedWaitForInput)
+            if (GameInstance.CurrentGameState == GameState.GameplayPausable || GameInstance.CurrentGameState == GameState.GameCompletedWaitForInput)
             {
                 UnloadAndLoadScenesFullScreen(m_dirtyScenes, m_dirtyScenes, true, waitTimeBeforeFadeOutBegins, fadeOutDuration, fadeInDuration, callbacks);
             }
@@ -174,7 +118,7 @@ namespace UrbanFox.MiniGame
 
         public void RestartCheckpoint_Instant(float fadeInDuration, SceneLoadOperationCallbacks? callbacks = null)
         {
-            if (m_currentGameState == GameState.GameplayPausable)
+            if (GameInstance.CurrentGameState == GameState.GameplayPausable)
             {
                 UnloadAndLoadScenesFullScreen(m_dirtyScenes, m_dirtyScenes, true, 0, 0.1f, fadeInDuration, callbacks);
             }
@@ -190,7 +134,7 @@ namespace UrbanFox.MiniGame
             StartCoroutine(DoUnloadAndLoadScenesFullScreen());
             IEnumerator DoUnloadAndLoadScenesFullScreen()
             {
-                SwitchGameState(GameState.Loading);
+                GameInstance.SwitchGameState(GameState.Loading);
 
                 // Wait time before fade out
                 OnEachGameOverSignaled?.Invoke();
@@ -337,13 +281,12 @@ namespace UrbanFox.MiniGame
 
         private void Start()
         {
-            m_previousGameState = m_currentGameState;
             UnloadAllButPersistentScene();
             UnloadAndLoadScenesFullScreen(null, m_scenesToLoadOnStart, true, 0, 0, m_defaultFadeTime, new SceneLoadOperationCallbacks()
             {
                 OnFadeInCompleted = () =>
                 {
-                    SwitchGameState(GameState.WaitForInputToStartGame);
+                    GameInstance.SwitchGameState(GameState.WaitForInputToStartGame);
                 }
             });
         }

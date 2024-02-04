@@ -43,9 +43,9 @@ namespace UrbanFox.MiniGame
 
         private void Update()
         {
-            if (m_lookAtWeights.IsNullOrEmpty() || !GameManager.Player)
+            if (m_lookAtWeights.IsNullOrEmpty() || !GameInstance.PlayerTransform)
             {
-                m_weightedLookAt = GameManager.Player;
+                m_weightedLookAt = GameInstance.PlayerTransform;
                 return;
             }
 
@@ -55,7 +55,7 @@ namespace UrbanFox.MiniGame
                 m_weightSum += data.Weight;
             }
 
-            m_positionSum = (m_weightOfPlayer / m_weightSum) * GameManager.Player.position;
+            m_positionSum = (m_weightOfPlayer / m_weightSum) * GameInstance.PlayerTransform.position;
             foreach (var data in m_lookAtWeights)
             {
                 m_positionSum += (data.Weight / m_weightSum) * data.WeightPoint.position;

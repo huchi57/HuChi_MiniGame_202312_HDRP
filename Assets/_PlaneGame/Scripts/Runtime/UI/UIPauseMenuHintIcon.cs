@@ -28,16 +28,13 @@ namespace UrbanFox.MiniGame
 
         private void LateUpdate()
         {
-            if (GameManager.IsInstanceExist)
+            m_targetAlpha = 0;
+            foreach (var state in m_visibleGameStates)
             {
-                m_targetAlpha = 0;
-                foreach (var state in m_visibleGameStates)
+                if (GameInstance.CurrentGameState == state)
                 {
-                    if (GameManager.Instance.CurrentGameState == state)
-                    {
-                        m_targetAlpha = 1;
-                        break;
-                    }
+                    m_targetAlpha = 1;
+                    break;
                 }
             }
             m_canvasGroup.alpha = Mathf.Lerp(m_canvasGroup.alpha, m_targetAlpha, 5 * Time.unscaledDeltaTime);

@@ -21,7 +21,7 @@ namespace UrbanFox.MiniGame
 
         private void OnCollisionEnter(Collision collision)
         {
-            if (collision.gameObject.CompareTag(m_comparePlayerTag ? GameManager.PlayerTag : m_customTag))
+            if (collision.gameObject.CompareTag(m_comparePlayerTag ? GameInstance.PlayerTag : m_customTag))
             {
                 if (!m_invokeOnlyOnce || !m_invoked)
                 {

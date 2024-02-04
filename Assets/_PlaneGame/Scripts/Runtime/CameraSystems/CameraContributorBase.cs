@@ -32,7 +32,7 @@ namespace UrbanFox.MiniGame
                 return m_targetType switch
                 {
                     TargetType.CustomTarget => m_customTarget,
-                    _ => GameManager.Player,
+                    _ => GameInstance.PlayerTransform,
                 };
             }
         }
