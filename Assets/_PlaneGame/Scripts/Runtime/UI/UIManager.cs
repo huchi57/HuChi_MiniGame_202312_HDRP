@@ -149,8 +149,8 @@ namespace UrbanFox.MiniGame
 
         private void Start()
         {
-            GameManager.OnEachGameStarts += OnGameStart;
-            GameManager.OnEachFadeOutCompletedAndIdleStarts += ResetSplashScreenState;
+            InputManager.OnAnyKeyButReservedKeysPressed += OnAnyKeyPressed;
+            GameManager.OnFadeOutCompleted += ResetSplashScreenState;
             InputManager.Escape.OnKeyDown += OnEscapePressed;
             m_pauseMenuPageGroup.OnPageGroupStartsToOpen += OnPauseMenuStartsToOpen;
             m_pauseMenuPageGroup.OnPageGroupStartsToClose += OnPauseMenuStartsToClose;
@@ -167,8 +167,8 @@ namespace UrbanFox.MiniGame
 
         private void OnDestroy()
         {
-            GameManager.OnEachGameStarts -= OnGameStart;
-            GameManager.OnEachFadeOutCompletedAndIdleStarts -= ResetSplashScreenState;
+            InputManager.OnAnyKeyButReservedKeysPressed -= OnAnyKeyPressed;
+            GameManager.OnFadeOutCompleted -= ResetSplashScreenState;
             InputManager.Escape.OnKeyDown -= OnEscapePressed;
             m_pauseMenuPageGroup.OnPageGroupStartsToOpen -= OnPauseMenuStartsToOpen;
             m_pauseMenuPageGroup.OnPageGroupStartsToClose -= OnPauseMenuStartsToClose;
@@ -182,13 +182,16 @@ namespace UrbanFox.MiniGame
             }
         }
 
-        private void OnGameStart()
+        private void OnAnyKeyPressed(UnityEngine.InputSystem.InputControl obj)
         {
-            m_titleSplashScreen.DOFade(0, m_titleSplashScreenFadeTime).OnComplete(() =>
+            if (GameInstance.CurrentGameState == GameState.WaitForInputToStartGame || GameInstance.CurrentGameState == GameState.GameplayPausable)
             {
-                m_titleSplashScreen.gameObject.SetActive(false);
-                m_enableSplashScreen = false;
-            });
+                m_titleSplashScreen.DOFade(0, m_titleSplashScreenFadeTime).OnComplete(() =>
+                {
+                    m_titleSplashScreen.gameObject.SetActive(false);
+                    m_enableSplashScreen = false;
+                });
+            }
         }
 
         private void ResetSplashScreenState()

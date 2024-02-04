@@ -33,12 +33,12 @@ namespace UrbanFox.MiniGame
 
         private void Start()
         {
-            GameManager.OnEachLoadingOperationStarts += RestoreOriginalObject;
+            GameManager.OnFadeOutCompleted += RestoreOriginalObject;
         }
 
         private void OnDestroy()
         {
-            GameManager.OnEachLoadingOperationStarts -= RestoreOriginalObject;
+            GameManager.OnFadeOutCompleted -= RestoreOriginalObject;
         }
 
         private void OnCollisionEnter(Collision collision)

@@ -531,6 +531,7 @@ MonoBehaviour:
   m_defaultVolumeFadeInSeconds: 3
   m_easeOut: 3
   m_defaultVolumeFadeOutSeconds: 1
+  m_muteDiegeticSoundsOnStart: 1
 --- !u!1 &6632604501635530008
 GameObject:
   m_ObjectHideFlags: 0
@@ -576,16 +577,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_dontDestroyOnLoad: 0
-  m_fullscreenBlackFadeTime: 2
-  m_fullscreenBlackIdleTime: 2.25
   m_defaultWaitTimeBeforeFadeOut: 2
-  m_defaultFadeTime: 2
-  m_deltaTimeBetweenSceneOperations: 1.5
-  m_scenesToLoadOnStart: []
+  m_waitTimeBetweenLoads: 1.5
+  m_defaultFadeOutTime: 1.75
+  m_defaultFadeInTime: 1.75
   m_persistentScenes:
-  - S0_PersistentScene
   - _MasterScene
-  m_currentGameState: 0
+  m_splashScreenScene: _SplashScreens
+  m_gameReferenceScene: _SceneReferences_MainGame
+  m_skipSplashScreenSceneOnStart: 0
 --- !u!1 &7406744972623736169
 GameObject:
   m_ObjectHideFlags: 0

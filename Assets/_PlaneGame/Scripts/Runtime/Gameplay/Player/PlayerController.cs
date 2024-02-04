@@ -96,11 +96,11 @@ namespace UrbanFox.MiniGame
             EnableUnityBuiltInGravity();
             if (isInstantDeath)
             {
-                GameManager.Instance.RestartCheckpoint_Instant_Default();
+                GameManager.Instance.RestartCheckpoint_Instant();
             }
             else
             {
-                GameManager.Instance.RestartCheckpoint_Fade_Default();
+                GameManager.Instance.RestartCheckpoint_Fade();
             }
         }
 
@@ -122,24 +122,24 @@ namespace UrbanFox.MiniGame
             m_originalPosition = transform.position;
             m_originalRotation = transform.rotation;
             GameInstance.RegisterPlayer(this);
-            InputManager.OnAnyKeyPressed += OnAnyKeyPressed;
-            GameManager.OnEachGameOverSignaled += EnableUnityBuiltInGravity;
-            GameManager.OnEachLoadingOperationStarts += ResetPlanePosition;
-            GameManager.OnEachFadeInCompleted += ChangeGameStateToWaitForPlayerStart;
+            InputManager.OnAnyKeyButReservedKeysPressed += OnAnyKeyPressed;
+            GameManager.OnRestartTriggered += EnableUnityBuiltInGravity;
+            GameManager.OnFadeOutCompleted += ResetPlanePosition;
+            GameManager.OnFadeInCompleted += ChangeGameStateToWaitForPlayerStart;
             IsAlive = true;
         }
 
         private void OnDestroy()
         {
-            InputManager.OnAnyKeyPressed -= OnAnyKeyPressed;
-            GameManager.OnEachGameOverSignaled -= EnableUnityBuiltInGravity;
-            GameManager.OnEachLoadingOperationStarts -= ResetPlanePosition;
-            GameManager.OnEachFadeInCompleted -= ChangeGameStateToWaitForPlayerStart;
+            InputManager.OnAnyKeyButReservedKeysPressed -= OnAnyKeyPressed;
+            GameManager.OnRestartTriggered -= EnableUnityBuiltInGravity;
+            GameManager.OnFadeOutCompleted -= ResetPlanePosition;
+            GameManager.OnFadeInCompleted -= ChangeGameStateToWaitForPlayerStart;
         }
 
         private void OnAnyKeyPressed(UnityEngine.InputSystem.InputControl key)
         {
-            if (GameInstance.CurrentGameState == GameState.WaitForInputToStartGame && !key.name.ToLower().Contains("esc") && !key.name.ToLower().Contains("back") && !key.name.ToLower().Contains("f6"))
+            if (GameInstance.CurrentGameState == GameState.WaitForInputToStartGame)
             {
                 InitializeAndEjectPlane();
             }
@@ -246,7 +246,7 @@ namespace UrbanFox.MiniGame
             if (other.TryGetComponent<GameOverTrigger>(out var trigger))
             {
                 IsAlive = false;
-                GameManager.Instance.RestartCheckpoint_Fade(trigger.WaitTimeBeforeRestartingWhenGameOverTriggered);
+                GameManager.Instance.RestartCheckpoint_Fade(trigger.WaitTimeBeforeRestartingWhenGameOverTriggered, trigger.FadeOutTime, trigger.FadeInTime);
             }
         }
 

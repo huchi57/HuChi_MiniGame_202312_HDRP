@@ -71,28 +71,28 @@ namespace UrbanFox.MiniGame
             }
             GameInstance.SwitchGameState(GameState.GameCompletedWaitForInput);
             UIManager.Instance.EnableSplashScreen(true);
-            InputManager.OnAnyKeyPressed += OnAnykeyPressed;
+            InputManager.OnAnyKeyPressed += OnAnykeyPressed_OneOff;
         }
 
-        private void OnAnykeyPressed(UnityEngine.InputSystem.InputControl obj)
+        private void OnAnykeyPressed_OneOff(UnityEngine.InputSystem.InputControl obj)
         {
+            InputManager.OnAnyKeyPressed -= OnAnykeyPressed_OneOff;
             if (GameInstance.PlayerController)
             {
                 GameInstance.PlayerController.UpdateRespawnPoint(Vector3.zero);
             }
+            GameManager.OnFadeOutCompleted += ResetCameraCheckpoint_OneOff;
+            GameManager.Instance.RestartCheckpoint_Fade();
+        }
 
-            GameManager.Instance.RestartCheckpoint_Fade(2, new SceneLoadOperationCallbacks()
+        private void ResetCameraCheckpoint_OneOff()
+        {
+            GameManager.OnFadeOutCompleted -= ResetCameraCheckpoint_OneOff;
+            if (CameraBrain.Main)
             {
-                OnFadeOutCompletedAndIdleStarts = () =>
-                {
-                    if (CameraBrain.Main)
-                    {
-                        CameraBrain.Main.transform.SetPositionAndRotation(Vector3.zero, Quaternion.identity);
-                        CameraBrain.Main.SaveCameraCheckpointPosition();
-                    }
-                }
-            });
-            InputManager.OnAnyKeyPressed -= OnAnykeyPressed;
+                CameraBrain.Main.transform.SetPositionAndRotation(Vector3.zero, Quaternion.identity);
+                CameraBrain.Main.SaveCameraCheckpointPosition();
+            }
         }
     }
 }

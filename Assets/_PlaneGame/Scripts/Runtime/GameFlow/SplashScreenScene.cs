@@ -41,7 +41,7 @@ namespace UrbanFox.MiniGame
                 {
                     if (page.CanvasGroup)
                     {
-                        page.CanvasGroup.DOFade(1, 1);
+                        page.CanvasGroup.DOFade(1, 0.25f);
                         for (float t = 0; t < page.Duration + 1; t += Time.unscaledDeltaTime)
                         {
                             if (Input.anyKeyDown)
@@ -50,13 +50,16 @@ namespace UrbanFox.MiniGame
                             }
                             yield return null;
                         }
-                        page.CanvasGroup.DOFade(0, 1);
+                        page.CanvasGroup.DOFade(0, 0.25f);
                         yield return new WaitForSeconds(1);
                     }
                     yield return new WaitForSeconds(m_idleDurationBetweenPages);
                 }
             }
-            GameManager.Instance.UnloadAndLoadScenesFullScreen(new string[] { gameObject.scene.name }, new string[] { m_sceneToLoadWhenSplashScreenEnds }, true, 0.1f, 0.1f, 2);
+            GameManager.Instance.UnloadAndReloadScenes(new string[] { gameObject.scene.name }, new string[] { m_sceneToLoadWhenSplashScreenEnds }, 0.1f, 2, enableDefaultCallbacks: false, () =>
+            {
+                GameInstance.SwitchGameState(GameState.WaitForInputToStartGame);
+            });
         }
     }
 }

@@ -8,6 +8,7 @@ namespace UrbanFox.MiniGame
     public class InputManager : RuntimeManager<InputManager>
     {
         public static event Action<InputControl> OnAnyKeyPressed;
+        public static event Action<InputControl> OnAnyKeyButReservedKeysPressed;
         public static event Action<Vector2> OnMove;
         public static Vector2 Move { get; private set; }
         public static readonly InputActionKey Escape = new InputActionKey();
@@ -34,6 +35,10 @@ namespace UrbanFox.MiniGame
             InputSystem.onAnyButtonPress.Call((control) =>
             {
                 OnAnyKeyPressed?.Invoke(control);
+                if (!control.name.ToLower().Contains("esc") && !control.name.ToLower().Contains("back") && !control.name.ToLower().Contains("f6"))
+                {
+                    OnAnyKeyButReservedKeysPressed?.Invoke(control);
+                }
             });
             if (!SettingsManager.Instance.InputBindingsOverride.IsNullOrEmpty())
             {

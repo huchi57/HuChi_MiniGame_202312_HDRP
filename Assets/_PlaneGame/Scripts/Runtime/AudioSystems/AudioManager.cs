@@ -28,6 +28,9 @@ namespace UrbanFox.MiniGame
         [SerializeField]
         private float m_defaultVolumeFadeOutSeconds;
 
+        [SerializeField]
+        private bool m_muteDiegeticSoundsOnStart;
+
         private Bus m_masterBus;
         private Bus m_gameBus;
         private Bus m_reverbBus;
@@ -79,21 +82,23 @@ namespace UrbanFox.MiniGame
 
         private void Start()
         {
+#if UNITY_EDITOR
+            if (m_muteDiegeticSoundsOnStart)
+            {
+                FadeOutGameBus(0);
+            }
+#endif
             m_masterBus = RuntimeManager.GetBus(k_masterBusName);
             m_gameBus = RuntimeManager.GetBus(k_gameBusName);
             m_reverbBus = RuntimeManager.GetBus(k_reverbBusName);
             UIManager.OnPauseMenuOpening += OnPauseMenuOpening;
             UIManager.OnPauseMenuClosing += OnPauseMenuClosing;
-            GameManager.OnEachFadeOutCompletedAndIdleStarts += FadeOutGameAudio;
-            GameManager.OnEachLoadingOperationCompletedAndIdleStarts += FadeInGameAudio;
         }
 
         private void OnDestroy()
         {
             UIManager.OnPauseMenuOpening -= OnPauseMenuOpening;
             UIManager.OnPauseMenuClosing -= OnPauseMenuClosing;
-            GameManager.OnEachFadeOutCompletedAndIdleStarts -= FadeOutGameAudio;
-            GameManager.OnEachLoadingOperationCompletedAndIdleStarts -= FadeInGameAudio;
             FMODUtilities.PrintMissingEventGUIDsOrPaths();
         }
 
@@ -128,16 +133,6 @@ namespace UrbanFox.MiniGame
         private void OnPauseMenuClosing()
         {
             m_gameBus.setPaused(false);
-        }
-
-        private void FadeOutGameAudio()
-        {
-            FadeOutGameBus(m_defaultVolumeFadeOutSeconds);
-        }
-
-        private void FadeInGameAudio()
-        {
-            FadeInGameBus(m_defaultVolumeFadeInSeconds);
         }
     }
 }

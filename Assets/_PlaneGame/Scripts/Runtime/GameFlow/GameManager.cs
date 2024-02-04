@@ -8,52 +8,102 @@ namespace UrbanFox.MiniGame
 {
     public class GameManager : RuntimeManager<GameManager>
     {
-        public static event Action OnEachGameStarts;
+        public static event Action OnRestartTriggered;
+        public static event Action OnFadeOutCompleted;
+        public static event Action OnLoadedScenesReady;
+        public static event Action OnFadeInCompleted;
 
-        public static event Action OnEachGameOverSignaled;
-
-        public static event Action OnEachFadeOutStarts;
-
-        public static event Action OnEachFadeOutCompletedAndIdleStarts;
-
-        public static event Action OnEachLoadingOperationStarts;
-
-        public static event Action OnEachLoadingOperationCompletedAndIdleStarts;
-
-        public static event Action OnEachFadeInStarts;
-
-        public static event Action OnEachFadeInCompleted;
-
-        public static PlayerController PlayerController
-        {
-            get;
-            private set;
-        }
-
-        private readonly List<string> m_dirtyScenes = new List<string>();
-
-        [SerializeField]
-        private float m_fullscreenBlackFadeTime;
-
-        [SerializeField]
-        private float m_fullscreenBlackIdleTime;
-
-        [Header("Scene Options")]
+        [Header("Transition Time Settings")]
         [SerializeField]
         private float m_defaultWaitTimeBeforeFadeOut;
 
         [SerializeField]
-        private float m_defaultFadeTime;
+        private float m_waitTimeBetweenLoads;
 
         [SerializeField]
-        private float m_deltaTimeBetweenSceneOperations;
+        private float m_defaultFadeOutTime;
 
-        [Header("Scene Initialization Options")]
-        [SerializeField, Scene]
-        private string[] m_scenesToLoadOnStart;
+        [SerializeField]
+        private float m_defaultFadeInTime;
 
+        [Header("Scene Options")]
         [SerializeField, Scene]
         private string[] m_persistentScenes;
+
+        [SerializeField, Scene]
+        private string m_splashScreenScene;
+
+        [SerializeField, Scene]
+        private string m_gameReferenceScene;
+
+        [SerializeField]
+        private bool m_skipSplashScreenSceneOnStart;
+
+        private readonly List<string> m_dirtyScenes = new List<string>();
+
+        public void AddDirtyScenes(IEnumerable<string> scenes)
+        {
+            if (scenes.IsNullOrEmpty())
+            {
+                return;
+            }
+            foreach (var scene in scenes)
+            {
+                if (!m_dirtyScenes.Contains(scene))
+                {
+                    m_dirtyScenes.Add(scene);
+                }
+            }
+        }
+
+        public void RemoveDirtyScenes(IEnumerable<string> scenes)
+        {
+            if (scenes.IsNullOrEmpty())
+            {
+                return;
+            }
+            foreach (var scene in scenes)
+            {
+                if (m_dirtyScenes.Contains(scene))
+                {
+                    m_dirtyScenes.Remove(scene);
+                }
+            }
+        }
+
+        public void RestartCheckpoint_Instant(Action onComplete = null)
+        {
+            RestartCheckpoint_Fade(0, 0.1f, m_defaultFadeInTime, onComplete);
+        }
+
+        public void RestartCheckpoint_Fade(Action onComplete = null)
+        {
+            RestartCheckpoint_Fade(m_defaultWaitTimeBeforeFadeOut, m_defaultFadeOutTime, m_defaultFadeInTime, onComplete);
+        }
+
+        public void RestartCheckpoint_Fade(float waitTime, float fadeOutTime, float fadeInTime, Action onComplete = null)
+        {
+            if (GameInstance.CurrentGameState == GameState.GameplayPausable || GameInstance.CurrentGameState == GameState.GameCompletedWaitForInput)
+            {
+                StartCoroutine(Coroutine());
+            }
+            IEnumerator Coroutine()
+            {
+                GameInstance.SwitchGameState(GameState.Loading);
+                OnRestartTriggered?.Invoke();
+                yield return new WaitForSeconds(waitTime);
+                yield return UnloadAndReloadScenes_Coroutine(m_dirtyScenes, m_dirtyScenes, fadeOutTime, fadeInTime, enableDefaultCallbacks: true, () =>
+                {
+                    GameInstance.SwitchGameState(GameState.WaitForInputToStartGame);
+                    onComplete?.Invoke();
+                });
+            }
+        }
+
+        public void UnloadAndReloadScenes(IEnumerable<string> scenesToUnload, IEnumerable<string> scenesToLoad, float fadeOutTime, float fadeInTime, bool enableDefaultCallbacks, Action onComplete = null)
+        {
+            StartCoroutine(UnloadAndReloadScenes_Coroutine(scenesToUnload, scenesToLoad, fadeOutTime, fadeInTime, enableDefaultCallbacks, onComplete));
+        }
 
         public void QuitGame()
         {
@@ -64,207 +114,51 @@ namespace UrbanFox.MiniGame
 #endif
         }
 
-        public void AddDirtyScenes(params string[] scenes)
+        private void Start()
         {
-            if (!scenes.IsNullOrEmpty())
+#if UNITY_EDITOR
+            UnloadAllButPersistentScene();
+#endif
+#if !UNITY_EDITOR
+            m_skipSplashScreenSceneOnStart = false;
+#endif
+            var sceneToLoadOnStart = m_skipSplashScreenSceneOnStart ? m_gameReferenceScene : m_splashScreenScene;
+            UnloadAndReloadScenes(null, new string[] { sceneToLoadOnStart }, 0, m_defaultFadeInTime, enableDefaultCallbacks: false, () =>
             {
-                foreach (var scene in scenes)
-                {
-                    if (!m_dirtyScenes.Contains(scene))
-                    {
-                        m_dirtyScenes.Add(scene);
-                    }
-                }
-            }
+                GameInstance.SwitchGameState(m_skipSplashScreenSceneOnStart ? GameState.WaitForInputToStartGame : GameState.Loading);
+            });
         }
 
-        public void RemoveDirtyScenes(params string[] scenes)
+        private IEnumerator UnloadAndReloadScenes_Coroutine(IEnumerable<string> scenesToUnload, IEnumerable<string> scenesToLoad, float fadeOutTime, float fadeInTime, bool enableDefaultCallbacks, Action onComplete = null)
         {
-            if (!scenes.IsNullOrEmpty())
+            AudioManager.Instance.FadeOutGameBus(fadeOutTime);
+            UIManager.Instance.FadeOutToBlack(fadeOutTime);
+            yield return new WaitForSeconds(fadeOutTime);
+            if (enableDefaultCallbacks)
             {
-                foreach (var scene in scenes)
-                {
-                    if (m_dirtyScenes.Contains(scene))
-                    {
-                        m_dirtyScenes.Remove(scene);
-                    }
-                }
+                OnFadeOutCompleted?.Invoke();
             }
-        }
 
-        public void RestartCheckpoint_Fade_Default(SceneLoadOperationCallbacks? callbacks = null)
-        {
-            RestartCheckpoint_Fade(m_defaultWaitTimeBeforeFadeOut, m_defaultFadeTime, m_defaultFadeTime, callbacks);
-        }
-
-
-        public void RestartCheckpoint_Fade(float waitTimeBeforeFadeOutBegins, SceneLoadOperationCallbacks? callbacks = null)
-        {
-            RestartCheckpoint_Fade(waitTimeBeforeFadeOutBegins, m_defaultFadeTime, m_defaultFadeTime, callbacks);
-        }
-
-        public void RestartCheckpoint_Fade(float waitTimeBeforeFadeOutBegins, float fadeOutDuration, float fadeInDuration, SceneLoadOperationCallbacks? callbacks = null)
-        {
-            if (GameInstance.CurrentGameState == GameState.GameplayPausable || GameInstance.CurrentGameState == GameState.GameCompletedWaitForInput)
+            yield return new WaitForSeconds(m_waitTimeBetweenLoads);
+            yield return FoxySceneManager.UnloadScenes_Coroutine(scenesToUnload);
+            yield return FoxySceneManager.LoadScenes_Coroutine(scenesToLoad);
+            if (enableDefaultCallbacks)
             {
-                UnloadAndLoadScenesFullScreen(m_dirtyScenes, m_dirtyScenes, true, waitTimeBeforeFadeOutBegins, fadeOutDuration, fadeInDuration, callbacks);
+                OnLoadedScenesReady?.Invoke();
             }
-        }
+            AudioManager.Instance.FadeInGameBus(fadeInTime);
+            yield return new WaitForSeconds(m_waitTimeBetweenLoads);
 
-        public void RestartCheckpoint_Instant_Default(SceneLoadOperationCallbacks? callbacks = null)
-        {
-            RestartCheckpoint_Instant(m_defaultFadeTime, callbacks);
-        }
-
-        public void RestartCheckpoint_Instant(float fadeInDuration, SceneLoadOperationCallbacks? callbacks = null)
-        {
-            if (GameInstance.CurrentGameState == GameState.GameplayPausable)
+            UIManager.Instance.FadeInFromBlack(fadeInTime);
+            yield return new WaitForSeconds(fadeInTime);
+            if (enableDefaultCallbacks)
             {
-                UnloadAndLoadScenesFullScreen(m_dirtyScenes, m_dirtyScenes, true, 0, 0.1f, fadeInDuration, callbacks);
+                OnFadeInCompleted?.Invoke();
             }
+            onComplete?.Invoke();
         }
 
-        public void UnloadAndLoadScenesFullScreen(IList<string> scenesToUnload, IList<string> scenesToLoad, bool isFirstSceneActive = true, SceneLoadOperationCallbacks? callbacks = null)
-        {
-            UnloadAndLoadScenesFullScreen(scenesToUnload, scenesToLoad, isFirstSceneActive, m_defaultWaitTimeBeforeFadeOut, m_defaultFadeTime, m_defaultFadeTime, callbacks);
-        }
-
-        public void UnloadAndLoadScenesFullScreen(IList<string> scenesToUnload, IList<string> scenesToLoad, bool isFirstSceneActive, float waitTimeBeforeFadeOutBegins, float fadeOutDuration, float fadeInDuration, SceneLoadOperationCallbacks? callbacks = null)
-        {
-            StartCoroutine(DoUnloadAndLoadScenesFullScreen());
-            IEnumerator DoUnloadAndLoadScenesFullScreen()
-            {
-                GameInstance.SwitchGameState(GameState.Loading);
-
-                // Wait time before fade out
-                OnEachGameOverSignaled?.Invoke();
-                yield return new WaitForSeconds(waitTimeBeforeFadeOutBegins);
-
-                // Fade out begins
-                callbacks?.OnFadeOutStarts?.Invoke();
-                OnEachFadeOutStarts?.Invoke();
-                UIManager.Instance.FadeOutToBlack(fadeOutDuration);
-                yield return new WaitForSeconds(fadeOutDuration);
-
-                // Fade out ends
-                callbacks?.OnFadeOutCompletedAndIdleStarts?.Invoke();
-                OnEachFadeOutCompletedAndIdleStarts?.Invoke();
-                yield return new WaitForSeconds(m_deltaTimeBetweenSceneOperations);
-
-                // Reload begins
-                callbacks?.OnLoadingOperationStarts?.Invoke();
-                OnEachLoadingOperationStarts?.Invoke();
-
-                // Unload scenes
-                var operations = new List<AsyncOperation>();
-                if (!scenesToUnload.IsNullOrEmpty())
-                {
-                    foreach (var scene in scenesToUnload)
-                    {
-                        var targetScene = SceneManager.GetSceneByName(scene);
-                        if (targetScene != null && targetScene.isLoaded)
-                        {
-                            operations.Add(SceneManager.UnloadSceneAsync(scene));
-                        }
-                    }
-                    while (!AreOperationsCompleted(operations))
-                    {
-                        yield return null;
-                    }
-                }
-
-                // Load scenes
-                operations.Clear();
-                if (!scenesToLoad.IsNullOrEmpty())
-                {
-                    foreach (var scene in scenesToLoad)
-                    {
-                        var targetScene = SceneManager.GetSceneByName(scene);
-                        if (targetScene == null || !targetScene.isLoaded)
-                        {
-                            operations.Add(SceneManager.LoadSceneAsync(scene, LoadSceneMode.Additive));
-                        }
-                    }
-                    while (!AreOperationsCompleted(operations))
-                    {
-                        yield return null;
-                    }
-
-                    // Optional: Set first scene as active
-                    if (isFirstSceneActive && !scenesToLoad[0].IsNullOrEmpty())
-                    {
-                        yield return null;
-                        SceneManager.SetActiveScene(SceneManager.GetSceneByName(scenesToLoad[0]));
-                    }
-                }
-
-                // Reload ends
-                callbacks?.OnLoadingOperationCompletedAndIdleStarts?.Invoke();
-                OnEachLoadingOperationCompletedAndIdleStarts?.Invoke();
-                yield return new WaitForSeconds(m_deltaTimeBetweenSceneOperations);
-
-                // Fade in begins
-                callbacks?.OnFadeInStarts?.Invoke();
-                OnEachFadeInStarts?.Invoke();
-                UIManager.Instance.FadeInFromBlack(fadeInDuration);
-                yield return new WaitForSeconds(fadeInDuration);
-
-                // Fade in ends
-                callbacks?.OnFadeInCompleted?.Invoke();
-                OnEachFadeInCompleted?.Invoke();
-            }
-        }
-
-        public void LoadScenesInBackground(string[] scenes, bool shouldTheFirstSceneInTheArrayBeActive)
-        {
-            StartCoroutine(DoLoadScenesInBackground());
-            IEnumerator DoLoadScenesInBackground()
-            {
-                if (!scenes.IsNullOrEmpty())
-                {
-                    UnloadScenes(scenes);
-                    var operations = new List<AsyncOperation>();
-                    foreach (var scene in scenes)
-                    {
-                        var targetScene = SceneManager.GetSceneByName(scene);
-                        if (targetScene == null || !targetScene.isLoaded)
-                        {
-                            operations.Add(SceneManager.LoadSceneAsync(scene, LoadSceneMode.Additive));
-                        }
-                    }
-                    while (!AreOperationsCompleted(operations))
-                    {
-                        yield return null;
-                    }
-                    yield return null;
-                    if (shouldTheFirstSceneInTheArrayBeActive)
-                    {
-                        while (!IsSceneLoaded(scenes[0]))
-                        {
-                            yield return null;
-                        }
-                        SceneManager.SetActiveScene(SceneManager.GetSceneByName(scenes[0]));
-                    }
-                }
-            }
-        }
-
-        public void UnloadScenes(params string[] scenes)
-        {
-            if (scenes.IsNullOrEmpty())
-            {
-                return;
-            }
-            foreach (var scene in scenes)
-            {
-                if (IsSceneLoaded(scene))
-                {
-                    SceneManager.UnloadSceneAsync(scene);
-                }
-            }
-        }
-
-        public void UnloadAllButPersistentScene()
+        private void UnloadAllButPersistentScene()
         {
             for (int i = 0; i < SceneManager.sceneCount; i++)
             {
@@ -277,58 +171,6 @@ namespace UrbanFox.MiniGame
                     }
                 }
             }
-        }
-
-        private void Start()
-        {
-            UnloadAllButPersistentScene();
-            UnloadAndLoadScenesFullScreen(null, m_scenesToLoadOnStart, true, 0, 0, m_defaultFadeTime, new SceneLoadOperationCallbacks()
-            {
-                OnFadeInCompleted = () =>
-                {
-                    GameInstance.SwitchGameState(GameState.WaitForInputToStartGame);
-                }
-            });
-        }
-
-        private bool IsSceneLoaded(string sceneName)
-        {
-            var scene = SceneManager.GetSceneByName(sceneName);
-            if (scene == null || !scene.IsValid())
-            {
-                return false;
-            }
-            return scene.isLoaded;
-        }
-
-        private bool AreOperationsCompleted(List<AsyncOperation> operations)
-        {
-            if (operations.IsNullOrEmpty())
-            {
-                return true;
-            }
-            foreach (var operation in operations)
-            {
-                if (!operation.isDone)
-                {
-                    return false;
-                }
-            }
-            return true;
-        }
-
-        private float GetOperationsProgress(List<AsyncOperation> operations)
-        {
-            if (operations.IsNullOrEmpty())
-            {
-                return 0;
-            }
-            float value = 0;
-            foreach (var operation in operations)
-            {
-                value += operation.progress / 0.9f;
-            }
-            return value / operations.Count;
         }
     }
 }
