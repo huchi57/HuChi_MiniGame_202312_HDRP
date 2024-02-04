@@ -27,6 +27,16 @@ namespace UrbanFox
             CoroutineHelper.StartCoroutine(LoadScene_Coroutine(scene, onComplete, onProgress));
         }
 
+        public static void LoadActiveScene(string scene, Action onComplete = null, Action<float> onProgress = null)
+        {
+            CoroutineHelper.StartCoroutine(LoadScene_Coroutine(scene, () =>
+            {
+                SceneManager.SetActiveScene(SceneManager.GetSceneByName(scene));
+                onComplete?.Invoke();
+            },
+            onProgress));
+        }
+
         public static void LoadScenes(IEnumerable<string> scenes, Action onComplete = null, Action<float> onProgress = null)
         {
             CoroutineHelper.StartCoroutine(LoadScenes_Coroutine(scenes, onComplete, onProgress));
