@@ -316,9 +316,9 @@ Each anchor point contains different data, and using inverse distance weighting,
 
 > **Inverse Distance Weighting**
 >
-> $$z_p = \frac{\sum_(\frac{z_i}{d_i^p})}{\sum_(\frac{1}{d_i^p})}$$
+> $$z_p = \frac{\sum\limits_{i=1}^{n}(\frac{z_i}{d_i^p})}{\sum\limits_{i=1}^{n}(\frac{1}{d_i^p})}$$
 > 
-> for given $z$ value and $d$ distance on each point indexed $i$.
+> for given $z$ value and $d$ distance on each of $n$ points indexed $i$.
 
 Here is the struct definition of a point data, that is, the $z$ values to be calculated:
 
