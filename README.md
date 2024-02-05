@@ -316,7 +316,7 @@ Each anchor point contains different data, and using inverse distance weighting,
 
 > **Inverse Distance Weighting**
 >
-> $$z_p = \frac{\sum_{i=1}^n (\frac{z_i}{d_i^p})}{\sum_{i=1}^n(\frac{1}{d_i^p})}$$
+> $$z_p = \frac{\sum_(\frac{z_i}{d_i^p})}{\sum_(\frac{1}{d_i^p})}$$
 > 
 > for given $z$ value and $d$ distance on each point indexed $i$.
 
