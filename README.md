@@ -1,6 +1,8 @@
 # DRIFTED
 
-This is a readme file that contains the woking process of the work-in-progress game _DRIFTED_.
+This is a readme file that contains the woking process of the work-in-progress game _DRIFTED_ (previous working title: _PlaneGame_).
+
+### [日本語バージョンはこちら。](#README_JP.md)
 
 ## Table of Contents
 
@@ -187,7 +189,6 @@ T SelectRandom(this ICollection<T> collection)
 
 Building the localization from ground up, I had created a simple tool that can download language data from Google Spreadsheet, so the texts can be reviewed easily by testers and reviewers without needing the Editor installed. Localization data is downloaded, parsed, and saved in the project in these steps:
 
-
 1. Download the data of the spreadsheet row by row. The number of columns determines how many sets of language data we need.
 
 2. From the second row and so on, each row is written into individual language sets using a key-value pair.
@@ -211,7 +212,7 @@ public static void SetLanguage(string languageName)
 
 <img src="Images/Readme/localization-google.png" alt="flowchart">
 
-*Localization Table on Google Spreadsheets*
+*Localization Table on Google Spreadsheets.*
 
 <img src="Images/Readme/localization-unity.png" alt="flowchart">
 
@@ -228,10 +229,10 @@ These functions also come with single-scene equivalents, and coroutine alternati
 ```csharp
 // FoxySceneManager.cs
 
-// Loads a list of scenes in the background, with optional callbacks
+// Loads a list of scenes in the background, with optional callbacks.
 public static void LoadScenes(IEnumerable<string> scenes, Action onComplete = null, Action<float> onProgress = null)
 
-// Unloads a list of scenes in the background, with optional callbacks
+// Unloads a list of scenes in the background, with optional callbacks.
 public static void UnloadScenes(IEnumerable<string> scenes, Action onComplete = null, Action<float> onProgress = null)
 ```
 
@@ -243,7 +244,7 @@ public static void UnloadScenes(IEnumerable<string> scenes, Action onComplete = 
 
 Multiple attributes are implemented to help clean up Editor windows for more clear data displays, highlight references that must not be null, and hide or disable unnecessary data fields according to different conditions. Some attributes include `ShowIf`, `EnableIf`, `ShowIfNot`, `EnableIfNot`, `Indent`, `Required`, and `NonEditable`.
 
-Below is an example usage of the ShowIf attribute that is used in this project:
+Below is an example usage of the `ShowIf` attribute that is used in this project:
 
 ```csharp
 // ObjectSpawner.cs
@@ -344,6 +345,8 @@ public struct CameraContributorPointData
     // Rotation effector
     public Vector3 LookAtOffsetDistanceFromTarget;
     public float RotationSlerpSpeed;
+
+    // Lens effector
     public float FOV;
     public float FOVLerpSpeed;
 }
@@ -356,15 +359,19 @@ Camera contributors are added/removed by following functions:
 ```csharp
 // CameraBrain.cs
 
-// Add contributor to the calculation (when player enters the zone)
+// Add contributor to the calculation (when player enters the zone).
 public void AddContributor(CameraContributorBase contributor)
 
-// Remove contributor from the calcuiation (when player leaves the zone)
+// Remove contributor from the calcuiation (when player leaves the zone).
 public void RemoveContributor(CameraContributorBase contributor)
 
-// Clear all contributors (when game is being restarted)
+// Clear all contributors (when game is being restarted).
 public void ClearAllContributors()
 ```
+
+<img src="Images/Readme/camera-system.png" alt="camera-system">
+
+*The preview for placing camera contributors.*
 
 #### UI System
 
@@ -373,16 +380,16 @@ A `UIPage` is the base element for displaying a group of UI elements that is acc
 ```csharp
 // UIPageGroup.cs
 
-// Open the group, and go to default first page, or cached page in the top stack of the page history
+// Open the group, and go to default first page, or cached page in the top stack of the page history.
 public void OpenPageGroup(Action onCompleted = null)
 
 // Closes the page group
 public void ClosePageGroup(Action onCompleted = null)
 
-// Close current opened page, saved into the history stack, and go to a target page
+// Close current opened page, saved into the history stack, and go to a target page.
 public void GotoPage(UIPage page)
 
-// Close current opened page, pop the top of the history stack and open it, or close the page group entierly if the history is empty
+// Close current opened page, pop the top of the history stack and open it, or close the page group entierly if the history is empty.
 public void TryGotoPreviousPage()
 ```
 
