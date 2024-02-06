@@ -125,13 +125,8 @@ _PlaneGame/
             [UrbanFox.MiniGame.asmdef]
     ...
 Plugins/
-    ...
 Resources/
-    Languages/
-        ...
-    ...
 StreamingAssets/
-    ...
 ...
 </pre>
 
@@ -203,7 +198,8 @@ In game, simply call `TryGetLocalization()` of a string and it will return a cor
 // An event callback that will be invoked whenever the game language changes.
 public static event Action OnLanguageChanged
 
-// Returns true if a key can be localized, returns false if otherwise. Use output string value as the localization result.
+// Returns true if a key can be localized, returns false if otherwise.
+// Use output string value as the localization result.
 public static bool TryGetLocalization(this string key, out string value)
 
 // Sets the current language of the game.
@@ -230,10 +226,12 @@ These functions also come with single-scene equivalents, and coroutine alternati
 // FoxySceneManager.cs
 
 // Loads a list of scenes in the background, with optional callbacks.
-public static void LoadScenes(IEnumerable<string> scenes, Action onComplete = null, Action<float> onProgress = null)
+public static void LoadScenes(IEnumerable<string> scenes,
+    Action onComplete = null, Action<float> onProgress = null)
 
 // Unloads a list of scenes in the background, with optional callbacks.
-public static void UnloadScenes(IEnumerable<string> scenes, Action onComplete = null, Action<float> onProgress = null)
+public static void UnloadScenes(IEnumerable<string> scenes,
+    Action onComplete = null, Action<float> onProgress = null)
 ```
 
 <img src="Images/Readme/scenes.png" alt="scene-manager">
@@ -380,7 +378,8 @@ A `UIPage` is the base element for displaying a group of UI elements that is acc
 ```csharp
 // UIPageGroup.cs
 
-// Open the group, and go to default first page, or cached page in the top stack of the page history.
+// Open the group, and go to default first page,
+// or cached page in the top stack of the page history.
 public void OpenPageGroup(Action onCompleted = null)
 
 // Closes the page group
@@ -389,7 +388,8 @@ public void ClosePageGroup(Action onCompleted = null)
 // Close current opened page, saved into the history stack, and go to a target page.
 public void GotoPage(UIPage page)
 
-// Close current opened page, pop the top of the history stack and open it, or close the page group entierly if the history is empty.
+// Close current opened page, pop the top of the history stack and open it,
+// or close the page group entierly if the history is empty.
 public void TryGotoPreviousPage()
 ```
 

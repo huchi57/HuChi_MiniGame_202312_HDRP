@@ -1,0 +1,476 @@
+<!DOCTYPE html><html><head>
+      <title>README</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      <link rel="stylesheet" href="file:///c:\Users\Chi\.vscode\extensions\shd101wyy.markdown-preview-enhanced-0.8.11\crossnote\dependencies\katex\katex.min.css">
+      
+      
+      <script type="text/javascript" src="file:///c:\Users\Chi\.vscode\extensions\shd101wyy.markdown-preview-enhanced-0.8.11\crossnote\dependencies\mermaid\mermaid.min.js" charset="UTF-8"></script>
+      
+      
+      <style>
+      code[class*=language-],pre[class*=language-]{color:#333;background:0 0;font-family:Consolas,"Liberation Mono",Menlo,Courier,monospace;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.4;-moz-tab-size:8;-o-tab-size:8;tab-size:8;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none}pre[class*=language-]{padding:.8em;overflow:auto;border-radius:3px;background:#f5f5f5}:not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em;white-space:normal;background:#f5f5f5}.token.blockquote,.token.comment{color:#969896}.token.cdata{color:#183691}.token.doctype,.token.macro.property,.token.punctuation,.token.variable{color:#333}.token.builtin,.token.important,.token.keyword,.token.operator,.token.rule{color:#a71d5d}.token.attr-value,.token.regex,.token.string,.token.url{color:#183691}.token.atrule,.token.boolean,.token.code,.token.command,.token.constant,.token.entity,.token.number,.token.property,.token.symbol{color:#0086b3}.token.prolog,.token.selector,.token.tag{color:#63a35c}.token.attr-name,.token.class,.token.class-name,.token.function,.token.id,.token.namespace,.token.pseudo-class,.token.pseudo-element,.token.url-reference .token.variable{color:#795da3}.token.entity{cursor:help}.token.title,.token.title .token.punctuation{font-weight:700;color:#1d3e81}.token.list{color:#ed6a43}.token.inserted{background-color:#eaffea;color:#55a532}.token.deleted{background-color:#ffecec;color:#bd2c00}.token.bold{font-weight:700}.token.italic{font-style:italic}.language-json .token.property{color:#183691}.language-markup .token.tag .token.punctuation{color:#333}.language-css .token.function,code.language-css{color:#0086b3}.language-yaml .token.atrule{color:#63a35c}code.language-yaml{color:#183691}.language-ruby .token.function{color:#333}.language-markdown .token.url{color:#795da3}.language-makefile .token.symbol{color:#795da3}.language-makefile .token.variable{color:#183691}.language-makefile .token.builtin{color:#0086b3}.language-bash .token.keyword{color:#0086b3}pre[data-line]{position:relative;padding:1em 0 1em 3em}pre[data-line] .line-highlight-wrapper{position:absolute;top:0;left:0;background-color:transparent;display:block;width:100%}pre[data-line] .line-highlight{position:absolute;left:0;right:0;padding:inherit 0;margin-top:1em;background:hsla(24,20%,50%,.08);background:linear-gradient(to right,hsla(24,20%,50%,.1) 70%,hsla(24,20%,50%,0));pointer-events:none;line-height:inherit;white-space:pre}pre[data-line] .line-highlight:before,pre[data-line] .line-highlight[data-end]:after{content:attr(data-start);position:absolute;top:.4em;left:.6em;min-width:1em;padding:0 .5em;background-color:hsla(24,20%,50%,.4);color:#f4f1ef;font:bold 65%/1.5 sans-serif;text-align:center;vertical-align:.3em;border-radius:999px;text-shadow:none;box-shadow:0 1px #fff}pre[data-line] .line-highlight[data-end]:after{content:attr(data-end);top:auto;bottom:.4em}html body{font-family:'Helvetica Neue',Helvetica,'Segoe UI',Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ol,html body>ul{margin-bottom:16px}html body ol,html body ul{padding-left:2em}html body ol.no-list,html body ul.no-list{padding:0;list-style-type:none}html body ol ol,html body ol ul,html body ul ol,html body ul ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;background-color:#f0f0f0;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:700;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:700}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::after,html body code::before{letter-spacing:-.2em;content:'\00a0'}html body pre>code{padding:0;margin:0;word-break:normal;white-space:pre;background:0 0;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:after,html body pre code:before,html body pre tt:after,html body pre tt:before{content:normal}html body blockquote,html body dl,html body ol,html body p,html body pre,html body ul{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body code,html body pre{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview ul{list-style:disc}.markdown-preview ul ul{list-style:circle}.markdown-preview ul ul ul{list-style:square}.markdown-preview ol{list-style:decimal}.markdown-preview ol ol,.markdown-preview ul ol{list-style-type:lower-roman}.markdown-preview ol ol ol,.markdown-preview ol ul ol,.markdown-preview ul ol ol,.markdown-preview ul ul ol{list-style-type:lower-alpha}.markdown-preview .newpage,.markdown-preview .pagebreak{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center!important}.markdown-preview:not([data-for=preview]) .code-chunk .code-chunk-btn-group{display:none}.markdown-preview:not([data-for=preview]) .code-chunk .status{display:none}.markdown-preview:not([data-for=preview]) .code-chunk .output-div{margin-bottom:16px}.markdown-preview .md-toc{padding:0}.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link{display:inline;padding:.25rem 0}.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link div,.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link p{display:inline}.markdown-preview .md-toc .md-toc-link-wrapper.highlighted .md-toc-link{font-weight:800}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,.66);border:4px solid rgba(150,150,150,.66);background-clip:content-box}html body[for=html-export]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0;min-height:100vh}@media screen and (min-width:914px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{font-size:14px!important;padding:1em}}@media print{html body[for=html-export]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for=html-export]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,.66);border:4px solid rgba(150,150,150,.66);background-clip:content-box}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc{padding:0 16px}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link{display:inline;padding:.25rem 0}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link div,html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link p{display:inline}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper.highlighted .md-toc-link{font-weight:800}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% - 300px);padding:2em calc(50% - 457px - 300px / 2);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for=html-export]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for=html-export]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+/* Please visit the URL below for more information: */
+/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+
+      </style>
+      <!-- The content below will be included at the end of the <head> element. --><script type="text/javascript">
+  document.addEventListener("DOMContentLoaded", function () {
+    // your code here
+  });
+</script></head><body for="html-export">
+    
+    
+      <div class="crossnote markdown-preview  ">
+      
+<h1 id="drifted">DRIFTED </h1>
+<p>This is a readme file that contains the woking process of the work-in-progress game <em>DRIFTED</em> (previous working title: <em>PlaneGame</em>).</p>
+<h3 id="日本語バージョンはこちらreadmejamd"><a href="README.ja.md">日本語バージョンはこちら。</a> </h3>
+<h2 id="table-of-contents">Table of Contents </h2>
+<blockquote>
+<ol>
+<li><a href="#1-about-the-project">About the Project</a></li>
+<li><a href="#2-project-scope">Project Scope</a></li>
+<li><a href="#3-scripts">Scripts</a></li>
+<li><a href="#4-game-design">Game Design</a></li>
+</ol>
+</blockquote>
+<h2 id="1-about-the-project">1. About the Project </h2>
+<h3 id="sections">Sections </h3>
+<blockquote>
+<p>1.1 <a href="#11-links">Links</a></p>
+</blockquote>
+<blockquote>
+<p>1.2 <a href="#12-summary">Summary</a></p>
+</blockquote>
+<blockquote>
+<p>1.3 <a href="#13-gameplay-mechanics">Gameplay Mechanics</a></p>
+</blockquote>
+<h3 id="11-links">1.1 Links </h3>
+<ul>
+<li><strong>Steam Page:</strong> <a href="https://store.steampowered.com/app/2283820">https://store.steampowered.com/app/2283820</a></li>
+<li><strong>Facebook Page:</strong> <a href="https://www.facebook.com/DriftedTheGame">https://www.facebook.com/DriftedTheGame</a></li>
+<li><strong>Press Kit:</strong> <a href="https://huchi57.com/drifted">https://huchi57.com/drifted</a></li>
+</ul>
+<h3 id="12-summary">1.2 Summary </h3>
+<ul>
+<li><strong>Genre:</strong> 3D side scroller</li>
+<li><strong>Development Start Day:</strong> December 12, 2023</li>
+<li><strong>Engine:</strong> Unity 2023.2.3.1f</li>
+<li><strong>Programming Language:</strong> C#</li>
+<li><strong>Modeling:</strong> Blender, ProBuilder</li>
+<li><strong>Textures:</strong> CC0 Public Domain Textures</li>
+<li><strong>Sounds:</strong> Assembled in FMOD Studio with sounds from Apple Loops library</li>
+<li><strong>Fonts:</strong> Noto family designed by Google, Avenir font series designed by Adrian Frutiger</li>
+<li><strong>Platform:</strong> Windows, Mac</li>
+<li><strong>Steam Page Introduction</strong>: DRIFTED (working title) is a 3D adventure platformer. You play as a paper airplane that ventures into an atmospheric and dystopian world. This game contains simple gameplay mechanics, minimal UI, and challenging puzzles.</li>
+</ul>
+<h3>1.3 Gameplay Mechanics</h3>
+<ul>
+<li><strong>Tilt Up:</strong> Up key, W key, or controller up</li>
+<li><strong>Tilt Down:</strong> Down key, S key, or controller down</li>
+</ul>
+<p><strong><a href="#table-of-contents">⬆ Back to Top</a></strong></p>
+<h2 id="2-project-scope">2. Project Scope </h2>
+<h3 id="sections-1">Sections </h3>
+<blockquote>
+<p>2.1 <a href="#21-game-flowchart">Game Flowchart</a></p>
+</blockquote>
+<blockquote>
+<p>2.2 <a href="#22-project-structure">Project Structure</a></p>
+</blockquote>
+<h3 id="21-game-flowchart">2.1 Game Flowchart </h3>
+<div class="mermaid">graph TD;
+    StartUp--&gt;CheckSaves;
+    CheckSaves--&gt;LoadScenesFromSaves;
+    LoadScenesFromSaves--&gt;WaitForGameStart;
+    WaitForGameStart--&gt;GameLoop;
+    GameLoop--&gt;GameOver;
+    GameOver--&gt;LoadScenesFromSaves;
+    GameLoop--&gt;PauseMenu;
+    PauseMenu--&gt;GameLoop;
+    PauseMenu--&gt;QuitGame;
+    GameLoop--&gt;GameCompleted;
+    GameCompleted--&gt;LoadScenesFromSaves;
+</div><h3 id="22-project-structure">2.2 Project Structure </h3>
+<p>The Unity project asset folder is divided into four sections:</p>
+<ol>
+<li><code>_Core</code> folder consists of a custom package I created for all Unity projects I work on (<em>UrbanFox Core</em>)</li>
+<li><code>_PlaneGame</code> folder consists of scripts and all other assets created or imported for this project. With exceptions of resources and stream assets, every project-related asset should be added under this folder.</li>
+<li>Reserved special folders like <code>Resources</code> and <code>StreamingAssets</code> contain files generated automatically or added by needs.</li>
+<li>Other 3rd party files are imported to their original folder path. They are generally not modified and moved elsewhere.</li>
+</ol>
+<p>The first two sections are the files I created or imported manually. Below is a more detailed hierarchy of the folder structure.</p>
+<h5 id="project-asset-folder-structure">Project Asset Folder Structure </h5>
+<pre>_Core/
+     Scripts/
+        Editor/
+            AttributeDrawers/
+            CustomEditors/
+            EditorWindows/
+            Extensions/
+            MenuItemTools/
+            Utilities/
+            [UrbanFox.Editor.asmdef]
+        Runtime/
+            Attributes/
+            Components/
+            Extensions/
+            Localization/
+            ScriptableObjects/
+            Utilities/
+            [UrbanFox.asmdef]
+_PlaneGame/
+    Materials/
+    Models/
+    Prefabs/
+    Scenes/
+    Scripts/
+        Editor/
+            CustomEditors/
+            Utilities/
+            [UrbanFox.MiniGame.Editor.asmdef]
+        Runtime/
+            AudioSystems/
+            CameraSystems/
+            GameFlow/
+            Gameplay/
+            Helpers/
+            InputSystems/
+            ScriptableObjects/
+            UI/
+            [UrbanFox.MiniGame.asmdef]
+    ...
+Plugins/
+    ...
+Resources/
+    Languages/
+        ...
+    ...
+StreamingAssets/
+    ...
+...
+</pre>
+<p><strong><a href="#table-of-contents">⬆ Back to Top</a></strong></p>
+<h2 id="3-scripts">3. Scripts </h2>
+<blockquote>
+<p>3.1 <a href="#31-core-scripts-common-framework">Core Scripts (Common Framework)</a></p>
+</blockquote>
+<blockquote>
+<p>3.2 <a href="#32-project-scripts">Project Scripts</a></p>
+</blockquote>
+<h3 id="31-core-scripts-common-framework">3.1 Core Scripts (Common Framework) </h3>
+<p>After many years of working with Unity, I have created my custom package, called <em>UrbanFox Core</em>, that contains common features and extension methods I use, both in editor and runtime, to boost my development speed on new projects.</p>
+<p>The scripts are saved under path <code>Assets/_Core/Scripts</code>. Here are some of the important features that I used for this game.</p>
+<h4 id="extensions">Extensions </h4>
+<h5 id="mathextensions">MathExtensions </h5>
+<p><code>MathExtensions</code> is a static extension class that contains common functions regarding math calculations. Here are the most commonly used functions in this project:</p>
+<pre data-role="codeBlock" data-info="csharp" class="language-csharp csharp"><code><span class="token comment">// MathExtensions.cs</span>
+
+<span class="token comment">// Returns true if a value is in range, returns false if otherwise.</span>
+<span class="token return-type class-name"><span class="token keyword keyword-bool">bool</span></span> <span class="token function">IsInRange</span><span class="token punctuation">(</span><span class="token keyword keyword-this">this</span> <span class="token class-name"><span class="token keyword keyword-float">float</span></span> <span class="token keyword keyword-value">value</span><span class="token punctuation">,</span> <span class="token class-name"><span class="token keyword keyword-float">float</span></span> rangeStart<span class="token punctuation">,</span> <span class="token class-name"><span class="token keyword keyword-float">float</span></span> rangeEnd<span class="token punctuation">)</span>
+
+<span class="token comment">// Converts a euler angle into range [0, 360].</span>
+<span class="token return-type class-name"><span class="token keyword keyword-float">float</span></span> <span class="token function">Angle360</span><span class="token punctuation">(</span><span class="token keyword keyword-this">this</span> <span class="token class-name"><span class="token keyword keyword-float">float</span></span> angle<span class="token punctuation">)</span>
+
+<span class="token comment">// Converts a euler angle into range [-180, 180].</span>
+<span class="token return-type class-name"><span class="token keyword keyword-float">float</span></span> <span class="token function">AnglePositiveOrNegative180</span><span class="token punctuation">(</span><span class="token keyword keyword-this">this</span> <span class="token class-name"><span class="token keyword keyword-float">float</span></span> angle<span class="token punctuation">)</span>
+</code></pre><h5 id="collectionextensions">CollectionExtensions </h5>
+<p><code>CollectionExtensions</code> is a static extension class that contains common operations on data types that implement the <code>ICollection</code> interface. Here are the most commonly used functions in this project:</p>
+<pre data-role="codeBlock" data-info="csharp" class="language-csharp csharp"><code><span class="token comment">// CollectionExtensions.cs</span>
+
+<span class="token comment">// Returns true if the collection is null or has 0 items, returns false if otherwise.</span>
+<span class="token return-type class-name"><span class="token keyword keyword-bool">bool</span></span> <span class="token generic-method"><span class="token function">IsNullOrEmpty</span><span class="token generic class-name"><span class="token punctuation">&lt;</span>T<span class="token punctuation">&gt;</span></span></span><span class="token punctuation">(</span><span class="token keyword keyword-this">this</span> <span class="token class-name">ICollection<span class="token punctuation">&lt;</span>T<span class="token punctuation">&gt;</span></span> collection<span class="token punctuation">)</span>
+
+<span class="token comment">// Returns true if an index is in range [0, collection.Count - 1].</span>
+<span class="token return-type class-name"><span class="token keyword keyword-bool">bool</span></span> <span class="token generic-method"><span class="token function">IsInRange</span><span class="token generic class-name"><span class="token punctuation">&lt;</span>T<span class="token punctuation">&gt;</span></span></span><span class="token punctuation">(</span><span class="token keyword keyword-this">this</span> <span class="token class-name"><span class="token keyword keyword-int">int</span></span> index<span class="token punctuation">,</span> <span class="token class-name">ICollection<span class="token punctuation">&lt;</span>T<span class="token punctuation">&gt;</span></span> collection<span class="token punctuation">)</span>
+
+<span class="token comment">// Returns a random item from a collection.</span>
+<span class="token return-type class-name">T</span> <span class="token function">SelectRandom</span><span class="token punctuation">(</span><span class="token keyword keyword-this">this</span> <span class="token class-name">ICollection<span class="token punctuation">&lt;</span>T<span class="token punctuation">&gt;</span></span> collection<span class="token punctuation">)</span>
+</code></pre><h4 id="localization-system">Localization System </h4>
+<p>Building the localization from ground up, I had created a simple tool that can download language data from Google Spreadsheet, so the texts can be reviewed easily by testers and reviewers without needing the Editor installed. Localization data is downloaded, parsed, and saved in the project in these steps:</p>
+<ol>
+<li>
+<p>Download the data of the spreadsheet row by row. The number of columns determines how many sets of language data we need.</p>
+</li>
+<li>
+<p>From the second row and so on, each row is written into individual language sets using a key-value pair.</p>
+</li>
+<li>
+<p>When the data parsing is finished throughout the whole sheet, the data is written into XML files, and saved into the Resource folder.</p>
+</li>
+</ol>
+<p>In game, simply call <code>TryGetLocalization()</code> of a string and it will return a correct localized value, or an error value if a key is not found.</p>
+<pre data-role="codeBlock" data-info="csharp" class="language-csharp csharp"><code><span class="token comment">// Localization.cs</span>
+
+<span class="token comment">// An event callback that will be invoked whenever the game language changes.</span>
+<span class="token keyword keyword-public">public</span> <span class="token keyword keyword-static">static</span> <span class="token keyword keyword-event">event</span> Action OnLanguageChanged
+
+<span class="token comment">// Returns true if a key can be localized, returns false if otherwise. Use output string value as the localization result.</span>
+<span class="token keyword keyword-public">public</span> <span class="token keyword keyword-static">static</span> <span class="token return-type class-name"><span class="token keyword keyword-bool">bool</span></span> <span class="token function">TryGetLocalization</span><span class="token punctuation">(</span><span class="token keyword keyword-this">this</span> <span class="token class-name"><span class="token keyword keyword-string">string</span></span> key<span class="token punctuation">,</span> <span class="token keyword keyword-out">out</span> <span class="token class-name"><span class="token keyword keyword-string">string</span></span> <span class="token keyword keyword-value">value</span><span class="token punctuation">)</span>
+
+<span class="token comment">// Sets the current language of the game.</span>
+<span class="token keyword keyword-public">public</span> <span class="token keyword keyword-static">static</span> <span class="token return-type class-name"><span class="token keyword keyword-void">void</span></span> <span class="token function">SetLanguage</span><span class="token punctuation">(</span><span class="token class-name"><span class="token keyword keyword-string">string</span></span> languageName<span class="token punctuation">)</span>
+</code></pre><img src="Images/Readme/localization-google.png" alt="flowchart">
+<p><em>Localization Table on Google Spreadsheets.</em></p>
+<img src="Images/Readme/localization-unity.png" alt="flowchart">
+<p><em>Localization Table in Unity Editor, supporting multiple language, custom language codes, and searches.</em></p>
+<h4 id="scene-manager">Scene Manager </h4>
+<p>My custom scene manager extends Unity's built-in <code>SceneManager</code>, and further supports loading and unloading multiple scenes at once.</p>
+<p>These load and unload functions also support additional callbacks to be invoked when operations are completed, or when the progress is being updated, which can be useful if we need the current percentage of the loading process for UI items like a loading bar.</p>
+<p>These functions also come with single-scene equivalents, and coroutine alternatives.</p>
+<pre data-role="codeBlock" data-info="csharp" class="language-csharp csharp"><code><span class="token comment">// FoxySceneManager.cs</span>
+
+<span class="token comment">// Loads a list of scenes in the background, with optional callbacks.</span>
+<span class="token keyword keyword-public">public</span> <span class="token keyword keyword-static">static</span> <span class="token return-type class-name"><span class="token keyword keyword-void">void</span></span> <span class="token function">LoadScenes</span><span class="token punctuation">(</span><span class="token class-name">IEnumerable<span class="token punctuation">&lt;</span><span class="token keyword keyword-string">string</span><span class="token punctuation">&gt;</span></span> scenes<span class="token punctuation">,</span> <span class="token class-name">Action</span> onComplete <span class="token operator">=</span> <span class="token keyword keyword-null">null</span><span class="token punctuation">,</span> <span class="token class-name">Action<span class="token punctuation">&lt;</span><span class="token keyword keyword-float">float</span><span class="token punctuation">&gt;</span></span> onProgress <span class="token operator">=</span> <span class="token keyword keyword-null">null</span><span class="token punctuation">)</span>
+
+<span class="token comment">// Unloads a list of scenes in the background, with optional callbacks.</span>
+<span class="token keyword keyword-public">public</span> <span class="token keyword keyword-static">static</span> <span class="token return-type class-name"><span class="token keyword keyword-void">void</span></span> <span class="token function">UnloadScenes</span><span class="token punctuation">(</span><span class="token class-name">IEnumerable<span class="token punctuation">&lt;</span><span class="token keyword keyword-string">string</span><span class="token punctuation">&gt;</span></span> scenes<span class="token punctuation">,</span> <span class="token class-name">Action</span> onComplete <span class="token operator">=</span> <span class="token keyword keyword-null">null</span><span class="token punctuation">,</span> <span class="token class-name">Action<span class="token punctuation">&lt;</span><span class="token keyword keyword-float">float</span><span class="token punctuation">&gt;</span></span> onProgress <span class="token operator">=</span> <span class="token keyword keyword-null">null</span><span class="token punctuation">)</span>
+</code></pre><img src="Images/Readme/scenes.png" alt="scene-manager">
+<p><em>A preview of the scene browser.</em></p>
+<h4 id="custom-attributes">Custom Attributes </h4>
+<p>Multiple attributes are implemented to help clean up Editor windows for more clear data displays, highlight references that must not be null, and hide or disable unnecessary data fields according to different conditions. Some attributes include <code>ShowIf</code>, <code>EnableIf</code>, <code>ShowIfNot</code>, <code>EnableIfNot</code>, <code>Indent</code>, <code>Required</code>, and <code>NonEditable</code>.</p>
+<p>Below is an example usage of the <code>ShowIf</code> attribute that is used in this project:</p>
+<pre data-role="codeBlock" data-info="csharp" class="language-csharp csharp"><code><span class="token comment">// ObjectSpawner.cs</span>
+
+<span class="token punctuation">[</span>SerializeField<span class="token punctuation">]</span>
+<span class="token keyword keyword-private">private</span> <span class="token class-name"><span class="token keyword keyword-bool">bool</span></span> m_randomizeRotation<span class="token punctuation">;</span>
+
+<span class="token punctuation">[</span><span class="token attribute"><span class="token class-name">SerializeField</span><span class="token punctuation">,</span> <span class="token class-name">Indent</span><span class="token punctuation">,</span> <span class="token class-name">ShowIf</span><span class="token attribute-arguments"><span class="token punctuation">(</span><span class="token keyword keyword-nameof">nameof</span><span class="token punctuation">(</span>m_randomizeRotation<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span></span></span><span class="token punctuation">]</span>
+<span class="token keyword keyword-private">private</span> <span class="token class-name"><span class="token keyword keyword-float">float</span></span> m_eulerAngleXMin<span class="token punctuation">;</span>
+
+<span class="token punctuation">[</span><span class="token attribute"><span class="token class-name">SerializeField</span><span class="token punctuation">,</span> <span class="token class-name">Indent</span><span class="token punctuation">,</span> <span class="token class-name">ShowIf</span><span class="token attribute-arguments"><span class="token punctuation">(</span><span class="token keyword keyword-nameof">nameof</span><span class="token punctuation">(</span>m_randomizeRotation<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span></span></span><span class="token punctuation">]</span>
+<span class="token keyword keyword-private">private</span> <span class="token class-name"><span class="token keyword keyword-float">float</span></span> m_eulerAngleXMax<span class="token punctuation">;</span>
+
+<span class="token punctuation">[</span><span class="token attribute"><span class="token class-name">SerializeField</span><span class="token punctuation">,</span> <span class="token class-name">Indent</span><span class="token punctuation">,</span> <span class="token class-name">ShowIf</span><span class="token attribute-arguments"><span class="token punctuation">(</span><span class="token keyword keyword-nameof">nameof</span><span class="token punctuation">(</span>m_randomizeRotation<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span></span></span><span class="token punctuation">]</span>
+<span class="token keyword keyword-private">private</span> <span class="token class-name"><span class="token keyword keyword-float">float</span></span> m_eulerAngleYMin<span class="token punctuation">;</span>
+
+<span class="token punctuation">[</span><span class="token attribute"><span class="token class-name">SerializeField</span><span class="token punctuation">,</span> <span class="token class-name">Indent</span><span class="token punctuation">,</span> <span class="token class-name">ShowIf</span><span class="token attribute-arguments"><span class="token punctuation">(</span><span class="token keyword keyword-nameof">nameof</span><span class="token punctuation">(</span>m_randomizeRotation<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span></span></span><span class="token punctuation">]</span>
+<span class="token keyword keyword-private">private</span> <span class="token class-name"><span class="token keyword keyword-float">float</span></span> m_eulerAngleYMax<span class="token punctuation">;</span>
+
+<span class="token punctuation">[</span><span class="token attribute"><span class="token class-name">SerializeField</span><span class="token punctuation">,</span> <span class="token class-name">Indent</span><span class="token punctuation">,</span> <span class="token class-name">ShowIf</span><span class="token attribute-arguments"><span class="token punctuation">(</span><span class="token keyword keyword-nameof">nameof</span><span class="token punctuation">(</span>m_randomizeRotation<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span></span></span><span class="token punctuation">]</span>
+<span class="token keyword keyword-private">private</span> <span class="token class-name"><span class="token keyword keyword-float">float</span></span> m_eulerAngleZMin<span class="token punctuation">;</span>
+
+<span class="token punctuation">[</span><span class="token attribute"><span class="token class-name">SerializeField</span><span class="token punctuation">,</span> <span class="token class-name">Indent</span><span class="token punctuation">,</span> <span class="token class-name">ShowIf</span><span class="token attribute-arguments"><span class="token punctuation">(</span><span class="token keyword keyword-nameof">nameof</span><span class="token punctuation">(</span>m_randomizeRotation<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span></span></span><span class="token punctuation">]</span>
+<span class="token keyword keyword-private">private</span> <span class="token class-name"><span class="token keyword keyword-float">float</span></span> m_eulerAngleZMax<span class="token punctuation">;</span>
+</code></pre><table>
+<thead>
+<tr>
+<th><img src="Images/Readme/attribute-showif-false.png" alt="attribute show if false" width="400px"></th>
+<th><img src="Images/Readme/attribute-showif-true.png" alt="attribute show if true" width="400px"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>Inspector view: When <code>ShowIf</code> returns <code>false</code>.</em></td>
+<td><em>Inspector view: When <code>ShowIf</code> returns <code>true</code>.</em></td>
+</tr>
+</tbody>
+</table>
+<h4 id="color-palette-generator">Color Palette Generator </h4>
+<p>This is a tool to generate a 16-color color palette texture on a 4x4 grid. The colors can be manually set, or automatically fetched from an image texture by dividing the image into grids and calculating the average color on each grid.</p>
+<p>This tool is extra usefull in this project since most of the meshes in the game share a same master material, by changing the UV of different faces, most of the meshes can be batched into the same drawcall, reducing rendering time.</p>
+<img src="Images/Readme/palette.png" alt="color-palette">
+<p><em>A preview of the color palette generator.</em></p>
+<h3 id="32-project-scripts">3.2 Project Scripts </h3>
+<h4 id="gameplay-framework">Gameplay Framework </h4>
+<ul>
+<li>
+<p>The <code>GameManager</code> is a singleton component that holds all events that can be added and removed by all other systems in the game that will be invoked according to different game states. It also contains scene loading logics, global access to game state, and the player reference.</p>
+</li>
+<li>
+<p>The <code>SettingsManager</code> is a singleton component that reads/writes settings data to file.</p>
+</li>
+<li>
+<p>The <code>InputManager</code> is a singleton component that handles user inputs. It extends Unity's InputSystem with a custom and simple implementation that exposes only necessary functions for this project.</p>
+</li>
+<li>
+<p>The <code>AudioManager</code> is a singleton component that contains references to audio buses and controls the global and in game audio fade-ins and fade-outs.</p>
+</li>
+<li>
+<p>The <code>UIManager</code> is a singleton component that handles all UI in the game, including pause menu, splash screens, full screen fade in and fade out, and so on.</p>
+</li>
+</ul>
+<h4 id="player-controller">Player Controller </h4>
+<p>The <code>PlayerController</code> is the essence of the gameplay. For maximum control, built-in physics are usually disabled. Instead, a custom set of rules are defined:</p>
+<ul>
+<li>The component reads up and down inputs from the player, and using the provided input values, tilt up or down the paper airplane.</li>
+<li>When no input is provided, the plane will gradually tilt downwards until it reaches a terminal velocity as if it is pulled by gravity.</li>
+<li>The acceleration is defined by current velocity, current pitch angle, and by a limit threshold.</li>
+<li>When the plane tilts up for an excessive number of seconds, it will temporarily block any upward inputs, making the plane tilt downwards gradually.</li>
+<li>If the plane receives a game over signal, for example, if it hits any obstacles or is caught in a <code>WindTrigger</code>, user inputs are ignored, and the built-in physics take over the control, for simulating real physics, until the plane resets to its checkpoint position.</li>
+</ul>
+<h4 id="camera-system">Camera System </h4>
+<p>Inspired by Unity's Cinemachine system, I created my own implementation of camera works from ground up, using handles to preview buttons to visualize different anchor reference points for the relative distance between the player and the camera.</p>
+<p>Each anchor point contains different data, and using inverse distance weighting, weight-averaged values and current camera data, the data of the next frame is calculated in the <code>CameraBrain</code> component, which contains a reference to the actual camera in the game.</p>
+<blockquote>
+<p><strong>Inverse Distance Weighting</strong></p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msub><mi>z</mi><mi>p</mi></msub><mo>=</mo><mfrac><mrow><munderover><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></munderover><mo stretchy="false">(</mo><mfrac><msub><mi>z</mi><mi>i</mi></msub><msubsup><mi>d</mi><mi>i</mi><mi>p</mi></msubsup></mfrac><mo stretchy="false">)</mo></mrow><mrow><munderover><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></munderover><mo stretchy="false">(</mo><mfrac><mn>1</mn><msubsup><mi>d</mi><mi>i</mi><mi>p</mi></msubsup></mfrac><mo stretchy="false">)</mo></mrow></mfrac></mrow><annotation encoding="application/x-tex">z_p = \frac{\sum\limits_{i=1}^{n}(\frac{z_i}{d_i^p})}{\sum\limits_{i=1}^{n}(\frac{1}{d_i^p})}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7167em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.04398em;">z</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.044em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">p</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:4.9381em;vertical-align:-2.2191em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.7191em;"><span style="top:-2.11em;"><span class="pstrut" style="height:3.3514em;"></span><span class="mord"><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3514em;"><span style="top:-2.1223em;margin-left:0em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span><span class="mop op-symbol small-op">∑</span></span></span><span style="top:-3.95em;margin-left:0em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.9777em;"><span></span></span></span></span></span><span class="mopen">(</span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8451em;"><span style="top:-2.6361em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathnormal mtight">d</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.7912em;"><span style="top:-2.1777em;margin-left:0em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathnormal mtight">i</span></span></span><span style="top:-2.9837em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathnormal mtight">p</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.3223em;"><span></span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.5895em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mclose">)</span></span></span><span style="top:-3.5814em;"><span class="pstrut" style="height:3.3514em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-4.7191em;"><span class="pstrut" style="height:3.3514em;"></span><span class="mord"><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3514em;"><span style="top:-2.1223em;margin-left:0em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span><span class="mop op-symbol small-op">∑</span></span></span><span style="top:-3.95em;margin-left:0em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.9777em;"><span></span></span></span></span></span><span class="mopen">(</span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.7115em;"><span style="top:-2.6361em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathnormal mtight">d</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.7912em;"><span style="top:-2.1777em;margin-left:0em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathnormal mtight">i</span></span></span><span style="top:-2.9837em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathnormal mtight">p</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.3223em;"><span></span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.4101em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.04398em;">z</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3281em;"><span style="top:-2.357em;margin-left:-0.044em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.143em;"><span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.5895em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mclose">)</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:2.2191em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></p>
+<p>for given <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi></mrow><annotation encoding="application/x-tex">z</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.04398em;">z</span></span></span></span> value and <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi></mrow><annotation encoding="application/x-tex">d</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">d</span></span></span></span> distance on each of <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span> points indexed <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6595em;"></span><span class="mord mathnormal">i</span></span></span></span>.</p>
+</blockquote>
+<p>Here is the struct definition of a point data, that is, the <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi></mrow><annotation encoding="application/x-tex">z</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.04398em;">z</span></span></span></span> values to be calculated:</p>
+<pre data-role="codeBlock" data-info="csharp" class="language-csharp csharp"><code><span class="token comment">// CameraContributorPointData.cs</span>
+
+<span class="token keyword keyword-public">public</span> <span class="token keyword keyword-struct">struct</span> <span class="token class-name">CameraContributorPointData</span>
+<span class="token punctuation">{</span>
+    <span class="token comment">// Default values if parameters not given</span>
+    <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-const">const</span> <span class="token class-name"><span class="token keyword keyword-float">float</span></span> DefaultPositionLerpSpeed <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">;</span>
+    <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-const">const</span> <span class="token class-name"><span class="token keyword keyword-float">float</span></span> DefaultRotationSlerpSpeed <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">;</span>
+    <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-const">const</span> <span class="token class-name"><span class="token keyword keyword-float">float</span></span> DefaultFOV <span class="token operator">=</span> <span class="token number">60</span><span class="token punctuation">;</span>
+    <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-const">const</span> <span class="token class-name"><span class="token keyword keyword-float">float</span></span> DefaultFOVLerpSpeed <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// Reference point of the data in the world</span>
+    <span class="token keyword keyword-public">public</span> <span class="token class-name">Vector3</span> ReferencePoint<span class="token punctuation">;</span>
+
+    <span class="token comment">// Position effector</span>
+    <span class="token keyword keyword-public">public</span> <span class="token class-name">Vector3</span> DistanceFromTargetToCamera<span class="token punctuation">;</span>
+    <span class="token keyword keyword-public">public</span> <span class="token class-name">Vector3</span> PositionOffsetAfterLookAt<span class="token punctuation">;</span>
+    <span class="token keyword keyword-public">public</span> <span class="token class-name"><span class="token keyword keyword-float">float</span></span> PositionLerpSpeed<span class="token punctuation">;</span>
+
+    <span class="token comment">// Rotation effector</span>
+    <span class="token keyword keyword-public">public</span> <span class="token class-name">Vector3</span> LookAtOffsetDistanceFromTarget<span class="token punctuation">;</span>
+    <span class="token keyword keyword-public">public</span> <span class="token class-name"><span class="token keyword keyword-float">float</span></span> RotationSlerpSpeed<span class="token punctuation">;</span>
+
+    <span class="token comment">// Lens effector</span>
+    <span class="token keyword keyword-public">public</span> <span class="token class-name"><span class="token keyword keyword-float">float</span></span> FOV<span class="token punctuation">;</span>
+    <span class="token keyword keyword-public">public</span> <span class="token class-name"><span class="token keyword keyword-float">float</span></span> FOVLerpSpeed<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre><p>For each frame, <code>CameraBrain</code> calculates which contributor has the highest priority, and by given player position and the contributor's reference point, a target result is calculated, and the camera will interpolate to that target from the calculated results.</p>
+<p>Camera contributors are added/removed by following functions:</p>
+<pre data-role="codeBlock" data-info="csharp" class="language-csharp csharp"><code><span class="token comment">// CameraBrain.cs</span>
+
+<span class="token comment">// Add contributor to the calculation (when player enters the zone).</span>
+<span class="token keyword keyword-public">public</span> <span class="token return-type class-name"><span class="token keyword keyword-void">void</span></span> <span class="token function">AddContributor</span><span class="token punctuation">(</span><span class="token class-name">CameraContributorBase</span> contributor<span class="token punctuation">)</span>
+
+<span class="token comment">// Remove contributor from the calcuiation (when player leaves the zone).</span>
+<span class="token keyword keyword-public">public</span> <span class="token return-type class-name"><span class="token keyword keyword-void">void</span></span> <span class="token function">RemoveContributor</span><span class="token punctuation">(</span><span class="token class-name">CameraContributorBase</span> contributor<span class="token punctuation">)</span>
+
+<span class="token comment">// Clear all contributors (when game is being restarted).</span>
+<span class="token keyword keyword-public">public</span> <span class="token return-type class-name"><span class="token keyword keyword-void">void</span></span> <span class="token function">ClearAllContributors</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre><img src="Images/Readme/camera-system.png" alt="camera-system">
+<p><em>The preview for placing camera contributors.</em></p>
+<h4 id="ui-system">UI System </h4>
+<p>A <code>UIPage</code> is the base element for displaying a group of UI elements that is accessed by <code>UIPageGroup</code>. A <code>UIPage</code> can be opened, closed, saved in history stacks, that remembers what is the last visited page, if the group is closed entirely.</p>
+<pre data-role="codeBlock" data-info="csharp" class="language-csharp csharp"><code><span class="token comment">// UIPageGroup.cs</span>
+
+<span class="token comment">// Open the group, and go to default first page, or cached page in the top stack of the page history.</span>
+<span class="token keyword keyword-public">public</span> <span class="token return-type class-name"><span class="token keyword keyword-void">void</span></span> <span class="token function">OpenPageGroup</span><span class="token punctuation">(</span><span class="token class-name">Action</span> onCompleted <span class="token operator">=</span> <span class="token keyword keyword-null">null</span><span class="token punctuation">)</span>
+
+<span class="token comment">// Closes the page group</span>
+<span class="token keyword keyword-public">public</span> <span class="token return-type class-name"><span class="token keyword keyword-void">void</span></span> <span class="token function">ClosePageGroup</span><span class="token punctuation">(</span><span class="token class-name">Action</span> onCompleted <span class="token operator">=</span> <span class="token keyword keyword-null">null</span><span class="token punctuation">)</span>
+
+<span class="token comment">// Close current opened page, saved into the history stack, and go to a target page.</span>
+<span class="token keyword keyword-public">public</span> <span class="token return-type class-name"><span class="token keyword keyword-void">void</span></span> <span class="token function">GotoPage</span><span class="token punctuation">(</span><span class="token class-name">UIPage</span> page<span class="token punctuation">)</span>
+
+<span class="token comment">// Close current opened page, pop the top of the history stack and open it, or close the page group entierly if the history is empty.</span>
+<span class="token keyword keyword-public">public</span> <span class="token return-type class-name"><span class="token keyword keyword-void">void</span></span> <span class="token function">TryGotoPreviousPage</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre><h4 id="other-gameplay-elements">Other Gameplay Elements </h4>
+<h5 id="spinner">Spinner </h5>
+<p>The spinners in the game not only spin objects, but they also create runtime copies of the targeted mesh, and reduce their transparencies gradually, to create an effect that looks like motion blur is applied. The reason why this effect is used, instead of post-processing, is because we only want the spinning objects to have the motion blur effect, rather than the full screen.</p>
+<img src="Images/Readme/spinner.png" alt="spinner">
+<p><em>A preview of the spinner's Inspector view.</em></p>
+<h5 id="path-finding-patrol">Path Finding Patrol </h5>
+<p>There are patrol drones that will follow a pre-defined route when it does not detect the player. This route is consist of pre-placed points, which then defines a cubic or quadratic bezier curve.</p>
+<p>The cubic or quadratic option can be decided in the Inspector panel. Either way the path can be pre-visualized in the editor.</p>
+<blockquote>
+<p><strong>Quadratic Bezier Curve</strong></p>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="bold">B</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>=</mo><mo stretchy="false">(</mo><mn>1</mn><mo>−</mo><mi>t</mi><msup><mo stretchy="false">)</mo><mn>2</mn></msup><msub><mi mathvariant="bold">P</mi><mn mathvariant="bold">0</mn></msub><mo>+</mo><mn>2</mn><mo stretchy="false">(</mo><mn>1</mn><mo>−</mo><mi>t</mi><mo stretchy="false">)</mo><mi>t</mi><msub><mi mathvariant="bold">P</mi><mn mathvariant="bold">1</mn></msub><mo>+</mo><msup><mi>t</mi><mn>2</mn></msup><msub><mi mathvariant="bold">P</mi><mn mathvariant="bold">2</mn></msub><mo separator="true">,</mo><mn>0</mn><mo>≤</mo><mi>t</mi><mo>≤</mo><mn>1.</mn></mrow><annotation encoding="application/x-tex">\mathbf{B}(t)=(1-t)^2\mathbf{P_0}+2(1-t)t\mathbf{P_1}+t^2\mathbf{P_2},0\leq t\leq 1.</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathbf">B</span><span class="mopen">(</span><span class="mord mathnormal">t</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord mathnormal">t</span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mord"><span class="mord mathbf">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathbf mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">2</span><span class="mopen">(</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">t</span><span class="mclose">)</span><span class="mord mathnormal">t</span><span class="mord"><span class="mord mathbf">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathbf mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.0085em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal">t</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mord"><span class="mord mathbf">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathbf mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">0</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7719em;vertical-align:-0.136em;"></span><span class="mord mathnormal">t</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1.</span></span></span></span></p>
+</blockquote>
+<blockquote>
+<p><strong>Cubic Bezier Curve</strong></p>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="bold">B</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>=</mo><mo stretchy="false">(</mo><mn>1</mn><mo>−</mo><mi>t</mi><msup><mo stretchy="false">)</mo><mn>3</mn></msup><msub><mi mathvariant="bold">P</mi><mn mathvariant="bold">0</mn></msub><mo>+</mo><mn>3</mn><mo stretchy="false">(</mo><mn>1</mn><mo>−</mo><mi>t</mi><msup><mo stretchy="false">)</mo><mn>2</mn></msup><mi>t</mi><msub><mi mathvariant="bold">P</mi><mn mathvariant="bold">1</mn></msub><mo>+</mo><mn>3</mn><mo stretchy="false">(</mo><mn>1</mn><mo>−</mo><mi>t</mi><mo stretchy="false">)</mo><msup><mi>t</mi><mn>2</mn></msup><msub><mi mathvariant="bold">P</mi><mn mathvariant="bold">2</mn></msub><mo>+</mo><msup><mi>t</mi><mn>3</mn></msup><msub><mi mathvariant="bold">P</mi><mn mathvariant="bold">3</mn></msub><mo separator="true">,</mo><mn>0</mn><mo>≤</mo><mi>t</mi><mo>≤</mo><mn>1.</mn></mrow><annotation encoding="application/x-tex">\mathbf{B}(t)=(1-t)^3\mathbf{P_0}+3(1-t)^2t\mathbf{P_1}+3(1-t)t^2\mathbf{P_2}+t^3\mathbf{P_3},0\leq t\leq 1.</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathbf">B</span><span class="mopen">(</span><span class="mord mathnormal">t</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord mathnormal">t</span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span></span></span></span></span><span class="mord"><span class="mord mathbf">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathbf mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">3</span><span class="mopen">(</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord mathnormal">t</span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mord mathnormal">t</span><span class="mord"><span class="mord mathbf">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathbf mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">3</span><span class="mopen">(</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord mathnormal">t</span><span class="mclose">)</span><span class="mord"><span class="mord mathnormal">t</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mord"><span class="mord mathbf">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathbf mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.0085em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal">t</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span></span></span></span></span><span class="mord"><span class="mord mathbf">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathbf mtight">3</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">0</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7719em;vertical-align:-0.136em;"></span><span class="mord mathnormal">t</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1.</span></span></span></span></p>
+</blockquote>
+<img src="Images/Readme/patrol.png" alt="patrol-drones">
+<p><em>A preview of the patrol drone's Inspector view.</em></p>
+<h5 id="conveyorbelt">ConveyorBelt </h5>
+<p>The conveyor belts in the game are all static meshes. They apply forces to objects above them, and the UV scrolling effect is used to make the belts look like they are scrolling.</p>
+<p><strong><a href="#table-of-contents">⬆ Back to Top</a></strong></p>
+<h2 id="4-game-design">4. Game Design </h2>
+<h3 id="sections-2">Sections </h3>
+<blockquote>
+<p>4.1 <a href="#41-level-design">Level Design</a></p>
+</blockquote>
+<blockquote>
+<p>4.2 <a href="#42-lighting">Lighting</a></p>
+</blockquote>
+<blockquote>
+<p>4.3 <a href="#43-audio">Audio</a></p>
+</blockquote>
+<h3 id="41-level-design">4.1 Level Design </h3>
+<p>The early prototyping of the game took about one week, including tweaking player movements, and testing blockouts for different types of levels and obstacles. All objects in the project use the player paper plane as a reference, to create a world that looks vast and lonely. Because of the mechanics, the level is gradually descending in altitude as the game progresses, giving the sense of going darker and deeper into this world.</p>
+<table>
+<thead>
+<tr>
+<th><img src="Images/Readme/sketch.jpg" alt="sketch" height="300"></th>
+<th><img src="Images/Readme/level-factory.jpg" alt="level-factory" height="300"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>Original sketch of a level.</em></td>
+<td><em>The same level in the game.</em></td>
+</tr>
+</tbody>
+</table>
+<img src="Images/Readme/levels.png" alt="fmod">
+<p><em>Current full game layout (without post-processing effects).</em></p>
+<h3 id="42-lighting">4.2 Lighting </h3>
+<p>This project utilized Unity's HDRP (High Definition Render Pipeline) for rendering features like water, realtime area lights, fog, and volumetric lights.</p>
+<p>Fogs and volumetric lights play essential roles for the atmosphere building for this game. They are awesome blockouts for occluding environments in the background, but they also create great details in making the scene with beautiful depth without placing many props.</p>
+<img src="Images/Readme/ocean.jpg" alt="ocean">
+<p><em>The ocean in the game is rendered by Unity's water renderer and foam generator.</em></p>
+<h3 id="43-audio">4.3 Audio </h3>
+<p>This project uses FMOD as the middleware for audio, and Apple Loop audio files as audio assets. Sounds are created and defined as "events" in FMOD Studio. Each event can include different tracks and audio files, loop regions, instrument variations, and effects and modulations like EQ, reverb, and random pitch. Events are played/paused/stopped in Unity in real time, and can have different effects by tweaking exposed parameters in the game. When designing sounds for this project, different areas have different reverb zone snapshots, creating different sound effects that emulate real world audio zones.</p>
+<p>Buses are groups that audio events are sent to. Effects can be applied on groups to affect all events that are sent to this bus, or the signals can be sent to other groups. There are different buses in the game that control individual types of sound events.</p>
+<img src="Images/Readme/fmod.png" alt="fmod">
+<p><em>A screenshot of the FMOD Studio.</em></p>
+<p><strong><a href="#table-of-contents">⬆ Back to Top</a></strong></p>
+
+      </div>
+      
+      
+    
+    
+    <script type="module">
+// TODO: If ZenUML gets integrated into mermaid in the future,
+//      we can remove the following lines.
+
+
+var MERMAID_CONFIG = ({"startOnLoad":false});
+if (typeof MERMAID_CONFIG !== 'undefined') {
+  MERMAID_CONFIG.startOnLoad = false
+  MERMAID_CONFIG.cloneCssStyles = false
+  MERMAID_CONFIG.theme = "default"
+}
+
+mermaid.initialize(MERMAID_CONFIG || {})
+if (typeof(window['Reveal']) !== 'undefined') {
+  function mermaidRevealHelper(event) {
+    var currentSlide = event.currentSlide
+    var diagrams = currentSlide.querySelectorAll('.mermaid')
+    for (var i = 0; i < diagrams.length; i++) {
+      var diagram = diagrams[i]
+      if (!diagram.hasAttribute('data-processed')) {
+        mermaid.init(null, diagram, ()=> {
+          Reveal.slide(event.indexh, event.indexv)
+        })
+      }
+    }
+  }
+  Reveal.addEventListener('slidetransitionend', mermaidRevealHelper)
+  Reveal.addEventListener('ready', mermaidRevealHelper)
+  await mermaid.run({
+    nodes: document.querySelectorAll('.mermaid')
+  })
+} else {
+  await mermaid.run({
+    nodes: document.querySelectorAll('.mermaid')
+  })
+}
+</script>
+    
+    
+    
+  
+    </body></html>
