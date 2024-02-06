@@ -2,7 +2,7 @@
 
 This is a readme file that contains the woking process of the work-in-progress game _DRIFTED_ (previous working title: _PlaneGame_).
 
-### [日本語バージョンはこちら。](#README_JP.md)
+### [日本語バージョンはこちら。](README.ja.md)
 
 ## Table of Contents
 
