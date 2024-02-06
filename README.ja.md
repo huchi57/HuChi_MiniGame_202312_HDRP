@@ -207,11 +207,11 @@ public static void SetLanguage(string languageName)
 
 <img src="Images/Readme/localization-google.png" alt="flowchart">
 
-*Google Spreadsheet 上のローカライゼーションテーブル*
+Google Spreadsheet 上のローカライゼーションテーブル
 
 <img src="Images/Readme/localization-unity.png" alt="flowchart">
 
-*Unity エディター内のローカライゼーションテーブル、複数の言語、カスタム言語コード、および検索をサポート*
+Unity エディター内のローカライゼーションテーブル、複数の言語、カスタム言語コード、および検索をサポート
 
 #### シーンマネージャー
 
@@ -235,7 +235,7 @@ public static void UnloadScenes(IEnumerable<string> scenes, Action onComplete = 
 
 <img src="Images/Readme/scenes.png" alt="scene-manager">
 
-*Scene Browser のプレビュー*
+Scene Browser のプレビュー
 
 #### カスタム属性
 
@@ -270,7 +270,7 @@ private float m_eulerAngleZMax;
 
 |<img src="Images/Readme/attribute-showif-false.png" alt="attribute show if false" width = 400px>|<img src="Images/Readme/attribute-showif-true.png" alt="attribute show if true" width = 400px>|
 |-------------------------------|-------------------------------|
-|*インスペクター表示：ShowIf が false を返す場合* | *インスペクター表示：ShowIf が true を返す場合* |
+|インスペクター表示：ShowIf が false を返す場合 | インスペクター表示：ShowIf が true を返す場合 |
 
 #### カラーパレット生成ツール
 
@@ -280,7 +280,7 @@ private float m_eulerAngleZMax;
 
 <img src="Images/Readme/palette.png" alt="color-palette">
 
-*カラーパレット生成ツールのプレビュー画像*
+カラーパレット生成ツールのプレビュー画像
 
 ### 3.2 プロジェクトスクリプト
 
@@ -373,7 +373,7 @@ public void ClearAllContributors()
 
 <img src="Images/Readme/camera-system.png" alt="camera-system">
 
-*カメラ影響ポイントのデータ編集プレビュー。*
+カメラ影響ポイントのデータ編集プレビュー
 
 #### UI System
 
@@ -404,7 +404,7 @@ public void TryGotoPreviousPage()
 
 <img src="Images/Readme/spinner.png" alt="spinner">
 
-*スピナーのインスペクター表示のプレビュー*
+スピナーのインスペクター表示のプレビュー
 
 ##### パスファインディング巡回
 
@@ -423,7 +423,7 @@ public void TryGotoPreviousPage()
 
 <img src="Images/Readme/patrol.png" alt="patrol-drones">
 
-*巡回用ドローンのインスペクター表示のプレビュー。*
+巡回用ドローンのインスペクター表示のプレビュー
 
 ##### コンベアベルト
 
@@ -447,11 +447,11 @@ public void TryGotoPreviousPage()
 
 |<img src="Images/Readme/sketch.jpg" alt="sketch" height = 300>|<img src="Images/Readme/level-factory.jpg" alt="level-factory" height = 300>|
 |-------------------------------|-------------------------------|
-|*レベルのオリジナルの落書き* |*同じレベルのゲーム内の様子* |
+|レベルのオリジナルの落書き |同じレベルのゲーム内の様子 |
 
 <img src="Images/Readme/levels.png" alt="fmod">
 
-*現在のフルゲームのレイアウト（ポストプロセスエフェクトなし）。*
+現在のフルゲームのレイアウト（ポストプロセスエフェクトなし）
 
 ### 4.2 ライティング
 
@@ -461,7 +461,7 @@ public void TryGotoPreviousPage()
 
 <img src="Images/Readme/ocean.jpg" alt="ocean">
 
-*ゲーム内の海は、Unity の水レンダラーとフォームジェネレーターによってレンダリングされています。*
+ゲーム内の海は、Unity の水レンダラーとフォームジェネレーターによってレンダリングされています
 
 ### 4.3 オーディオ
 
@@ -471,6 +471,6 @@ public void TryGotoPreviousPage()
 
 <img src="Images/Readme/fmod.png" alt="fmod">
 
-*FMOD Studio のスクリーンショット。*
+FMOD Studio のスクリーンショット
 
 **[⬆ 目次に戻る](#目次)**
