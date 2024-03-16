@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1e30863b03665245ad57bcf23d6b87b, type: 3}
   m_Name: ApplicationBuildData
   m_EditorClassIdentifier: 
-  CustomBuildName: AlphaPlayable-SceneSliced
-  CurrentBuildTime: 2024/02/04-20:57:11
-  WindowsBuildIteration: 40
+  CustomBuildName: AlphaPlayable-SceneSliced-Unoptimized
+  CurrentBuildTime: 2024/03/17-02:30:50
+  WindowsBuildIteration: 41
   MacBuildIteration: 6
   LinuxBuildIteration: 0
   SwitchBuildIteration: 0

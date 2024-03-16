@@ -23939,6 +23939,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_waitTimeBeforeRestartingWhenGameOverTriggered: 2.5
+  m_fadeOutTime: 2
+  m_fadeInTime: 2
 --- !u!114 &657018676
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25047,6 +25049,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_waitTimeBeforeRestartingWhenGameOverTriggered: 2.5
+  m_fadeOutTime: 2
+  m_fadeInTime: 2
 --- !u!65 &707529559
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -36003,6 +36007,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_waitTimeBeforeRestartingWhenGameOverTriggered: 2.5
+  m_fadeOutTime: 2
+  m_fadeInTime: 2
 --- !u!65 &1069185370
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -48482,6 +48488,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_waitTimeBeforeRestartingWhenGameOverTriggered: 2.5
+  m_fadeOutTime: 2
+  m_fadeInTime: 2
 --- !u!65 &1371830561
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -48739,6 +48747,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_waitTimeBeforeRestartingWhenGameOverTriggered: 2.5
+  m_fadeOutTime: 2
+  m_fadeInTime: 2
 --- !u!114 &1379506664
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -67045,6 +67055,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_waitTimeBeforeRestartingWhenGameOverTriggered: 2.5
+  m_fadeOutTime: 2
+  m_fadeInTime: 2
 --- !u!65 &1887687294
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -68114,6 +68126,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_waitTimeBeforeRestartingWhenGameOverTriggered: 2.5
+  m_fadeOutTime: 2
+  m_fadeInTime: 2
 --- !u!65 &1921334460
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -68368,7 +68382,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1945459557
 Transform:
   m_ObjectHideFlags: 0
@@ -69932,6 +69946,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_waitTimeBeforeRestartingWhenGameOverTriggered: 2.5
+  m_fadeOutTime: 2
+  m_fadeInTime: 2
 --- !u!114 &2006408477
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -73893,6 +73909,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_waitTimeBeforeRestartingWhenGameOverTriggered: 2.5
+  m_fadeOutTime: 2
+  m_fadeInTime: 2
 --- !u!114 &2054370523
 MonoBehaviour:
   m_ObjectHideFlags: 0
