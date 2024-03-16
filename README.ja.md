@@ -1,7 +1,7 @@
 # DRIFTED
 これは、開発中のゲーム DRIFTED（従来のタイトル：PlaneGame）の作業プロセスを含む Readme ファイルです。
 
-### [Click here for the English version.](README.md)
+### [GitHub リポジトリはこちら](https://github.com/huchi57/PlaneGame)
 
 ## 目次
  > 1. [プロジェクト概要](#1-プロジェクト概要)
@@ -170,10 +170,12 @@ float AnglePositiveOrNegative180(this float angle)
 ```csharp
 // CollectionExtensions.cs
 
-// コレクションが null であるか、またはアイテム数が 0 の場合は true を返し、それ以外の場合は false を返します。
+// コレクションが null であるか、またはアイテム数が 0 の場合は true を返し、
+// それ以外の場合は false を返します。
 bool IsNullOrEmpty<T>(this ICollection<T> collection)
 
-// インデックスが範囲 [0, collection.Count - 1] にある場合、true を返します、それ以外の場合は false を返します。
+// インデックスが範囲 [0, collection.Count - 1] にある場合、true を返します、
+// それ以外の場合は false を返します。
 bool IsInRange<T>(this int index, ICollection<T> collection)
 
 // コレクションからランダムアイテムを返します。
@@ -198,7 +200,8 @@ T SelectRandom(this ICollection<T> collection)
 // ゲーム言語が変更されるたびに呼び出されるイベントコールバック。
 public static event Action OnLanguageChanged
 
-// キーをローカライズできる場合は true を返し、それ以外の場合は false を返します。out パラメーターの値はローカライズの結果です。
+// キーをローカライズできる場合は true を返し、それ以外の場合は false を返します。
+// out パラメーターの値はローカライズの結果です。
 public static bool TryGetLocalization(this string key, out string value)
 
 // ゲームの現在の言語を設定します
@@ -226,11 +229,13 @@ Unity エディター内のローカライゼーションテーブル、複数�
 
 // オプションのコールバックを使用して、バックグラウンドでシーンのリストを読み込みます。
 // onComplete は完了時に呼び出され、onProgress は進行状況を示す場合に呼び出されます。
-public static void LoadScenes(IEnumerable<string> scenes, Action onComplete = null, Action<float> onProgress = null)
+public static void LoadScenes(IEnumerable<string> scenes, 
+    Action onComplete = null, Action<float> onProgress = null)
 
 // オプションのコールバックを使用して、バックグラウンドでシーンのリストを解放します。
 // onComplete は完了時に呼び出され、onProgress は進行状況を示す場合に呼び出されます。
-public static void UnloadScenes(IEnumerable<string> scenes, Action onComplete = null, Action<float> onProgress = null)
+public static void UnloadScenes(IEnumerable<string> scenes,
+    Action onComplete = null, Action<float> onProgress = null)
 ```
 
 <img src="Images/Readme/scenes.png" alt="scene-manager">
@@ -382,7 +387,8 @@ public void ClearAllContributors()
 ```csharp
 // UIPageGroup.cs
 
-// ページグループを開き、デフォルトの最初のページ、またはページ履歴のトップスタックにキャッシュされたページを開きます。
+// ページグループを開き、デフォルトの最初のページ、
+// またはページ履歴のトップスタックにキャッシュされたページを開きます。
 public void OpenPageGroup(Action onCompleted = null)
 
 // ページグループを閉じます。

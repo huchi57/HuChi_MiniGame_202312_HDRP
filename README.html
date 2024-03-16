@@ -26,7 +26,7 @@
       
 <h1 id="drifted">DRIFTED </h1>
 <p>This is a readme file that contains the woking process of the work-in-progress game <em>DRIFTED</em> (previous working title: <em>PlaneGame</em>).</p>
-<h3 id="日本語バージョンはこちらreadmejamd"><a href="README.ja.md">日本語バージョンはこちら。</a> </h3>
+<h3 id="click-here-for-the-full-github-resporitoryhttpsgithubcomhuchi57planegame"><a href="https://github.com/huchi57/PlaneGame">Click here for the full GitHub resporitory.</a> </h3>
 <h2 id="table-of-contents">Table of Contents </h2>
 <blockquote>
 <ol>
@@ -143,13 +143,8 @@ _PlaneGame/
             [UrbanFox.MiniGame.asmdef]
     ...
 Plugins/
-    ...
 Resources/
-    Languages/
-        ...
-    ...
 StreamingAssets/
-    ...
 ...
 </pre>
 <p><strong><a href="#table-of-contents">⬆ Back to Top</a></strong></p>
@@ -207,7 +202,8 @@ StreamingAssets/
 <span class="token comment">// An event callback that will be invoked whenever the game language changes.</span>
 <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-static">static</span> <span class="token keyword keyword-event">event</span> Action OnLanguageChanged
 
-<span class="token comment">// Returns true if a key can be localized, returns false if otherwise. Use output string value as the localization result.</span>
+<span class="token comment">// Returns true if a key can be localized, returns false if otherwise.</span>
+<span class="token comment">// Use output string value as the localization result.</span>
 <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-static">static</span> <span class="token return-type class-name"><span class="token keyword keyword-bool">bool</span></span> <span class="token function">TryGetLocalization</span><span class="token punctuation">(</span><span class="token keyword keyword-this">this</span> <span class="token class-name"><span class="token keyword keyword-string">string</span></span> key<span class="token punctuation">,</span> <span class="token keyword keyword-out">out</span> <span class="token class-name"><span class="token keyword keyword-string">string</span></span> <span class="token keyword keyword-value">value</span><span class="token punctuation">)</span>
 
 <span class="token comment">// Sets the current language of the game.</span>
@@ -223,10 +219,12 @@ StreamingAssets/
 <pre data-role="codeBlock" data-info="csharp" class="language-csharp csharp"><code><span class="token comment">// FoxySceneManager.cs</span>
 
 <span class="token comment">// Loads a list of scenes in the background, with optional callbacks.</span>
-<span class="token keyword keyword-public">public</span> <span class="token keyword keyword-static">static</span> <span class="token return-type class-name"><span class="token keyword keyword-void">void</span></span> <span class="token function">LoadScenes</span><span class="token punctuation">(</span><span class="token class-name">IEnumerable<span class="token punctuation">&lt;</span><span class="token keyword keyword-string">string</span><span class="token punctuation">&gt;</span></span> scenes<span class="token punctuation">,</span> <span class="token class-name">Action</span> onComplete <span class="token operator">=</span> <span class="token keyword keyword-null">null</span><span class="token punctuation">,</span> <span class="token class-name">Action<span class="token punctuation">&lt;</span><span class="token keyword keyword-float">float</span><span class="token punctuation">&gt;</span></span> onProgress <span class="token operator">=</span> <span class="token keyword keyword-null">null</span><span class="token punctuation">)</span>
+<span class="token keyword keyword-public">public</span> <span class="token keyword keyword-static">static</span> <span class="token return-type class-name"><span class="token keyword keyword-void">void</span></span> <span class="token function">LoadScenes</span><span class="token punctuation">(</span><span class="token class-name">IEnumerable<span class="token punctuation">&lt;</span><span class="token keyword keyword-string">string</span><span class="token punctuation">&gt;</span></span> scenes<span class="token punctuation">,</span>
+    <span class="token class-name">Action</span> onComplete <span class="token operator">=</span> <span class="token keyword keyword-null">null</span><span class="token punctuation">,</span> <span class="token class-name">Action<span class="token punctuation">&lt;</span><span class="token keyword keyword-float">float</span><span class="token punctuation">&gt;</span></span> onProgress <span class="token operator">=</span> <span class="token keyword keyword-null">null</span><span class="token punctuation">)</span>
 
 <span class="token comment">// Unloads a list of scenes in the background, with optional callbacks.</span>
-<span class="token keyword keyword-public">public</span> <span class="token keyword keyword-static">static</span> <span class="token return-type class-name"><span class="token keyword keyword-void">void</span></span> <span class="token function">UnloadScenes</span><span class="token punctuation">(</span><span class="token class-name">IEnumerable<span class="token punctuation">&lt;</span><span class="token keyword keyword-string">string</span><span class="token punctuation">&gt;</span></span> scenes<span class="token punctuation">,</span> <span class="token class-name">Action</span> onComplete <span class="token operator">=</span> <span class="token keyword keyword-null">null</span><span class="token punctuation">,</span> <span class="token class-name">Action<span class="token punctuation">&lt;</span><span class="token keyword keyword-float">float</span><span class="token punctuation">&gt;</span></span> onProgress <span class="token operator">=</span> <span class="token keyword keyword-null">null</span><span class="token punctuation">)</span>
+<span class="token keyword keyword-public">public</span> <span class="token keyword keyword-static">static</span> <span class="token return-type class-name"><span class="token keyword keyword-void">void</span></span> <span class="token function">UnloadScenes</span><span class="token punctuation">(</span><span class="token class-name">IEnumerable<span class="token punctuation">&lt;</span><span class="token keyword keyword-string">string</span><span class="token punctuation">&gt;</span></span> scenes<span class="token punctuation">,</span>
+    <span class="token class-name">Action</span> onComplete <span class="token operator">=</span> <span class="token keyword keyword-null">null</span><span class="token punctuation">,</span> <span class="token class-name">Action<span class="token punctuation">&lt;</span><span class="token keyword keyword-float">float</span><span class="token punctuation">&gt;</span></span> onProgress <span class="token operator">=</span> <span class="token keyword keyword-null">null</span><span class="token punctuation">)</span>
 </code></pre><img src="Images/Readme/scenes.png" alt="scene-manager">
 <p><em>A preview of the scene browser.</em></p>
 <h4 id="custom-attributes">Custom Attributes </h4>
@@ -354,7 +352,8 @@ StreamingAssets/
 <p>A <code>UIPage</code> is the base element for displaying a group of UI elements that is accessed by <code>UIPageGroup</code>. A <code>UIPage</code> can be opened, closed, saved in history stacks, that remembers what is the last visited page, if the group is closed entirely.</p>
 <pre data-role="codeBlock" data-info="csharp" class="language-csharp csharp"><code><span class="token comment">// UIPageGroup.cs</span>
 
-<span class="token comment">// Open the group, and go to default first page, or cached page in the top stack of the page history.</span>
+<span class="token comment">// Open the group, and go to default first page,</span>
+<span class="token comment">// or cached page in the top stack of the page history.</span>
 <span class="token keyword keyword-public">public</span> <span class="token return-type class-name"><span class="token keyword keyword-void">void</span></span> <span class="token function">OpenPageGroup</span><span class="token punctuation">(</span><span class="token class-name">Action</span> onCompleted <span class="token operator">=</span> <span class="token keyword keyword-null">null</span><span class="token punctuation">)</span>
 
 <span class="token comment">// Closes the page group</span>
@@ -363,7 +362,8 @@ StreamingAssets/
 <span class="token comment">// Close current opened page, saved into the history stack, and go to a target page.</span>
 <span class="token keyword keyword-public">public</span> <span class="token return-type class-name"><span class="token keyword keyword-void">void</span></span> <span class="token function">GotoPage</span><span class="token punctuation">(</span><span class="token class-name">UIPage</span> page<span class="token punctuation">)</span>
 
-<span class="token comment">// Close current opened page, pop the top of the history stack and open it, or close the page group entierly if the history is empty.</span>
+<span class="token comment">// Close current opened page, pop the top of the history stack and open it,</span>
+<span class="token comment">// or close the page group entierly if the history is empty.</span>
 <span class="token keyword keyword-public">public</span> <span class="token return-type class-name"><span class="token keyword keyword-void">void</span></span> <span class="token function">TryGotoPreviousPage</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 </code></pre><h4 id="other-gameplay-elements">Other Gameplay Elements </h4>
 <h5 id="spinner">Spinner </h5>
