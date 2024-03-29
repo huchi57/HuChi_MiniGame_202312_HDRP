@@ -42,6 +42,8 @@
     <i k="UI.QuitGame.Question" v="是否确认离开游戏？"/>
     <i k="UI.ReturnToMenu" v="返回主画面"/>
     <i k="UI.PauseMenu" v="暂停菜单"/>
+    <i k="UI.RestartFromBeginning" v="从头开始游戏"/>
+    <i k="UI.RestartFromBeginning.Question" v="是否确认从头开始游戏？"/>
     <i k="UI.Loading" v="加载中"/>
     <i k="UI.Loading.WithDots" v="加载中..."/>
     <i k="UI.RevertToDefault" v="恢复为默认值"/>

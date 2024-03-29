@@ -42,6 +42,8 @@
     <i k="UI.QuitGame.Question" v="是否確認離開遊戲？"/>
     <i k="UI.ReturnToMenu" v="返回主畫面"/>
     <i k="UI.PauseMenu" v="暫停選單"/>
+    <i k="UI.RestartFromBeginning" v="從頭開始遊戲"/>
+    <i k="UI.RestartFromBeginning.Question" v="是否確認從頭開始遊戲？"/>
     <i k="UI.Loading" v="讀取中"/>
     <i k="UI.Loading.WithDots" v="讀取中…"/>
     <i k="UI.RevertToDefault" v="恢復為預設值"/>

@@ -56,6 +56,14 @@ namespace UrbanFox.MiniGame
             m_enableSplashScreen = value;
         }
 
+        public void ClosePauseMenu()
+        {
+            if (m_pauseMenuPageGroup)
+            {
+                m_pauseMenuPageGroup.ClosePageGroup();
+            }
+        }
+
         public void FadeOutToBlack(float fadeDuration, Action onCompleted = null)
         {
             m_fullscreenBlack.gameObject.SetActive(true);
@@ -66,7 +74,7 @@ namespace UrbanFox.MiniGame
             }
             else
             {
-                m_fullscreenBlack.DOFade(1, fadeDuration).OnComplete(() =>
+                m_fullscreenBlack.DOFade(1, fadeDuration).SetUpdate(true).OnComplete(() =>
                 {
                     onCompleted?.Invoke();
                 });
@@ -83,7 +91,7 @@ namespace UrbanFox.MiniGame
             }
             else
             {
-                m_fullscreenBlack.DOFade(0, fadeDuration).OnComplete(() =>
+                m_fullscreenBlack.DOFade(0, fadeDuration).SetUpdate(true).OnComplete(() =>
                 {
                     m_fullscreenBlack.gameObject.SetActive(false);
                     onCompleted?.Invoke();
@@ -100,11 +108,11 @@ namespace UrbanFox.MiniGame
                 {
                     case LoadingIconType.Bar:
                         m_loadingBar.value = 0;
-                        m_loadingBarCanvasGroup.DOFade(1, m_loadingIconFadeTime);
+                        m_loadingBarCanvasGroup.DOFade(1, m_loadingIconFadeTime).SetUpdate(true);
                         yield return new WaitForSeconds(m_loadingIconFadeTime);
                         break;
                     case LoadingIconType.SpinningWheel:
-                        m_loadingWheelCanvasGroup.DOFade(1, m_loadingIconFadeTime);
+                        m_loadingWheelCanvasGroup.DOFade(1, m_loadingIconFadeTime).SetUpdate(true);
                         yield return new WaitForSeconds(m_loadingIconFadeTime);
                         break;
                     default:
@@ -121,11 +129,11 @@ namespace UrbanFox.MiniGame
                 switch (m_loadingIconType)
                 {
                     case LoadingIconType.Bar:
-                        m_loadingBarCanvasGroup.DOFade(0, m_loadingIconFadeTime);
+                        m_loadingBarCanvasGroup.DOFade(0, m_loadingIconFadeTime).SetUpdate(true);
                         yield return new WaitForSeconds(m_loadingIconFadeTime);
                         break;
                     case LoadingIconType.SpinningWheel:
-                        m_loadingWheelCanvasGroup.DOFade(0, m_loadingIconFadeTime);
+                        m_loadingWheelCanvasGroup.DOFade(0, m_loadingIconFadeTime).SetUpdate(true);
                         yield return new WaitForSeconds(m_loadingIconFadeTime);
                         break;
                     default:
@@ -137,6 +145,14 @@ namespace UrbanFox.MiniGame
         public void SetLoadingBarSliderValue(float value)
         {
             m_loadingBar.value = value;
+        }
+
+        public void RestartGameFromBeginning()
+        {
+            if (GameManager.IsInstanceExist)
+            {
+                GameManager.Instance.RestartGameFromBeginning();
+            }
         }
 
         public void QuitGame()
@@ -186,7 +202,7 @@ namespace UrbanFox.MiniGame
         {
             if (GameInstance.CurrentGameState == GameState.WaitForInputToStartGame || GameInstance.CurrentGameState == GameState.GameplayPausable)
             {
-                m_titleSplashScreen.DOFade(0, m_titleSplashScreenFadeTime).OnComplete(() =>
+                m_titleSplashScreen.DOFade(0, m_titleSplashScreenFadeTime).SetUpdate(true).OnComplete(() =>
                 {
                     m_titleSplashScreen.gameObject.SetActive(false);
                     m_enableSplashScreen = false;

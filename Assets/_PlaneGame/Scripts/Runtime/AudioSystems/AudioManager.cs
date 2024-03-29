@@ -65,7 +65,7 @@ namespace UrbanFox.MiniGame
             IEnumerator DoFadeInGameBus()
             {
                 yield return new WaitForSeconds(m_slightDelayBeforeFadeIn);
-                DOTween.To(() => m_diegeticSoundsVolume, x => m_diegeticSoundsVolume = x, 1, fadeTime).SetEase(m_easeIn).OnComplete(() =>
+                DOTween.To(() => m_diegeticSoundsVolume, x => m_diegeticSoundsVolume = x, 1, fadeTime).SetUpdate(true).SetEase(m_easeIn).OnComplete(() =>
                 {
                     onCompleted?.Invoke();
                 });
@@ -74,7 +74,7 @@ namespace UrbanFox.MiniGame
 
         public void FadeOutGameBus(float fadeTime, Action onCompleted = null)
         {
-            DOTween.To(() => m_diegeticSoundsVolume, x => m_diegeticSoundsVolume = x, 0, fadeTime).SetEase(m_easeOut).OnComplete(() =>
+            DOTween.To(() => m_diegeticSoundsVolume, x => m_diegeticSoundsVolume = x, 0, fadeTime).SetUpdate(true).SetEase(m_easeOut).OnComplete(() =>
             {
                 onCompleted?.Invoke();
             });

@@ -105,6 +105,31 @@ namespace UrbanFox.MiniGame
             StartCoroutine(UnloadAndReloadScenes_Coroutine(scenesToUnload, scenesToLoad, fadeOutTime, fadeInTime, enableDefaultCallbacks, onComplete));
         }
 
+        public void RestartGameFromBeginning()
+        {
+            if (GameInstance.PlayerController)
+            {
+                GameInstance.PlayerController.UpdateRespawnPoint(Vector3.zero);
+            }
+
+            // HACK
+            StartCoroutine(Coroutine());
+            IEnumerator Coroutine()
+            {
+                GameInstance.SwitchGameState(GameState.Loading);
+                if (UIManager.IsInstanceExist)
+                {
+                    UIManager.Instance.ClosePauseMenu();
+                    UIManager.Instance.EnableSplashScreen(true);
+                }
+                OnRestartTriggered?.Invoke();
+                yield return UnloadAndReloadScenes_Coroutine(m_dirtyScenes, m_dirtyScenes, m_defaultFadeOutTime, m_defaultFadeInTime, enableDefaultCallbacks: true, () =>
+                {
+                    GameInstance.SwitchGameState(GameState.WaitForInputToStartGame);
+                });
+            }
+        }
+
         public void QuitGame()
         {
 #if UNITY_EDITOR
@@ -133,13 +158,13 @@ namespace UrbanFox.MiniGame
         {
             AudioManager.Instance.FadeOutGameBus(fadeOutTime);
             UIManager.Instance.FadeOutToBlack(fadeOutTime);
-            yield return new WaitForSeconds(fadeOutTime);
+            yield return new WaitForSecondsRealtime(fadeOutTime);
             if (enableDefaultCallbacks)
             {
                 OnFadeOutCompleted?.Invoke();
             }
 
-            yield return new WaitForSeconds(m_waitTimeBetweenLoads);
+            yield return new WaitForSecondsRealtime(m_waitTimeBetweenLoads);
             yield return FoxySceneManager.UnloadScenes_Coroutine(scenesToUnload);
             yield return FoxySceneManager.LoadScenes_Coroutine(scenesToLoad);
             if (enableDefaultCallbacks)
@@ -147,10 +172,10 @@ namespace UrbanFox.MiniGame
                 OnLoadedScenesReady?.Invoke();
             }
             AudioManager.Instance.FadeInGameBus(fadeInTime);
-            yield return new WaitForSeconds(m_waitTimeBetweenLoads);
+            yield return new WaitForSecondsRealtime(m_waitTimeBetweenLoads);
 
             UIManager.Instance.FadeInFromBlack(fadeInTime);
-            yield return new WaitForSeconds(fadeInTime);
+            yield return new WaitForSecondsRealtime(fadeInTime);
             if (enableDefaultCallbacks)
             {
                 OnFadeInCompleted?.Invoke();

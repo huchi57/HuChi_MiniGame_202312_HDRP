@@ -42,6 +42,8 @@
     <i k="UI.QuitGame.Question" v="Are you sure you want to quit?"/>
     <i k="UI.ReturnToMenu" v="Return to Menu"/>
     <i k="UI.PauseMenu" v="Pause Menu"/>
+    <i k="UI.RestartFromBeginning" v="Restart Game from Beginning"/>
+    <i k="UI.RestartFromBeginning.Question" v="Are you sure you want to restart?"/>
     <i k="UI.Loading" v="Loading"/>
     <i k="UI.Loading.WithDots" v="Loading..."/>
     <i k="UI.RevertToDefault" v="Revert to Default"/>
