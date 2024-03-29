@@ -42,8 +42,6 @@
     <i k="UI.QuitGame.Question" v="정말로 종료할까요?"/>
     <i k="UI.ReturnToMenu" v="메인 메뉴로 돌아가기"/>
     <i k="UI.PauseMenu" v="일시 정지 메뉴"/>
-    <i k="UI.RestartFromBeginning" v=""/>
-    <i k="UI.RestartFromBeginning.Question" v=""/>
     <i k="UI.Loading" v="불러오는 중..."/>
     <i k="UI.Loading.WithDots" v="불러오는 중"/>
     <i k="UI.RevertToDefault" v="기본값으로 되돌리기"/>

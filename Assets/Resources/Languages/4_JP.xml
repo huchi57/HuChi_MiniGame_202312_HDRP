@@ -42,8 +42,6 @@
     <i k="UI.QuitGame.Question" v="終了しますか？"/>
     <i k="UI.ReturnToMenu" v="メニューに戻る"/>
     <i k="UI.PauseMenu" v="ポーズ"/>
-    <i k="UI.RestartFromBeginning" v="ゲームを最初から始める"/>
-    <i k="UI.RestartFromBeginning.Question" v="最初から始まりますか？"/>
     <i k="UI.Loading" v="ロード中"/>
     <i k="UI.Loading.WithDots" v="ロード中…"/>
     <i k="UI.RevertToDefault" v="デフォルトに戻す"/>

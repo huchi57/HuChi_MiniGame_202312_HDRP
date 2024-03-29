@@ -20,13 +20,6 @@ namespace UrbanFox.MiniGame
             public string InputBindingsOverride;
         }
 
-        [Serializable]
-        public struct LanguageData
-        {
-            public bool Enable;
-            public SystemLanguage Language;
-        }
-
         [SerializeField]
         private string m_settingsFileName;
 
@@ -49,7 +42,7 @@ namespace UrbanFox.MiniGame
         private AnimationCurve m_sliderToActualGammaCurve = AnimationCurve.Linear(-1, -0.1f, 1, 0.1f);
 
         [SerializeField]
-        private LanguageData[] m_supportedLanguages;
+        private SystemLanguage[] m_defaultLanguageIndexList;
 
         [SerializeField, NonEditable]
         private SettingsData m_currentSettings;
@@ -57,7 +50,6 @@ namespace UrbanFox.MiniGame
         private bool m_isSettingsDirty = false;
 
         public string SettingsFilePath => Path.Combine(Application.persistentDataPath, m_settingsFileName);
-        public LanguageData[] SupportedLanguages => m_supportedLanguages;
         public AnimationCurve SliderToActualGammaCurve => m_sliderToActualGammaCurve;
 
         public int LanguageIndex
@@ -142,12 +134,15 @@ namespace UrbanFox.MiniGame
 
         public void ResetLanguageSettings()
         {
-            LanguageIndex = 0;
-            if (!m_supportedLanguages.IsNullOrEmpty())
+            if (m_defaultLanguageIndexList.IsNullOrEmpty())
             {
-                for (int i = 0; i < m_supportedLanguages.Length; i++)
+                LanguageIndex = 0;
+            }
+            else
+            {
+                for (int i = 0; i < m_defaultLanguageIndexList.Length; i++)
                 {
-                    if (m_supportedLanguages[i].Language == Application.systemLanguage && m_supportedLanguages[i].Enable)
+                    if (m_defaultLanguageIndexList[i] == Application.systemLanguage)
                     {
                         LanguageIndex = i;
                         return;
