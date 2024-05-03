@@ -42,6 +42,7 @@ namespace UrbanFox.MiniGame
 
         private void OnVideoEnded(VideoPlayer source)
         {
+            m_trailer.time = 0;
             EventSystemManager.Instance.EnableEventSystem();
             m_trailerContainer.SetActive(false);
             m_onCompletePlaying?.Invoke();
@@ -54,13 +55,8 @@ namespace UrbanFox.MiniGame
 
         private void OnAnyKeyPressed(UnityEngine.InputSystem.InputControl obj)
         {
-            EventSystemManager.Instance.EnableEventSystem();
-            m_trailerContainer.SetActive(false);
-            m_onCompletePlaying?.Invoke();
-            if (m_allowSkip)
-            {
-                InputManager.OnAnyKeyPressed -= OnAnyKeyPressed;
-            }
+            m_trailer.Stop();
+            OnVideoEnded(m_trailer);
         }
     }
 }

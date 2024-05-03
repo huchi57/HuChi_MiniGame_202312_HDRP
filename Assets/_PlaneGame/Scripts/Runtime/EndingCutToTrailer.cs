@@ -35,6 +35,12 @@ namespace UrbanFox.MiniGame
         [SerializeField]
         private CreditSlide[] m_creditsSlides;
 
+        [SerializeField]
+        private bool m_lastSlideWaitForInput;
+
+        [SerializeField, ShowIf(nameof(m_lastSlideWaitForInput), true)]
+        private CreditSlide m_lastSlide;
+
         private void OnEnable()
         {
             if (GameInstance.CurrentGameState != GameState.GameplayPausable)
@@ -80,9 +86,31 @@ namespace UrbanFox.MiniGame
                         yield return new WaitForSeconds(slide.FadeTime + slide.IntervalUntillNextSlide);
                     }
                 }
+
+                if (m_lastSlideWaitForInput)
+                {
+                    InputManager.OnAnyKeyPressed += OnAnyKeyPressed;
+                    m_lastSlide.Slide.gameObject.SetActive(true);
+                    m_lastSlide.Slide.alpha = 0;
+                    m_lastSlide.Slide.DOFade(1, m_lastSlide.FadeTime);
+                }
+                else
+                {
+                    m_background.gameObject.SetActive(false);
+                    GameManager.Instance.RestartGame();
+                }
+            }
+        }
+
+        private void OnAnyKeyPressed(UnityEngine.InputSystem.InputControl obj)
+        {
+            InputManager.OnAnyKeyPressed -= OnAnyKeyPressed;
+            m_lastSlide.Slide.DOFade(0, m_lastSlide.FadeTime).OnComplete(() =>
+            {
+                m_lastSlide.Slide.gameObject.SetActive(false);
                 m_background.gameObject.SetActive(false);
                 GameManager.Instance.RestartGame();
-            }
+            });
         }
     }
 }
