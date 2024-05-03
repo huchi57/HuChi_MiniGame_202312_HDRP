@@ -8,6 +8,13 @@ namespace UrbanFox.MiniGame
     public class SettingsManager : RuntimeManager<SettingsManager>
     {
         [Serializable]
+        public struct LanguageData
+        {
+            public SystemLanguage Language;
+            public bool Enable;
+        }
+
+        [Serializable]
         public struct SettingsData
         {
             public int LanguageIndex;
@@ -42,7 +49,7 @@ namespace UrbanFox.MiniGame
         private AnimationCurve m_sliderToActualGammaCurve = AnimationCurve.Linear(-1, -0.1f, 1, 0.1f);
 
         [SerializeField]
-        private SystemLanguage[] m_defaultLanguageIndexList;
+        private LanguageData[] m_languageIndexList;
 
         [SerializeField, NonEditable]
         private SettingsData m_currentSettings;
@@ -134,15 +141,15 @@ namespace UrbanFox.MiniGame
 
         public void ResetLanguageSettings()
         {
-            if (m_defaultLanguageIndexList.IsNullOrEmpty())
+            if (m_languageIndexList.IsNullOrEmpty())
             {
                 LanguageIndex = 0;
             }
             else
             {
-                for (int i = 0; i < m_defaultLanguageIndexList.Length; i++)
+                for (int i = 0; i < m_languageIndexList.Length; i++)
                 {
-                    if (m_defaultLanguageIndexList[i] == Application.systemLanguage)
+                    if (m_languageIndexList[i].Language == Application.systemLanguage)
                     {
                         LanguageIndex = i;
                         return;
@@ -183,6 +190,15 @@ namespace UrbanFox.MiniGame
             ResetGraphicSettings();
             ResetAudioSettings();
             ResetControlSettings();
+        }
+
+        public bool IsLanguageAvailable(int index)
+        {
+            if (index.IsInRange(m_languageIndexList))
+            {
+                return m_languageIndexList[index].Enable;
+            }
+            return false;
         }
 
         public override void Awake()

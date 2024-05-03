@@ -35,7 +35,11 @@ namespace UrbanFox.MiniGame
                 newButton.gameObject.SetActive(true);
                 newButton.SetUpButtonValue(i);
                 m_buttons.Add(newButton);
-                if (i == Localization.CurrentLanguageIndex)
+                if (!SettingsManager.Instance.IsLanguageAvailable(i))
+                {
+                    newButton.gameObject.SetActive(false);
+                }
+                if (newButton.gameObject.activeSelf && i == Localization.CurrentLanguageIndex)
                 {
                     currentSettingsFound = true;
                     newButton.Select();
