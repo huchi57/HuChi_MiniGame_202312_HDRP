@@ -2,103 +2,105 @@
 <data>
     <i k="Key" v="EN"/>
     <i k="LanguageName" v="English"/>
-    <i k="UI.Yes" v="Yes"/>
-    <i k="UI.No" v="No"/>
-    <i k="UI.Confirm" v="Confirm"/>
-    <i k="UI.Cancel" v="Cancel"/>
-    <i k="UI.On" v="On"/>
-    <i k="UI.Off" v="Off"/>
-    <i k="UI.Settings" v="Settings"/>
-    <i k="UI.Settings.Movement.InvertX" v="Invert X"/>
-    <i k="UI.Settings.Movement.InvertY" v="Invert Y"/>
-    <i k="UI.Settings.Movement.Sensitivity" v="Sensitivity"/>
-    <i k="UI.Settings.Language" v="Language"/>
-    <i k="UI.Settings.Visuals.Graphics" v="Graphics"/>
-    <i k="UI.Settings.Visuals.Quality" v="Visual Quality"/>
-    <i k="UI.Settings.Visuals.Quality.Low" v="Low"/>
-    <i k="UI.Settings.Visuals.Quality.Medium" v="Medium"/>
-    <i k="UI.Settings.Visuals.Quality.High" v="High"/>
-    <i k="UI.Settings.Visuals.Quality.Ultra" v="Ultra"/>
-    <i k="UI.Settings.Visuals.Subtitles" v="Subtitles"/>
-    <i k="UI.Settings.Visuals.FullscreenMode" v="Fullscreen Mode"/>
-    <i k="UI.Settings.Visuals.Resolution" v="Resolution"/>
-    <i k="UI.Settings.Visuals.Brightness" v="Brightness"/>
-    <i k="UI.Settings.Audio.Volume" v="Volume"/>
-    <i k="UI.Settings.Controls" v="Controls"/>
-    <i k="UI.Settings.Controls.Keyboard" v="Keyboard"/>
-    <i k="UI.Settings.Controls.Gamepad" v="Gamepad"/>
-    <i k="UI.Settings.Controls.Controller" v="Controller"/>
-    <i k="UI.Settings.Controls.TiltUp" v="Tilt Up"/>
-    <i k="UI.Settings.Controls.TiltDown" v="Tilt Down"/>
-    <i k="UI.Settings.Controls.Vibration" v="Vibration"/>
-    <i k="UI.Settings.Controls.GamepadVibration" v="Gamepad Vibration"/>
-    <i k="UI.Settings.Controls.ControllerVibration" v="Controller Vibration"/>
-    <i k="UI.Settings.Controls.Binding.WaitingForInput" v="Waiting for input..."/>
-    <i k="UI.Settings.Controls.Binding.NewKeyPrefix" v="Input a new key for action:"/>
-    <i k="UI.PressAnyKey" v="Press Any Key"/>
-    <i k="UI.Continue" v="Continue"/>
-    <i k="UI.Resume" v="Resume"/>
-    <i k="UI.QuitGame" v="Quit Game"/>
-    <i k="UI.QuitGame.Question" v="Are you sure you want to quit?"/>
-    <i k="UI.ReturnToMenu" v="Return to Menu"/>
-    <i k="UI.PauseMenu" v="Pause Menu"/>
-    <i k="UI.Loading" v="Loading"/>
-    <i k="UI.Loading.WithDots" v="Loading..."/>
-    <i k="UI.RevertToDefault" v="Revert to Default"/>
-    <i k="UI.GameTitle" v="DRIFTED"/>
-    <i k="UI.Credits" v="Credits"/>
+    <i k="Credits.Art" v="Art"/>
+    <i k="Credits.Art.2DArt" v="2D Art"/>
+    <i k="Credits.Art.3DArt" v="3D Art"/>
+    <i k="Credits.Art.Animation" v="Animation"/>
+    <i k="Credits.Art.CharacterArt" v="Character Art"/>
+    <i k="Credits.Art.ConceptArt" v="Concept Art"/>
+    <i k="Credits.Art.EnvironmentArt" v="Environment Art"/>
+    <i k="Credits.Art.LeadArt" v="Lead Art"/>
+    <i k="Credits.Art.PostEffects" v="Post Effects"/>
+    <i k="Credits.Art.TechnicalArt" v="Technical Art"/>
+    <i k="Credits.Audio" v="Audio"/>
+    <i k="Credits.Audio.AudioDirecting" v="Audio Directing"/>
+    <i k="Credits.Audio.AudioProgramming" v="Audio Programming"/>
+    <i k="Credits.Audio.Composing" v="Composing"/>
+    <i k="Credits.Audio.Music" v="Music"/>
+    <i k="Credits.Audio.SoundDesign" v="Sound Design"/>
+    <i k="Credits.CreatedBy" v="Created by"/>
+    <i k="Credits.Credits" v="Credits"/>
+    <i k="Credits.DemoDisclaimer" v="This game is currently a demo."/>
+    <i k="Credits.DemoDisclaimer.Bug" v="This is a work in progress, and it does not represent the quality of the final game."/>
+    <i k="Credits.Disclaimer" v="This game is currently a demo. Its development started from November 2023."/>
+    <i k="Credits.ExternalResources" v="External Resources"/>
+    <i k="Credits.ExternalResources.Audio" v="Audio"/>
+    <i k="Credits.ExternalResources.Fonts" v="Fonts"/>
+    <i k="Credits.ExternalResources.Models" v="Models"/>
+    <i k="Credits.ExternalResources.Music" v="Music"/>
+    <i k="Credits.ExternalResources.SoundEffects" v="Sound Effects"/>
+    <i k="Credits.ExternalResources.Textures" v="Textures"/>
+    <i k="Credits.GameDesign" v="Game Desgin"/>
+    <i k="Credits.HeadphoneSuggested" v="Use headphones for the best experience."/>
+    <i k="Credits.LevelDesign" v="Level Design"/>
+    <i k="Credits.Localizatioin.French" v="French"/>
+    <i k="Credits.Localization" v="Localization"/>
+    <i k="Credits.Localization.English" v="English"/>
+    <i k="Credits.Localization.German" v="German"/>
+    <i k="Credits.Localization.Japanese" v="Japanese"/>
+    <i k="Credits.Localization.Korean" v="Korean"/>
+    <i k="Credits.Localization.ZH-CN" v="Mandarin (Simplified characters)"/>
+    <i k="Credits.Localization.ZH-TW" v="Mandarin (Traditional characters)"/>
+    <i k="Credits.ProducedBy" v="Produced by"/>
+    <i k="Credits.Programming" v="Programming"/>
+    <i k="Credits.Programming.LeadProgramming" v="Lead Programming"/>
+    <i k="Credits.Script" v="Script"/>
+    <i k="Credits.SpecialThanks" v="Special Thanks"/>
+    <i k="Credits.Story" v="Story"/>
+    <i k="Credits.Testers" v="Testers"/>
+    <i k="Credits.Testers.ExternalTesters" v="External Testers"/>
+    <i k="Credits.Testers.InternalTesters" v="Internal Testers"/>
+    <i k="Credits.ThankYouForPlaying" v="Thank you for playing."/>
+    <i k="Credits.ThankYouForPlaying.Demo" v="Thank you for playing the demo."/>
+    <i k="Credits.Trailer" v="Trailer"/>
     <i k="QA.Questionnaire" v="Questionnaire"/>
     <i k="QA.ReportBug" v="Report Bug"/>
     <i k="QA.WishlistOnSteam" v="Wishlist on Steam"/>
-    <i k="Credits.Credits" v="Credits"/>
-    <i k="Credits.CreatedBy" v="Created by"/>
-    <i k="Credits.ProducedBy" v="Produced by"/>
-    <i k="Credits.GameDesign" v="Game Desgin"/>
-    <i k="Credits.Story" v="Story"/>
-    <i k="Credits.Script" v="Script"/>
-    <i k="Credits.Trailer" v="Trailer"/>
-    <i k="Credits.LevelDesign" v="Level Design"/>
-    <i k="Credits.Art" v="Art"/>
-    <i k="Credits.Art.LeadArt" v="Lead Art"/>
-    <i k="Credits.Art.ConceptArt" v="Concept Art"/>
-    <i k="Credits.Art.2DArt" v="2D Art"/>
-    <i k="Credits.Art.3DArt" v="3D Art"/>
-    <i k="Credits.Art.EnvironmentArt" v="Environment Art"/>
-    <i k="Credits.Art.CharacterArt" v="Character Art"/>
-    <i k="Credits.Art.Animation" v="Animation"/>
-    <i k="Credits.Art.PostEffects" v="Post Effects"/>
-    <i k="Credits.Art.TechnicalArt" v="Technical Art"/>
-    <i k="Credits.Programming" v="Programming"/>
-    <i k="Credits.Programming.LeadProgramming" v="Lead Programming"/>
-    <i k="Credits.Audio" v="Audio"/>
-    <i k="Credits.Audio.AudioDirecting" v="Audio Directing"/>
-    <i k="Credits.Audio.SoundDesign" v="Sound Design"/>
-    <i k="Credits.Audio.AudioProgramming" v="Audio Programming"/>
-    <i k="Credits.Audio.Music" v="Music"/>
-    <i k="Credits.Audio.Composing" v="Composing"/>
-    <i k="Credits.Testers" v="Testers"/>
-    <i k="Credits.Testers.InternalTesters" v="Internal Testers"/>
-    <i k="Credits.Testers.ExternalTesters" v="External Testers"/>
-    <i k="Credits.ExternalResources" v="External Resources"/>
-    <i k="Credits.ExternalResources.Fonts" v="Fonts"/>
-    <i k="Credits.ExternalResources.Textures" v="Textures"/>
-    <i k="Credits.ExternalResources.Models" v="Models"/>
-    <i k="Credits.ExternalResources.SoundEffects" v="Sound Effects"/>
-    <i k="Credits.ExternalResources.Music" v="Music"/>
-    <i k="Credits.ExternalResources.Audio" v="Audio"/>
-    <i k="Credits.Localization" v="Localization"/>
-    <i k="Credits.Localization.English" v="English"/>
-    <i k="Credits.Localizatioin.French" v="French"/>
-    <i k="Credits.Localization.German" v="German"/>
-    <i k="Credits.Localization.Japanese" v="Japanese"/>
-    <i k="Credits.Localization.ZH-TW" v="Mandarin (Traditional characters)"/>
-    <i k="Credits.Localization.ZH-CN" v="Mandarin (Simplified characters)"/>
-    <i k="Credits.Localization.Korean" v="Korean"/>
-    <i k="Credits.SpecialThanks" v="Special Thanks"/>
-    <i k="Credits.Disclaimer" v="This game is currently a demo. Its development started from November 2023."/>
-    <i k="Credits.DemoDisclaimer" v="This game is currently a demo."/>
-    <i k="Credits.DemoDisclaimer.Bug" v="This is a work in progress, and it does not represent the quality of the final game."/>
-    <i k="Credits.ThankYouForPlaying" v="Thank you for playing."/>
-    <i k="Credits.ThankYouForPlaying.Demo" v="Thank you for playing the demo."/>
-    <i k="Credits.HeadphoneSuggested" v="Use headphones for the best experience."/>
+    <i k="UI.Cancel" v="Cancel"/>
+    <i k="UI.Confirm" v="Confirm"/>
+    <i k="UI.Continue" v="Continue"/>
+    <i k="UI.Credits" v="Credits"/>
+    <i k="UI.GameTitle" v="DRIFTED"/>
+    <i k="UI.Loading" v="Loading"/>
+    <i k="UI.Loading.WithDots" v="Loading..."/>
+    <i k="UI.No" v="No"/>
+    <i k="UI.Off" v="Off"/>
+    <i k="UI.On" v="On"/>
+    <i k="UI.PauseMenu" v="Pause Menu"/>
+    <i k="UI.PressAnyKey" v="Press Any Key"/>
+    <i k="UI.QuitGame" v="Quit Game"/>
+    <i k="UI.QuitGame.Question" v="Are you sure you want to quit?"/>
+    <i k="UI.RestartFromBeginning" v="Restart Game from Beginning"/>
+    <i k="UI.RestartFromBeginning.Question" v="Are you sure you want to restart?"/>
+    <i k="UI.Resume" v="Resume"/>
+    <i k="UI.ReturnToMenu" v="Return to Menu"/>
+    <i k="UI.RevertToDefault" v="Revert to Default"/>
+    <i k="UI.Settings" v="Settings"/>
+    <i k="UI.Settings.Audio.Volume" v="Volume"/>
+    <i k="UI.Settings.Controls" v="Controls"/>
+    <i k="UI.Settings.Controls.Binding.NewKeyPrefix" v="Input a new key for action:"/>
+    <i k="UI.Settings.Controls.Binding.WaitingForInput" v="Waiting for input..."/>
+    <i k="UI.Settings.Controls.Controller" v="Controller"/>
+    <i k="UI.Settings.Controls.ControllerVibration" v="Controller Vibration"/>
+    <i k="UI.Settings.Controls.Gamepad" v="Gamepad"/>
+    <i k="UI.Settings.Controls.GamepadVibration" v="Gamepad Vibration"/>
+    <i k="UI.Settings.Controls.Keyboard" v="Keyboard"/>
+    <i k="UI.Settings.Controls.TiltDown" v="Tilt Down"/>
+    <i k="UI.Settings.Controls.TiltUp" v="Tilt Up"/>
+    <i k="UI.Settings.Controls.Vibration" v="Vibration"/>
+    <i k="UI.Settings.Language" v="Language"/>
+    <i k="UI.Settings.Movement.InvertX" v="Invert X"/>
+    <i k="UI.Settings.Movement.InvertY" v="Invert Y"/>
+    <i k="UI.Settings.Movement.Sensitivity" v="Sensitivity"/>
+    <i k="UI.Settings.Visuals.Brightness" v="Brightness"/>
+    <i k="UI.Settings.Visuals.FullscreenMode" v="Fullscreen Mode"/>
+    <i k="UI.Settings.Visuals.Graphics" v="Graphics"/>
+    <i k="UI.Settings.Visuals.Quality" v="Visual Quality"/>
+    <i k="UI.Settings.Visuals.Quality.High" v="High"/>
+    <i k="UI.Settings.Visuals.Quality.Low" v="Low"/>
+    <i k="UI.Settings.Visuals.Quality.Medium" v="Medium"/>
+    <i k="UI.Settings.Visuals.Quality.Ultra" v="Ultra"/>
+    <i k="UI.Settings.Visuals.Resolution" v="Resolution"/>
+    <i k="UI.Settings.Visuals.Subtitles" v="Subtitles"/>
+    <i k="UI.Yes" v="Yes"/>
 </data>

@@ -2,103 +2,105 @@
 <data>
     <i k="Key" v="ZH-CN"/>
     <i k="LanguageName" v="简体字"/>
-    <i k="UI.Yes" v="是"/>
-    <i k="UI.No" v="否"/>
-    <i k="UI.Confirm" v="确认"/>
-    <i k="UI.Cancel" v="取消"/>
-    <i k="UI.On" v="开启"/>
-    <i k="UI.Off" v="关闭"/>
-    <i k="UI.Settings" v="设定"/>
-    <i k="UI.Settings.Movement.InvertX" v="反转 X 轴"/>
-    <i k="UI.Settings.Movement.InvertY" v="反转 Y 轴"/>
-    <i k="UI.Settings.Movement.Sensitivity" v="灵敏度"/>
-    <i k="UI.Settings.Language" v="语言"/>
-    <i k="UI.Settings.Visuals.Graphics" v="画面"/>
-    <i k="UI.Settings.Visuals.Quality" v="画质"/>
-    <i k="UI.Settings.Visuals.Quality.Low" v="低"/>
-    <i k="UI.Settings.Visuals.Quality.Medium" v="中"/>
-    <i k="UI.Settings.Visuals.Quality.High" v="高"/>
-    <i k="UI.Settings.Visuals.Quality.Ultra" v="极高"/>
-    <i k="UI.Settings.Visuals.Subtitles" v="字幕"/>
-    <i k="UI.Settings.Visuals.FullscreenMode" v="全屏模式"/>
-    <i k="UI.Settings.Visuals.Resolution" v="解析度"/>
-    <i k="UI.Settings.Visuals.Brightness" v="显示亮度"/>
-    <i k="UI.Settings.Audio.Volume" v="音量"/>
-    <i k="UI.Settings.Controls" v="控制"/>
-    <i k="UI.Settings.Controls.Keyboard" v="键盘"/>
-    <i k="UI.Settings.Controls.Gamepad" v="控制器"/>
-    <i k="UI.Settings.Controls.Controller" v="控制器"/>
-    <i k="UI.Settings.Controls.TiltUp" v="向上"/>
-    <i k="UI.Settings.Controls.TiltDown" v="向下"/>
-    <i k="UI.Settings.Controls.Vibration" v="震动"/>
-    <i k="UI.Settings.Controls.GamepadVibration" v="控制器震动"/>
-    <i k="UI.Settings.Controls.ControllerVibration" v="控制器震动"/>
-    <i k="UI.Settings.Controls.Binding.WaitingForInput" v="正在等待输入… "/>
-    <i k="UI.Settings.Controls.Binding.NewKeyPrefix" v="按下的按键将绑定："/>
-    <i k="UI.PressAnyKey" v="按任意键"/>
-    <i k="UI.Continue" v="继续"/>
-    <i k="UI.Resume" v="继续"/>
-    <i k="UI.QuitGame" v="离开游戏"/>
-    <i k="UI.QuitGame.Question" v="是否确认离开游戏？"/>
-    <i k="UI.ReturnToMenu" v="返回主画面"/>
-    <i k="UI.PauseMenu" v="暂停菜单"/>
-    <i k="UI.Loading" v="加载中"/>
-    <i k="UI.Loading.WithDots" v="加载中..."/>
-    <i k="UI.RevertToDefault" v="恢复为默认值"/>
-    <i k="UI.GameTitle" v="DRIFTED"/>
-    <i k="UI.Credits" v="开发人员"/>
+    <i k="Credits.Art" v="美术"/>
+    <i k="Credits.Art.2DArt" v="2D 美术"/>
+    <i k="Credits.Art.3DArt" v="3D 美术"/>
+    <i k="Credits.Art.Animation" v="动画"/>
+    <i k="Credits.Art.CharacterArt" v="角色美术"/>
+    <i k="Credits.Art.ConceptArt" v="概念美术"/>
+    <i k="Credits.Art.EnvironmentArt" v="环境美术"/>
+    <i k="Credits.Art.LeadArt" v="主美术"/>
+    <i k="Credits.Art.PostEffects" v="特效"/>
+    <i k="Credits.Art.TechnicalArt" v="技术美术"/>
+    <i k="Credits.Audio" v="声音"/>
+    <i k="Credits.Audio.AudioDirecting" v="音效总监"/>
+    <i k="Credits.Audio.AudioProgramming" v="音效程式"/>
+    <i k="Credits.Audio.Composing" v="作曲"/>
+    <i k="Credits.Audio.Music" v="音乐"/>
+    <i k="Credits.Audio.SoundDesign" v="音效设计"/>
+    <i k="Credits.CreatedBy" v="游戏制作"/>
+    <i k="Credits.Credits" v="开发人员"/>
+    <i k="Credits.DemoDisclaimer" v="本游戏目前为 demo 版本。"/>
+    <i k="Credits.DemoDisclaimer.Bug" v="游戏尚在开发中，如游玩过程出现错误请见谅。"/>
+    <i k="Credits.Disclaimer" v="本游戏目前为 demo 版本。本作品于 2023 年 11 月开始开发。"/>
+    <i k="Credits.ExternalResources" v="外部资源"/>
+    <i k="Credits.ExternalResources.Audio" v="声音"/>
+    <i k="Credits.ExternalResources.Fonts" v="字体"/>
+    <i k="Credits.ExternalResources.Models" v="模型"/>
+    <i k="Credits.ExternalResources.Music" v="音乐"/>
+    <i k="Credits.ExternalResources.SoundEffects" v="音效"/>
+    <i k="Credits.ExternalResources.Textures" v="材质"/>
+    <i k="Credits.GameDesign" v="游戏设计"/>
+    <i k="Credits.HeadphoneSuggested" v="推荐使用耳机以达到最佳体验。"/>
+    <i k="Credits.LevelDesign" v="关卡设计"/>
+    <i k="Credits.Localizatioin.French" v="法文"/>
+    <i k="Credits.Localization" v="翻译"/>
+    <i k="Credits.Localization.English" v="英文"/>
+    <i k="Credits.Localization.German" v="德文"/>
+    <i k="Credits.Localization.Japanese" v="日文"/>
+    <i k="Credits.Localization.Korean" v="韩文"/>
+    <i k="Credits.Localization.ZH-CN" v="简体字"/>
+    <i k="Credits.Localization.ZH-TW" v="繁体字"/>
+    <i k="Credits.ProducedBy" v="制作人"/>
+    <i k="Credits.Programming" v="程式"/>
+    <i k="Credits.Programming.LeadProgramming" v="主程式"/>
+    <i k="Credits.Script" v="剧本"/>
+    <i k="Credits.SpecialThanks" v="特别感谢"/>
+    <i k="Credits.Story" v="故事"/>
+    <i k="Credits.Testers" v="测试"/>
+    <i k="Credits.Testers.ExternalTesters" v="白纸测试"/>
+    <i k="Credits.Testers.InternalTesters" v="内部测试"/>
+    <i k="Credits.ThankYouForPlaying" v="感谢您的游玩。"/>
+    <i k="Credits.ThankYouForPlaying.Demo" v="感谢您游玩本 DEMO 作品。"/>
+    <i k="Credits.Trailer" v="预告"/>
     <i k="QA.Questionnaire" v="填写问卷"/>
     <i k="QA.ReportBug" v="回报问题"/>
     <i k="QA.WishlistOnSteam" v="在 Steam 加入愿望清单"/>
-    <i k="Credits.Credits" v="开发人员"/>
-    <i k="Credits.CreatedBy" v="游戏制作"/>
-    <i k="Credits.ProducedBy" v="制作人"/>
-    <i k="Credits.GameDesign" v="游戏设计"/>
-    <i k="Credits.Story" v="故事"/>
-    <i k="Credits.Script" v="剧本"/>
-    <i k="Credits.Trailer" v="预告"/>
-    <i k="Credits.LevelDesign" v="关卡设计"/>
-    <i k="Credits.Art" v="美术"/>
-    <i k="Credits.Art.LeadArt" v="主美术"/>
-    <i k="Credits.Art.ConceptArt" v="概念美术"/>
-    <i k="Credits.Art.2DArt" v="2D 美术"/>
-    <i k="Credits.Art.3DArt" v="3D 美术"/>
-    <i k="Credits.Art.EnvironmentArt" v="环境美术"/>
-    <i k="Credits.Art.CharacterArt" v="角色美术"/>
-    <i k="Credits.Art.Animation" v="动画"/>
-    <i k="Credits.Art.PostEffects" v="特效"/>
-    <i k="Credits.Art.TechnicalArt" v="技术美术"/>
-    <i k="Credits.Programming" v="程式"/>
-    <i k="Credits.Programming.LeadProgramming" v="主程式"/>
-    <i k="Credits.Audio" v="声音"/>
-    <i k="Credits.Audio.AudioDirecting" v="音效总监"/>
-    <i k="Credits.Audio.SoundDesign" v="音效设计"/>
-    <i k="Credits.Audio.AudioProgramming" v="音效程式"/>
-    <i k="Credits.Audio.Music" v="音乐"/>
-    <i k="Credits.Audio.Composing" v="作曲"/>
-    <i k="Credits.Testers" v="测试"/>
-    <i k="Credits.Testers.InternalTesters" v="内部测试"/>
-    <i k="Credits.Testers.ExternalTesters" v="白纸测试"/>
-    <i k="Credits.ExternalResources" v="外部资源"/>
-    <i k="Credits.ExternalResources.Fonts" v="字体"/>
-    <i k="Credits.ExternalResources.Textures" v="材质"/>
-    <i k="Credits.ExternalResources.Models" v="模型"/>
-    <i k="Credits.ExternalResources.SoundEffects" v="音效"/>
-    <i k="Credits.ExternalResources.Music" v="音乐"/>
-    <i k="Credits.ExternalResources.Audio" v="声音"/>
-    <i k="Credits.Localization" v="翻译"/>
-    <i k="Credits.Localization.English" v="英文"/>
-    <i k="Credits.Localizatioin.French" v="法文"/>
-    <i k="Credits.Localization.German" v="德文"/>
-    <i k="Credits.Localization.Japanese" v="日文"/>
-    <i k="Credits.Localization.ZH-TW" v="繁体字"/>
-    <i k="Credits.Localization.ZH-CN" v="简体字"/>
-    <i k="Credits.Localization.Korean" v="韩文"/>
-    <i k="Credits.SpecialThanks" v="特别感谢"/>
-    <i k="Credits.Disclaimer" v="本游戏目前为 demo 版本。本作品于 2023 年 11 月开始开发。"/>
-    <i k="Credits.DemoDisclaimer" v="本游戏目前为 demo 版本。"/>
-    <i k="Credits.DemoDisclaimer.Bug" v="游戏尚在开发中，如游玩过程出现错误请见谅。"/>
-    <i k="Credits.ThankYouForPlaying" v="感谢您的游玩。"/>
-    <i k="Credits.ThankYouForPlaying.Demo" v="感谢您游玩本 DEMO 作品。"/>
-    <i k="Credits.HeadphoneSuggested" v="推荐使用耳机以达到最佳体验。"/>
+    <i k="UI.Cancel" v="取消"/>
+    <i k="UI.Confirm" v="确认"/>
+    <i k="UI.Continue" v="继续"/>
+    <i k="UI.Credits" v="开发人员"/>
+    <i k="UI.GameTitle" v="DRIFTED"/>
+    <i k="UI.Loading" v="加载中"/>
+    <i k="UI.Loading.WithDots" v="加载中..."/>
+    <i k="UI.No" v="否"/>
+    <i k="UI.Off" v="关闭"/>
+    <i k="UI.On" v="开启"/>
+    <i k="UI.PauseMenu" v="暂停菜单"/>
+    <i k="UI.PressAnyKey" v="按任意键"/>
+    <i k="UI.QuitGame" v="离开游戏"/>
+    <i k="UI.QuitGame.Question" v="是否确认离开游戏？"/>
+    <i k="UI.RestartFromBeginning" v="从头开始游戏"/>
+    <i k="UI.RestartFromBeginning.Question" v="是否确认从头开始游戏？"/>
+    <i k="UI.Resume" v="继续"/>
+    <i k="UI.ReturnToMenu" v="返回主画面"/>
+    <i k="UI.RevertToDefault" v="恢复为默认值"/>
+    <i k="UI.Settings" v="设定"/>
+    <i k="UI.Settings.Audio.Volume" v="音量"/>
+    <i k="UI.Settings.Controls" v="控制"/>
+    <i k="UI.Settings.Controls.Binding.NewKeyPrefix" v="按下的按键将绑定："/>
+    <i k="UI.Settings.Controls.Binding.WaitingForInput" v="正在等待输入… "/>
+    <i k="UI.Settings.Controls.Controller" v="控制器"/>
+    <i k="UI.Settings.Controls.ControllerVibration" v="控制器震动"/>
+    <i k="UI.Settings.Controls.Gamepad" v="控制器"/>
+    <i k="UI.Settings.Controls.GamepadVibration" v="控制器震动"/>
+    <i k="UI.Settings.Controls.Keyboard" v="键盘"/>
+    <i k="UI.Settings.Controls.TiltDown" v="向下"/>
+    <i k="UI.Settings.Controls.TiltUp" v="向上"/>
+    <i k="UI.Settings.Controls.Vibration" v="震动"/>
+    <i k="UI.Settings.Language" v="语言"/>
+    <i k="UI.Settings.Movement.InvertX" v="反转 X 轴"/>
+    <i k="UI.Settings.Movement.InvertY" v="反转 Y 轴"/>
+    <i k="UI.Settings.Movement.Sensitivity" v="灵敏度"/>
+    <i k="UI.Settings.Visuals.Brightness" v="显示亮度"/>
+    <i k="UI.Settings.Visuals.FullscreenMode" v="全屏模式"/>
+    <i k="UI.Settings.Visuals.Graphics" v="画面"/>
+    <i k="UI.Settings.Visuals.Quality" v="画质"/>
+    <i k="UI.Settings.Visuals.Quality.High" v="高"/>
+    <i k="UI.Settings.Visuals.Quality.Low" v="低"/>
+    <i k="UI.Settings.Visuals.Quality.Medium" v="中"/>
+    <i k="UI.Settings.Visuals.Quality.Ultra" v="极高"/>
+    <i k="UI.Settings.Visuals.Resolution" v="解析度"/>
+    <i k="UI.Settings.Visuals.Subtitles" v="字幕"/>
+    <i k="UI.Yes" v="是"/>
 </data>
