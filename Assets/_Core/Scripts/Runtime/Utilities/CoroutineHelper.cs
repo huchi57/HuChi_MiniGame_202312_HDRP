@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -16,9 +17,19 @@ namespace UrbanFox
                 if (m_container == null)
                 {
                     m_container = new GameObject("[Coroutine Helper Container]").AddComponent<Container>();
-                    Object.DontDestroyOnLoad(m_container);
+                    UnityEngine.Object.DontDestroyOnLoad(m_container);
                 }
                 return m_container;
+            }
+        }
+
+        public static void DelayCallFunction(float seconds, Action action)
+        {
+            StartCoroutine(Coroutine());
+            IEnumerator Coroutine()
+            {
+                yield return new WaitForSecondsRealtime(seconds);
+                action.Invoke();
             }
         }
 

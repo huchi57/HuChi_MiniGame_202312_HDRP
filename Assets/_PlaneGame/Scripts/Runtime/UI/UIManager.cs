@@ -147,6 +147,15 @@ namespace UrbanFox.MiniGame
             }
         }
 
+        public void RestartGame()
+        {
+            if (GameManager.IsInstanceExist)
+            {
+                GameManager.Instance.RestartGame();
+            }
+            m_pauseMenuPageGroup.ClosePageGroup();
+        }
+
         private void Start()
         {
             InputManager.OnAnyKeyButReservedKeysPressed += OnAnyKeyPressed;
@@ -182,6 +191,15 @@ namespace UrbanFox.MiniGame
             }
         }
 
+        private void ResetSplashScreenState()
+        {
+            if (m_enableSplashScreen)
+            {
+                m_titleSplashScreen.gameObject.SetActive(true);
+                m_titleSplashScreen.DOFade(1, 1).SetUpdate(true);
+            }
+        }
+
         private void OnAnyKeyPressed(UnityEngine.InputSystem.InputControl obj)
         {
             if (GameInstance.CurrentGameState == GameState.WaitForInputToStartGame || GameInstance.CurrentGameState == GameState.GameplayPausable)
@@ -191,15 +209,6 @@ namespace UrbanFox.MiniGame
                     m_titleSplashScreen.gameObject.SetActive(false);
                     m_enableSplashScreen = false;
                 });
-            }
-        }
-
-        private void ResetSplashScreenState()
-        {
-            if (m_enableSplashScreen)
-            {
-                m_titleSplashScreen.gameObject.SetActive(true);
-                m_titleSplashScreen.DOFade(1, 1).SetUpdate(true);
             }
         }
 

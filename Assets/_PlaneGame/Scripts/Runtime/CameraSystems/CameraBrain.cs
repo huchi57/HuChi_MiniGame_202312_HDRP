@@ -74,10 +74,15 @@ namespace UrbanFox.MiniGame
             m_cameraContributors.Clear();
         }
 
+        public void OverrideCheckpointPosition(Vector3 point, Quaternion rotation)
+        {
+            m_checkpointCameraPosition = point;
+            m_checkpointCameraRotation = rotation;
+        }
+
         public void SaveCameraCheckpointPosition()
         {
-            m_checkpointCameraPosition = transform.position;
-            m_checkpointCameraRotation = transform.rotation;
+            OverrideCheckpointPosition(transform.position, transform.rotation);
         }
 
         private void Awake()

@@ -71,6 +71,19 @@ namespace UrbanFox.MiniGame
             }
         }
 
+        public void RestartGame()
+        {
+            GameInstance.PlayerController.UpdateRespawnPoint(Vector3.zero);
+            CameraBrain.Main.OverrideCheckpointPosition(Vector3.zero, Quaternion.identity);
+            CoroutineHelper.DelayCallFunction(0.05f, () =>
+            {
+                // HACK: Force delaying 0.05 seconds and make game state to pausable to make restart checkpoint work.
+                GameInstance.SwitchGameState(GameState.GameplayPausable);
+                UIManager.Instance.EnableSplashScreen(true);
+                RestartCheckpoint_Instant();
+            });
+        }
+
         public void RestartCheckpoint_Instant(Action onComplete = null)
         {
             RestartCheckpoint_Fade(0, 0.1f, m_defaultFadeInTime, onComplete);
