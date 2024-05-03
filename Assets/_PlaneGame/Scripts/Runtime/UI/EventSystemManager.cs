@@ -6,7 +6,8 @@ namespace UrbanFox.MiniGame
     [RequireComponent(typeof(EventSystem))]
     public class EventSystemManager : RuntimeManager<EventSystemManager>
     {
-        [SerializeField, NonEditable] private EventSystem m_eventSystem;
+        [SerializeField, NonEditable]
+        private EventSystem m_eventSystem;
 
         private GameObject m_cachedGameObject;
 
@@ -18,6 +19,16 @@ namespace UrbanFox.MiniGame
             }
             m_cachedGameObject = newGameObject;
             m_eventSystem.SetSelectedGameObject(newGameObject);
+        }
+
+        public void EnableEventSystem()
+        {
+            m_eventSystem.enabled = true;
+        }
+
+        public void DisableEventSystem()
+        {
+            m_eventSystem.enabled = false;
         }
 
         private void OnValidate()

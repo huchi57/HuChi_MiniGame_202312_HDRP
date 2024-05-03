@@ -20710,6 +20710,7 @@ MonoBehaviour:
   m_titleSplashScreen: {fileID: 2148089886026386204}
   m_fullscreenBlack: {fileID: 202179837503574517}
   m_titleSplashScreenFadeTime: 1
+  m_trailerPlayer: {fileID: 0}
   m_pauseMenuPageGroup: {fileID: 5257635760544776670}
   m_loadingIconFadeTime: 1
   m_loadingIconType: 1
@@ -24643,7 +24644,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5697186480087421496}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3749756109913616630}
+        m_TargetAssemblyTypeName: UrbanFox.MiniGame.UIManager, UrbanFox.MiniGame
+        m_MethodName: PlayTrailerFromMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &5203646505657327297
 MonoBehaviour:
   m_ObjectHideFlags: 0

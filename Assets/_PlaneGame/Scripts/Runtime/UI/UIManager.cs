@@ -28,6 +28,9 @@ namespace UrbanFox.MiniGame
         private float m_titleSplashScreenFadeTime = 1;
 
         [SerializeField, Required]
+        private UITrailerPlayer m_trailerPlayer;
+
+        [SerializeField, Required]
         private UIPageGroup m_pauseMenuPageGroup;
 
         [Header("Loading Icons")]
@@ -137,6 +140,19 @@ namespace UrbanFox.MiniGame
         public void SetLoadingBarSliderValue(float value)
         {
             m_loadingBar.value = value;
+        }
+
+        public void PlayTrailerFromMenu()
+        {
+            if (m_trailerPlayer)
+            {
+                m_trailerPlayer.PlayTrailer();
+            }
+        }
+
+        public void PlayTrailerFromGameEnd()
+        {
+            // TODO
         }
 
         public void QuitGame()
