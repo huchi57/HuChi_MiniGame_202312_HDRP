@@ -146,7 +146,7 @@ namespace UrbanFox.MiniGame
         {
             if (m_trailerPlayer)
             {
-                m_trailerPlayer.PlayTrailer();
+                m_trailerPlayer.PlayTrailer_AllowSkip();
             }
         }
 

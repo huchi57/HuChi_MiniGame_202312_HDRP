@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1e30863b03665245ad57bcf23d6b87b, type: 3}
   m_Name: ApplicationBuildData
   m_EditorClassIdentifier: 
-  CustomBuildName: AlphaPlayable-SceneSliced-Unoptimized
+  CustomBuildName: AlphaPlayable-SceneSliced-TokyoGameDungeon
   CurrentBuildTime: 2024/03/30-01:28:36
   WindowsBuildIteration: 41
   MacBuildIteration: 7
